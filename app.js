@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -26,19 +25,19 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(express.session({
-  secret: settings.cookieSecret,
-  key: settings.db,//cookie name
-  cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
-  store: new MongoStore({
-    db: settings.db
-  })
+    secret: settings.cookieSecret,
+    key: settings.db,//cookie name
+    cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
+    store: new MongoStore({
+        db: settings.db
+    })
 }));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+    app.use(express.errorHandler());
 }
 
 //app.get('/', routes.index);
@@ -46,6 +45,6 @@ if ('development' == app.get('env')) {
 
 routes(app);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+http.createServer(app).listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'));
 });

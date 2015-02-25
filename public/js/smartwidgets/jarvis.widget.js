@@ -63,14 +63,15 @@
             //////////////////////// LOCALSTORAGE CHECK /////////////////////////
             //*****************************************************************//
 
-            storage = !! function () {
+            storage = !!function () {
                 var result, uid = +new Date;
                 try {
                     localStorage.setItem(uid, uid);
                     result = localStorage.getItem(uid) == uid;
                     localStorage.removeItem(uid);
                     return result;
-                } catch (e) {}
+                } catch (e) {
+                }
             }() && localStorage;
 
             //*****************************************************************//
@@ -106,7 +107,6 @@
                 } // end else
 
             } // end if
-
 
 
             //*****************************************************************//
@@ -217,7 +217,7 @@
                      **/
                     if (status == "error") {
                         $this.html('<h4 class="alert alert-danger">' + self.o.labelError + '<b> ' +
-                            xhr.status + " " + xhr.statusText + '</b></h4>');
+                        xhr.status + " " + xhr.statusText + '</b></h4>');
                     }
 
                     /**
@@ -365,7 +365,7 @@
              * Force users to use an id(it's needed for the local storage).
              **/
             if (!$('#' + self.objId)
-                .length) {
+                    .length) {
                 alert('It looks like your using a class instead of an ID, dont do that!')
             }
 
@@ -385,8 +385,8 @@
             $(self.o.grid)
                 .each(function () {
                     if ($(this)
-                        .find(self.o.widgets)
-                        .length) {
+                            .find(self.o.widgets)
+                            .length) {
                         $(this)
                             .addClass('sortable-grid');
                     }
@@ -468,8 +468,8 @@
                      * Update title widget (if needed).
                      **/
                     if (widgetId.children('header')
-                        .children('h2')
-                        .text() != jsonSettings.widget[key].title) {
+                            .children('h2')
+                            .text() != jsonSettings.widget[key].title) {
                         widgetId.children('header')
                             .children('h2')
                             .text(jsonSettings.widget[key].title);
@@ -494,7 +494,7 @@
                  * Dont double wrap(check).
                  **/
                 if (!thisHeader.parent()
-                    .attr('role')) {
+                        .attr('role')) {
 
                     /**
                      * Hide the widget if the dataset 'widget-hidden' is set to true.
@@ -505,10 +505,10 @@
                     }
 
                     /**
-					 * Hide the content of the widget if the dataset
-					 * 'widget-collapsed' is set to true.
+                     * Hide the content of the widget if the dataset
+                     * 'widget-collapsed' is set to true.
 
-					 **/
+                     **/
                     if (tWidget.data('widget-collapsed') === true) {
                         tWidget.addClass('jarviswidget-collapsed')
                             .children('div')
@@ -590,7 +590,7 @@
                     if (self.o.toggleButton === true && tWidget.data('widget-togglebutton') ===
                         undefined) {
                         if (tWidget.data('widget-collapsed') === true || tWidget.hasClass(
-                            'jarviswidget-collapsed')) {
+                                'jarviswidget-collapsed')) {
                             var toggleSettings = self.toggleClass[1];
                         } else {
                             toggleSettings = self.toggleClass[0];
@@ -630,7 +630,7 @@
                     if (refreshBtn != '' || deleteBtn != '' || customBtn != '' || fullscreenBtn != '' ||
                         editBtn != '' || toggleBtn != '') {
                         thisHeader.prepend('<div class="jarviswidget-ctrls">' + formatButtons +
-                            '</div>');
+                        '</div>');
                     }
 
                     /**
@@ -646,7 +646,7 @@
                      * If the edit box is present copy the title to the input.
                      **/
                     if (tWidget.find(self.o.editPlaceholder)
-                        .length) {
+                            .length) {
                         tWidget.find(self.o.editPlaceholder)
                             .find('input')
                             .val($.trim(thisHeader.children('h2')
@@ -705,14 +705,14 @@
                         ajaxLoader = thisItem.children();
 
                     if (!thisItem.find('.jarviswidget-ajax-placeholder')
-                        .length) {
+                            .length) {
 
                         /**
                          * Append a AJAX placeholder.
                          **/
                         thisItem.children('widget-body')
                             .append('<div class="jarviswidget-ajax-placeholder">' + self.o.loadingLabel +
-                                '</div>');
+                            '</div>');
 
                         /**
                          * If widget has a reload time refresh the widget, if the value
@@ -948,7 +948,7 @@
              **/
             function heightFullscreen() {
                 if ($('#jarviswidget-fullscreen-mode')
-                    .length) {
+                        .length) {
 
                     /**
                      * Setting height variables.
@@ -988,7 +988,7 @@
                  * Wrap the widget and go fullsize.
                  **/
                 if ($('#jarviswidget-fullscreen-mode')
-                    .length) {
+                        .length) {
 
                     /**
                      * Remove class from the body.
@@ -1029,10 +1029,10 @@
                         .addClass('nooverflow');
 
                     /**
-					 * Wrap, append it to the body, show the right button
+                     * Wrap, append it to the body, show the right button
 
-					 * and hide all other buttons.
-					 **/
+                     * and hide all other buttons.
+                     **/
                     thisWidget.wrap('<div id="jarviswidget-fullscreen-mode"/>')
                         .parent()
                         .find('.jarviswidget-fullscreen-btn')
@@ -1100,7 +1100,7 @@
                  * Show/hide the edit box.
                  **/
                 if (tWidget.find(self.o.editPlaceholder)
-                    .is(':visible')) {
+                        .is(':visible')) {
                     $(this)
                         .children()
                         .removeClass(self.editClass[1])
@@ -1207,8 +1207,8 @@
                  * Start and end custom action.
                  **/
                 if ($(this)
-                    .children('.' + self.customClass[0])
-                    .length) {
+                        .children('.' + self.customClass[0])
+                        .length) {
                     $(this)
                         .children()
                         .removeClass(self.customClass[0])
@@ -1263,7 +1263,7 @@
                  **/
                 $.SmartMessageBox({
                     title: "<i class='fa fa-times' style='color:#ed1c24'></i> " + self.o.labelDelete +
-                        ' "' + widTitle + '"',
+                    ' "' + widTitle + '"',
                     content: "Warning: This action cannot be undone",
                     buttons: '[No][Yes]'
                 }, function (ButtonPressed) {
@@ -1310,7 +1310,7 @@
                  * Variables.
                  **/
                 var rItem = $(this)
-                    .parents(self.o.widgets),
+                        .parents(self.o.widgets),
                     pathToFile = rItem.data('widget-load'),
                     ajaxLoader = rItem.children(),
                     btn = $(this);
@@ -1376,25 +1376,31 @@
         toggleButton: true,
         toggleClass: 'min-10 | plus-10',
         toggleSpeed: 200,
-        onToggle: function () {},
+        onToggle: function () {
+        },
         deleteButton: true,
         deleteClass: 'trashcan-10',
         deleteSpeed: 200,
-        onDelete: function () {},
+        onDelete: function () {
+        },
         editButton: true,
         editPlaceholder: '.jarviswidget-editbox',
         editClass: 'pencil-10 | delete-10',
         editSpeed: 200,
-        onEdit: function () {},
+        onEdit: function () {
+        },
         colorButton: true,
         fullscreenButton: true,
         fullscreenClass: 'fullscreen-10 | normalscreen-10',
         fullscreenDiff: 3,
-        onFullscreen: function () {},
+        onFullscreen: function () {
+        },
         customButton: true,
         customClass: '',
-        customStart: function () {},
-        customEnd: function () {},
+        customStart: function () {
+        },
+        customEnd: function () {
+        },
         buttonOrder: '%refresh% %delete% %custom% %edit% %fullscreen% %toggle%',
         opacity: 1.0,
         dragHandle: '> header',
@@ -1411,10 +1417,13 @@
         labelUpdated: 'Last Update:',
         labelRefresh: 'Refresh',
         labelDelete: 'Delete widget:',
-        afterLoad: function () {},
+        afterLoad: function () {
+        },
         rtl: false,
-        onChange: function () {},
-        onSave: function () {},
+        onChange: function () {
+        },
+        onSave: function () {
+        },
         ajaxnav: true
     };
 
