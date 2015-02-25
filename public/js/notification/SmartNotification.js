@@ -77,49 +77,50 @@ var ExistMsg = 0,
         if (settings.input != undefined) {
             HasInput = 1;
             settings.input = settings.input.toLowerCase();
-			settings.inputValue = settings.inputValue ? settings.inputValue.replace(/'/g, "&#x27;") : ''; // new code
-			
-            switch (settings.input) {
-            case "text":
-                InputType = "<input class='form-control' type='" + settings.input + "' id='txt" + 
-                	SmartMSGboxCount + "' placeholder='" + settings.placeholder + "' value='" + settings.inputValue + "'/><br/><br/>";     
-                	               
-                break;
-            case "password":
-                InputType = "<input class='form-control' type='" + settings.input + "' id='txt" +
-                    SmartMSGboxCount + "' placeholder='" + settings.placeholder + "'/><br/><br/>";
-                break;
+            settings.inputValue = settings.inputValue ? settings.inputValue.replace(/'/g, "&#x27;") : ''; // new code
 
-            case "select":
-                if (settings.options == undefined) {
-                    alert("For this type of input, the options parameter is required.");
-                } else {
-                    InputType = "<select class='form-control' id='txt" + SmartMSGboxCount + "'>";
-                    for (var i = 0; i <= settings.options.length - 1; i++) {
-                        if (settings.options[i] == "[") {
-                            Name = "";
-                        } else {
-                            if (settings.options[i] == "]") {
-                                NumBottons = NumBottons + 1;
-                                Name = "<option>" + Name + "</option>";
-                                InputType += Name;
+            switch (settings.input) {
+                case "text":
+                    InputType = "<input class='form-control' type='" + settings.input + "' id='txt" +
+                    SmartMSGboxCount + "' placeholder='" + settings.placeholder + "' value='" + settings.inputValue + "'/><br/><br/>";
+
+                    break;
+                case "password":
+                    InputType = "<input class='form-control' type='" + settings.input + "' id='txt" +
+                    SmartMSGboxCount + "' placeholder='" + settings.placeholder + "'/><br/><br/>";
+                    break;
+
+                case "select":
+                    if (settings.options == undefined) {
+                        alert("For this type of input, the options parameter is required.");
+                    } else {
+                        InputType = "<select class='form-control' id='txt" + SmartMSGboxCount + "'>";
+                        for (var i = 0; i <= settings.options.length - 1; i++) {
+                            if (settings.options[i] == "[") {
+                                Name = "";
                             } else {
-                                Name += settings.options[i];
+                                if (settings.options[i] == "]") {
+                                    NumBottons = NumBottons + 1;
+                                    Name = "<option>" + Name + "</option>";
+                                    InputType += Name;
+                                } else {
+                                    Name += settings.options[i];
+                                }
                             }
                         }
-                    };
-                    InputType += "</select>"
-                }
+                        ;
+                        InputType += "</select>"
+                    }
 
-                break;
-            default:
-                alert("That type of input is not handled yet");
+                    break;
+                default:
+                    alert("That type of input is not handled yet");
             }
 
         }
 
         Content = "<div class='MessageBoxContainer animated fadeIn fast' id='Msg" + SmartMSGboxCount +
-            "'>";
+        "'>";
         Content += "<div class='MessageBoxMiddle'>";
         Content += "<span class='MsgTitle'>" + settings.title + "</span class='MsgTitle'>";
         Content += "<p class='pText'>" + settings.content + "</p>";
@@ -151,13 +152,14 @@ var ExistMsg = 0,
                 if (settings.buttons[i] == "]") {
                     NumBottons = NumBottons + 1;
                     Name = "<button id='bot" + NumBottons + "-Msg" + SmartMSGboxCount +
-                        "' class='btn btn-default btn-sm botTempo'> " + Name + "</button>";
+                    "' class='btn btn-default btn-sm botTempo'> " + Name + "</button>";
                     Content += Name;
                 } else {
                     Name += settings.buttons[i];
                 }
             }
-        };
+        }
+        ;
 
         Content += "</div>";
         //MessageBoxButtonSection
@@ -264,8 +266,8 @@ var BigBoxes = 0;
         BigBoxes = BigBoxes + 1;
 
         boxBig = "<div id='bigBox" + BigBoxes +
-            "' class='bigBox animated fadeIn fast'><div id='bigBoxColor" + BigBoxes +
-            "'><i class='botClose fa fa-times' id='botClose" + BigBoxes + "'></i>";
+        "' class='bigBox animated fadeIn fast'><div id='bigBoxColor" + BigBoxes +
+        "'><i class='botClose fa fa-times' id='botClose" + BigBoxes + "'></i>";
         boxBig += "<span>" + settings.title + "</span>";
         boxBig += "<p>" + settings.content + "</p>";
         boxBig += "<div class='bigboxicon'>";
@@ -294,8 +296,8 @@ var BigBoxes = 0;
         $("#bigBox" + BigBoxes).css("background-color", settings.color);
 
         $("#divMiniIcons").append("<div id='miniIcon" + BigBoxes +
-            "' class='cajita animated fadeIn' style='background-color: " + settings.color +
-            ";'><i class='" + settings.icon + "'/></i></div>");
+        "' class='cajita animated fadeIn' style='background-color: " + settings.color +
+        ";'><i class='" + settings.icon + "'/></i></div>");
 
         //Click Mini Icon
         $("#miniIcon" + BigBoxes).bind('click', function () {
@@ -454,18 +456,18 @@ var SmallBoxes = 0,
             IconSection = "<div class='miniIcono'></div>";
         } else {
             IconSection = "<div class='miniIcono'><i class='miniPic " + settings.iconSmall +
-                "'></i></div>";
+            "'></i></div>";
         }
 
         if (settings.icon == undefined) {
             BoxSmall = "<div id='smallbox" + SmallBoxes +
-                "' class='SmallBox animated fadeInRight fast'><div class='textoFull'><span>" + settings.title +
-                "</span><p>" + settings.content + "</p></div>" + IconSection + "</div>";
+            "' class='SmallBox animated fadeInRight fast'><div class='textoFull'><span>" + settings.title +
+            "</span><p>" + settings.content + "</p></div>" + IconSection + "</div>";
         } else {
             BoxSmall = "<div id='smallbox" + SmallBoxes +
-                "' class='SmallBox animated fadeInRight fast'><div class='foto'><i class='" + settings.icon +
-                "'></i></div><div class='textoFoto'><span>" + settings.title + "</span><p>" + settings.content +
-                "</p></div>" + IconSection + "</div>";
+            "' class='SmallBox animated fadeInRight fast'><div class='foto'><i class='" + settings.icon +
+            "'></i></div><div class='textoFoto'><span>" + settings.title + "</span><p>" + settings.content +
+            "</p></div>" + IconSection + "</div>";
         }
 
         if (SmallBoxes == 1) {
