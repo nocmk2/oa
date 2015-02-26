@@ -6,6 +6,9 @@ function User(user) {
     this.password = user.password;
     this.email = user.email;
     this.phone = user.phone;
+    this.depart = user.depart;
+    this.city = user.city;
+    this.date = user.date;
 };
 
 module.exports = User;
@@ -18,7 +21,9 @@ User.prototype.save = function (callback) {
         password: this.password,  //密码
         email: this.email,         //邮箱
         phone: this.phone,        //联系电话
-        depart: this.depart      //部门
+        depart: this.depart,      //部门
+        city: this.city,            //城市
+        date: this.date             //创建日期
     };
     //打开数据库
     mongodb.open(function (err, db) {
@@ -234,8 +239,6 @@ User.updateOne = function (userToUpdate, callback) {
 
                     //将userToUpdate的_id属性封装为objectId
                     userToUpdate._id = objectId(userToUpdate._id);
-
-                    console.log("user in mongo to update: " + userToUpdate)
                     //更新用户信息
                     collection.update({
                             _id: userToUpdate._id
@@ -244,8 +247,8 @@ User.updateOne = function (userToUpdate, callback) {
                             "name":userToUpdate.name,
                             "email":userToUpdate.email,
                             "phone":userToUpdate.phone,
-                            "depart":userToUpdate.depart
-
+                            "depart":userToUpdate.depart,
+                            "city": userToUpdate.city
                         }},
                         function (err, nUpdate) {
                         mongodb.close();
@@ -256,6 +259,46 @@ User.updateOne = function (userToUpdate, callback) {
                     });
                 });
             }
+        });
+    });
+};
+
+//查询用户名是否被其他用户占用
+User.findUserNameIsUsedByOthers = function (user, callback) {
+    //打开数据库
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);//错误，返回 err 信息
+        }
+        //登录数据库
+        db.authenticate("blogAdmin", "blogAdmin", function (err, result) {
+            if(err){
+                mongodb.close();
+                return callback(err);//错误，返回 err 信息
+            }
+            if (result === true) {
+                //读取 users 集合
+                db.collection('users', function (err, collection) {
+                    if (err) {
+                        mongodb.close();
+                        return callback(err);//错误，返回 err 信息
+                    }
+                    //查找用户名是否被非本_id的其他用户所占用
+                    collection.findOne({
+                        _id:{
+                            $ne:objectId(user._id)
+                        },
+                        name: user.name
+                    }, function (err, user) {
+                        mongodb.close();
+                        if (err) {
+                            return callback(err);//失败！返回 err 信息
+                        }
+                        callback(null, user);//成功！返回查询的用户信息
+                    });
+                });
+            }
+
         });
     });
 };
