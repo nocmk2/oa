@@ -97,7 +97,7 @@
                             <h2>1111</h2>
 
                             <ul class="nav nav-tabs pull-right in" id="myTab">
-                                <li class="active">
+                                <li>
                                     <a data-toggle="tab" href="#s1"><i class="fa fa-clock-o"></i> <span
                                                 class="hidden-mobile hidden-tablet">Live Stats</span></a>
                                 </li>
@@ -110,6 +110,11 @@
                                 <li>
                                     <a data-toggle="tab" href="#s3"><i class="fa fa-dollar"></i> <span
                                                 class="hidden-mobile hidden-tablet">Revenue</span></a>
+                                </li>
+
+                                <li class="active"> 
+                                    <a data-toggle="tab" href="#s4"><i class="fa fa-bar-chart-o"></i> <span
+                                                class="hidden-mobile hidden-tablet">统计图表</span></a>
                                 </li>
                             </ul>
 
@@ -127,7 +132,7 @@
                             <div class="widget-body">
                                 <!-- content -->
                                 <div id="myTabContent" class="tab-content">
-                                    <div class="tab-pane fade active in padding-10 no-padding-bottom" id="s1">
+                                    <div class="tab-pane fade" id="s1">
                                         <div class="row no-space">
                                             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 														<span class="demo-liveupdate-1"> <span
@@ -375,10 +380,50 @@
                                         </div>
 
                                         <div class="padding-10">
-                                            <div id="flotcontainer" class="chart-large has-legend-unique"></div>
+                                            <div id="flotcontainer" style="width:600px;height:300px" class="chart-large has-legend-unique"></div>
                                         </div>
                                     </div>
                                     <!-- end s3 tab pane -->
+                                     <div class="tab-pane fade active in padding-10 no-padding-bottom" id="s4">
+
+                                        <div class="widget-body-toolbar bg-color-white smart-form" id="rev-toggles">
+
+                                            <div class="inline-group">
+
+                                                <label for="gra-0" class="checkbox">
+                                                    <input type="checkbox" name="gra-0" id="gra-0" checked="checked">
+                                                    <i></i> Target </label>
+                                                <label for="gra-1" class="checkbox">
+                                                    <input type="checkbox" name="gra-1" id="gra-1" checked="checked">
+                                                    <i></i> Actual </label>
+                                                <label for="gra-2" class="checkbox">
+                                                    <input type="checkbox" name="gra-2" id="gra-2" checked="checked">
+                                                    <i></i> Signups </label>
+                                            </div>
+
+                                            <div class="btn-group hidden-phone pull-right">
+                                                <a class="btn dropdown-toggle btn-xs btn-default"
+                                                   data-toggle="dropdown"><i class="fa fa-cog"></i> More <span
+                                                            class="caret"> </span> </a>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li>
+                                                        <a href="javascript:void(0);"><i
+                                                                    class="fa fa-file-text-alt"></i> Export to PDF</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0);"><i
+                                                                    class="fa fa-question-sign"></i> Help</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="padding-10">
+                                            <div id="echartscontainer" class="chart-large has-legend-unique"></div>
+                                        </div>
+                                    </div>
+                                    <!-- end s4 tab pane -->
                                 </div>
 
                                 <!-- end content -->
@@ -1254,6 +1299,9 @@ you can add as many as you like
 <!-- JS TOUCH : include this plugin for mobile drag / drop touch events
 <script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
 
+<!-- ECHARTS JS -->
+<script src="js/plugin/echarts/echarts.js"></script>
+
 <!-- BOOTSTRAP JS -->
 <script src="js/bootstrap/bootstrap.min.js"></script>
 
@@ -1476,6 +1524,212 @@ you can add as many as you like
         var $on = false;
 
         /*end updating chart*/
+
+ /* 统计图表 echarts */
+        function initEC(){
+            require.config({
+                paths: {
+                    echarts: 'js/plugin/echarts'
+                }
+            });
+    
+    require(
+            [
+                'echarts',
+                'echarts/chart/chord',// 使用柱状图就加载bar模块，按需加载
+                'echarts/chart/force'// 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('echartscontainer')); 
+                    var option = {
+    color : [
+        '#FBB367','#80B1D2','#FB8070','#CC99FF','#B0D961',
+        '#99CCCC','#BEBBD8','#FFCC99','#8DD3C8','#FF9999',
+        '#CCEAC4','#BB81BC','#FBCCEC','#CCFF66','#99CC66',
+        '#66CC66','#FF6666','#FFED6F','#ff7f50','#87cefa',
+    ],
+    title : {
+        text : '中东地区的敌友关系',
+        subtext: '数据来自财新网',
+        sublink: 'http://international.caixin.com/2013-09-06/100579154.html',
+        x:'right',
+        y:'bottom'
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            restore : {show: true},
+            magicType: {show: true, type: ['force', 'chord']},
+            saveAsImage : {show: true}
+        }
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter : function (params) {
+            if (params.name && params.name.indexOf('-') != -1) {
+                return params.name.replace('-', ' ' + params.seriesName + ' ')
+            }
+            else {
+                return params.name ? params.name : params.data.id
+            }
+        }
+    },
+    legend : {
+        data : [
+            '美国',
+            '叙利亚反对派',
+            '阿萨德',
+            '伊朗',
+            '塞西',
+            '哈马斯',
+            '以色列',
+            '穆斯林兄弟会',
+            '基地组织',
+            '俄罗斯',
+            '黎巴嫩什叶派',
+            '土耳其',
+            '卡塔尔',
+            '沙特',
+            '黎巴嫩逊尼派',
+            '',
+            '支持',
+            '反对',
+            '未表态'
+        ],
+        orient : 'vertical',
+        x : 'left'
+    },
+    series : [
+        {
+            "name": "支持",
+            "type": "chord",
+            "showScaleText": false,
+            "clockWise": false,
+            "data": [
+                {"name": "美国"},
+                {"name": "叙利亚反对派"},
+                {"name": "阿萨德"},
+                {"name": "伊朗"},
+                {"name": "塞西"},
+                {"name": "哈马斯"},
+                {"name": "以色列"},
+                {"name": "穆斯林兄弟会"},
+                {"name": "基地组织"},
+                {"name": "俄罗斯"},
+                {"name": "黎巴嫩什叶派"},
+                {"name": "土耳其"},
+                {"name": "卡塔尔"},
+                {"name": "沙特"},
+                {"name": "黎巴嫩逊尼派"}
+            ],
+            "matrix": [
+                [0,100,0,0,0,0,100,0,0,0,0,0,0,0,0],
+                [10,0,0,0,0,10,10,0,10,0,0,10,10,10,10],
+                [0,0,0,10,0,0,0,0,0,10,10,0,0,0,0],
+                [0,0,100,0,0,100,0,0,0,0,100,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,10,0],
+                [0,100,0,10,0,0,0,0,0,0,0,0,10,0,0],
+                [10,100,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,10,10,0,0],
+                [0,100,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,100,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,100,10,0,0,0,0,0,0,0,0,0,0,0],
+                [0,100,0,0,0,0,0,100,0,0,0,0,0,0,0],
+                [0,100,0,0,0,100,0,100,0,0,0,0,0,0,0],
+                [0,100,0,0,100,0,0,0,0,0,0,0,0,0,100],
+                [0,100,0,0,0,0,0,0,0,0,0,0,0,10,0]
+            ]
+        },
+        {
+            "name": "反对",
+            "type": "chord",
+            "insertToSerie": "支持",
+            "data": [
+                {"name": "美国"},
+                {"name": "叙利亚反对派"},
+                {"name": "阿萨德"},
+                {"name": "伊朗"},
+                {"name": "塞西"},
+                {"name": "哈马斯"},
+                {"name": "以色列"},
+                {"name": "穆斯林兄弟会"},
+                {"name": "基地组织"},
+                {"name": "俄罗斯"},
+                {"name": "黎巴嫩什叶派"},
+                {"name": "土耳其"},
+                {"name": "卡塔尔"},
+                {"name": "沙特"},
+                {"name": "黎巴嫩逊尼派"}
+            ],
+            "matrix": [
+                [0,0,100,100,0,100,0,0,100,0,0,0,0,0,0],
+                [0,0,0,10,0,0,0,0,0,10,10,0,0,0,0],
+                [10,0,0,0,0,0,10,10,10,0,0,10,10,0,10],
+                [10,100,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,10,0,100,0,0,0,10,10,0,0],
+                [10,0,0,0,100,0,10,0,0,0,0,0,0,0,0],
+                [0,0,100,0,0,100,0,0,0,0,0,0,0,0,0],
+                [0,0,100,0,10,0,0,0,0,0,0,0,0,10,0],
+                [10,0,100,0,0,0,0,0,0,0,0,0,0,100,0],
+                [0,100,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,100,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,100,0,100,0,0,0,0,0,0,0,0,0,0],
+                [0,0,100,0,100,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,100,10,0,0,0,0,0,0],
+                [0,0,100,0,0,0,0,0,0,0,0,0,0,0,0]
+            ]
+        },
+        {
+            "name": "未表态",
+            "type": "chord",
+            "insertToSerie": "支持",
+            "data": [
+                {"name": "美国"},
+                {"name": "叙利亚反对派"},
+                {"name": "阿萨德"},
+                {"name": "伊朗"},
+                {"name": "塞西"},
+                {"name": "哈马斯"},
+                {"name": "以色列"},
+                {"name": "穆斯林兄弟会"},
+                {"name": "基地组织"},
+                {"name": "俄罗斯"},
+                {"name": "黎巴嫩什叶派"},
+                {"name": "土耳其"},
+                {"name": "卡塔尔"},
+                {"name": "沙特"},
+                {"name": "黎巴嫩逊尼派"}
+            ],
+            "matrix": [
+                [0,0,0,0,100,0,0,100,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [10,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [10,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            ]
+        }
+    ]
+};
+                    
+        
+            myChart.setOption(option); 
+            }
+        );  
+}
+
+initEC();
+
 
         /* TAB 2: Social Network  */
 
