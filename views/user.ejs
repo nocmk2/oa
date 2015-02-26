@@ -157,7 +157,7 @@
                                         <th>部门</th>
                                         <th>邮箱</th>
                                         <th>城市</th>
-                                        <th>日期</th>
+                                        <th>创建日期</th>
                                         <th>操作</th>
                                     </tr>
                                     </thead>
@@ -166,12 +166,37 @@
                                     <tr>
                                         <td><input type="checkbox" name="selectOne" id="<%= user._id%>"/></td>
                                         <td><%= index %></td>
-                                        <td><%= user.name %></td>
-                                        <td><%= user.phone %></td>
-                                        <td><%= user.depart%></td>
-                                        <td><%= user.email %></td>
-                                        <td>Fogo</td>
-                                        <td>03/04/14</td>
+                                        <td><%if(user.name === null || user.name === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.name%>
+                                            <%}%></td>
+                                        <td><%if(user.phone === null || user.phone === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.phone%>
+                                            <%}%></td>
+                                        <td><%if(user.depart === null || user.depart === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.depart%>
+                                            <%}%>
+                                        </td>
+                                        <td><%if(user.email === null || user.email === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.email%>
+                                            <%}%></td>
+                                        <td><%if(user.city === null || user.city === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.city%>
+                                            <%}%></td>
+                                        <td><%if(user.date === null || user.date === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.date%>
+                                            <%}%></td>
                                         <td><a class="edit" data-toggle="modal"  href="#editModal" data-userId="<%= user._id%>">修改</a></td>
                                     </tr>
                                     <% }) %>
@@ -210,7 +235,7 @@
                     </div>
                     <div class="modal-body no-padding">
 
-                        <form id="newuser-form" class="smart-form" method="post">
+                        <form id="newuser-form" class="smart-form" method="post" action="/user">
 
                             <fieldset>
                                 <section>
@@ -237,6 +262,7 @@
                                                 <a href="javascript:void(0)">Forgot password?</a>
                                             </div> -->
                                         </div>
+
                                     </div>
                                 </section>
 
@@ -260,7 +286,7 @@
                                         <label class="label col col-2">邮箱</label>
 
                                         <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
+                                            <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
                                                 <input type="email" name="email">
                                             </label>
                                         </div>
@@ -272,7 +298,7 @@
                                         <label class="label col col-2">联系电话</label>
 
                                         <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
+                                            <label class="input"> <i class="icon-append fa fa-phone"></i>
                                                 <input type="phone" name="phone">
                                             </label>
                                         </div>
@@ -284,7 +310,7 @@
                                         <label class="label col col-2">部门</label>
 
                                         <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
+                                            <label class="input"> <i class="icon-append fa fa-wrench"></i>
                                                 <input type="depart" name="depart">
                                             </label>
                                         </div>
@@ -296,24 +322,24 @@
                                         <label class="label col col-2">城市</label>
 
                                         <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                            <label class="input"> <i class="icon-append fa fa-map-marker"></i>
                                                 <input type="city" name="city">
                                             </label>
                                         </div>
                                     </div>
                                 </section>
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">日期 </label>
+                                <!--<section>-->
+                                    <!--<div class="row">-->
+                                        <!--<label class="label col col-2">日期 </label>-->
 
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
-                                                <input type="date" name="date">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
+                                        <!--<div class="col col-10">-->
+                                            <!--<label class="input"> <i class="icon-append fa fa-calendar"></i>-->
+                                                <!--<input type="date" name="date">-->
+                                            <!--</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</section>-->
 
 
                                 <!--
@@ -330,10 +356,10 @@
                             </fieldset>
 
                             <footer>
-                                <button type="submit" class="btn btn-primary">
+                                <button id="createUser" type="submit" class="btn btn-primary">
                                     确认
                                 </button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <button id="cancelCreating" type="button" class="btn btn-default" data-dismiss="modal">
                                     取消
                                 </button>
 
@@ -417,7 +443,7 @@
                                         <label class="label col col-2">邮箱</label>
 
                                         <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
+                                            <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
                                                 <input type="email" name="email">
                                             </label>
                                         </div>
@@ -429,7 +455,7 @@
                                         <label class="label col col-2">联系电话</label>
 
                                         <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
+                                            <label class="input"> <i class="icon-append fa fa-phone"></i>
                                                 <input type="phone" name="phone">
                                             </label>
                                         </div>
@@ -441,7 +467,7 @@
                                         <label class="label col col-2">部门</label>
 
                                         <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
+                                            <label class="input"> <i class="icon-append fa fa-wrench"></i>
                                                 <input type="depart" name="depart">
                                             </label>
                                         </div>
@@ -453,24 +479,24 @@
                                         <label class="label col col-2">城市</label>
 
                                         <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                            <label class="input"> <i class="icon-append fa fa-map-marker"></i>
                                                 <input type="city" name="city">
                                             </label>
                                         </div>
                                     </div>
                                 </section>
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">日期 </label>
+                                <!--<section>-->
+                                    <!--<div class="row">-->
+                                        <!--<label class="label col col-2">日期 </label>-->
 
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
-                                                <input type="date" name="date">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
+                                        <!--<div class="col col-10">-->
+                                            <!--<label class="input"> <i class="icon-append fa fa-calendar"></i>-->
+                                                <!--<input type="date" name="date">-->
+                                            <!--</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</section>-->
 
 
                                 <!--
@@ -487,10 +513,10 @@
                             </fieldset>
 
                             <footer>
-                                <button type="submit" class="btn btn-primary">
+                                <button id="editUser" type="submit" class="btn btn-primary">
                                     确认
                                 </button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <button id="cancelEdit" type="button" class="btn btn-default" data-dismiss="modal">
                                     取消
                                 </button>
 
@@ -761,13 +787,13 @@ you can add as many as you like
                 dataType:"json",
                 success:function(user){
                     if(user !== null){
-                        console.log(user);
                         $("#editUserForm input[name='_id']").val(userToEdit.id);
                         $("#editUserForm input[name='name']").val(user.name);
 //                        $("#editUserForm input[name='password']").val(user.password);
                         $("#editUserForm input[name='email']").val(user.email);
                         $("#editUserForm input[name='phone']").val(user.phone);
                         $("#editUserForm input[name='depart']").val(user.depart);
+                        $("#editUserForm input[name='city']").val(user.city);
                     }
                 }
             })
@@ -778,19 +804,175 @@ you can add as many as you like
             $("#editUserForm input").each(function(){
                 $(this).val("");
             });
-        })
+            clearErrInfo("editUserForm");
+        });
+        $("#cancelEdit").click(function(){
+            $("#editUserForm input").each(function(){
+                $(this).val("");
+            });
+            clearErrInfo("editUserForm");
+        });
 
-//        $('#new-user').click(function () {
-//            alert('新增一个用户' + a);
-//        });
-//
-//        $('#view-user').click(function () {
-//            alert('查看一个用户');
-//        });
-//
-//        $('#delete-user').click(function () {
-//            alert('删除一个用户');
-//        });
+        //退出新增用户框时清空内容
+        $("#myModal .close").click(function(){
+            $("#newuser-form input").each(function(){
+                $(this).val("");
+            });
+            clearErrInfo("newuser-form");
+        });
+        $("#cancelCreating").click(function(){
+            $("#newuser-form input").each(function(){
+                $(this).val("");
+            });
+            clearErrInfo("newuser-form");
+        });
+
+        //新增用户框发送，验证
+        $("#createUser").click(function(e){
+            e.preventDefault();
+            //清除输入框内表单的错误信息
+            clearErrInfo("newuser-form");
+            //初始化user对象，验证输入
+            var formInfo = {},hasError = false;
+            formInfo.user = {};
+            formInfo.user.name = $("#newuser-form input[name='user']").val();
+            if(formInfo.user.name === ""){
+                hasError = true;
+                showErrInfo("newuser-form","user","用户名不能为空");
+            }
+            formInfo.user.password = $("#newuser-form input[name='password']").val();
+            formInfo.user.vpassword = $("#newuser-form input[name='vpassword']").val();
+            if(formInfo.user.password === ""){
+                hasError = true;
+                showErrInfo("newuser-form","password","密码不能为空");
+            }
+            if(formInfo.user.password !== formInfo.user.vpassword){
+                hasError = true;
+                showErrInfo("newuser-form","vpassword","密码输入不一致");
+            }
+            formInfo.user.email = $("#newuser-form input[name='email']").val();
+            formInfo.user.phone = $("#newuser-form input[name='phone']").val();
+            formInfo.user.depart = $("#newuser-form input[name='depart']").val();
+            formInfo.user.city = $("#newuser-form input[name='city']").val();
+            //检查表单是否有误，无误则发送请求
+            if(hasError === true){
+                return;
+            }else{
+                $.ajax({
+                    type:"POST",
+                    url:"/user",
+                    contentType: 'application/json',
+                    data: JSON.stringify(formInfo),
+                    dataType:"json",
+                    success:function(result){
+                        if(result.success === true){
+                            location.reload();
+                        }else{
+                            if(result.msg === "用户名已存在"){
+                                hasError = true;
+                                showErrInfo("newuser-form","user","用户名已存在");
+                            }
+                            if(result.msg === "两次输入的密码不一致"){
+                                hasError = true;
+                                showErrInfo("newuser-form","vpassword","两次输入的密码不一致");
+                            }
+                            if(result.msg === "数据存储出错"){
+                                alert("数据存储出错");
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        //修改用户信息框发送，验证
+        $("#editUser").click(function(e){
+            e.preventDefault();
+            //清除输入框内表单的错误信息
+            clearErrInfo("editUserForm");
+            //初始化user对象，验证输入
+            var formInfo = {},hasError = false;
+            formInfo.user = {};
+            formInfo.user.name = $("#editUserForm input[name='name']").val();
+            if(formInfo.user.name === ""){
+                hasError = true;
+                showErrInfo("editUserForm","name","用户名不能为空");
+            }
+            formInfo.user._id = $("#editUserForm input[name='_id']").val();
+            formInfo.user.email = $("#editUserForm input[name='email']").val();
+            formInfo.user.phone = $("#editUserForm input[name='phone']").val();
+            formInfo.user.depart = $("#editUserForm input[name='depart']").val();
+            formInfo.user.city = $("#editUserForm input[name='city']").val();
+            //检查表单是否有误，无误则发送请求
+            if(hasError === true){
+                return;
+            }else{
+                $.ajax({
+                    type:"POST",
+                    url:"/user/update",
+                    contentType: 'application/json',
+                    data: JSON.stringify(formInfo),
+                    dataType:"json",
+                    success:function(result){
+                        if(result.success === true){
+                            location.reload();
+                        }else{
+                            if(result.msg === "用户名已被占用"){
+                                hasError = true;
+                                showErrInfo("editUserForm","name","用户名已被占用");
+                            }
+                            if(result.msg === "数据存储出错"){
+                                alert("数据存储出错");
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        //输入框获得焦点时清除错误信息
+        $("#newuser-form input").each(function(){
+            var inputName = $(this).attr("name");
+            $(this).focus(function(){
+                clearErrInfoByInputName("newuser-form",inputName);
+            });
+        });
+        $("#editUserForm input").each(function(){
+            var inputName = $(this).attr("name");
+            $(this).focus(function(){
+                clearErrInfoByInputName("editUserForm",inputName);
+            });
+        });
+
+        //清除输入框内表单的错误信息
+        function clearErrInfo(formId){
+            $("#" + formId + " span[class*='err-info']").remove();
+            $("#" + formId + " input").each(function(){
+                $(this)
+                        .parent()
+                        .parent()
+                        .removeClass("has-error");
+            });
+        }
+        function clearErrInfoByInputName(formId,inputName){
+            $("#" + formId + " input[name='" + inputName + "']").each(function(){
+                $(this)
+                        .parent()
+                        .parent()
+                        .removeClass("has-error")
+                        .children(".err-info")
+                        .remove();
+            });
+        }
+
+        //展示输入框内表单的错误信息
+        function showErrInfo(formId,inputName,errInfo){
+            $("#" + formId + " input[name='" + inputName + "']")
+                    .parent()
+                    .parent()
+                    .addClass("has-error")
+                    .append('<span class="help-block err-info"><i class="fa fa-warning"></i>' + errInfo + '</span>');
+        }
 
     })
 
