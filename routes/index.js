@@ -45,7 +45,7 @@ module.exports = function (app) {
             name = user.name,
             password = user.password,
             password_re = user['vpassword'];
-        if (password_re != password) {
+        if (password_re !== password) {
             //req.flash('error', '两次输入的密码不一致!');
             //return res.redirect('/user');
             return res.send({
@@ -55,13 +55,19 @@ module.exports = function (app) {
         }
         var md5 = crypto.createHash('md5'),
             password = md5.update(user.password).digest('hex');
+
+        //获取当前日期
+        var dateNow = new Date();
+        var createAt = dateNow.getFullYear() + "/" + (dateNow.getMonth() + 1) + "/" + dateNow.getDate();
+
         var newUser = new User({
             name: name,
             password: password,
             email: user.email,
             phone: user.phone,
             depart: user.depart,
-            city: user.city
+            city: user.city,
+            date: createAt
         });
         User.get(newUser.name, function (err, user) {
             if (user) {

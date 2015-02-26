@@ -157,7 +157,7 @@
                                         <th>部门</th>
                                         <th>邮箱</th>
                                         <th>城市</th>
-                                        <th>日期</th>
+                                        <th>创建日期</th>
                                         <th>操作</th>
                                     </tr>
                                     </thead>
@@ -192,7 +192,11 @@
                                             <%}else{ %>
                                             <%= user.city%>
                                             <%}%></td>
-                                        <td>03/04/14</td>
+                                        <td><%if(user.date === null || user.date === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.date%>
+                                            <%}%></td>
                                         <td><a class="edit" data-toggle="modal"  href="#editModal" data-userId="<%= user._id%>">修改</a></td>
                                     </tr>
                                     <% }) %>
@@ -325,17 +329,17 @@
                                     </div>
                                 </section>
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">日期 </label>
+                                <!--<section>-->
+                                    <!--<div class="row">-->
+                                        <!--<label class="label col col-2">日期 </label>-->
 
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
-                                                <input type="date" name="date">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
+                                        <!--<div class="col col-10">-->
+                                            <!--<label class="input"> <i class="icon-append fa fa-calendar"></i>-->
+                                                <!--<input type="date" name="date">-->
+                                            <!--</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</section>-->
 
 
                                 <!--
@@ -482,17 +486,17 @@
                                     </div>
                                 </section>
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">日期 </label>
+                                <!--<section>-->
+                                    <!--<div class="row">-->
+                                        <!--<label class="label col col-2">日期 </label>-->
 
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
-                                                <input type="date" name="date">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
+                                        <!--<div class="col col-10">-->
+                                            <!--<label class="input"> <i class="icon-append fa fa-calendar"></i>-->
+                                                <!--<input type="date" name="date">-->
+                                            <!--</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</section>-->
 
 
                                 <!--

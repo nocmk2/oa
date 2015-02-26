@@ -8,6 +8,7 @@ function User(user) {
     this.phone = user.phone;
     this.depart = user.depart;
     this.city = user.city;
+    this.date = user.date;
 };
 
 module.exports = User;
@@ -21,7 +22,8 @@ User.prototype.save = function (callback) {
         email: this.email,         //邮箱
         phone: this.phone,        //联系电话
         depart: this.depart,      //部门
-        city: this.city            //城市
+        city: this.city,            //城市
+        date: this.date             //创建日期
     };
     //打开数据库
     mongodb.open(function (err, db) {
