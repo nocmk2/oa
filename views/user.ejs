@@ -166,10 +166,27 @@
                                     <tr>
                                         <td><input type="checkbox" name="selectOne" id="<%= user._id%>"/></td>
                                         <td><%= index %></td>
-                                        <td><%= user.name %></td>
-                                        <td><%= user.phone %></td>
-                                        <td><%= user.depart%></td>
-                                        <td><%= user.email %></td>
+                                        <td><%if(user.name === null){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.name%>
+                                            <%}%></td>
+                                        <td><%if(user.phone === null){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.phone%>
+                                            <%}%></td>
+                                        <td><%if(user.depart === null){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.depart%>
+                                            <%}%>
+                                        </td>
+                                        <td><%if(user.email === null){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.email%>
+                                            <%}%></td>
                                         <td>Fogo</td>
                                         <td>03/04/14</td>
                                         <td><a class="edit" data-toggle="modal"  href="#editModal" data-userId="<%= user._id%>">修改</a></td>
