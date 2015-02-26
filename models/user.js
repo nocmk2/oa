@@ -262,3 +262,45 @@ User.updateOne = function (userToUpdate, callback) {
         });
     });
 };
+
+//查询用户名是否被其他用户占用
+User.findUserNameIsUsedByOthers = function (user, callback) {
+    //打开数据库
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);//错误，返回 err 信息
+        }
+        //登录数据库
+        db.authenticate("blogAdmin", "blogAdmin", function (err, result) {
+            if(err){
+                mongodb.close();
+                return callback(err);//错误，返回 err 信息
+            }
+            if (result === true) {
+                //读取 users 集合
+                db.collection('users', function (err, collection) {
+                    if (err) {
+                        mongodb.close();
+                        return callback(err);//错误，返回 err 信息
+                    }
+                    //查找用户名（name键）值为 name 一个文档
+                    collection.find(
+                        {
+                            _id:{
+                                "$ne":objectId(user._id)
+                                }
+                        },{
+                        name: user.name
+                    }, function (err, user) {
+                        mongodb.close();
+                        if (err) {
+                            return callback(err);//失败！返回 err 信息
+                        }
+                        callback(null, user);//成功！返回查询的用户信息
+                    });
+                });
+            }
+
+        });
+    });
+};

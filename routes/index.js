@@ -69,7 +69,7 @@ module.exports = function (app) {
                 //return res.redirect('/user');
                 res.send({
                     success:false,
-                    msg:"用户已存在"
+                    msg:"用户名已存在"
                 });
             }
             newUser.save(function (err, user) {
@@ -118,15 +118,50 @@ module.exports = function (app) {
 
     //修改用户信息
     app.post('/user/update',function(req,res){
-        var userToUpdate = req.body;
+        var userToUpdate = req.body.user;
+        //验证用户名是否已经存在
+        //User.findUserNameIsUsedByOthers(userToUpdate, function (err, user) {
+        //    if (user) {
+        //        //req.flash('error', '用户已存在!');
+        //        //return res.redirect('/user');
+        //        res.send({
+        //            success:false,
+        //            msg:"用户名已存在"
+        //        });
+        //    }
+        //
+        //    User.updateOne(userToUpdate,function(err,nUpdate){
+        //        if(err){
+        //            console.log(err);
+        //            //req.flash('error', err);
+        //            //res.redirect("/user")
+        //            res.send({
+        //                success:false,
+        //                msg:"数据存储出错"
+        //            });
+        //        }
+        //        //req.flash('success', '修改用户信息成功!');
+        //        //res.redirect('/user');
+        //        res.send({
+        //            success:true
+        //        });
+        //    });
+        //});
         User.updateOne(userToUpdate,function(err,nUpdate){
             if(err){
                 console.log(err);
-                req.flash('error', err);
-                res.redirect("/user")
+                //req.flash('error', err);
+                //res.redirect("/user")
+                res.send({
+                    success:false,
+                    msg:"数据存储出错"
+                });
             }
-            req.flash('success', '修改用户信息成功!');
-            res.redirect('/user');
+            //req.flash('success', '修改用户信息成功!');
+            //res.redirect('/user');
+            res.send({
+                success:true
+            });
         });
     });
 

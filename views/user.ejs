@@ -509,7 +509,7 @@
                             </fieldset>
 
                             <footer>
-                                <button type="submit" class="btn btn-primary">
+                                <button id="editUser" type="submit" class="btn btn-primary">
                                     确认
                                 </button>
                                 <button id="cancelEdit" type="button" class="btn btn-default" data-dismiss="modal">
@@ -861,9 +861,9 @@ you can add as many as you like
                         if(result.success === true){
                             location.reload();
                         }else{
-                            if(result.msg === "用户已存在"){
+                            if(result.msg === "用户名已存在"){
                                 hasError = true;
-                                showErrInfo("newuser-form","user","用户已存在");
+                                showErrInfo("newuser-form","user","用户名已存在");
                             }
                             if(result.msg === "两次输入的密码不一致"){
                                 hasError = true;
@@ -878,6 +878,65 @@ you can add as many as you like
             }
         });
 
+        //修改用户信息框发送，验证
+        $("#editUser").click(function(e){
+            e.preventDefault();
+            //清除输入框内表单的错误信息
+            clearErrInfo("editUserForm");
+            //初始化user对象，验证输入
+            var formInfo = {},hasError = false;
+            formInfo.user = {};
+            formInfo.user.name = $("#editUserForm input[name='name']").val();
+            if(formInfo.user.name === ""){
+                hasError = true;
+                showErrInfo("editUserForm","name","用户名不能为空");
+            }
+            formInfo.user._id = $("#editUserForm input[name='_id']").val();
+            formInfo.user.email = $("#editUserForm input[name='email']").val();
+            formInfo.user.phone = $("#editUserForm input[name='phone']").val();
+            formInfo.user.depart = $("#editUserForm input[name='depart']").val();
+            formInfo.user.city = $("#editUserForm input[name='city']").val();
+            //检查表单是否有误，无误则发送请求
+            if(hasError === true){
+                return;
+            }else{
+                $.ajax({
+                    type:"POST",
+                    url:"/user/update",
+                    contentType: 'application/json',
+                    data: JSON.stringify(formInfo),
+                    dataType:"json",
+                    success:function(result){
+                        if(result.success === true){
+                            location.reload();
+                        }else{
+                            if(result.msg === "用户名已存在"){
+                                hasError = true;
+                                showErrInfo("editUserForm","name","用户名已存在");
+                            }
+                            if(result.msg === "数据存储出错"){
+                                alert("数据存储出错");
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        //输入框获得焦点时清除错误信息
+        $("#newuser-form input").each(function(){
+            var inputName = $(this).attr("name");
+            $(this).focus(function(){
+                clearErrInfoByInputName("newuser-form",inputName);
+            });
+        });
+        $("#editUserForm input").each(function(){
+            var inputName = $(this).attr("name");
+            $(this).focus(function(){
+                clearErrInfoByInputName("editUserForm",inputName);
+            });
+        });
+
         //清除输入框内表单的错误信息
         function clearErrInfo(formId){
             $("#" + formId + " span[class*='err-info']").remove();
@@ -886,6 +945,16 @@ you can add as many as you like
                         .parent()
                         .parent()
                         .removeClass("has-error");
+            });
+        }
+        function clearErrInfoByInputName(formId,inputName){
+            $("#" + formId + " input[name='" + inputName + "']").each(function(){
+                $(this)
+                        .parent()
+                        .parent()
+                        .removeClass("has-error")
+                        .children(".err-info")
+                        .remove();
             });
         }
 
