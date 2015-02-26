@@ -102,7 +102,7 @@ module.exports = function (app) {
     //修改用户信息
     app.post('/user/update',function(req,res){
         var userToUpdate = req.body;
-        console.log("userToUpdate: " + userToUpdate.depart);
+        console.log("userToUpdate: " + userToUpdate.date);
         User.updateOne(userToUpdate,function(err,nUpdate){
             if(err){
                 console.log(err);

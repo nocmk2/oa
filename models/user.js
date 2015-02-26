@@ -6,6 +6,8 @@ function User(user) {
     this.password = user.password;
     this.email = user.email;
     this.phone = user.phone;
+    this.depart = user.depart;
+    this.city = user.city;
 };
 
 module.exports = User;
@@ -18,7 +20,8 @@ User.prototype.save = function (callback) {
         password: this.password,  //密码
         email: this.email,         //邮箱
         phone: this.phone,        //联系电话
-        depart: this.depart      //部门
+        depart: this.depart,      //部门
+        city: this.city            //城市
     };
     //打开数据库
     mongodb.open(function (err, db) {
@@ -244,8 +247,8 @@ User.updateOne = function (userToUpdate, callback) {
                             "name":userToUpdate.name,
                             "email":userToUpdate.email,
                             "phone":userToUpdate.phone,
-                            "depart":userToUpdate.depart
-
+                            "depart":userToUpdate.depart,
+                            "city": userToUpdate.city
                         }},
                         function (err, nUpdate) {
                         mongodb.close();

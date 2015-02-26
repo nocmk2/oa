@@ -166,28 +166,32 @@
                                     <tr>
                                         <td><input type="checkbox" name="selectOne" id="<%= user._id%>"/></td>
                                         <td><%= index %></td>
-                                        <td><%if(user.name === null){%>
+                                        <td><%if(user.name === null || user.name === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
                                             <%= user.name%>
                                             <%}%></td>
-                                        <td><%if(user.phone === null){%>
+                                        <td><%if(user.phone === null || user.phone === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
                                             <%= user.phone%>
                                             <%}%></td>
-                                        <td><%if(user.depart === null){%>
+                                        <td><%if(user.depart === null || user.depart === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
                                             <%= user.depart%>
                                             <%}%>
                                         </td>
-                                        <td><%if(user.email === null){%>
+                                        <td><%if(user.email === null || user.email === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
                                             <%= user.email%>
                                             <%}%></td>
-                                        <td>Fogo</td>
+                                        <td><%if(user.city === null || user.city === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.city%>
+                                            <%}%></td>
                                         <td>03/04/14</td>
                                         <td><a class="edit" data-toggle="modal"  href="#editModal" data-userId="<%= user._id%>">修改</a></td>
                                     </tr>
@@ -729,6 +733,8 @@ you can add as many as you like
         $(".widget-body-toolbar").append($("#userControlButton").html());
         $("#userControlButton").remove();
 
+
+
         //全选(全不选)用户
         $("input[name='selectAll']").change(function(e){
             if($(this).prop("checked")){
@@ -778,7 +784,6 @@ you can add as many as you like
                 dataType:"json",
                 success:function(user){
                     if(user !== null){
-                        console.log(user);
                         $("#editUserForm input[name='_id']").val(userToEdit.id);
                         $("#editUserForm input[name='name']").val(user.name);
 //                        $("#editUserForm input[name='password']").val(user.password);
@@ -796,6 +801,8 @@ you can add as many as you like
                 $(this).val("");
             });
         })
+
+
 
 //        $('#new-user').click(function () {
 //            alert('新增一个用户' + a);
