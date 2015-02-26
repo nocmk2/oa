@@ -237,8 +237,6 @@ User.updateOne = function (userToUpdate, callback) {
 
                     //将userToUpdate的_id属性封装为objectId
                     userToUpdate._id = objectId(userToUpdate._id);
-
-                    console.log("user in mongo to update: " + userToUpdate)
                     //更新用户信息
                     collection.update({
                             _id: userToUpdate._id
@@ -283,13 +281,11 @@ User.findUserNameIsUsedByOthers = function (user, callback) {
                         mongodb.close();
                         return callback(err);//错误，返回 err 信息
                     }
-                    //查找用户名（name键）值为 name 一个文档
-                    collection.find(
-                        {
-                            _id:{
-                                "$ne":objectId(user._id)
-                                }
-                        },{
+                    //查找用户名是否被非本_id的其他用户所占用
+                    collection.findOne({
+                        _id:{
+                            $ne:objectId(user._id)
+                        },
                         name: user.name
                     }, function (err, user) {
                         mongodb.close();

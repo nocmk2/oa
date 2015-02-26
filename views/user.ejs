@@ -789,6 +789,7 @@ you can add as many as you like
                         $("#editUserForm input[name='email']").val(user.email);
                         $("#editUserForm input[name='phone']").val(user.phone);
                         $("#editUserForm input[name='depart']").val(user.depart);
+                        $("#editUserForm input[name='city']").val(user.city);
                     }
                 }
             })
@@ -799,11 +800,13 @@ you can add as many as you like
             $("#editUserForm input").each(function(){
                 $(this).val("");
             });
+            clearErrInfo("editUserForm");
         });
         $("#cancelEdit").click(function(){
             $("#editUserForm input").each(function(){
                 $(this).val("");
             });
+            clearErrInfo("editUserForm");
         });
 
         //退出新增用户框时清空内容
@@ -910,9 +913,9 @@ you can add as many as you like
                         if(result.success === true){
                             location.reload();
                         }else{
-                            if(result.msg === "用户名已存在"){
+                            if(result.msg === "用户名已被占用"){
                                 hasError = true;
-                                showErrInfo("editUserForm","name","用户名已存在");
+                                showErrInfo("editUserForm","name","用户名已被占用");
                             }
                             if(result.msg === "数据存储出错"){
                                 alert("数据存储出错");

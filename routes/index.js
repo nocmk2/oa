@@ -48,7 +48,7 @@ module.exports = function (app) {
         if (password_re != password) {
             //req.flash('error', '两次输入的密码不一致!');
             //return res.redirect('/user');
-            res.send({
+            return res.send({
                 success:false,
                 msg:"两次输入的密码不一致"
             });
@@ -67,7 +67,7 @@ module.exports = function (app) {
             if (user) {
                 //req.flash('error', '用户已存在!');
                 //return res.redirect('/user');
-                res.send({
+                return res.send({
                     success:false,
                     msg:"用户名已存在"
                 });
@@ -76,14 +76,14 @@ module.exports = function (app) {
                 if (err) {
                     //req.flash('error', err);
                     //return res.redirect('/user');
-                    res.send({
+                    return res.send({
                         success:false,
                         msg:"数据存储出错"
                     });
                 }
                 //req.flash('success', '新增用户成功!');
                 //res.redirect('/user');
-                res.send({
+                return res.send({
                     success:true
                 });
             });
@@ -97,9 +97,9 @@ module.exports = function (app) {
             if(err){
                 console.log(err);
                 req.flash('error', err);
-                res.send({result:"delete failed"});
+                return res.send({result:"delete failed"});
             }
-            res.send({result:"delete success"});
+            return res.send({result:"delete success"});
         });
     });
 
@@ -112,57 +112,41 @@ module.exports = function (app) {
                 req.flash('error', err);
                 res.send({result:"getUserById failed"});
             }
-            res.send(user);
+            return res.send(user);
         })
     });
 
     //修改用户信息
     app.post('/user/update',function(req,res){
         var userToUpdate = req.body.user;
-        //验证用户名是否已经存在
-        //User.findUserNameIsUsedByOthers(userToUpdate, function (err, user) {
-        //    if (user) {
-        //        //req.flash('error', '用户已存在!');
-        //        //return res.redirect('/user');
-        //        res.send({
-        //            success:false,
-        //            msg:"用户名已存在"
-        //        });
-        //    }
-        //
-        //    User.updateOne(userToUpdate,function(err,nUpdate){
-        //        if(err){
-        //            console.log(err);
-        //            //req.flash('error', err);
-        //            //res.redirect("/user")
-        //            res.send({
-        //                success:false,
-        //                msg:"数据存储出错"
-        //            });
-        //        }
-        //        //req.flash('success', '修改用户信息成功!');
-        //        //res.redirect('/user');
-        //        res.send({
-        //            success:true
-        //        });
-        //    });
-        //});
-        User.updateOne(userToUpdate,function(err,nUpdate){
-            if(err){
-                console.log(err);
-                //req.flash('error', err);
-                //res.redirect("/user")
-                res.send({
+        //验证用户名是否被占用
+        User.findUserNameIsUsedByOthers(userToUpdate, function (err, user) {
+            if (user) {
+                //req.flash('error', '用户已存在!');
+                //return res.redirect('/user');
+                return res.send({
                     success:false,
-                    msg:"数据存储出错"
+                    msg:"用户名已被占用"
                 });
             }
-            //req.flash('success', '修改用户信息成功!');
-            //res.redirect('/user');
-            res.send({
-                success:true
+            User.updateOne(userToUpdate,function(err,nUpdate){
+                if(err){
+                    console.log(err);
+                    //req.flash('error', err);
+                    //res.redirect("/user")
+                    return res.send({
+                        success:false,
+                        msg:"数据存储出错"
+                    });
+                }
+                //req.flash('success', '修改用户信息成功!');
+                //res.redirect('/user');
+                return res.send({
+                    success:true
+                });
             });
         });
+
     });
 
 
