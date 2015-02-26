@@ -231,7 +231,7 @@
                     </div>
                     <div class="modal-body no-padding">
 
-                        <form id="newuser-form" class="smart-form" method="post">
+                        <form id="newuser-form" class="smart-form" method="post" action="/user">
 
                             <fieldset>
                                 <section>
@@ -258,6 +258,7 @@
                                                 <a href="javascript:void(0)">Forgot password?</a>
                                             </div> -->
                                         </div>
+
                                     </div>
                                 </section>
 
@@ -351,10 +352,10 @@
                             </fieldset>
 
                             <footer>
-                                <button type="submit" class="btn btn-primary">
+                                <button id="createUser" type="submit" class="btn btn-primary">
                                     确认
                                 </button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <button id="cancelCreating" type="button" class="btn btn-default" data-dismiss="modal">
                                     取消
                                 </button>
 
@@ -511,7 +512,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     确认
                                 </button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <button id="cancelEdit" type="button" class="btn btn-default" data-dismiss="modal">
                                     取消
                                 </button>
 
@@ -733,8 +734,6 @@ you can add as many as you like
         $(".widget-body-toolbar").append($("#userControlButton").html());
         $("#userControlButton").remove();
 
-
-
         //全选(全不选)用户
         $("input[name='selectAll']").change(function(e){
             if($(this).prop("checked")){
@@ -800,21 +799,104 @@ you can add as many as you like
             $("#editUserForm input").each(function(){
                 $(this).val("");
             });
-        })
+        });
+        $("#cancelEdit").click(function(){
+            $("#editUserForm input").each(function(){
+                $(this).val("");
+            });
+        });
 
+        //退出新增用户框时清空内容
+        $("#myModal .close").click(function(){
+            $("#newuser-form input").each(function(){
+                $(this).val("");
+            });
+            clearErrInfo("newuser-form");
+        });
+        $("#cancelCreating").click(function(){
+            $("#newuser-form input").each(function(){
+                $(this).val("");
+            });
+            clearErrInfo("newuser-form");
+        });
 
+        //新增用户框发送，验证
+        $("#createUser").click(function(e){
+            e.preventDefault();
+            //清除输入框内表单的错误信息
+            clearErrInfo("newuser-form");
+            //初始化user对象，验证输入
+            var formInfo = {},hasError = false;
+            formInfo.user = {};
+            formInfo.user.name = $("#newuser-form input[name='user']").val();
+            if(formInfo.user.name === ""){
+                hasError = true;
+                showErrInfo("newuser-form","user","用户名不能为空");
+            }
+            formInfo.user.password = $("#newuser-form input[name='password']").val();
+            formInfo.user.vpassword = $("#newuser-form input[name='vpassword']").val();
+            if(formInfo.user.password === ""){
+                hasError = true;
+                showErrInfo("newuser-form","password","密码不能为空");
+            }
+            if(formInfo.user.password !== formInfo.user.vpassword){
+                hasError = true;
+                showErrInfo("newuser-form","vpassword","密码输入不一致");
+            }
+            formInfo.user.email = $("#newuser-form input[name='email']").val();
+            formInfo.user.phone = $("#newuser-form input[name='phone']").val();
+            formInfo.user.depart = $("#newuser-form input[name='depart']").val();
+            formInfo.user.city = $("#newuser-form input[name='city']").val();
+            //检查表单是否有误，无误则发送请求
+            if(hasError === true){
+                return;
+            }else{
+                $.ajax({
+                    type:"POST",
+                    url:"/user",
+                    contentType: 'application/json',
+                    data: JSON.stringify(formInfo),
+                    dataType:"json",
+                    success:function(result){
+                        if(result.success === true){
+                            location.reload();
+                        }else{
+                            if(result.msg === "用户已存在"){
+                                hasError = true;
+                                showErrInfo("newuser-form","user","用户已存在");
+                            }
+                            if(result.msg === "两次输入的密码不一致"){
+                                hasError = true;
+                                showErrInfo("newuser-form","vpassword","两次输入的密码不一致");
+                            }
+                            if(result.msg === "数据存储出错"){
+                                alert("数据存储出错");
+                            }
+                        }
+                    }
+                });
+            }
+        });
 
-//        $('#new-user').click(function () {
-//            alert('新增一个用户' + a);
-//        });
-//
-//        $('#view-user').click(function () {
-//            alert('查看一个用户');
-//        });
-//
-//        $('#delete-user').click(function () {
-//            alert('删除一个用户');
-//        });
+        //清除输入框内表单的错误信息
+        function clearErrInfo(formId){
+            $("#" + formId + " span[class*='err-info']").remove();
+            $("#" + formId + " input").each(function(){
+                $(this)
+                        .parent()
+                        .parent()
+                        .removeClass("has-error");
+            });
+        }
+
+        //展示输入框内表单的错误信息
+        function showErrInfo(formId,inputName,errInfo){
+            $("#" + formId + " input[name='" + inputName + "']")
+                    .parent()
+                    .parent()
+                    .addClass("has-error")
+                    .append('<span class="help-block err-info"><i class="fa fa-warning"></i>' + errInfo + '</span>');
+        }
 
     })
 
