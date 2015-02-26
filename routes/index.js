@@ -67,7 +67,6 @@ module.exports = function (app) {
                     req.flash('error', err);
                     return res.redirect('/user');
                 }
-                req.session.user = user;
                 req.flash('success', '新增用户成功!');
                 res.redirect('/user');
             });
