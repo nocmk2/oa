@@ -977,7 +977,12 @@ you can add as many as you like
         //去除checkbox列的排序按钮
         $("#datatable_col_reorder thead th input").parent().removeClass().unbind("click");
 
-
+        //去除"显示列"中隐藏checkbox列的选项
+        $("button[class='ColVis_Button TableTools_Button ColVis_MasterButton btn btn-default btn-sm']").one("click",function(){
+            setTimeout(function(){
+                $("div[class='ColVis_collection TableTools_collection'] button:first-child").remove();
+            },100);
+        });
 
     })
 
