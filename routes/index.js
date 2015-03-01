@@ -208,16 +208,25 @@ module.exports = function (app) {
             password = md5.update(req.body.password).digest('hex');
         User.get(req.body.name, function (err, user) {
             if (!user) {
-                req.flash('error', '用户不存在!');
-                return res.redirect('/login');
-            }
-            if (user.password != password) {
+                
+               req.flash('error', '用户不存在!');
+                return res.json({error:0});
+                //return res.redirect('/login');
+            }else if (user.password != password) {
                 req.flash('error', '密码错误!');
-                return res.redirect('/login');
+                
+                //return res.redirect('/login');
+                return res.json({error:1});
+            }else {
+                req.flash('error', '登陆成功!');
+                req.session.user = user;
+                return res.json({error:2});
             }
-            req.session.user = user;
-            req.flash('success', '登陆成功!');
-            res.redirect('/');
+
+                //req.session.user = user;
+                //req.flash('success', '登陆成功!');
+                //return res.redirect('/');
+
         });
     });
 
