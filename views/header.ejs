@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-    <title> Beta </title>
+    <title> OA </title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -51,7 +51,7 @@
 
         <!-- PLACE YOUR LOGO HERE -->
         <span id="logo"> <img src="img/logo_mksoft.png" alt="MKsoft" style="height:35px;width:35px"><span
-                    style="font-size: 30px;text-shadow:0 0 1px #fff;color:#bfbfbf;position:absolute; ">   Beta</span> </span>
+                    style="font-size: 30px;text-shadow:0 0 1px #fff;color:#bfbfbf;position:absolute; ">   OA</span> </span>
         <!-- END LOGO PLACEHOLDER -->
 
         <!-- Note: The activity badge color changes when clicked and resets the number to 0
@@ -65,13 +65,13 @@
             <div class="btn-group btn-group-justified" data-toggle="buttons">
                 <label class="btn btn-default">
                     <input type="radio" name="activity" id="ajax/notify/mail.html">
-                    Msgs (14) </label>
+                    消息 (14) </label>
                 <label class="btn btn-default">
                     <input type="radio" name="activity" id="ajax/notify/notifications.html">
-                    notify (3) </label>
+                    通知 (3) </label>
                 <label class="btn btn-default">
                     <input type="radio" name="activity" id="ajax/notify/tasks.html">
-                    Tasks (4) </label>
+                    任务 (4) </label>
             </div>
 
             <!-- notification content -->
@@ -103,21 +103,20 @@
     <!-- projects dropdown -->
     <div id="project-context">
 
-        <span class="label">Projects:</span>
-        <span id="project-selector" class="popover-trigger-element dropdown-toggle" data-toggle="dropdown">Recent projects <i
+        <span class="label">项目:</span>
+        <span id="project-selector" class="popover-trigger-element dropdown-toggle" data-toggle="dropdown">最近的项目： <i
                     class="fa fa-angle-down"></i></span>
 
         <!-- Suggestion: populate this list with fetch and push technique -->
         <ul class="dropdown-menu">
             <li>
-                <a href="javascript:void(0);">Online e-merchant management system - attaching integration with the
-                    iOS</a>
+                <a href="javascript:void(0);">贝联特种金属制品(上海)有限公司</a>
             </li>
             <li>
-                <a href="javascript:void(0);">Notes on pipeline upgradee</a>
+                <a href="javascript:void(0);">上海欧诺法装饰材料有限公司</a>
             </li>
             <li>
-                <a href="javascript:void(0);">Assesment Report for merchant account</a>
+                <a href="javascript:void(0);">上海佳格食品有限公司</a>
             </li>
             <li class="divider"></li>
             <li>
@@ -152,7 +151,7 @@
 
         <!-- input: search field -->
         <form action="#search.html" class="header-search pull-right">
-            <input type="text" placeholder="Find reports and more" id="search-fld">
+            <input type="text" placeholder="输入项目名称" id="search-fld">
             <button type="submit">
                 <i class="fa fa-search"></i>
             </button>
@@ -163,17 +162,17 @@
         <!-- multiple lang dropdown : find all flags in the image folder -->
         <ul class="header-dropdown-list hidden-xs">
             <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img alt="" src="img/flags/us.png"> <span> US </span>
+                <a href="#" class="dropdown-toggle fa fa-search" data-toggle="dropdown"> <span> 工程公司项目 </span>
                     <i class="fa fa-angle-down"></i> </a>
                 <ul class="dropdown-menu pull-right">
                     <li class="active">
-                        <a href="javascript:void(0);"><img alt="" src="img/flags/us.png"> US</a>
+                        <a class="fa fa-wrench" href="javascript:void(0);">工程公司项目</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);"><img alt="" src="img/flags/es.png"> Spanish</a>
+                        <a class="fa fa-signal" href="javascript:void(0);">网络部项目</a>
                     </li>
-                    <li>
-                        <a href="javascript:void(0);"><img alt="" src="img/flags/de.png"> German</a>
+                    <li >
+                        <a class="fa fa-home" href="javascript:void(0);">市政项目</a>
                     </li>
                 </ul>
             </li>
@@ -224,176 +223,16 @@
 
         <ul>
             <li class="active">
-                <a href="/" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+                <a href="/" title="主页"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">主页</span></a>
             </li>
             <li>
-                <a href="inbox.html"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inbox</span><span
+                <a href="inbox.html"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">任务管理</span><span
                             class="badge pull-right inbox-badge">14</span></a>
             </li>
-            <li>
-                <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span
-                            class="menu-item-parent">Graphs</span></a>
-                <ul>
-                    <li>
-                        <a href="flot.html">Flot Chart</a>
-                    </li>
-                    <li>
-                        <a href="morris.html">Morris Charts</a>
-                    </li>
-                    <li>
-                        <a href="inline-charts.html">Inline Charts</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Tables</span></a>
-                <ul>
-                    <li>
-                        <a href="table.html">Normal Tables</a>
-                    </li>
-                    <li>
-                        <a href="datatables.html">Data Tables</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span
-                            class="menu-item-parent">Forms</span></a>
-                <ul>
-                    <li>
-                        <a href="form-elements.html">Smart Form Elements</a>
-                    </li>
-                    <li>
-                        <a href="form-templates.html">Smart Form Layouts</a>
-                    </li>
-                    <li>
-                        <a href="validation.html">Smart Form Validation</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-forms.html">Bootstrap Form Elements</a>
-                    </li>
-                    <li>
-                        <a href="plugins.html">Form Plugins</a>
-                    </li>
-                    <li>
-                        <a href="wizard.html">Wizards</a>
-                    </li>
-                    <li>
-                        <a href="other-editors.html">Bootstrap Editors</a>
-                    </li>
-                    <li>
-                        <a href="dropzone.html">Dropzone <span
-                                    class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">UI Elements</span></a>
-                <ul>
-                    <li>
-                        <a href="general-elements.html">General Elements</a>
-                    </li>
-                    <li>
-                        <a href="buttons.html">Buttons</a>
-                    </li>
-                    <li>
-                        <a href="#">Icons</a>
-                        <ul>
-                            <li>
-                                <a href="fa.html"><i class="fa fa-plane"></i> Font Awesome</a>
-                            </li>
-                            <li>
-                                <a href="glyph.html"><i class="glyphicon glyphicon-plane"></i> Glyph Icons </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="grid.html">Grid</a>
-                    </li>
-                    <li>
-                        <a href="treeview.html">Tree View</a>
-                    </li>
-                    <li>
-                        <a href="nestable-list.html">Nestable Lists</a>
-                    </li>
-                    <li>
-                        <a href="jqui.html">JQuery UI</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-lg fa-fw fa-folder-open"></i> <span class="menu-item-parent">6 Level Navigation</span></a>
-                <ul>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-folder-open"></i> 2nd Level</a>
-                        <ul>
-                            <li>
-                                <a href="#"><i class="fa fa-fw fa-folder-open"></i> 3ed Level </a>
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-fw fa-folder-open"></i> 4th Level</a>
-                                        <ul>
-                                            <li>
-                                                <a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="fa fa-fw fa-folder-open"></i> 5th Level</a>
-                                                <ul>
-                                                    <li>
-                                                        <a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-folder-open"></i> Folder</a>
-
-                        <ul>
-                            <li>
-                                <a href="#"><i class="fa fa-fw fa-folder-open"></i> 3ed Level </a>
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="calendar.html"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span
-                            class="menu-item-parent">Calendar</span></a>
-            </li>
-            <li>
-                <a href="widgets.html"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span
-                            class="menu-item-parent">Widgets</span></a>
-            </li>
-            <li>
-                <a href="gallery.html"><i class="fa fa-lg fa-fw fa-picture-o"></i> <span class="menu-item-parent">Gallery</span></a>
-            </li>
-            <li>
-                <a href="gmap-xml.html"><i class="fa fa-lg fa-fw fa-map-marker"></i> <span class="menu-item-parent">Google Map Skins</span><span
-                            class="badge bg-color-greenLight pull-right inbox-badge">9</span></a>
-            </li>
+            
             <li>
                 <a href="#"><i class="fa fa-lg fa-fw fa-windows"></i> <span
-                            class="menu-item-parent">Miscellaneous</span></a>
+                            class="menu-item-parent">系统配置</span></a>
                 <ul>
                     <li>
                         <a href="typography.html">Typography</a>
@@ -433,20 +272,7 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="#"><i class="fa fa-lg fa-fw fa-file"></i> <span class="menu-item-parent">Other Pages</span></a>
-                <ul>
-                    <li>
-                        <a href="forum.html">Forum Layout</a>
-                    </li>
-                    <li>
-                        <a href="profile.html">Profile</a>
-                    </li>
-                    <li>
-                        <a href="timeline.html">Timeline</a>
-                    </li>
-                </ul>
-            </li>
+        
             <li>
                 <a href="/user"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">用户管理</span></a>
                 <ul>
