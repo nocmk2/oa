@@ -230,6 +230,22 @@ module.exports = function (app) {
         });
     });
 
+    app.get('/engineeringproj', checkLogin);
+    app.get('/engineeringproj', function (req, res) {
+          //null 不指定具体 取出所有用户
+        User.getall(null, function (err, users) {
+            if (err) {
+                users = [];
+            }
+            res.render('engineeringproj', {
+                title: '工程公司项目管理',
+                user: req.session.user,
+                users: users,
+                success: req.flash('success').toString(),
+                error: req.flash('error').toString()
+            });
+        });
+    });
     /*
      app.get('/post', checkLogin);
      app.get('/post', function (req, res) {
