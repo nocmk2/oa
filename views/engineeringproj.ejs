@@ -103,14 +103,14 @@
                         <div id="userControlButton" class="hidden">
                             <div style="position: absolute;left: 200px;top:4px">
                                 <button id="new-user" data-toggle="modal" class="btn btn-default" href="#myModal"
-                                    style="position:relative">新增用户
+                                    style="position:relative">新增工程公司项目
                                 </button>
                                 <!--<button id="view-user" class="btn btn-default" href="javascript:void(0);"-->
                                     <!--style="position:relative">详情-->
                                 <!--</button>-->
-                                <button id="delete-user" class="btn btn-default" href="javascript:void(0);"
+                               <!--  <button id="delete-user" class="btn btn-default" href="javascript:void(0);"
                                     style="position:relative">删除用户
-                                </button>
+                                </button> -->
                             </div>
                         </div>
 
@@ -118,14 +118,10 @@
 
                         <!-- 测试区 BEGIN -->
 
-                        <!-- 	<% users.forEach(function (user, index) { %>
-					  <p><h2><a href="#"><%= user.name %></a></h2></p>
-					  <p class="info">
-					    作者：<a href="#"><%= user.name %></a> | 
-					    密码：<a href="#"><%= user.password %></a> |
-					    邮箱：<%= user.email %>
-					  </p>
-					  <p><%- user.passwod %></p>
+                        <!-- 	<% engprojs.forEach(function (engproj, index) { %>
+					  <p><h2><a href="#"><%= engproj.transid %></a></h2></p>
+					    作者：<a href="#"><%= engproj.controlid %></a> | 
+					    密码：<a href="#"><%= engproj.projname %></a> |
 					<% }) %> 
 				-->
                         <!-- 测试区 END -->
@@ -151,53 +147,33 @@
                                     <thead>
                                     <tr>
                                         <th><input type="checkbox" name="selectAll"/></th>
-                                        <th>用户ID</th>
-                                        <th>用户名</th>
-                                        <th>联系电话</th>
-                                        <th>部门</th>
-                                        <th>邮箱</th>
-                                        <th>城市</th>
-                                        <th>创建日期</th>
-                                        <th>操作</th>
+                                        <th>传输编号</th>
+                                        <th>受控编号</th>
+                                        <th>工程名称</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <% users.forEach(function (user, index) { %>
+                                    <% engprojs.forEach(function (engproj, index) { %>
                                     <tr>
                                         <td><input type="checkbox" name="selectOne" id="<%= user._id%>"/></td>
-                                        <td><%= index %></td>
-                                        <td><%if(user.name === null || user.name === undefined){%>
+                                       <!--  <td><%= index %></td> -->
+                                        <td><%if(engproj.transid === null || engproj.transid === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= user.name%>
+                                            <%= engproj.transid%>
                                             <%}%></td>
-                                        <td><%if(user.phone === null || user.phone === undefined){%>
+                                        <td><%if(engproj.controlid === null || engproj.controlid === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= user.phone%>
+                                            <%= engproj.controlid%>
                                             <%}%></td>
-                                        <td><%if(user.depart === null || user.depart === undefined){%>
+                                        <td><%if(engproj.projname === null || engproj.projname === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= user.depart%>
+                                            <%= engproj.projname%>
                                             <%}%>
                                         </td>
-                                        <td><%if(user.email === null || user.email === undefined){%>
-                                            <!--留白，不显示-->
-                                            <%}else{ %>
-                                            <%= user.email%>
-                                            <%}%></td>
-                                        <td><%if(user.city === null || user.city === undefined){%>
-                                            <!--留白，不显示-->
-                                            <%}else{ %>
-                                            <%= user.city%>
-                                            <%}%></td>
-                                        <td><%if(user.date === null || user.date === undefined){%>
-                                            <!--留白，不显示-->
-                                            <%}else{ %>
-                                            <%= user.date%>
-                                            <%}%></td>
-                                        <td><a class="edit" data-toggle="modal"  href="#editModal" data-userId="<%= user._id%>">修改</a></td>
+                                      
                                     </tr>
                                     <% }) %>
                                     </tbody>
@@ -229,7 +205,7 @@
                             &times;
                         </button>
                         <h4 class="modal-title">
-                            新增用户
+                            新增工程公司项目
                             <!--<img src="img/logo.png" width="150" alt="SmartAdmin">-->
                         </h4>
                     </div>
