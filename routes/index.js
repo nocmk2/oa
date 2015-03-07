@@ -1,6 +1,6 @@
 var crypto = require('crypto')
     , User = require('../models/user.js')
-    , Post = require('../models/post.js');
+    , Engproj = require('../models/engproj.js');
 
 module.exports = function (app) {
     app.get('/', checkLogin);
@@ -230,17 +230,18 @@ module.exports = function (app) {
         });
     });
 
+
     app.get('/engineeringproj', checkLogin);
     app.get('/engineeringproj', function (req, res) {
-          //null 不指定具体 取出所有用户
-        User.getall(null, function (err, users) {
+          //不指定具体 取出所有engprojs
+        Engproj.getall(null, function (err, engprojs) {
             if (err) {
-                users = [];
+                engprojs = [];
             }
             res.render('engineeringproj', {
                 title: '工程公司项目管理',
                 user: req.session.user,
-                users: users,
+                engprojs: engprojs,
                 success: req.flash('success').toString(),
                 error: req.flash('error').toString()
             });
