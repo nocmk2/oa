@@ -10,6 +10,7 @@
     "connect-mongo": "*",
     "ejs": "*",
     "express": "3.18.3",
-    "mongodb": "*"
+    "mongodb": "*",
+    "mongoose": "^3.8.24"
   }
 }

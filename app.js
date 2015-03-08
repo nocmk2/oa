@@ -1,21 +1,31 @@
-/**
- * Module dependencies.
- */
-
 var express = require('express');
-var routes = require('./routes');
-//var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(express);
 var settings = require('./settings');
 var flash = require('connect-flash');
 
+//路由
+var authRoutes = require('./app/controllers/auth');
+var userRoutes = require('./app/controllers/user');
+var engprojRoutes = require('./app/controllers/engproj');
+
 var app = express();
+
+//链接mongodb
+mongoose.connect(('mongodb://' + settings.host + ':27017/' + settings.db),{
+    user:"blogAdmin",
+    pass:"blogAdmin",
+    auth:{
+        user:"dbAdmin",
+        pass:"dbAdmin"
+    }
+});
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '/app/views'));
 app.set('view engine', 'ejs');
 app.use(flash());
 app.use(express.favicon());
@@ -40,10 +50,10 @@ if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
 
-//app.get('/', routes.index);
-//app.get('/users', user.list);
-
-routes(app);
+//使用路由
+authRoutes(app);
+userRoutes(app);
+engprojRoutes(app);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
