@@ -100,15 +100,15 @@
 
 
                         <!-- 按钮区 BEGIN -->
-                        <div id="userControlButton" class="hidden">
+                        <div id="ControlButton" class="hidden">
                             <div style="position: absolute;left: 200px;top:4px">
-                                <button id="new-user" data-toggle="modal" class="btn btn-default" href="#myModal"
+                                <button id="new-proj" data-toggle="modal" class="btn btn-default" href="#addProj"
                                     style="position:relative">新增工程公司项目
                                 </button>
                                 <!--<button id="view-user" class="btn btn-default" href="javascript:void(0);"-->
                                     <!--style="position:relative">详情-->
                                 <!--</button>-->
-                               <button id="delete-user" class="btn btn-default" href="javascript:void(0);"
+                               <button id="delete-proj" class="btn btn-default" href="javascript:void(0);"
                                     style="position:relative">删除工程公司项目
                                 </button>
                             </div>
@@ -176,23 +176,65 @@
                                     <tr>
                                         <td><input type="checkbox" name="selectOne" id="<%= user._id%>"/></td>
                                        <!--  <td><%= index %></td> -->
-                                        <td><%if(engproj.transid === null || engproj.transid === undefined){%>
+                                        <td><%if(engproj.basicInfo.serialno === null || engproj.basicInfo.serialno === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= engproj.transid%>
+                                            <%= engproj.basicInfo.serialno%>
                                             <%}%></td>
-                                        <td><%if(engproj.controlid === null || engproj.controlid === undefined){%>
+                                        <td><%if(engproj.basicInfo.transid === null || engproj.basicInfo.transid === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= engproj.controlid%>
+                                            <%= engproj.basicInfo.transid%>
                                             <%}%></td>
-                                        <td><%if(engproj.projname === null || engproj.projname === undefined){%>
+                                        <td><%if(engproj.basicInfo.controlid === null || engproj.basicInfo.controlid === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= engproj.projname%>
+                                            <%= engproj.basicInfo.controlid%>
                                             <%}%>
                                         </td>
-                                      
+                                        <td><%if(engproj.basicInfo.projname === null || engproj.basicInfo.projname === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= engproj.basicInfo.projname%>
+                                            <%}%>
+                                        </td>
+                                        <td><%if(engproj.basicInfo.firstpartyofficer === null || engproj.basicInfo.firstpartyofficer === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= engproj.basicInfo.firstpartyofficer%>
+                                            <%}%>
+                                        </td>
+                                        <td><%if(engproj.basicInfo.secondpartyofficer === null || engproj.basicInfo.secondpartyofficer === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= engproj.basicInfo.secondpartyofficer%>
+                                            <%}%>
+                                        </td>
+                                        <td><%if(engproj.basicInfo.projtype === null || engproj.basicInfo.projtype === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= engproj.basicInfo.projtype%>
+                                            <%}%>
+                                        </td>
+                                        <td><%if(engproj.basicInfo.properties === null || engproj.basicInfo.properties === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= engproj.basicInfo.properties%>
+                                            <%}%>
+                                        </td>
+                                        <td><%if(engproj.basicInfo.subname === null || engproj.basicInfo.subname === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= engproj.basicInfo.subname%>
+                                            <%}%>
+                                        </td>
+                                        <td><%if(engproj.basicInfo.address === null || engproj.basicInfo.address === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= engproj.basicInfo.address%>
+                                            <%}%>
+                                        </td>
+                                        <td><a class="edit" data-toggle="modal"  href="#editProj" data-projId="<%= engproj._id%>">详情</a></td>
                                     </tr>
                                     <% }) %>
                                     </tbody>
@@ -216,155 +258,315 @@
 
 
         <!-- Modal 弹出框 begin-->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal fade" id="addProj" tabindex="-1" role="dialog widget">
             <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            &times;
-                        </button>
-                        <h4 class="modal-title">
-                            新增工程公司项目
-                            <!--<img src="img/logo.png" width="150" alt="SmartAdmin">-->
-                        </h4>
-                    </div>
-                    <div class="modal-body no-padding">
+                <!-- widget grid -->
+                <section id="widget-grid" class="modal-content">
+                        <!-- row -->
+                        <div class="row">
+                            <!-- NEW WIDGET START -->
+                            <article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                                <!-- Widget ID (each widget will need unique ID)-->
+                                <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false" style="
+    margin-bottom: 0px;">
+                                    <!-- widget options:
+                                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
-                        <form id="newuser-form" class="smart-form" method="post" action="/user">
+                                    data-widget-colorbutton="false"
+                                    data-widget-editbutton="false"
+                                    data-widget-togglebutton="false"
+                                    data-widget-deletebutton="false"
+                                    data-widget-fullscreenbutton="false"
+                                    data-widget-custombutton="false"
+                                    data-widget-collapsed="true"
+                                    data-widget-sortable="false"
 
-                            <fieldset>
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">用户名</label>
+                                    -->
+                                    <header>
+                                        <div class="jarviswidget-ctrls" role="menu">
+                                            <a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="close"><i class="fa fa-times"></i></a></div>
+                                        <span class="widget-icon"> <i class="fa fa-check"></i> </span>
+                                        <h2>新增工程公司项目 </h2>
+                                    </header>
 
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
-                                                <input type="user" name="user">
-                                            </label>
+                                    <!-- widget div-->
+                                    <div>
+
+                                        <!-- widget edit box -->
+                                        <div class="jarviswidget-editbox">
+                                            <!-- This area used as dropdown edit box -->
+
                                         </div>
-                                    </div>
-                                </section>
+                                        <!-- end widget edit box -->
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">密码</label>
+                                        <!-- widget content -->
+                                        <div class="widget-body">
 
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-lock"></i>
-                                                <input type="password" name="password">
-                                            </label>
-                                            <!-- <div class="note">
-                                                <a href="javascript:void(0)">Forgot password?</a>
-                                            </div> -->
-                                        </div>
+                                            <div class="row">
+                                                <form id="wizard-1" novalidate="novalidate">
+                                                    <div id="bootstrap-wizard-1" class="col-sm-12">
+                                                        <div class="form-bootstrapWizard">
 
-                                    </div>
-                                </section>
+                                                            <ul class="bootstrapWizard form-wizard">
+                                                                    <li class="active" data-target="#step1" style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                                        <a href="#tab1" data-toggle="tab"> <span
+                                                                                    class="step">1</span> <span class="title">基本信息</span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li data-target="#step2"  style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                                        <a href="#tab2" data-toggle="tab"> <span
+                                                                                    class="step">2</span> <span class="title">材料信息</span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li data-target="#step3"  style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                                    <a href="#tab3" data-toggle="tab"> <span
+                                                                                class="step">3</span> <span class="title">施工情况信息</span>
+                                                                    </a>
+                                                                    </li>
+                                                                    <li data-target="#step4" style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                                    <a href="#tab4" data-toggle="tab"> <span
+                                                                                class="step">4</span> <span class="title">资料信息</span>
+                                                                    </a>
+                                                                    </li>
+                                                                    <li data-target="#step5" style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                                    <a href="#tab5" data-toggle="tab"> <span
+                                                                                class="step">5</span> <span class="title">合同信息</span>
+                                                                    </a>
+                                                                    </li>
+                                                                    <li data-target="#step6" style="padding-right: 0;padding-left: 0;width: 16.6%">
+                                                                    <a href="#tab6" data-toggle="tab"> <span
+                                                                                class="step">6</span> <span class="title">收入信息</span>
+                                                                    </a>
+                                                                    </li>
+                                                                </ul>
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">确认密码</label>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="tab1">
+                                                                <br>
 
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-lock"></i>
-                                                <input type="password" name="vpassword">
-                                            </label>
-                                            <!-- <div class="note">
-                                                <a href="javascript:void(0)">Forgot password?</a>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </section>
+                                                                <h3><strong>Step 1 </strong> - Basic Information</h3>
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">邮箱</label>
+                                                                <div class="row">
 
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-                                                <input type="email" name="email">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-envelope fa-lg fa-fw"></i></span>
+                                                                                <input class="form-control input-lg"
+                                                                                       placeholder="email@address.com"
+                                                                                       type="text" name="email" id="email">
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">联系电话</label>
+                                                                            </div>
+                                                                        </div>
 
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-phone"></i>
-                                                <input type="phone" name="phone">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
+                                                                    </div>
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">部门</label>
+                                                                </div>
 
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-wrench"></i>
-                                                <input type="depart" name="depart">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-user fa-lg fa-fw"></i></span>
+                                                                                <input class="form-control input-lg"
+                                                                                       placeholder="First Name" type="text"
+                                                                                       name="fname" id="fname">
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">城市</label>
-
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-map-marker"></i>
-                                                <input type="city" name="city">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
-
-                                <!--<section>-->
-                                    <!--<div class="row">-->
-                                        <!--<label class="label col col-2">日期 </label>-->
-
-                                        <!--<div class="col col-10">-->
-                                            <!--<label class="input"> <i class="icon-append fa fa-calendar"></i>-->
-                                                <!--<input type="date" name="date">-->
-                                            <!--</label>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</section>-->
-
-
-                                <!--
-                                                                <section>
-                                                                    <div class="row">
-                                                                        <div class="col col-2"></div>
-                                                                        <div class="col col-10">
-                                                                            <label class="checkbox">
-                                                                                <input type="checkbox" name="remember" checked="">
-                                                                                <i></i>Keep me logged in</label>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </section> -->
-                            </fieldset>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-user fa-lg fa-fw"></i></span>
+                                                                                <input class="form-control input-lg"
+                                                                                       placeholder="Last Name" type="text"
+                                                                                       name="lname" id="lname">
 
-                            <footer>
-                                <button id="createUser" type="submit" class="btn btn-primary">
-                                    确认
-                                </button>
-                                <button id="cancelCreating" type="button" class="btn btn-default" data-dismiss="modal">
-                                    取消
-                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
 
-                            </footer>
-                        </form>
+                                                            </div>
+                                                            <div class="tab-pane" id="tab2">
+                                                                <br>
 
+                                                                <h3><strong>Step 2</strong> - Billing Information</h3>
 
-                    </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-group">
+                                                                            <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-flag fa-lg fa-fw"></i></span>
+                                                                                <select name="country"
+                                                                                        class="form-control input-lg">
 
-                </div>
+                                                                                    <option value="Zimbabwe">Zimbabwe</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-group">
+                                                                            <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-map-marker fa-lg fa-fw"></i></span>
+                                                                                <select class="form-control input-lg"
+                                                                                        name="city">
+                                                                                    <option value="" selected="selected">Select
+                                                                                        City
+                                                                                    </option>
+                                                                                    <option>Amsterdam</option>
+                                                                                    <option>Atlanta</option>
+                                                                                    <option>Minneapolis</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-group">
+                                                                            <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-envelope-o fa-lg fa-fw"></i></span>
+                                                                                <input class="form-control input-lg"
+                                                                                       placeholder="Postal Code" type="text"
+                                                                                       name="postal" id="postal">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-phone fa-lg fa-fw"></i></span>
+                                                                                <input class="form-control input-lg"
+                                                                                       data-mask="+99 (999) 999-9999"
+                                                                                       data-mask-placeholder="X"
+                                                                                       placeholder="+1" type="text"
+                                                                                       name="wphone" id="wphone">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-mobile fa-lg fa-fw"></i></span>
+                                                                                <input class="form-control input-lg"
+                                                                                       data-mask="+99 (999) 999-9999"
+                                                                                       data-mask-placeholder="X"
+                                                                                       placeholder="+01" type="text"
+                                                                                       name="hphone" id="hphone">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane" id="tab3">
+                                                                <br>
+
+                                                                <h3><strong>Step 3</strong> - Domain Setup</h3>
+
+                                                                <div class="alert alert-info fade in">
+                                                                    <button class="close" data-dismiss="alert">
+                                                                        ×
+                                                                    </button>
+                                                                    <i class="fa-fw fa fa-info"></i>
+                                                                    <strong>Info!</strong> Place an info message box if you
+                                                                    wish.
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>This is a label</label>
+                                                                    <input class="form-control input-lg"
+                                                                           placeholder="Another input box here..." type="text"
+                                                                           name="etc" id="etc">
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane" id="tab4">
+                                                                <br>
+
+                                                                <h3><strong>Step 4</strong> - Save Form</h3>
+                                                                <br>
+
+                                                                <h1 class="text-center text-success"><strong><i
+                                                                                class="fa fa-check fa-lg"></i> Complete</strong>
+                                                                </h1>
+                                                                <h4 class="text-center">Click next to finish</h4>
+                                                                <br>
+                                                                <br>
+                                                            </div>
+                                                            <div class="tab-pane" id="tab5">
+                                                                <br>
+
+                                                                <h3><strong>Step 5</strong> - Save Form</h3>
+                                                                <br>
+
+                                                                <h1 class="text-center text-success"><strong><i
+                                                                                class="fa fa-check fa-lg"></i> Complete</strong>
+                                                                </h1>
+                                                                <h4 class="text-center">Click next to finish</h4>
+                                                                <br>
+                                                                <br>
+                                                            </div>
+                                                            <div class="tab-pane" id="tab6">
+                                                                <br>
+
+                                                                <h3><strong>Step 6</strong> - Save Form</h3>
+                                                                <br>
+
+                                                                <h1 class="text-center text-success"><strong><i
+                                                                                class="fa fa-check fa-lg"></i> Complete</strong>
+                                                                </h1>
+                                                                <h4 class="text-center">Click next to finish</h4>
+                                                                <br>
+                                                                <br>
+                                                            </div>
+
+                                                            <div class="form-actions">
+                                                                <div class="row">
+                                                                    <footer>
+                                                                        <button type="submit" class="btn btn-primary">
+                                                                            Submit
+                                                                        </button>
+                                                                        <button type="button" class="btn btn-default" onclick="window.history.back();">
+                                                                            Back
+                                                                        </button>
+                                                                    </footer>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                        <!-- end widget content -->
+
+                                    </div>
+                                    <!-- end widget div -->
+
+                                </div>
+                                <!-- end widget -->
+
+                            </article>
+                            <!-- WIDGET END -->
+
+                        </div>
+
+                        <!-- end row -->
+
+                    </section>
+                <!-- end widget grid -->
                 <!-- /.modal-content -->
             </div>
             <!-- /.modal-dialog -->
@@ -372,159 +574,317 @@
         <!-- /.modal 弹出框 END -->
 
         <!-- 修改用户信息 Modal 弹出框 begin-->
-        <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+        <div class="modal fade" id="editProj" tabindex="-1" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            &times;
-                        </button>
-                        <h4 class="modal-title">
-                            修改用户信息
-                            <!--<img src="img/logo.png" width="150" alt="SmartAdmin">-->
-                        </h4>
-                    </div>
-                    <div class="modal-body no-padding">
+                <!-- widget grid -->
+                <section id="widget-grid" class="modal-content">
+                    <!-- row -->
+                    <div class="row">
+                        <!-- NEW WIDGET START -->
+                        <article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                            <!-- Widget ID (each widget will need unique ID)-->
+                            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false" style="
+    margin-bottom: 0px;">
+                                <!-- widget options:
+                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
-                        <form id="editUserForm" class="smart-form" method="post" action="/user/update">
+                                data-widget-colorbutton="false"
+                                data-widget-editbutton="false"
+                                data-widget-togglebutton="false"
+                                data-widget-deletebutton="false"
+                                data-widget-fullscreenbutton="false"
+                                data-widget-custombutton="false"
+                                data-widget-collapsed="true"
+                                data-widget-sortable="false"
 
-                            <input class="hidden" type="text" name="_id" value="">
+                                -->
+                                <header>
+                                    <div class="jarviswidget-ctrls" role="menu">
+                                        <a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="close"><i class="fa fa-times"></i></a></div>
+                                    <span class="widget-icon"> <i class="fa fa-check"></i> </span>
+                                    <h2>工程公司项目详情 </h2>
+                                </header>
 
-                            <fieldset>
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">用户名</label>
+                                <!-- widget div-->
+                                <div>
 
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
-                                                <input type="user" name="name">
-                                            </label>
-                                        </div>
+                                    <!-- widget edit box -->
+                                    <div class="jarviswidget-editbox">
+                                        <!-- This area used as dropdown edit box -->
+
                                     </div>
-                                </section>
+                                    <!-- end widget edit box -->
 
-                                <!--<section>-->
-                                    <!--<div class="row">-->
-                                        <!--<label class="label col col-2">密码</label>-->
+                                    <!-- widget content -->
+                                    <div class="widget-body">
 
-                                        <!--<div class="col col-10">-->
-                                            <!--<label class="input"> <i class="icon-append fa fa-lock"></i>-->
-                                                <!--<input type="password" name="password">-->
-                                            <!--</label>-->
-                                            <!--&lt;!&ndash; <div class="note">-->
-                                                <!--<a href="javascript:void(0)">Forgot password?</a>-->
-                                            <!--</div> &ndash;&gt;-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</section>-->
+                                        <div class="row">
+                                            <form id="wizard-1" novalidate="novalidate">
+                                                <div id="bootstrap-wizard-1" class="col-sm-12">
+                                                    <div class="form-bootstrapWizard">
 
-                                <!--<section>-->
-                                    <!--<div class="row">-->
-                                        <!--<label class="label col col-2">确认密码</label>-->
+                                                        <ul class="bootstrapWizard form-wizard">
+                                                            <li class="active" data-target="#step1" style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                                <a href="#tab1" data-toggle="tab"> <span
+                                                                            class="step">1</span> <span class="title">基本信息</span>
+                                                                </a>
+                                                            </li>
+                                                            <li data-target="#step2"  style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                                <a href="#tab2" data-toggle="tab"> <span
+                                                                            class="step">2</span> <span class="title">材料信息</span>
+                                                                </a>
+                                                            </li>
+                                                            <li data-target="#step3"  style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                                <a href="#tab3" data-toggle="tab"> <span
+                                                                            class="step">3</span> <span class="title">施工情况信息</span>
+                                                                </a>
+                                                            </li>
+                                                            <li data-target="#step4" style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                                <a href="#tab4" data-toggle="tab"> <span
+                                                                            class="step">4</span> <span class="title">资料信息</span>
+                                                                </a>
+                                                            </li>
+                                                            <li data-target="#step5" style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                                <a href="#tab5" data-toggle="tab"> <span
+                                                                            class="step">5</span> <span class="title">合同信息</span>
+                                                                </a>
+                                                            </li>
+                                                            <li data-target="#step6" style="padding-right: 0;padding-left: 0;width: 16.6%">
+                                                                <a href="#tab6" data-toggle="tab"> <span
+                                                                            class="step">6</span> <span class="title">收入信息</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
 
-                                        <!--<div class="col col-10">-->
-                                            <!--<label class="input"> <i class="icon-append fa fa-lock"></i>-->
-                                                <!--<input type="password" name="vpassword">-->
-                                            <!--</label>-->
-                                            <!--&lt;!&ndash; <div class="note">-->
-                                                <!--<a href="javascript:void(0)">Forgot password?</a>-->
-                                            <!--</div> &ndash;&gt;-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</section>-->
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="tab1">
+                                                            <br>
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">邮箱</label>
+                                                            <h3><strong>Step 1 </strong> - Basic Information</h3>
 
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-                                                <input type="email" name="email">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
+                                                            <div class="row">
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">联系电话</label>
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-envelope fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg"
+                                                                                   placeholder="email@address.com"
+                                                                                   type="text" name="email" id="email">
 
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-phone"></i>
-                                                <input type="phone" name="phone">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
-
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">部门</label>
-
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-wrench"></i>
-                                                <input type="depart" name="depart">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
-
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">城市</label>
-
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-map-marker"></i>
-                                                <input type="city" name="city">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
-
-                                <!--<section>-->
-                                    <!--<div class="row">-->
-                                        <!--<label class="label col col-2">日期 </label>-->
-
-                                        <!--<div class="col col-10">-->
-                                            <!--<label class="input"> <i class="icon-append fa fa-calendar"></i>-->
-                                                <!--<input type="date" name="date">-->
-                                            <!--</label>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</section>-->
-
-
-                                <!--
-                                                                <section>
-                                                                    <div class="row">
-                                                                        <div class="col col-2"></div>
-                                                                        <div class="col col-10">
-                                                                            <label class="checkbox">
-                                                                                <input type="checkbox" name="remember" checked="">
-                                                                                <i></i>Keep me logged in</label>
                                                                         </div>
                                                                     </div>
-                                                                </section> -->
-                            </fieldset>
 
-                            <footer>
-                                <button id="editUser" type="submit" class="btn btn-primary">
-                                    确认
-                                </button>
-                                <button id="cancelEdit" type="button" class="btn btn-default" data-dismiss="modal">
-                                    取消
-                                </button>
+                                                                </div>
 
-                            </footer>
-                        </form>
+                                                            </div>
 
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-user fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg"
+                                                                                   placeholder="First Name" type="text"
+                                                                                   name="fname" id="fname">
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-user fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg"
+                                                                                   placeholder="Last Name" type="text"
+                                                                                   name="lname" id="lname">
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="tab-pane" id="tab2">
+                                                            <br>
+
+                                                            <h3><strong>Step 2</strong> - Billing Information</h3>
+
+                                                            <div class="row">
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-flag fa-lg fa-fw"></i></span>
+                                                                            <select name="country"
+                                                                                    class="form-control input-lg">
+
+                                                                                <option value="Zimbabwe">Zimbabwe</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-map-marker fa-lg fa-fw"></i></span>
+                                                                            <select class="form-control input-lg"
+                                                                                    name="city">
+                                                                                <option value="" selected="selected">Select
+                                                                                    City
+                                                                                </option>
+                                                                                <option>Amsterdam</option>
+                                                                                <option>Atlanta</option>
+                                                                                <option>Minneapolis</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-envelope-o fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg"
+                                                                                   placeholder="Postal Code" type="text"
+                                                                                   name="postal" id="postal">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-phone fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg"
+                                                                                   data-mask="+99 (999) 999-9999"
+                                                                                   data-mask-placeholder="X"
+                                                                                   placeholder="+1" type="text"
+                                                                                   name="wphone" id="wphone">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                    class="fa fa-mobile fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg"
+                                                                                   data-mask="+99 (999) 999-9999"
+                                                                                   data-mask-placeholder="X"
+                                                                                   placeholder="+01" type="text"
+                                                                                   name="hphone" id="hphone">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="tab3">
+                                                            <br>
+
+                                                            <h3><strong>Step 3</strong> - Domain Setup</h3>
+
+                                                            <div class="alert alert-info fade in">
+                                                                <button class="close" data-dismiss="alert">
+                                                                    ×
+                                                                </button>
+                                                                <i class="fa-fw fa fa-info"></i>
+                                                                <strong>Info!</strong> Place an info message box if you
+                                                                wish.
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>This is a label</label>
+                                                                <input class="form-control input-lg"
+                                                                       placeholder="Another input box here..." type="text"
+                                                                       name="etc" id="etc">
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="tab4">
+                                                            <br>
+
+                                                            <h3><strong>Step 4</strong> - Save Form</h3>
+                                                            <br>
+
+                                                            <h1 class="text-center text-success"><strong><i
+                                                                            class="fa fa-check fa-lg"></i> Complete</strong>
+                                                            </h1>
+                                                            <h4 class="text-center">Click next to finish</h4>
+                                                            <br>
+                                                            <br>
+                                                        </div>
+                                                        <div class="tab-pane" id="tab5">
+                                                            <br>
+
+                                                            <h3><strong>Step 5</strong> - Save Form</h3>
+                                                            <br>
+
+                                                            <h1 class="text-center text-success"><strong><i
+                                                                            class="fa fa-check fa-lg"></i> Complete</strong>
+                                                            </h1>
+                                                            <h4 class="text-center">Click next to finish</h4>
+                                                            <br>
+                                                            <br>
+                                                        </div>
+                                                        <div class="tab-pane" id="tab6">
+                                                            <br>
+
+                                                            <h3><strong>Step 6</strong> - Save Form</h3>
+                                                            <br>
+
+                                                            <h1 class="text-center text-success"><strong><i
+                                                                            class="fa fa-check fa-lg"></i> Complete</strong>
+                                                            </h1>
+                                                            <h4 class="text-center">Click next to finish</h4>
+                                                            <br>
+                                                            <br>
+                                                        </div>
+
+                                                        <div class="form-actions">
+                                                            <div class="row">
+                                                                <footer>
+                                                                    <button type="submit" class="btn btn-primary">
+                                                                        Submit
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-default" onclick="window.history.back();">
+                                                                        Back
+                                                                    </button>
+                                                                </footer>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                    <!-- end widget content -->
+
+                                </div>
+                                <!-- end widget div -->
+
+                            </div>
+                            <!-- end widget -->
+
+                        </article>
+                        <!-- WIDGET END -->
 
                     </div>
 
-                </div>
+                    <!-- end row -->
+
+                </section>
+                <!-- end widget grid -->
                 <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
         </div>
         <!-- 修改用户信息/.modal 弹出框 END -->
 
@@ -730,8 +1090,8 @@ you can add as many as you like
         /* END TABLE TOOLS */
 
         //在表格内添加用户管理按钮
-        $(".widget-body-toolbar").append($("#userControlButton").html());
-        $("#userControlButton").remove();
+        $(".widget-body-toolbar").append($("#ControlButton").html());
+        $("#ControlButton").remove();
 
         //全选(全不选)用户
         $("input[name='selectAll']").change(function(e){
@@ -747,7 +1107,7 @@ you can add as many as you like
         })
 
         //删除用户功能
-        $("#delete-user").click(function(e){
+        $("#delete-proj").click(function(e){
             //获取所有选中要删除用户id的数组
             var idsToDelete = [];
             $("input[name='selectOne']:checked").each(function(){

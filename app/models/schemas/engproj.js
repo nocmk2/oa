@@ -1,21 +1,15 @@
 var mongoose = require('mongoose');
 
 var EngprojSchema = new mongoose.Schema({
-    transid:{
-        unique:true,
-        type:String
-    },//传输编号
-    controlid:String,//受控编号
-    projname:String,//工程名称
     //基本信息
     basicInfo:{
-        serialno:String,//序号
-        transid:String,//传输编号
-        controlid : String, //受控编号
-        projname : String,//工程名称
+        serialno :String,//序号
+        transid : String,//传输编号
+        controlid :String, //受控编号
+        projname :String,//工程名称
         firstpartyofficer : String,//甲方项目负责人
         secondpartyofficer : String,//乙方项目负责人
-        type : String,//项目类别
+        projtype : String,//项目类别
         properties : String,//工程属性
         subname : String,//项目名称
         address : String,//工程地址
@@ -28,7 +22,7 @@ var EngprojSchema = new mongoose.Schema({
         constructteam : String,//施工队
         constructofficer : String,//施工队负责人
         consigntime : String,//委托时间
-        basiccomments : String//备注
+        basiccomments : String,//备注
     },
     //材料信息
     materialInfo:{

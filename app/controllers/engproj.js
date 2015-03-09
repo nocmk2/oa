@@ -1,4 +1,5 @@
 var EngprojService = require('../models/services/engproj');
+var util = require('util');
 
 module.exports = function (app) {
 
@@ -8,6 +9,10 @@ module.exports = function (app) {
             if (err) {
                 engprojs = [];
             }
+            console.log("enprojs: ");
+            console.log(util.inspect(engprojs,{depth:3}));
+            console.log("engprojs[0].basicInfo.serialno: ");
+            console.log(engprojs[0].basicInfo.serialno);
             res.render('engineeringproj', {
                 title: '工程公司项目管理',
                 user: req.session.user,
