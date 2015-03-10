@@ -26,6 +26,7 @@ var EngprojSchema = new mongoose.Schema({
     },
     //材料信息
     materialInfo:{
+        materialoffer:String,//主材料供应
         applytime :String,//申请领料日期（甲供）
         actualtime : String,//实际领料日期（甲供）
         materialtable : String,//材料表
