@@ -1387,7 +1387,7 @@
                                                                     <div class="col-md-10">
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
-                                                                                <textarea  rows="5" name="contractcomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                                                                <textarea  rows="5" name="incomecomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1399,7 +1399,7 @@
                                                             <div class="form-actions">
                                                                 <div class="row">
                                                                     <footer>
-                                                                        <button type="submit" class="btn btn-primary">
+                                                                        <button type="submit" class="btn btn-primary" id="saveProj">
                                                                             提交
                                                                         </button>
                                                                         <button type="button" class="btn btn-default closeBtn" data-dismiss="modal">
@@ -1537,6 +1537,7 @@
                                                                             <div class="col-sm-12">
 
                                                                                 <div >
+                                                                                    <input type="text" name="_id" class="hidden" data-id="">
                                                                                     <input class="form-control" placeholder="序号" type="text" name="serialno">
                                                                                 </div>
 
@@ -2636,7 +2637,7 @@
                                                                 <div class="col-md-10">
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
-                                                                            <textarea  rows="5" name="contractcomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                                                            <textarea  rows="5" name="incomecomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -2648,7 +2649,7 @@
                                                         <div class="form-actions">
                                                             <div class="row">
                                                                 <footer>
-                                                                    <button type="submit" class="btn btn-primary">
+                                                                    <button type="submit" id="saveProjEdited" class="btn btn-primary">
                                                                         提交
                                                                     </button>
                                                                     <button type="button" class="btn btn-default closeBtn" data-dismiss="modal">
@@ -2932,24 +2933,102 @@ you can add as many as you like
 
         //向修改信息框中显示已有的信息
         $(".edit").click(function(){
-            //获取用户id
-            var userToEdit = {};
-            userToEdit.id = $(this).attr("data-userId");
+            //获取项目id
+            var projToEdit = {};
+            projToEdit.id = $(this).attr("data-projId");
             $.ajax({
                 type:"POST",
-                url:"/user/getById",
+                url:"/engineeringproj/getById",
                 contentType: 'application/json',
-                data: JSON.stringify(userToEdit),
+                data: JSON.stringify(projToEdit),
                 dataType:"json",
-                success:function(user){
-                    if(user !== null){
-                        $("#editUserForm input[name='_id']").val(userToEdit.id);
-                        $("#editUserForm input[name='name']").val(user.name);
-//                        $("#editUserForm input[name='password']").val(user.password);
-                        $("#editUserForm input[name='email']").val(user.email);
-                        $("#editUserForm input[name='phone']").val(user.phone);
-                        $("#editUserForm input[name='depart']").val(user.depart);
-                        $("#editUserForm input[name='city']").val(user.city);
+                success:function(engproj){
+                    if(engproj !== null){
+                        console.log(engproj._id);
+                        //basicInfo
+                        $("#tab1-edit  input").each(function(){
+                            var inputName = $(this).attr("name");
+                            if(inputName === "_id"){
+                                $(this).val(engproj._id);
+                            }else{
+                                $(this).val(engproj.basicInfo[inputName]);
+                            }
+                        });
+                        $("#tab1-edit  select").each(function(){
+                            var selectName = $(this).attr("name");
+                            $(this).val(engproj.basicInfo[selectName]);
+                        });
+                        $("#tab1-edit  textarea").each(function(){
+                            var textareaName = $(this).attr("name");
+                            $(this).val(engproj.basicInfo[textareaName]);
+                        });
+                        //materialInfo
+                        $("#tab2-edit  input").each(function(){
+                            var inputName = $(this).attr("name");
+                            $(this).val(engproj.materialInfo[inputName]);
+                        });
+                        $("#tab2-edit  select").each(function(){
+                            var selectName = $(this).attr("name");
+                            $(this).val(engproj.materialInfo[selectName]);
+                        });
+                        $("#tab2-edit  textarea").each(function(){
+                            var textareaName = $(this).attr("name");
+                            $(this).val(engproj.materialInfo[textareaName]);
+                        });
+                        //constructionInfo
+                        $("#tab3-edit  input").each(function(){
+                            var inputName = $(this).attr("name");
+                            $(this).val(engproj.constructionInfo[inputName]);
+                        });
+                        $("#tab3-edit  select").each(function(){
+                            var selectName = $(this).attr("name");
+                            $(this).val(engproj.constructionInfo[selectName]);
+                        });
+                        $("#tab3-edit  textarea").each(function(){
+                            var textareaName = $(this).attr("name");
+                            $(this).val(engproj.constructionInfo[textareaName]);
+                        });
+                        //textInfo
+                        $("#tab4-edit  input").each(function(){
+                            var inputName = $(this).attr("name");
+                            $(this).val(engproj.textInfo[inputName]);
+                        });
+                        $("#tab4-edit  select").each(function(){
+                            var selectName = $(this).attr("name");
+                            $(this).val(engproj.textInfo[selectName]);
+                        });
+                        $("#tab4-edit  textarea").each(function(){
+                            var textareaName = $(this).attr("name");
+                            $(this).val(engproj.textInfo[textareaName]);
+                        });
+                        //contractInfo
+                        $("#tab5-edit  input").each(function(){
+                            var inputName = $(this).attr("name");
+                            $(this).val(engproj.contractInfo[inputName]);
+                        });
+                        $("#tab5-edit  select").each(function(){
+                            var selectName = $(this).attr("name");
+                            $(this).val(engproj.contractInfo[selectName]);
+                        });
+                        $("#tab5-edit  textarea").each(function(){
+                            var textareaName = $(this).attr("name");
+                            $(this).val(engproj.contractInfo[textareaName]);
+                        });
+                        //incomeInfo
+                        $("#tab6-edit  input").each(function(){
+                            var inputName = $(this).attr("name");
+                            $(this).val(engproj.incomeInfo[inputName]);
+                        });
+                        $("#tab6-edit  select").each(function(){
+                            var selectName = $(this).attr("name");
+                            $(this).val(engproj.incomeInfo[selectName]);
+                        });
+                        $("#tab6-edit  textarea").each(function(){
+                            var textareaName = $(this).attr("name");
+                            $(this).val(engproj.incomeInfo[textareaName]);
+                        });
+                    }else{
+                        alert("获取项目信息失败");
                     }
                 }
             })
@@ -2986,106 +3065,219 @@ you can add as many as you like
         });
 
         //新增用户框发送，验证
-        $("#createUser").click(function(e){
+        $("#saveProj").click(function(e){
             e.preventDefault();
-            //清除输入框内表单的错误信息
-            clearErrInfo("newuser-form");
-            //初始化user对象，验证输入
-            var formInfo = {},hasError = false;
-            formInfo.user = {};
-            formInfo.user.name = $("#newuser-form input[name='user']").val();
-            if(formInfo.user.name === ""){
-                hasError = true;
-                showErrInfo("newuser-form","user","用户名不能为空");
-            }
-            formInfo.user.password = $("#newuser-form input[name='password']").val();
-            formInfo.user.vpassword = $("#newuser-form input[name='vpassword']").val();
-            if(formInfo.user.password === ""){
-                hasError = true;
-                showErrInfo("newuser-form","password","密码不能为空");
-            }
-            if(formInfo.user.password !== formInfo.user.vpassword){
-                hasError = true;
-                showErrInfo("newuser-form","vpassword","密码输入不一致");
-            }
-            formInfo.user.email = $("#newuser-form input[name='email']").val();
-            formInfo.user.phone = $("#newuser-form input[name='phone']").val();
-            formInfo.user.depart = $("#newuser-form input[name='depart']").val();
-            formInfo.user.city = $("#newuser-form input[name='city']").val();
-            //检查表单是否有误，无误则发送请求
-            if(hasError === true){
-                return;
-            }else{
-                $.ajax({
-                    type:"POST",
-                    url:"/user",
-                    contentType: 'application/json',
-                    data: JSON.stringify(formInfo),
-                    dataType:"json",
-                    success:function(result){
-                        if(result.success === true){
-                            location.reload();
-                        }else{
-                            if(result.msg === "用户名已存在"){
-                                hasError = true;
-                                showErrInfo("newuser-form","user","用户名已存在");
-                            }
-                            if(result.msg === "两次输入的密码不一致"){
-                                hasError = true;
-                                showErrInfo("newuser-form","vpassword","两次输入的密码不一致");
-                            }
-                            if(result.msg === "数据存储出错"){
-                                alert("数据存储出错");
-                            }
-                        }
+            //初始化proj对象
+            var formInfo = {};
+            formInfo.proj = {};
+            formInfo.proj.basicInfo = {};
+            formInfo.proj.materialInfo = {};
+            formInfo.proj.constructionInfo = {};
+            formInfo.proj.textInfo = {};
+            formInfo.proj.contractInfo = {};
+            formInfo.proj.incomeInfo = {};
+            //basicInfo
+            $("#tab1  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.basicInfo[inputName] = $(this).val();
+            });
+            $("#tab1  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.basicInfo[selectName] = $(this).val();
+            });
+            $("#tab1  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.basicInfo[textareaName] = $(this).val();
+            });
+            //materialInfo
+            $("#tab2  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.materialInfo[inputName] = $(this).val();
+            });
+            $("#tab2  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.materialInfo[selectName] = $(this).val();
+            });
+            $("#tab2  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.materialInfo[textareaName] = $(this).val();
+            });
+            //constructionInfo
+            $("#tab3  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.constructionInfo[inputName] = $(this).val();
+            });
+            $("#tab3  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.constructionInfo[selectName] = $(this).val();
+            });
+            $("#tab3  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.constructionInfo[textareaName] = $(this).val();
+            });
+            //textInfo
+            $("#tab4  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.textInfo[inputName] = $(this).val();
+            });
+            $("#tab4  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.textInfo[selectName] = $(this).val();
+            });
+            $("#tab4  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.textInfo[textareaName] = $(this).val();
+            });
+            //contractInfo
+            $("#tab5  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.contractInfo[inputName] = $(this).val();
+            });
+            $("#tab5  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.contractInfo[selectName] = $(this).val();
+            });
+            $("#tab5  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.contractInfo[textareaName] = $(this).val();
+            });
+            //incomeInfo
+            $("#tab6  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.incomeInfo[inputName] = $(this).val();
+            });
+            $("#tab6  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.incomeInfo[selectName] = $(this).val();
+            });
+            $("#tab6  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.incomeInfo[textareaName] = $(this).val();
+            });
+            $.ajax({
+                type:"POST",
+                url:"/engineeringproj/save",
+                contentType: 'application/json',
+                data: JSON.stringify(formInfo),
+                dataType:"json",
+                success:function(result){
+                    if(result.success === true){
+                        location.reload();
+                    }else{
+                        alert("数据存储出错");
                     }
-                });
-            }
+                }
+            });
         });
 
-        //修改用户信息框发送，验证
-        $("#editUser").click(function(e){
+        //修改信息框发送，验证
+        $("#saveProjEdited").click(function(e){
             e.preventDefault();
-            //清除输入框内表单的错误信息
-            clearErrInfo("editUserForm");
-            //初始化user对象，验证输入
-            var formInfo = {},hasError = false;
-            formInfo.user = {};
-            formInfo.user.name = $("#editUserForm input[name='name']").val();
-            if(formInfo.user.name === ""){
-                hasError = true;
-                showErrInfo("editUserForm","name","用户名不能为空");
-            }
-            formInfo.user._id = $("#editUserForm input[name='_id']").val();
-            formInfo.user.email = $("#editUserForm input[name='email']").val();
-            formInfo.user.phone = $("#editUserForm input[name='phone']").val();
-            formInfo.user.depart = $("#editUserForm input[name='depart']").val();
-            formInfo.user.city = $("#editUserForm input[name='city']").val();
-            //检查表单是否有误，无误则发送请求
-            if(hasError === true){
-                return;
-            }else{
-                $.ajax({
-                    type:"POST",
-                    url:"/user/update",
-                    contentType: 'application/json',
-                    data: JSON.stringify(formInfo),
-                    dataType:"json",
-                    success:function(result){
-                        if(result.success === true){
-                            location.reload();
-                        }else{
-                            if(result.msg === "用户名已被占用"){
-                                hasError = true;
-                                showErrInfo("editUserForm","name","用户名已被占用");
-                            }
-                            if(result.msg === "数据存储出错"){
-                                alert("数据存储出错");
-                            }
-                        }
+            //初始化proj对象
+            var formInfo = {};
+            formInfo.proj = {};
+            formInfo.proj.basicInfo = {};
+            formInfo.proj.materialInfo = {};
+            formInfo.proj.constructionInfo = {};
+            formInfo.proj.textInfo = {};
+            formInfo.proj.contractInfo = {};
+            formInfo.proj.incomeInfo = {};
+            //basicInfo
+            $("#tab1-edit  input").each(function(){
+                var inputName = $(this).attr("name");
+                if(inputName === "_id"){
+                    formInfo.proj._id = $(this).val();
+                }else{
+                    formInfo.proj.basicInfo[inputName] = $(this).val();
+                }
+            });
+            $("#tab1-edit select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.basicInfo[selectName] = $(this).val();
+            });
+            $("#tab1-edit textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.basicInfo[textareaName] = $(this).val();
+            });
+            //materialInfo
+            $("#tab2-edit  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.materialInfo[inputName] = $(this).val();
+            });
+            $("#tab2-edit  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.materialInfo[selectName] = $(this).val();
+            });
+            $("#tab2-edit  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.materialInfo[textareaName] = $(this).val();
+            });
+            //constructionInfo
+            $("#tab3-edit  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.constructionInfo[inputName] = $(this).val();
+            });
+            $("#tab3-edit  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.constructionInfo[selectName] = $(this).val();
+            });
+            $("#tab3-edit  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.constructionInfo[textareaName] = $(this).val();
+            });
+            //textInfo
+            $("#tab4-edit  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.textInfo[inputName] = $(this).val();
+            });
+            $("#tab4-edit  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.textInfo[selectName] = $(this).val();
+            });
+            $("#tab4-edit  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.textInfo[textareaName] = $(this).val();
+            });
+            //contractInfo
+            $("#tab5-edit  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.contractInfo[inputName] = $(this).val();
+            });
+            $("#tab5-edit  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.contractInfo[selectName] = $(this).val();
+            });
+            $("#tab5-edit  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.contractInfo[textareaName] = $(this).val();
+            });
+            //incomeInfo
+            $("#tab6-edit  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.incomeInfo[inputName] = $(this).val();
+            });
+            $("#tab6-edit  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.incomeInfo[selectName] = $(this).val();
+            });
+            $("#tab6-edit  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.incomeInfo[textareaName] = $(this).val();
+            });
+            $.ajax({
+                type:"POST",
+                url:"/engineeringproj/edit",
+                contentType: 'application/json',
+                data: JSON.stringify(formInfo),
+                dataType:"json",
+                success:function(result){
+                    if(result.success === true){
+                        location.reload();
+                    }else{
+                        alert("数据存储出错");
                     }
-                });
-            }
+                }
+            });
         });
 
         //输入框获得焦点时清除错误信息
