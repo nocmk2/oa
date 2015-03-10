@@ -105,7 +105,7 @@
                                     <tbody>
                                     <% engprojs.forEach(function (engproj, index) { %>
                                     <tr>
-                                        <td><input type="checkbox" name="selectOne" id="<%= user._id%>"/></td>
+                                        <td><input type="checkbox" name="selectOne" id="<%= engproj._id%>"/></td>
                                        <!--  <td><%= index %></td> -->
                                         <td><%if(engproj.basicInfo.serialno === null || engproj.basicInfo.serialno === undefined){%>
                                             <!--留白，不显示-->
@@ -2915,14 +2915,15 @@ you can add as many as you like
             $("input[name='selectOne']:checked").each(function(){
                 idsToDelete.push($(this).attr("id"));
             });
+            console.log(idsToDelete);
             $.ajax({
                 type:"DELETE",
-                url:"/user",
+                url:"/engineeringproj",
                 contentType: 'application/json',
                 data: JSON.stringify(idsToDelete),
                 dataType:"json",
-                success:function(msg){
-                    if(msg.result === "delete success"){
+                success:function(result){
+                    if(result.success === true){
                         location.reload();
                     }else{
                         alert("删除失败");

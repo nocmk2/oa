@@ -42,4 +42,15 @@ engprojService.updateOne = function(engproj,callback){
     });
 };
 
+//依据id删除项目
+engprojService.deleteById = function(ids,callback){
+    Engproj.remove({_id:{$in:ids}},function(err,nRemoved){
+        if(err){
+            callback(err);
+        }else{
+            callback(null,nRemoved);
+        }
+    });
+};
+
 module.exports = engprojService;
