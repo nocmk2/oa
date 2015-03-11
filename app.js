@@ -10,6 +10,8 @@ var flash = require('connect-flash');
 var authRoutes = require('./app/controllers/auth');
 var userRoutes = require('./app/controllers/user');
 var engprojRoutes = require('./app/controllers/engproj');
+var netprojRoutes = require('./app/controllers/netproj');
+var citygovprojRoutes = require('./app/controllers/citygovproj');
 
 var app = express();
 
@@ -54,6 +56,8 @@ if ('development' == app.get('env')) {
 authRoutes(app);
 userRoutes(app);
 engprojRoutes(app);
+netprojRoutes(app);
+citygovprojRoutes(app);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));

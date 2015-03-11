@@ -1,18 +1,17 @@
-var EngprojService = require('../models/services/engproj');
+var CitygovprojService = require('../models/services/citygovproj');
 var util = require('util');
 
 module.exports = function (app) {
 
-    app.get('/engineeringproj', checkLogin , function (req, res) {
-        //取出所有engprojs
-        EngprojService.getAll(function (err, engprojs) {
+    app.get('/citygovproj', checkLogin , function (req, res) {
+        CitygovprojService.getAll(function (err, citygovprojs) {
             if (err) {
-                engprojs = [];
+                citygovprojs = [];
             }
-            res.render('engineeringproj', {
-                title: '工程公司项目管理',
+            res.render('citygovproj', {
+                title: '网络部项目管理',
                 user: req.session.user,
-                engprojs: engprojs,
+                citygovprojs: citygovprojs,
                 success: req.flash('success').toString(),
                 error: req.flash('error').toString()
             });
@@ -20,9 +19,9 @@ module.exports = function (app) {
     });
 
     //删除项目
-    app.delete('/engineeringproj', checkLogin , function (req, res) {
+    app.delete('/citygovproj', checkLogin , function (req, res) {
         var idsToDelete = req.body;
-        EngprojService.deleteById(idsToDelete,function(err,nRemoved){
+        CitygovprojService.deleteById(idsToDelete,function(err,nRemoved){
             if(err){
                 console.log(err);
                 req.flash('error', err);
@@ -33,9 +32,9 @@ module.exports = function (app) {
     });
 
     //保存项目
-    app.post('/engineeringproj/save',checkLogin,function(req,res){
+    app.post('/citygovproj/save',checkLogin,function(req,res){
         var proj = req.body.proj;
-        EngprojService.save(proj,function (err, proj) {
+        CitygovprojService.save(proj,function (err, proj) {
             if (err) {
                 return res.send({
                     success:false,
@@ -49,22 +48,22 @@ module.exports = function (app) {
     });
 
     //获取项目信息
-    app.post('/engineeringproj/getById',checkLogin,function(req,res){
+    app.post('/citygovproj/getById',checkLogin,function(req,res){
         var id = req.body.id;
-        EngprojService.getById(id,function(err,engproj){
+        CitygovprojService.getById(id,function(err,citygovproj){
             if(err){
                 console.log(err);
                 req.flash('error', err);
-                res.send({engproj:null});
+                res.send({citygovproj:null});
             }
-            return res.send(engproj);
+            return res.send(citygovproj);
         });
     });
 
     //编辑项目信息
-    app.post('/engineeringproj/edit',checkLogin,function(req,res){
+    app.post('/citygovproj/edit',checkLogin,function(req,res){
         var proj = req.body.proj;
-        EngprojService.updateOne(proj,function (err, nUpdated) {
+        CitygovprojService.updateOne(proj,function (err, nUpdated) {
             if (err) {
                 return res.send({
                     success:false

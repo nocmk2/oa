@@ -1,18 +1,18 @@
-var EngprojService = require('../models/services/engproj');
+var NetprojService = require('../models/services/netproj');
 var util = require('util');
 
 module.exports = function (app) {
 
-    app.get('/engineeringproj', checkLogin , function (req, res) {
+    app.get('/netproj', checkLogin , function (req, res) {
         //取出所有engprojs
-        EngprojService.getAll(function (err, engprojs) {
+        NetprojService.getAll(function (err, netprojs) {
             if (err) {
-                engprojs = [];
+                netprojs = [];
             }
-            res.render('engineeringproj', {
-                title: '工程公司项目管理',
+            res.render('netproj', {
+                title: '网络部项目管理',
                 user: req.session.user,
-                engprojs: engprojs,
+                netprojs: netprojs,
                 success: req.flash('success').toString(),
                 error: req.flash('error').toString()
             });
@@ -20,9 +20,9 @@ module.exports = function (app) {
     });
 
     //删除项目
-    app.delete('/engineeringproj', checkLogin , function (req, res) {
+    app.delete('/netproj', checkLogin , function (req, res) {
         var idsToDelete = req.body;
-        EngprojService.deleteById(idsToDelete,function(err,nRemoved){
+        NetprojService.deleteById(idsToDelete,function(err,nRemoved){
             if(err){
                 console.log(err);
                 req.flash('error', err);
@@ -33,9 +33,10 @@ module.exports = function (app) {
     });
 
     //保存项目
-    app.post('/engineeringproj/save',checkLogin,function(req,res){
+    app.post('/netproj/save',checkLogin,function(req,res){
         var proj = req.body.proj;
-        EngprojService.save(proj,function (err, proj) {
+        console.log(util.inspect(proj));
+        NetprojService.save(proj,function (err, proj) {
             if (err) {
                 return res.send({
                     success:false,
@@ -49,22 +50,22 @@ module.exports = function (app) {
     });
 
     //获取项目信息
-    app.post('/engineeringproj/getById',checkLogin,function(req,res){
+    app.post('/netproj/getById',checkLogin,function(req,res){
         var id = req.body.id;
-        EngprojService.getById(id,function(err,engproj){
+        NetprojService.getById(id,function(err,netproj){
             if(err){
                 console.log(err);
                 req.flash('error', err);
-                res.send({engproj:null});
+                res.send({netproj:null});
             }
-            return res.send(engproj);
+            return res.send(netproj);
         });
     });
 
     //编辑项目信息
-    app.post('/engineeringproj/edit',checkLogin,function(req,res){
+    app.post('/netproj/edit',checkLogin,function(req,res){
         var proj = req.body.proj;
-        EngprojService.updateOne(proj,function (err, nUpdated) {
+        NetprojService.updateOne(proj,function (err, nUpdated) {
             if (err) {
                 return res.send({
                     success:false
