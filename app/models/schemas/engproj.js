@@ -22,7 +22,7 @@ var EngprojSchema = new mongoose.Schema({
         constructteam : String,//施工队
         constructofficer : String,//施工队负责人
         consigntime : String,//委托时间
-        basiccomments : String,//备注
+        basiccomments : String//备注
     },
     //材料信息
     materialInfo:{
