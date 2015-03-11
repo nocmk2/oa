@@ -2915,7 +2915,6 @@ you can add as many as you like
             $("input[name='selectOne']:checked").each(function(){
                 idsToDelete.push($(this).attr("id"));
             });
-            console.log(idsToDelete);
             $.ajax({
                 type:"DELETE",
                 url:"/engineeringproj",
@@ -2945,7 +2944,6 @@ you can add as many as you like
                 dataType:"json",
                 success:function(engproj){
                     if(engproj !== null){
-                        console.log(engproj._id);
                         //basicInfo
                         $("#tab1-edit  input").each(function(){
                             var inputName = $(this).attr("name");
@@ -3048,6 +3046,8 @@ you can add as many as you like
                 $(this).removeClass("active");
             });
             $("#editProj .tab-pane:first").addClass("active");
+
+            clearErrInfo("editProj");
         });
 
         //退出新增框时清空内容，回到第一步
@@ -3063,6 +3063,8 @@ you can add as many as you like
                 $(this).removeClass("active");
             });
             $("#addProj .tab-pane:first").addClass("active");
+
+            clearErrInfo("addProj");
         });
 
         //新增用户框发送，验证
@@ -3323,20 +3325,6 @@ you can add as many as you like
             });
         });
 
-        //输入框获得焦点时清除错误信息
-        $("#newuser-form input").each(function(){
-            var inputName = $(this).attr("name");
-            $(this).focus(function(){
-                clearErrInfoByInputName("newuser-form",inputName);
-            });
-        });
-        $("#editUserForm input").each(function(){
-            var inputName = $(this).attr("name");
-            $(this).focus(function(){
-                clearErrInfoByInputName("editUserForm",inputName);
-            });
-        });
-
         //清除输入框内表单的错误信息
         function clearErrInfo(formId){
             $("#" + formId + " span[class*='err-info']").remove();
@@ -3360,7 +3348,6 @@ you can add as many as you like
 
         //展示输入框内表单的错误信息
         function showErrInfo(formId,inputName,errInfo){
-            console.log(formId + "," + inputName + "," + errInfo);
             $("#" + formId + " input[name='" + inputName + "']")
                     .parent()
                     .parent()

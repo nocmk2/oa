@@ -38,7 +38,7 @@
                     <!-- new widget -->
                     <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-editbutton="false">
                         <header>
-                            <span class="widget-icon"> <i class="fa fa-lg fa-fw fa-wrench"></i> </span>
+                            <span class="widget-icon"> <i class="fa fa-lg fa-fw fa-signal"></i> </span>
 
                             <h2 id="gridTitle">网络部项目管理 </h2>
                         </header>
@@ -80,92 +80,92 @@
                                         <th><input type="checkbox" name="selectAll"/></th>
                                         <th>序号
                                         </th>
-                                        <th>传输编号
-                                        </th>
-                                        <th>受控编号
-                                        </th>
-                                        <th>工程名称
+                                        <th>工单号
                                         </th>
                                         <th>甲方项目负责人
                                         </th>
                                         <th>乙方项目负责人
                                         </th>
+                                        <th>项目属性
+                                        </th>
                                         <th>项目类别
                                         </th>
-                                        <th>工程属性
+                                        <th>实施原因
                                         </th>
                                         <th>项目名称
                                         </th>
                                         <th>工程地址
+                                        </th>
+                                        <th>所属区域
                                         </th>
                                         <th>操作
                                         </th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <% engprojs.forEach(function (engproj, index) { %>
+                                    <% netprojs.forEach(function (netproj, index) { %>
                                     <tr>
-                                        <td><input type="checkbox" name="selectOne" id="<%= engproj._id%>"/></td>
+                                        <td><input type="checkbox" name="selectOne" id="<%= netproj._id%>"/></td>
                                        <!--  <td><%= index %></td> -->
-                                        <td><%if(engproj.basicInfo.serialno === null || engproj.basicInfo.serialno === undefined){%>
+                                        <td><%if(netproj.basicInfo.serialno === null || netproj.basicInfo.serialno === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= engproj.basicInfo.serialno%>
+                                            <%= netproj.basicInfo.serialno%>
                                             <%}%></td>
-                                        <td><%if(engproj.basicInfo.transid === null || engproj.basicInfo.transid === undefined){%>
+                                        <td><%if(netproj.basicInfo.billno === null || netproj.basicInfo.billno === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= engproj.basicInfo.transid%>
+                                            <%= netproj.basicInfo.billno%>
                                             <%}%></td>
-                                        <td><%if(engproj.basicInfo.controlid === null || engproj.basicInfo.controlid === undefined){%>
+                                        <td><%if(netproj.basicInfo.firstpartyofficer === null || netproj.basicInfo.firstpartyofficer === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= engproj.basicInfo.controlid%>
+                                            <%= netproj.basicInfo.firstpartyofficer%>
                                             <%}%>
                                         </td>
-                                        <td><%if(engproj.basicInfo.projname === null || engproj.basicInfo.projname === undefined){%>
+                                        <td><%if(netproj.basicInfo.secondpartyofficer === null || netproj.basicInfo.secondpartyofficer === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= engproj.basicInfo.projname%>
+                                            <%= netproj.basicInfo.secondpartyofficer%>
                                             <%}%>
                                         </td>
-                                        <td><%if(engproj.basicInfo.firstpartyofficer === null || engproj.basicInfo.firstpartyofficer === undefined){%>
+                                        <td><%if(netproj.basicInfo.properties === null || netproj.basicInfo.properties === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= engproj.basicInfo.firstpartyofficer%>
+                                            <%= netproj.basicInfo.properties%>
                                             <%}%>
                                         </td>
-                                        <td><%if(engproj.basicInfo.secondpartyofficer === null || engproj.basicInfo.secondpartyofficer === undefined){%>
+                                        <td><%if(netproj.basicInfo.projtype === null || netproj.basicInfo.projtype === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= engproj.basicInfo.secondpartyofficer%>
+                                            <%= netproj.basicInfo.projtype%>
                                             <%}%>
                                         </td>
-                                        <td><%if(engproj.basicInfo.projtype === null || engproj.basicInfo.projtype === undefined){%>
+                                        <td><%if(netproj.basicInfo.reason === null || netproj.basicInfo.reason === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= engproj.basicInfo.projtype%>
+                                            <%= netproj.basicInfo.reason%>
                                             <%}%>
                                         </td>
-                                        <td><%if(engproj.basicInfo.properties === null || engproj.basicInfo.properties === undefined){%>
+                                        <td><%if(netproj.basicInfo.name === null || netproj.basicInfo.name === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= engproj.basicInfo.properties%>
+                                            <%= netproj.basicInfo.name%>
                                             <%}%>
                                         </td>
-                                        <td><%if(engproj.basicInfo.subname === null || engproj.basicInfo.subname === undefined){%>
+                                        <td><%if(netproj.basicInfo.address === null || netproj.basicInfo.address === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= engproj.basicInfo.subname%>
+                                            <%= netproj.basicInfo.address%>
                                             <%}%>
                                         </td>
-                                        <td><%if(engproj.basicInfo.address === null || engproj.basicInfo.address === undefined){%>
+                                        <td><%if(netproj.basicInfo.area === null || netproj.basicInfo.area === undefined){%>
                                             <!--留白，不显示-->
                                             <%}else{ %>
-                                            <%= engproj.basicInfo.address%>
+                                            <%= netproj.basicInfo.area%>
                                             <%}%>
                                         </td>
-                                        <td><a class="edit" data-toggle="modal"  href="#editProj" data-projId="<%= engproj._id%>">详情</a></td>
+                                        <td><a class="edit" data-toggle="modal"  href="#editProj" data-projId="<%= netproj._id%>">详情</a></td>
                                     </tr>
                                     <% }) %>
                                     </tbody>
@@ -217,7 +217,7 @@
                                         <div class="jarviswidget-ctrls" role="menu">
                                             <a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn closeBtn" rel="tooltip" title="" data-placement="bottom" data-original-title="close" data-dismiss="modal"><i class="fa fa-times"></i></a>
                                         </div>
-                                        <h2>新增工程公司项目 </h2>
+                                        <h2>新增网络部项目 </h2>
                                     </header>
 
                                     <!-- widget div-->
@@ -1466,7 +1466,7 @@
                                 <header>
                                     <div class="jarviswidget-ctrls" role="menu">
                                         <a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn closeBtn" data-dismiss="modal" rel="tooltip" title="" data-placement="bottom" data-original-title="close"><i class="fa fa-times"></i></a></div>
-                                    <h2>工程公司项目详情 </h2>
+                                    <h2>网络部项目详情 </h2>
                                 </header>
 
                                 <!-- widget div-->
@@ -2889,7 +2889,7 @@ you can add as many as you like
         /* END TABLE TOOLS */
 
         //标题修正
-        $("#gridTitle").text("工程公司项目管理");
+        $("#gridTitle").text("网络部项目管理");
 
         //在表格内添加管理按钮
         $(".widget-body-toolbar").append($("#ControlButton").html());
@@ -2915,7 +2915,6 @@ you can add as many as you like
             $("input[name='selectOne']:checked").each(function(){
                 idsToDelete.push($(this).attr("id"));
             });
-            console.log(idsToDelete);
             $.ajax({
                 type:"DELETE",
                 url:"/engineeringproj",
@@ -2945,7 +2944,6 @@ you can add as many as you like
                 dataType:"json",
                 success:function(engproj){
                     if(engproj !== null){
-                        console.log(engproj._id);
                         //basicInfo
                         $("#tab1-edit  input").each(function(){
                             var inputName = $(this).attr("name");
@@ -3048,6 +3046,8 @@ you can add as many as you like
                 $(this).removeClass("active");
             });
             $("#editProj .tab-pane:first").addClass("active");
+
+            clearErrInfo("editProj");
         });
 
         //退出新增框时清空内容，回到第一步
@@ -3063,6 +3063,8 @@ you can add as many as you like
                 $(this).removeClass("active");
             });
             $("#addProj .tab-pane:first").addClass("active");
+
+            clearErrInfo("addProj");
         });
 
         //新增用户框发送，验证
@@ -3282,23 +3284,44 @@ you can add as many as you like
         });
 
         //数字验证
-        $(".digit").each(function(){
-            $(this).blur(function(e){
-                var text =
-            });
-        });
+        $("#addProj .digit").each(function(){
+            var patten = new RegExp(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/);
 
-        //输入框获得焦点时清除错误信息
-        $("#newuser-form input").each(function(){
-            var inputName = $(this).attr("name");
-            $(this).focus(function(){
-                clearErrInfoByInputName("newuser-form",inputName);
+            $(this).focus(function(e){
+                clearErrInfoByInputName("addProj",$(this).attr("name"));
+
+                if($("#saveProj").hasClass("disabled")){
+                    $(this).val("");
+                    $("#saveProj").removeClass("disabled");
+                }
+
+            });
+
+            $(this).blur(function(e){
+                var text = $(this).val();
+                if(patten.test(text) !== true){
+                    showErrInfo("addProj",$(this).attr("name"),"输入内容需要是数字！");
+                    $("#saveProj").addClass("disabled");
+                }
             });
         });
-        $("#editUserForm input").each(function(){
-            var inputName = $(this).attr("name");
-            $(this).focus(function(){
-                clearErrInfoByInputName("editUserForm",inputName);
+        $("#editProj .digit").each(function(){
+            var patten = new RegExp(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/);
+
+            $(this).focus(function(e){
+                clearErrInfoByInputName("editProj",$(this).attr("name"));
+
+                if($("#saveProjEdited").hasClass("disabled")){
+                    $(this).val("");
+                    $("#saveProjEdited").removeClass("disabled");
+                }
+            });
+            $(this).blur(function(e){
+                var text = $(this).val();
+                if(patten.test(text) !== true){
+                    showErrInfo("editProj",$(this).attr("name"),"输入内容需要是数字！");
+                    $("#saveProjEdited").addClass("disabled");
+                }
             });
         });
 

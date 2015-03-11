@@ -9,6 +9,7 @@ module.exports = function (app) {
             if (err) {
                 citygovprojs = [];
             }
+            console.log(util.inspect(citygovprojs));
             res.render('citygovproj', {
                 title: '网络部项目管理',
                 user: req.session.user,

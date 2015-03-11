@@ -4,7 +4,7 @@ var CitygovprojSchema = new mongoose.Schema({
     //基本信息
     basicInfo:{
         serialno :String,//序号
-        isstatis : String,//是否统计
+        isstatis  : String,//是否统计
         controlid :String, //受控编号
         projname :String,//工程名称
         firstpartyofficer : String,//甲方项目负责人
