@@ -9,48 +9,48 @@ citygovprojService.getAll = function(callback){
 };
 
 //保存项目
-//engprojService.save = function(engproj,callback){
-//    var engproj = new Engproj(engproj);
-//    engproj.save(function(err,engprojSaved){
-//        if(err) {
-//            callback(err);
-//        }else{
-//            callback(null,engprojSaved);
-//        }
-//    });
-//};
-//
-////依据ID获取项目
-//engprojService.getById = function(id,callback){
-//    Engproj.findById(id,function(err,engproj){
-//        if(err){
-//            callback(err);
-//        }else{
-//            callback(null,engproj);
-//        }
-//    });
-//};
-//
-////更新项目
-//engprojService.updateOne = function(engproj,callback){
-//    Engproj.findByIdAndUpdate(engproj._id,engproj,function(err,nUpdated){
-//        if(err){
-//            callback(err);
-//        }else{
-//            callback(null,nUpdated);
-//        }
-//    });
-//};
-//
-////依据id删除项目
-//engprojService.deleteById = function(ids,callback){
-//    Engproj.remove({_id:{$in:ids}},function(err,nRemoved){
-//        if(err){
-//            callback(err);
-//        }else{
-//            callback(null,nRemoved);
-//        }
-//    });
-//};
+citygovprojService.save = function(citygovproj,callback){
+    var citygovproj = new Citygovproj(citygovproj);
+    citygovproj.save(function(err,citygovprojSaved){
+        if(err) {
+            callback(err);
+        }else{
+            callback(null,citygovprojSaved);
+        }
+    });
+};
+
+//依据ID获取项目
+citygovprojService.getById = function(id,callback){
+    Citygovproj.findById(id,function(err,citygovproj){
+        if(err){
+            callback(err);
+        }else{
+            callback(null,citygovproj);
+        }
+    });
+};
+
+//更新项目
+citygovprojService.updateOne = function(citygovproj,callback){
+    Citygovproj.findByIdAndUpdate(citygovproj._id,citygovproj,function(err,nUpdated){
+        if(err){
+            callback(err);
+        }else{
+            callback(null,nUpdated);
+        }
+    });
+};
+
+//依据id删除项目
+citygovprojService.deleteById = function(ids,callback){
+    Citygovproj.remove({_id:{$in:ids}},function(err,nRemoved){
+        if(err){
+            callback(err);
+        }else{
+            callback(null,nRemoved);
+        }
+    });
+};
 
 module.exports = citygovprojService;

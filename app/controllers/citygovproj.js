@@ -4,12 +4,10 @@ var util = require('util');
 module.exports = function (app) {
 
     app.get('/citygovproj', checkLogin , function (req, res) {
-        //citygovprojs
         CitygovprojService.getAll(function (err, citygovprojs) {
             if (err) {
                 citygovprojs = [];
             }
-            console.log(util.inspect(citygovprojs));
             res.render('citygovproj', {
                 title: '网络部项目管理',
                 user: req.session.user,
@@ -20,66 +18,62 @@ module.exports = function (app) {
         });
     });
 
-    ////删除项目
-    //app.delete('/engineeringproj', checkLogin , function (req, res) {
-    //    var idsToDelete = req.body;
-    //    console.log("ids:");
-    //    console.log(idsToDelete);
-    //    EngprojService.deleteById(idsToDelete,function(err,nRemoved){
-    //        if(err){
-    //            console.log(err);
-    //            req.flash('error', err);
-    //            return res.send({success:false});
-    //        }
-    //        console.log("nr: ");
-    //        console.log(nRemoved);
-    //        return res.send({success:true});
-    //    });
-    //});
-    //
-    ////保存项目
-    //app.post('/engineeringproj/save',checkLogin,function(req,res){
-    //    var proj = req.body.proj;
-    //    EngprojService.save(proj,function (err, proj) {
-    //        if (err) {
-    //            return res.send({
-    //                success:false,
-    //                msg:"数据存储出错"
-    //            });
-    //        }
-    //        return res.send({
-    //            success:true
-    //        });
-    //    });
-    //});
-    //
-    ////获取项目信息
-    //app.post('/engineeringproj/getById',checkLogin,function(req,res){
-    //    var id = req.body.id;
-    //    EngprojService.getById(id,function(err,engproj){
-    //        if(err){
-    //            console.log(err);
-    //            req.flash('error', err);
-    //            res.send({engproj:null});
-    //        }
-    //        return res.send(engproj);
-    //    });
-    //});
-    //
-    ////编辑项目信息
-    //app.post('/engineeringproj/edit',checkLogin,function(req,res){
-    //    var proj = req.body.proj;
-    //    EngprojService.updateOne(proj,function (err, nUpdated) {
-    //        if (err) {
-    //            return res.send({
-    //                success:false
-    //            });
-    //        }
-    //        return res.send({
-    //            success:true
-    //        });
-    //    });
-    //});
+    //删除项目
+    app.delete('/citygovproj', checkLogin , function (req, res) {
+        var idsToDelete = req.body;
+        CitygovprojService.deleteById(idsToDelete,function(err,nRemoved){
+            if(err){
+                console.log(err);
+                req.flash('error', err);
+                return res.send({success:false});
+            }
+            return res.send({success:true});
+        });
+    });
+
+    //保存项目
+    app.post('/citygovproj/save',checkLogin,function(req,res){
+        var proj = req.body.proj;
+        CitygovprojService.save(proj,function (err, proj) {
+            if (err) {
+                return res.send({
+                    success:false,
+                    msg:"数据存储出错"
+                });
+            }
+            return res.send({
+                success:true
+            });
+        });
+    });
+
+    //获取项目信息
+    app.post('/citygovproj/getById',checkLogin,function(req,res){
+        var id = req.body.id;
+        CitygovprojService.getById(id,function(err,citygovproj){
+            if(err){
+                console.log(err);
+                req.flash('error', err);
+                res.send({citygovproj:null});
+            }
+            return res.send(citygovproj);
+        });
+    });
+
+    //编辑项目信息
+    app.post('/citygovproj/edit',checkLogin,function(req,res){
+        var proj = req.body.proj;
+        CitygovprojService.updateOne(proj,function (err, nUpdated) {
+            if (err) {
+                return res.send({
+                    success:false
+                });
+            }
+            return res.send({
+                success:true
+            });
+        });
+    });
 
     function checkLogin(req, res, next) {
         if (!req.session.user) {

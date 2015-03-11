@@ -22,16 +22,12 @@ module.exports = function (app) {
     //删除项目
     app.delete('/engineeringproj', checkLogin , function (req, res) {
         var idsToDelete = req.body;
-        console.log("ids:");
-        console.log(idsToDelete);
         EngprojService.deleteById(idsToDelete,function(err,nRemoved){
             if(err){
                 console.log(err);
                 req.flash('error', err);
                 return res.send({success:false});
             }
-            console.log("nr: ");
-            console.log(nRemoved);
             return res.send({success:true});
         });
     });
