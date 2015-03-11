@@ -3282,11 +3282,46 @@ you can add as many as you like
         });
 
         //数字验证
-//        $(".digit").each(function(){
-//            $(this).blur(function(e){
-//                var text =
-//            });
-//        });
+        $("#addProj .digit").each(function(){
+            var patten = new RegExp(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/);
+
+            $(this).focus(function(e){
+                clearErrInfoByInputName("addProj",$(this).attr("name"));
+
+                if($("#saveProj").hasClass("disabled")){
+                    $(this).val("");
+                    $("#saveProj").removeClass("disabled");
+                }
+
+            });
+
+            $(this).blur(function(e){
+                var text = $(this).val();
+                if(patten.test(text) !== true){
+                    showErrInfo("addProj",$(this).attr("name"),"输入内容需要是数字！");
+                    $("#saveProj").addClass("disabled");
+                }
+            });
+        });
+        $("#editProj .digit").each(function(){
+            var patten = new RegExp(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/);
+
+            $(this).focus(function(e){
+                clearErrInfoByInputName("editProj",$(this).attr("name"));
+
+                if($("#saveProjEdited").hasClass("disabled")){
+                    $(this).val("");
+                    $("#saveProjEdited").removeClass("disabled");
+                }
+            });
+            $(this).blur(function(e){
+                var text = $(this).val();
+                if(patten.test(text) !== true){
+                    showErrInfo("editProj",$(this).attr("name"),"输入内容需要是数字！");
+                    $("#saveProjEdited").addClass("disabled");
+                }
+            });
+        });
 
         //输入框获得焦点时清除错误信息
         $("#newuser-form input").each(function(){
@@ -3325,6 +3360,7 @@ you can add as many as you like
 
         //展示输入框内表单的错误信息
         function showErrInfo(formId,inputName,errInfo){
+            console.log(formId + "," + inputName + "," + errInfo);
             $("#" + formId + " input[name='" + inputName + "']")
                     .parent()
                     .parent()
