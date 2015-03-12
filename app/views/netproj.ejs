@@ -730,7 +730,7 @@
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
                                                                                 <div >
-                                                                                    <input class="form-control digit" placeholder="实际收款" type="text" name="income">
+                                                                                    <input class="form-control digit income" placeholder="实际收款" type="text" name="income">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -744,7 +744,7 @@
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
                                                                                 <div >
-                                                                                    <input class="form-control digit" placeholder="施工队结款" type="text" name="outcome">
+                                                                                    <input class="form-control digit outcome" placeholder="施工队结款" type="text" name="outcome">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -772,7 +772,7 @@
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
                                                                                 <div >
-                                                                                    <input class="form-control digit" placeholder="其他费用" type="text" name="otherfee">
+                                                                                    <input class="form-control digit otherfee" placeholder="其他费用" type="text" name="otherfee">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -786,7 +786,7 @@
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
                                                                                 <div >
-                                                                                    <input class="form-control digit" placeholder="利润" type="text" name="profit">
+                                                                                    <input class="form-control digit profit" placeholder="利润" type="text" name="profit">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1388,7 +1388,7 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
                                                                             <div >
-                                                                                <input class="form-control digit" placeholder="实际收款" type="text" name="income">
+                                                                                <input class="form-control digit income" placeholder="实际收款" type="text" name="income">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1402,7 +1402,7 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
                                                                             <div >
-                                                                                <input class="form-control digit" placeholder="施工队结款" type="text" name="outcome">
+                                                                                <input class="form-control digit outcome" placeholder="施工队结款" type="text" name="outcome">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1430,7 +1430,7 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
                                                                             <div >
-                                                                                <input class="form-control digit" placeholder="其他费用" type="text" name="otherfee">
+                                                                                <input class="form-control digit otherfee" placeholder="其他费用" type="text" name="otherfee">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1444,7 +1444,7 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
                                                                             <div >
-                                                                                <input class="form-control digit" placeholder="利润" type="text" name="profit">
+                                                                                <input class="form-control digit profit" placeholder="自动计算" type="text" name="profit">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -2026,6 +2026,71 @@ you can add as many as you like
                 $("div[class='ColVis_collection TableTools_collection'] button:first-child").remove();
             },100);
         });
+
+        //利润计算
+        $(".profit").attr("disabled","disabled");
+
+        $("#addProj .income").blur(function(e){
+            getProfit("addProj");
+        });
+
+        $("#addProj .outcome").blur(function(e){
+            getProfit("addProj");
+        });
+
+        $("#addProj .otherfee").blur(function(e){
+            getProfit("addProj");
+        });
+
+        $("#addProj .profit").blur(function(e){
+            getProfit("addProj");
+        });
+
+        $("#editProj .income").blur(function(e){
+            getProfit("editProj");
+        });
+
+        $("#editProj .outcome").blur(function(e){
+            getProfit("editProj");
+        });
+
+        $("#editProj .otherfee").blur(function(e){
+            getProfit("editProj");
+        });
+
+        $("#editProj .profit").blur(function(e){
+            getProfit("editProj");
+        });
+
+        var getProfit = function(formId){
+            var income =  (function(){
+                if($("#"+ formId + " .income").val() === ""){
+                    return 0;
+                }else{
+                    return $("#"+ formId + " .income").val();
+                }
+            }());
+            var outcome =  (function(){
+                if($("#"+ formId + " .outcome").val() === ""){
+                    return 0;
+                }else{
+                    return $("#"+ formId + " .outcome").val();
+                }
+            }());
+            var otherfee = (function(){
+                if($("#"+ formId + " .otherfee").val() === ""){
+                    return 0;
+                }else{
+                    return $("#"+ formId + " .otherfee").val();
+                }
+            }());
+            var result = parseFloat(income) - parseFloat(outcome) - parseFloat(otherfee);
+            if(isNaN(result) === true){
+                $("#"+ formId + " .profit").val("");
+            }else{
+                $("#"+ formId + " .profit").val(result);
+            }
+        };
 
     })
 
