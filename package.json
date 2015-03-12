@@ -11,6 +11,7 @@
     "ejs": "*",
     "express": "3.18.3",
     "mongodb": "*",
-    "mongoose": "^3.8.24"
+    "mongoose": "^3.8.24",
+    "node-xlsx": "^0.5.1"
   }
 }
