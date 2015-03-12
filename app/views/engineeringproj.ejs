@@ -718,8 +718,8 @@
                                                                     <p>&nbsp;</p>
                                                                 </div>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">申请领料日期（甲供）：</label>
+                                                                <div class="form-group firstParty">
+                                                                    <label class="control-label col-md-2 ">申请领料日期：</label>
                                                                     <div class="col-md-10">
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
@@ -733,14 +733,28 @@
                                                                     <p>&nbsp;</p>
                                                                 </div>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">实际领料日期（甲供）</label>
+                                                                <div class="form-group firstParty">
+                                                                    <label class="control-label col-md-2 ">实际领料日期</label>
                                                                     <div class="col-md-10">
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
                                                                                 <div class="input-group">
                                                                                     <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="actualtime">
                                                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p>&nbsp;</p>
+                                                                </div>
+
+                                                                <div class="form-group secondParty hidden">
+                                                                    <label class="control-label col-md-2 ">主材料金额：</label>
+                                                                    <div class="col-md-10">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div >
+                                                                                    <input class="form-control digit" placeholder="主材料金额" type="text" name="materialamount">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -761,20 +775,6 @@
                                                                                             <option value="光缆材料表A">光缆材料表A</option>
                                                                                             <option value="光缆材料表B">光缆材料表B</option>
                                                                                         </select> <i></i> </label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">主材料金额（乙供）：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control digit" placeholder="主材料金额（乙供）" type="text" name="materialamount">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1968,8 +1968,8 @@
                                                                 <p>&nbsp;</p>
                                                             </div>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">申请领料日期（甲供）：</label>
+                                                            <div class="form-group firstParty">
+                                                                <label class="control-label col-md-2 ">申请领料日期：</label>
                                                                 <div class="col-md-10">
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
@@ -1983,14 +1983,28 @@
                                                                 <p>&nbsp;</p>
                                                             </div>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">实际领料日期（甲供）</label>
+                                                            <div class="form-group firstParty">
+                                                                <label class="control-label col-md-2 ">实际领料日期</label>
                                                                 <div class="col-md-10">
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
                                                                             <div class="input-group">
                                                                                 <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="actualtime">
                                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <p>&nbsp;</p>
+                                                            </div>
+
+                                                            <div class="form-group secondParty hidden">
+                                                                <label class="control-label col-md-2 ">主材料金额：</label>
+                                                                <div class="col-md-10">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12">
+                                                                            <div >
+                                                                                <input class="form-control digit" placeholder="主材料金额" type="text" name="materialamount">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -2011,20 +2025,6 @@
                                                                                         <option value="光缆材料表A">光缆材料表A</option>
                                                                                         <option value="光缆材料表B">光缆材料表B</option>
                                                                                     </select> <i></i> </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">主材料金额（乙供）：</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
-                                                                                <input class="form-control digit" placeholder="主材料金额（乙供）" type="text" name="materialamount">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -3373,6 +3373,25 @@ you can add as many as you like
             },100);
         });
 
+        //甲供乙供切换
+        $("select[name='materialoffer']").change(function(e){
+            var party = $(this).val();
+            if(party === "甲供"){
+                $(".firstParty").each(function(e){
+                    $(this).removeClass("hidden");
+                });
+                $(".secondParty").each(function(e){
+                    $(this).addClass("hidden");
+                });
+            }else{
+                $(".secondParty").each(function(e){
+                    $(this).removeClass("hidden");
+                });
+                $(".firstParty").each(function(e){
+                    $(this).addClass("hidden");
+                });
+            }
+        });
 
     })
 
