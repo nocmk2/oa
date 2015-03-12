@@ -52,6 +52,11 @@
                                <button id="delete-proj" class="btn btn-default" href="javascript:void(0);"
                                        style="position:relative">删除工程公司项目
                                 </button>
+                                <a href="/engineeringproj/getExcel">
+                                    <button id="exportToExcel" class="btn btn-default" href="javascript:void(0);"
+                                        style="position:relative">导出所有项目Excel
+                                    </button>
+                                </a>
                             </div>
                         </div>
 
@@ -3367,6 +3372,7 @@ you can add as many as you like
                 $("div[class='ColVis_collection TableTools_collection'] button:first-child").remove();
             },100);
         });
+
 
     })
 

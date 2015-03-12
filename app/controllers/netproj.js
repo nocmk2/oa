@@ -1,5 +1,6 @@
 var NetprojService = require('../models/services/netproj');
 var util = require('util');
+var xlsx = require('node-xlsx');
 
 module.exports = function (app) {
 
