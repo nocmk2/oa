@@ -120,9 +120,6 @@ module.exports = function (app) {
             });
 
         });
-
-
-
     });
 
     function checkLogin(req, res, next) {

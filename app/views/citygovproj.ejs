@@ -52,9 +52,11 @@
                                <button id="delete-proj" class="btn btn-default" href="javascript:void(0);"
                                        style="position:relative">删除市政项目
                                 </button>
-                                <button id="exportToExcel" class="btn btn-default" href="javascript:void(0);"
-                                        style="position:relative">导出所有项目Excel
-                                </button>
+                                <a href="/citygovproj/getExcel">
+                                    <button id="exportToExcel" class="btn btn-default" href="javascript:void(0);"
+                                            style="position:relative">导出此项目Excel
+                                    </button>
+                                </a>
                             </div>
                         </div>
 
@@ -1033,7 +1035,7 @@
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
                                                                                 <div class="input-group">
-                                                                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyprepaytime">
+                                                                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyproceprepaytime">
                                                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                                                 </div>
                                                                             </div>
@@ -1048,7 +1050,7 @@
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
                                                                                 <div >
-                                                                                    <input class="form-control digit"  placeholder="乙方预付款开票金额" type="text" name="secondpartyprepayamount">
+                                                                                    <input class="form-control digit"  placeholder="乙方预付款开票金额" type="text" name="secondpartyproceprepayamount">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1179,6 +1181,35 @@
                                                                             <div class="col-sm-12">
                                                                                 <div class="input-group">
                                                                                     <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyfinalpaytime">
+                                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p>&nbsp;</p>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-2">乙方尾款到款金额：</label>
+                                                                    <div class="col-md-10">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div >
+                                                                                    <input class="form-control digit"  placeholder="乙方尾款到款金额" type="text" name="secondpartyfinalpayaount">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p>&nbsp;</p>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-2">我公司合同签订日期：</label>
+                                                                    <div class="col-md-10">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="input-group">
+                                                                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="contracttime">
                                                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                                                 </div>
                                                                             </div>
@@ -2484,6 +2515,35 @@
                                                                         <div class="col-sm-12">
                                                                             <div class="input-group">
                                                                                 <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyfinalpaytime">
+                                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <p>&nbsp;</p>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-2">乙方尾款到款金额：</label>
+                                                                <div class="col-md-10">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12">
+                                                                            <div >
+                                                                                <input class="form-control digit"  placeholder="乙方尾款到款金额" type="text" name="secondpartyfinalpayaount">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <p>&nbsp;</p>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-2">我公司合同签订日期：</label>
+                                                                <div class="col-md-10">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="contracttime">
                                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                                             </div>
                                                                         </div>

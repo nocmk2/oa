@@ -55,8 +55,8 @@ var CitygovprojSchema = new mongoose.Schema({
         secondpartycontractamount : String,//乙方合同金额
         secondpartyaudittime : String,//乙方送审日期
         secondpartyauditamount : String,//乙方审定金额
-        secondpartyprepaytime : String,//乙方预付款开票日期（附件）
-        secondpartyprepayamount : String,//乙方预付款开票金额
+        secondpartyproceprepaytime : String,//乙方预付款开票日期（附件）
+        secondpartyproceprepayamount : String,//乙方预付款开票金额
         secondpartyprocetime : String,//乙方进度款开票日期（附件）
         secondpartyproceamount : String,//乙方进度款开票金额
         secondpartyfinaltime : String,//乙方尾款开票日期（附件）
