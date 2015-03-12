@@ -3373,6 +3373,35 @@ you can add as many as you like
             },100);
         });
 
+        //甲乙供初始化
+        $("a[class='edit']").each(function(e){
+            $(this).click(function(e){
+                setTimeout(function(){
+                    if($("#editProj select[name='materialoffer']").val() === "甲供"){
+                        $(".firstParty").each(function(e){
+                            $(this).removeClass("hidden");
+                        });
+                        $(".secondParty").each(function(e){
+                            $(this).addClass("hidden");
+                            $(this).find("input").each(function(e){
+                                $(this).val("");
+                            });
+                        });
+                    }else{
+                        $(".secondParty").each(function(e){
+                            $(this).removeClass("hidden");
+                        });
+                        $(".firstParty").each(function(e){
+                            $(this).addClass("hidden");
+                            $(this).find("input").each(function(e){
+                                $(this).val("");
+                            });
+                        });
+                    }
+                },500);
+            });
+        });
+
         //甲供乙供切换
         $("select[name='materialoffer']").change(function(e){
             var party = $(this).val();
@@ -3382,6 +3411,9 @@ you can add as many as you like
                 });
                 $(".secondParty").each(function(e){
                     $(this).addClass("hidden");
+                    $(this).find("input").each(function(e){
+                        $(this).val("");
+                    });
                 });
             }else{
                 $(".secondParty").each(function(e){
@@ -3389,6 +3421,9 @@ you can add as many as you like
                 });
                 $(".firstParty").each(function(e){
                     $(this).addClass("hidden");
+                    $(this).find("input").each(function(e){
+                        $(this).val("");
+                    });
                 });
             }
         });
