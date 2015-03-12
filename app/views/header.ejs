@@ -152,7 +152,7 @@
         <!-- input: search field -->
         <form action="#search.html" class="header-search pull-right">
             <input type="text" placeholder="输入项目名称" id="search-fld">
-            <button type="submit">
+            <button type="submit" id="searchProjByInfo">
                 <i class="fa fa-search"></i>
             </button>
             <a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
@@ -162,17 +162,17 @@
         <!-- multiple lang dropdown : find all flags in the image folder -->
         <ul class="header-dropdown-list hidden-xs">
             <li>
-                <a href="#" class="dropdown-toggle fa fa-search" data-toggle="dropdown"> <span> 工程公司项目 </span>
+                <a href="#" class="dropdown-toggle fa fa-search" data-toggle="dropdown" id="projTypeToSearch" data-proj="engineeringproj"> <span> 工程公司项目 </span>
                     <i class="fa fa-angle-down"></i> </a>
                 <ul class="dropdown-menu pull-right">
-                    <li class="active">
-                        <a class="fa fa-wrench" href="javascript:void(0);">工程公司项目</a>
+                    <li>
+                        <a class="fa fa-wrench projTypeForSearch" href="javascript:void(0);" data-proj="engineeringproj" >工程公司项目</a>
                     </li>
                     <li>
-                        <a class="fa fa-signal" href="javascript:void(0);">网络部项目</a>
+                        <a class="fa fa-signal projTypeForSearch" href="javascript:void(0);" data-proj="netproj" >网络部项目</a>
                     </li>
                     <li >
-                        <a class="fa fa-home" href="javascript:void(0);">市政项目</a>
+                        <a class="fa fa-home projTypeForSearch" href="javascript:void(0);"  data-proj="citygovproj">市政项目</a>
                     </li>
                 </ul>
             </li>
@@ -290,4 +290,7 @@
     <span class="minifyme"> <i class="fa fa-arrow-circle-left hit"></i> </span>
 
 </aside>
+
+
+
 <!-- END NAVIGATION -->
