@@ -107,9 +107,9 @@ module.exports = function (app) {
 
             var buffer = xlsx.build([{name: "网络部项目", data: data}]);
 
-            fs.writeFile(path.normalize("public/excel/网络部项目.xlsx"),buffer,function(err){
+            fs.writeFile(path.join(__dirname,"../../public/excel/网络部项目.xlsx"),buffer,function(err){
                 if(err) console.log(err);
-                res.download(path.normalize("public/excel/网络部项目.xlsx"), function (err) {
+                res.download(path.join(__dirname,"../../public/excel/网络部项目.xlsx"), function (err) {
                     if(err) console.log(err);
                 });
             });
