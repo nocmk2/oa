@@ -120,16 +120,16 @@ module.exports = function (app) {
     function checkLogin(req, res, next) {
         if (!req.session.user) {
             req.flash('error', '已登出!');
-            res.redirect('/login');
+            return res.redirect('/login');
         }
-        next();
+        return next();
     }
 
     function checkNotLogin(req, res, next) {
         if (req.session.user) {
             req.flash('error', '已登录!');
-            res.redirect('back');
+            return res.redirect('/');
         }
-        next();
+        return next();
     }
 };
