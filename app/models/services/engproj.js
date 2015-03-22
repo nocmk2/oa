@@ -17,7 +17,11 @@ engprojService.save = function(engproj,callback){
         }else{
             callback(null,engprojSaved);
         }
-    });
+    }
+
+    //engproj.update({_id:_id},{$set:{ "basicInfo":{serialno:'MDragon'}},function(err){});
+
+    );
 };
 
 //依据ID获取项目

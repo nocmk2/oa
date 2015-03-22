@@ -3087,7 +3087,10 @@ you can add as many as you like
             //basicInfo
             $("#tab1  input").each(function(){
                 var inputName = $(this).attr("name");
-                formInfo.proj.basicInfo[inputName] = $(this).val();
+                //去掉serialno，提交schema的default值
+                if(inputName==="serialno"){alert('skip serialno');} else{
+                    formInfo.proj.basicInfo[inputName] = $(this).val();
+                }
             });
             $("#tab1  select").each(function(){
                 var selectName = $(this).attr("name");
