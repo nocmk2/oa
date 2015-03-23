@@ -1,1 +1,1012 @@
-<p>haha</p>
+<%- include header %>
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+    <!-- RIBBON -->
+    <div id="ribbon">
+
+        <span class="ribbon-button-alignment"> <span id="refresh" class="btn btn-ribbon" data-title="refresh"
+                                                     rel="tooltip" data-placement="bottom"
+                                                     data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings."
+                                                     data-html="true"><i class="fa fa-refresh"></i></span> </span>
+
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            <li>主页</li>
+            <li>个人信息</li>
+        </ol>
+
+    </div>
+    <!-- END RIBBON -->
+
+    <!-- MAIN CONTENT -->
+    <div id="content">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+                <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> 主页 <span>> 个人信息</span>
+                </h1>
+            </div>
+
+        </div>
+
+
+        <div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false" role="widget" style="">
+            <!-- widget options:
+            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+            data-widget-colorbutton="false"
+            data-widget-editbutton="false"
+            data-widget-togglebutton="false"
+            data-widget-deletebutton="false"
+            data-widget-fullscreenbutton="false"
+            data-widget-custombutton="false"
+            data-widget-collapsed="true"
+            data-widget-sortable="false"
+
+            -->
+            <header role="heading">
+                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                <h2>个人信息 </h2>
+
+                <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span></header>
+
+            <!-- widget div-->
+            <div role="content">
+
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+
+                </div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+
+                    <form class="smart-form form-horizontal">
+                        <header>
+                            个人信息修改
+                        </header>
+
+                        <fieldset>
+
+                            <div class="row">
+                                <label class="label col col-1">用户名：</label>
+
+                                <div class="col col-6">
+                                    <label class="input"> <i class="icon-append fa fa-user"></i>
+                                        <input type="text" name="user"
+                                               value="<%if(user.name === null || user.name === undefined){%><%}else{ %><%= user.name%><%}%>">
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <br/>
+
+
+                        </fieldset>
+
+                        <fieldset>
+
+                            <div class="row">
+
+                                <label class="label col col-1">当前密码：</label>
+
+                                <div class="col col-6">
+                                    <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                        <input type="password" name="passwordNow">
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <br/>
+
+
+                            <div class="row">
+
+                                <label class="label col col-1">修改密码：</label>
+
+                                <div class="col col-6">
+                                    <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                        <input type="password" name="newPassword">
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <br/>
+
+                            <div class="row">
+
+                                <label class="label col col-1">重复新密码：</label>
+
+                                <div class="col col-6">
+                                    <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                        <input type="password" name="reNewPassword">
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <br/>
+
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="row">
+
+                                <label class="label col col-1">email：</label>
+
+                                <div class="col col-6">
+                                    <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+                                        <input type="email" name="email"
+                                               value="<%if(user.email === null || user.email === undefined){%><%}else{ %><%= user.email%><%}%>">
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <br/>
+
+                            <div class="row">
+
+                                <label class="label col col-1">联系电话：</label>
+
+                                <div class="col col-6">
+                                    <label class="input"> <i class="icon-append fa fa-phone"></i>
+                                        <input type="text" name="phone"
+                                               value="<%if(user.phone === null || user.phone === undefined){%><%}else{ %><%= user.phone%><%}%>">
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <br/>
+
+                            <div class="row">
+
+                                <label class="label col col-1">部门：</label>
+
+                                <div class="col col-6">
+                                    <label class="input"> <i class="icon-append fa fa-wrench"></i>
+                                        <input type="text" name="depart"
+                                               value="<%if(user.depart === null || user.depart === undefined){%><%}else{ %><%= user.depart%><%}%>">
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <br/>
+
+                            <div class="row">
+
+                                <label class="label col col-1">城市：</label>
+
+                                <div class="col col-6">
+                                    <label class="input"> <i class="icon-append fa fa-map-marker"></i>
+                                        <input type="text" name="city"
+                                               value="<%if(user.city === null || user.city === undefined){%><%}else{ %><%= user.city%><%}%>">
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <br/>
+                        </fieldset>
+
+
+                        <footer>
+
+                                <button type="submit" class="btn btn-primary">
+                                    提交
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    取消
+                                </button>
+
+                        </footer>
+
+                    </form>
+
+                </div>
+                <!-- end widget content -->
+
+            </div>
+            <!-- end widget div -->
+
+        </div>
+
+
+
+
+    </div>
+    <!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->
+<!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
+Note: These tiles are completely responsive,
+you can add as many as you like
+-->
+<div id="shortcut">
+    <ul>
+        <li>
+            <a href="#inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i
+                            class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span>
+            </a>
+        </li>
+        <li>
+            <a href="#calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i
+                            class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
+        </li>
+        <li>
+            <a href="#gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i
+                            class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>
+        </li>
+        <li>
+            <a href="#invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i
+                            class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span>
+            </a>
+        </li>
+        <li>
+            <a href="#gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i
+                            class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>
+        </li>
+        <li>
+            <a href="/profile" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span
+                        class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
+        </li>
+    </ul>
+</div>
+<!-- END SHORTCUT AREA -->
+
+<!--================================================== -->
+
+<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+<script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>
+
+<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script> -->
+<script>
+    if (!window.jQuery) {
+        document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
+    }
+</script>
+
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> -->
+<script>
+    if (!window.jQuery.ui) {
+        document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+    }
+</script>
+
+<!-- JS TOUCH : include this plugin for mobile drag / drop touch events
+<script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
+
+<!-- BOOTSTRAP JS -->
+<script src="js/bootstrap/bootstrap.min.js"></script>
+
+<!-- CUSTOM NOTIFICATION -->
+<script src="js/notification/SmartNotification.min.js"></script>
+
+<!-- JARVIS WIDGETS -->
+<script src="js/smartwidgets/jarvis.widget.min.js"></script>
+
+<!-- EASY PIE CHARTS -->
+<script src="js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+
+<!-- SPARKLINES -->
+<script src="js/plugin/sparkline/jquery.sparkline.min.js"></script>
+
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+<!-- JQUERY SELECT2 INPUT -->
+<script src="js/plugin/select2/select2.min.js"></script>
+
+<!-- JQUERY UI + Bootstrap Slider -->
+<script src="js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+
+<!-- browser msie issue fix -->
+<script src="js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+
+<!-- FastClick: For mobile devices -->
+<script src="js/plugin/fastclick/fastclick.js"></script>
+
+<!--[if IE 7]>
+
+<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+<![endif]-->
+
+<!-- Demo purpose only -->
+<script src="js/demo.js"></script>
+
+<!-- MAIN APP JS FILE -->
+<script src="js/app.js"></script>
+
+<!-- PAGE RELATED PLUGIN(S) -->
+<script src="js/plugin/datatables/jquery.dataTables-cust.min.js"></script>
+<script src="js/plugin/datatables/ColReorder.min.js"></script>
+<script src="js/plugin/datatables/FixedColumns.min.js"></script>
+<script src="js/plugin/datatables/ColVis.min.js"></script>
+<script src="js/plugin/datatables/ZeroClipboard.js"></script>
+<script src="js/plugin/datatables/media/js/TableTools.min.js"></script>
+<script src="js/plugin/datatables/DT_bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+    $(document).ready(function () {
+
+        pageSetUp();
+
+        /*
+         * BASIC
+         */
+        $('#dt_basic').dataTable({
+            "sPaginationType": "bootstrap_full"
+        });
+
+        /* END BASIC */
+
+        /* Add the events etc before DataTables hides a column */
+        $("#datatable_fixed_column thead input").keyup(function () {
+            oTable.fnFilter(this.value, oTable.oApi._fnVisibleToColumnIndex(oTable.fnSettings(), $("thead input").index(this)));
+        });
+
+        $("#datatable_fixed_column thead input").each(function (i) {
+            this.initVal = this.value;
+        });
+        $("#datatable_fixed_column thead input").focus(function () {
+            if (this.className == "search_init") {
+                this.className = "";
+                this.value = "";
+            }
+        });
+        $("#datatable_fixed_column thead input").blur(function (i) {
+            if (this.value == "") {
+                this.className = "search_init";
+                this.value = this.initVal;
+            }
+        });
+
+
+        var oTable = $('#datatable_fixed_column').dataTable({
+            "sDom": "<'dt-top-row'><'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+            //"sDom" : "t<'row dt-wrapper'<'col-sm-6'i><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'>>",
+            "oLanguage": {
+                "sSearch": "Search all columns:"
+            },
+            "bSortCellsTop": true
+        });
+
+
+        /*
+         * COL ORDER
+         */
+        $('#datatable_col_reorder').dataTable({
+            "sPaginationType": "bootstrap",
+            "sDom": "R<'dt-top-row'Clf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+            "fnInitComplete": function (oSettings, json) {
+                $('.ColVis_Button').addClass('btn btn-default btn-sm').html('显示列 <i class="icon-arrow-down"></i>');
+            }
+        });
+
+        /* END COL ORDER */
+
+        /* TABLE TOOLS */
+        $('#datatable_tabletools').dataTable({
+            "sDom": "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+            "oTableTools": {
+                "aButtons": ["copy", "print", {
+                    "sExtends": "collection",
+                    "sButtonText": 'Save <span class="caret" />',
+                    "aButtons": ["csv", "xls", "pdf"]
+                }],
+                "sSwfPath": "js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf"
+            },
+            "fnInitComplete": function (oSettings, json) {
+                $(this).closest('#dt_table_tools_wrapper').find('.DTTT.btn-group').addClass('table_tools_group').children('a.btn').each(function () {
+                    $(this).addClass('btn-sm btn-default');
+                });
+            }
+        });
+
+        /* END TABLE TOOLS */
+
+        //标题修正
+        $("#gridTitle").text("个人信息");
+
+        //在表格内添加管理按钮
+        $(".widget-body-toolbar").append($("#ControlButton").html());
+        $("#ControlButton").remove();
+
+        //全选(全不选)用户
+        $("input[name='selectAll']").change(function(e){
+            if($(this).prop("checked")){
+                $("input[name='selectOne']").each(function(){
+                    $(this).prop("checked", true);
+                });
+            }else{
+                $("input[name='selectOne']").each(function(){
+                    $(this).prop("checked", false);
+                });
+            }
+        })
+
+        //删除用户功能
+        $("#delete-proj").click(function(e){
+            //获取所有选中要删除用户id的数组
+            var idsToDelete = [];
+            $("input[name='selectOne']:checked").each(function(){
+                idsToDelete.push($(this).attr("id"));
+            });
+            $.ajax({
+                type:"DELETE",
+                url:"/citygovproj",
+                contentType: 'application/json',
+                data: JSON.stringify(idsToDelete),
+                dataType:"json",
+                success:function(result){
+                    if(result.success === true){
+                        location.reload();
+                    }else{
+                        alert("删除失败");
+                    }
+                }
+            });
+        });
+
+        //向修改信息框中显示已有的信息
+        $(".edit").click(function(){
+            //获取项目id
+            var projToEdit = {};
+            projToEdit.id = $(this).attr("data-projId");
+            $.ajax({
+                type:"POST",
+                url:"/citygovproj/getById",
+                contentType: 'application/json',
+                data: JSON.stringify(projToEdit),
+                dataType:"json",
+                success:function(engproj){
+                    if(engproj !== null){
+                        //basicInfo
+                        $("#tab1-edit  input").each(function(){
+                            var inputName = $(this).attr("name");
+                            if(inputName === "_id"){
+                                $(this).val(engproj._id);
+                            }else{
+                                $(this).val(engproj.basicInfo[inputName]);
+                            }
+                        });
+                        $("#tab1-edit  select").each(function(){
+                            var selectName = $(this).attr("name");
+                            $(this).val(engproj.basicInfo[selectName]);
+                        });
+                        $("#tab1-edit  textarea").each(function(){
+                            var textareaName = $(this).attr("name");
+                            $(this).val(engproj.basicInfo[textareaName]);
+                        });
+                        //materialInfo
+                        $("#tab2-edit  input").each(function(){
+                            var inputName = $(this).attr("name");
+                            $(this).val(engproj.materialInfo[inputName]);
+                        });
+                        $("#tab2-edit  select").each(function(){
+                            var selectName = $(this).attr("name");
+                            $(this).val(engproj.materialInfo[selectName]);
+                        });
+                        $("#tab2-edit  textarea").each(function(){
+                            var textareaName = $(this).attr("name");
+                            $(this).val(engproj.materialInfo[textareaName]);
+                        });
+                        //constructionInfo
+                        $("#tab3-edit  input").each(function(){
+                            var inputName = $(this).attr("name");
+                            $(this).val(engproj.constructionInfo[inputName]);
+                        });
+                        $("#tab3-edit  select").each(function(){
+                            var selectName = $(this).attr("name");
+                            $(this).val(engproj.constructionInfo[selectName]);
+                        });
+                        $("#tab3-edit  textarea").each(function(){
+                            var textareaName = $(this).attr("name");
+                            $(this).val(engproj.constructionInfo[textareaName]);
+                        });
+                        //textInfo
+                        $("#tab4-edit  input").each(function(){
+                            var inputName = $(this).attr("name");
+                            $(this).val(engproj.textInfo[inputName]);
+                        });
+                        $("#tab4-edit  select").each(function(){
+                            var selectName = $(this).attr("name");
+                            $(this).val(engproj.textInfo[selectName]);
+                        });
+                        $("#tab4-edit  textarea").each(function(){
+                            var textareaName = $(this).attr("name");
+                            $(this).val(engproj.textInfo[textareaName]);
+                        });
+                        //contractInfo
+                        $("#tab5-edit  input").each(function(){
+                            var inputName = $(this).attr("name");
+                            $(this).val(engproj.contractInfo[inputName]);
+                        });
+                        $("#tab5-edit  select").each(function(){
+                            var selectName = $(this).attr("name");
+                            $(this).val(engproj.contractInfo[selectName]);
+                        });
+                        $("#tab5-edit  textarea").each(function(){
+                            var textareaName = $(this).attr("name");
+                            $(this).val(engproj.contractInfo[textareaName]);
+                        });
+                        //incomeInfo
+                        $("#tab6-edit  input").each(function(){
+                            var inputName = $(this).attr("name");
+                            $(this).val(engproj.incomeInfo[inputName]);
+                        });
+                        $("#tab6-edit  select").each(function(){
+                            var selectName = $(this).attr("name");
+                            $(this).val(engproj.incomeInfo[selectName]);
+                        });
+                        $("#tab6-edit  textarea").each(function(){
+                            var textareaName = $(this).attr("name");
+                            $(this).val(engproj.incomeInfo[textareaName]);
+                        });
+                    }else{
+                        alert("获取项目信息失败");
+                    }
+                }
+            })
+        });
+
+        //退出修改框时清空内容,回到第一步
+        $("#editProj .closeBtn").click(function(){
+            $("#editProj input").each(function(){
+                $(this).val("");
+            });
+            $("#editProj .bootstrapWizard li").each(function(){
+                $(this).removeClass();
+            });
+            $("#editProj .bootstrapWizard li:first").addClass("active");
+            $("#editProj .tab-pane").each(function(){
+                $(this).removeClass("active");
+            });
+            $("#editProj .tab-pane:first").addClass("active");
+
+            clearErrInfo("editProj");
+        });
+
+        //退出新增框时清空内容，回到第一步
+        $("#addProj .closeBtn").click(function(){
+            $("#addProj input").each(function(){
+                $(this).val("");
+            });
+            $("#addProj .bootstrapWizard li").each(function(){
+                $(this).removeClass();
+            });
+            $("#addProj .bootstrapWizard li:first").addClass("active");
+            $("#addProj .tab-pane").each(function(){
+                $(this).removeClass("active");
+            });
+            $("#addProj .tab-pane:first").addClass("active");
+
+            clearErrInfo("addProj");
+        });
+
+        //新增用户框发送，验证
+        $("#saveProj").click(function(e){
+            e.preventDefault();
+            //初始化proj对象
+            var formInfo = {};
+            formInfo.proj = {};
+            formInfo.proj.basicInfo = {};
+            formInfo.proj.materialInfo = {};
+            formInfo.proj.constructionInfo = {};
+            formInfo.proj.textInfo = {};
+            formInfo.proj.contractInfo = {};
+            formInfo.proj.incomeInfo = {};
+            //basicInfo
+            $("#tab1  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.basicInfo[inputName] = $(this).val();
+            });
+            $("#tab1  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.basicInfo[selectName] = $(this).val();
+            });
+            $("#tab1  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.basicInfo[textareaName] = $(this).val();
+            });
+            //materialInfo
+            $("#tab2  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.materialInfo[inputName] = $(this).val();
+            });
+            $("#tab2  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.materialInfo[selectName] = $(this).val();
+            });
+            $("#tab2  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.materialInfo[textareaName] = $(this).val();
+            });
+            //constructionInfo
+            $("#tab3  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.constructionInfo[inputName] = $(this).val();
+            });
+            $("#tab3  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.constructionInfo[selectName] = $(this).val();
+            });
+            $("#tab3  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.constructionInfo[textareaName] = $(this).val();
+            });
+            //textInfo
+            $("#tab4  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.textInfo[inputName] = $(this).val();
+            });
+            $("#tab4  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.textInfo[selectName] = $(this).val();
+            });
+            $("#tab4  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.textInfo[textareaName] = $(this).val();
+            });
+            //contractInfo
+            $("#tab5  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.contractInfo[inputName] = $(this).val();
+            });
+            $("#tab5  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.contractInfo[selectName] = $(this).val();
+            });
+            $("#tab5  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.contractInfo[textareaName] = $(this).val();
+            });
+            //incomeInfo
+            $("#tab6  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.incomeInfo[inputName] = $(this).val();
+            });
+            $("#tab6  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.incomeInfo[selectName] = $(this).val();
+            });
+            $("#tab6  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.incomeInfo[textareaName] = $(this).val();
+            });
+            $.ajax({
+                type:"POST",
+                url:"/citygovproj/save",
+                contentType: 'application/json',
+                data: JSON.stringify(formInfo),
+                dataType:"json",
+                success:function(result){
+                    if(result.success === true){
+                        location.reload();
+                    }else{
+                        alert("数据存储出错");
+                    }
+                }
+            });
+        });
+
+        //修改信息框发送，验证
+        $("#saveProjEdited").click(function(e){
+            e.preventDefault();
+            //初始化proj对象
+            var formInfo = {};
+            formInfo.proj = {};
+            formInfo.proj.basicInfo = {};
+            formInfo.proj.materialInfo = {};
+            formInfo.proj.constructionInfo = {};
+            formInfo.proj.textInfo = {};
+            formInfo.proj.contractInfo = {};
+            formInfo.proj.incomeInfo = {};
+            //basicInfo
+            $("#tab1-edit  input").each(function(){
+                var inputName = $(this).attr("name");
+                if(inputName === "_id"){
+                    formInfo.proj._id = $(this).val();
+                }else{
+                    formInfo.proj.basicInfo[inputName] = $(this).val();
+                }
+            });
+            $("#tab1-edit select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.basicInfo[selectName] = $(this).val();
+            });
+            $("#tab1-edit textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.basicInfo[textareaName] = $(this).val();
+            });
+            //materialInfo
+            $("#tab2-edit  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.materialInfo[inputName] = $(this).val();
+            });
+            $("#tab2-edit  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.materialInfo[selectName] = $(this).val();
+            });
+            $("#tab2-edit  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.materialInfo[textareaName] = $(this).val();
+            });
+            //constructionInfo
+            $("#tab3-edit  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.constructionInfo[inputName] = $(this).val();
+            });
+            $("#tab3-edit  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.constructionInfo[selectName] = $(this).val();
+            });
+            $("#tab3-edit  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.constructionInfo[textareaName] = $(this).val();
+            });
+            //textInfo
+            $("#tab4-edit  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.textInfo[inputName] = $(this).val();
+            });
+            $("#tab4-edit  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.textInfo[selectName] = $(this).val();
+            });
+            $("#tab4-edit  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.textInfo[textareaName] = $(this).val();
+            });
+            //contractInfo
+            $("#tab5-edit  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.contractInfo[inputName] = $(this).val();
+            });
+            $("#tab5-edit  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.contractInfo[selectName] = $(this).val();
+            });
+            $("#tab5-edit  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.contractInfo[textareaName] = $(this).val();
+            });
+            //incomeInfo
+            $("#tab6-edit  input").each(function(){
+                var inputName = $(this).attr("name");
+                formInfo.proj.incomeInfo[inputName] = $(this).val();
+            });
+            $("#tab6-edit  select").each(function(){
+                var selectName = $(this).attr("name");
+                formInfo.proj.incomeInfo[selectName] = $(this).val();
+            });
+            $("#tab6-edit  textarea").each(function(){
+                var textareaName = $(this).attr("name");
+                formInfo.proj.incomeInfo[textareaName] = $(this).val();
+            });
+            $.ajax({
+                type:"POST",
+                url:"/citygovproj/edit",
+                contentType: 'application/json',
+                data: JSON.stringify(formInfo),
+                dataType:"json",
+                success:function(result){
+                    if(result.success === true){
+                        location.reload();
+                    }else{
+                        alert("数据存储出错");
+                    }
+                }
+            });
+        });
+
+        //数字验证
+        $("#addProj .digit").each(function(){
+            var patten = new RegExp(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/);
+
+            $(this).focus(function(e){
+                clearErrInfoByInputName("addProj",$(this).attr("name"));
+
+                if($("#saveProj").hasClass("disabled")){
+                    $(this).val("");
+                    $("#saveProj").removeClass("disabled");
+                }
+
+            });
+
+            $(this).blur(function(e){
+                var text = $(this).val();
+                if(patten.test(text) !== true){
+                    showErrInfo("addProj",$(this).attr("name"),"输入内容需要是数字！");
+                    $("#saveProj").addClass("disabled");
+                }
+            });
+        });
+        $("#editProj .digit").each(function(){
+            var patten = new RegExp(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/);
+
+            $(this).focus(function(e){
+                clearErrInfoByInputName("editProj",$(this).attr("name"));
+
+                if($("#saveProjEdited").hasClass("disabled")){
+                    $(this).val("");
+                    $("#saveProjEdited").removeClass("disabled");
+                }
+            });
+            $(this).blur(function(e){
+                var text = $(this).val();
+                if(patten.test(text) !== true){
+                    showErrInfo("editProj",$(this).attr("name"),"输入内容需要是数字！");
+                    $("#saveProjEdited").addClass("disabled");
+                }
+            });
+        });
+
+        //清除输入框内表单的错误信息
+        function clearErrInfo(formId){
+            $("#" + formId + " span[class*='err-info']").remove();
+            $("#" + formId + " input").each(function(){
+                $(this)
+                        .parent()
+                        .parent()
+                        .removeClass("has-error");
+            });
+        }
+        function clearErrInfoByInputName(formId,inputName){
+            $("#" + formId + " input[name='" + inputName + "']").each(function(){
+                $(this)
+                        .parent()
+                        .parent()
+                        .removeClass("has-error")
+                        .children(".err-info")
+                        .remove();
+            });
+        }
+
+        //展示输入框内表单的错误信息
+        function showErrInfo(formId,inputName,errInfo){
+            $("#" + formId + " input[name='" + inputName + "']")
+                    .parent()
+                    .parent()
+                    .addClass("has-error")
+                    .append('<span class="help-block err-info"><i class="fa fa-warning"></i>' + errInfo + '</span>');
+        }
+
+        //去除checkbox列的排序按钮
+        $("#datatable_col_reorder thead th input").parent().removeClass().unbind("click");
+        $("#datatable_col_reorder thead th").bind("click",function(){
+            $("#datatable_col_reorder thead th input").parent().removeClass();
+        });
+
+        //去除"显示列"中隐藏checkbox列的选项
+        $("button[class='ColVis_Button TableTools_Button ColVis_MasterButton btn btn-default btn-sm']").one("click",function(){
+            setTimeout(function(){
+                $("div[class='ColVis_collection TableTools_collection'] button:first-child").remove();
+            },100);
+        });
+
+        //甲乙供初始化
+        $("a[class='edit']").each(function(e){
+            $(this).click(function(e){
+                setTimeout(function(){
+                    if($("#editProj select[name='trans']").val() === "是"){
+                        $(".transTo").each(function(e){
+                            $(this).removeClass("hidden");
+                        });
+                    }else{
+                        $(".transTo").each(function(e){
+                            $(this).addClass("hidden");
+                            $(this).find("input").each(function(e){
+                                $(this).val("");
+                            });
+                        });
+                    }
+                },500);
+            });
+        });
+
+        //是否转其他公司
+        $("select[name='trans']").change(function(e){
+            var party = $(this).val();
+            if(party === "是"){
+                $(".transTo").each(function(e){
+                    $(this).removeClass("hidden");
+                });
+            }else{
+                $(".transTo").each(function(e){
+                    $(this).addClass("hidden");
+                    $(this).find("input").each(function(e){
+                        $(this).val("");
+                    });
+                });
+            }
+        });
+
+        //利润计算
+        $(".profit").attr("disabled","disabled");
+
+        $("#addProj .income").blur(function(e){
+            getProfit("addProj");
+        });
+
+        $("#addProj .outcome").blur(function(e){
+            getProfit("addProj");
+        });
+
+        $("#addProj .otherfee").blur(function(e){
+            getProfit("addProj");
+        });
+
+        $("#addProj .profit").blur(function(e){
+            getProfit("addProj");
+        });
+
+        $("#editProj .income").blur(function(e){
+            getProfit("editProj");
+        });
+
+        $("#editProj .outcome").blur(function(e){
+            getProfit("editProj");
+        });
+
+        $("#editProj .otherfee").blur(function(e){
+            getProfit("editProj");
+        });
+
+        $("#editProj .profit").blur(function(e){
+            getProfit("editProj");
+        });
+
+        var getProfit = function(formId){
+            var income =  (function(){
+                if($("#"+ formId + " .income").val() === ""){
+                    return 0;
+                }else{
+                    return $("#"+ formId + " .income").val();
+                }
+            }());
+            var outcome =  (function(){
+                if($("#"+ formId + " .outcome").val() === ""){
+                    return 0;
+                }else{
+                    return $("#"+ formId + " .outcome").val();
+                }
+            }());
+            var otherfee = (function(){
+                if($("#"+ formId + " .otherfee").val() === ""){
+                    return 0;
+                }else{
+                    return $("#"+ formId + " .otherfee").val();
+                }
+            }());
+            var result = parseFloat(income) - parseFloat(outcome) - parseFloat(otherfee);
+            if(isNaN(result) === true){
+                $("#"+ formId + " .profit").val("");
+            }else{
+                $("#"+ formId + " .profit").val(result);
+            }
+        };
+
+    })
+
+</script>
+
+<%- include footer %>
