@@ -64,9 +64,9 @@
                 <!-- widget content -->
                 <div class="widget-body no-padding">
 
-                    <form class="smart-form form-horizontal">
+                    <form class="smart-form form-horizontal" id="userProfile">
                         <header>
-                            个人信息修改
+                            个人信息修改 &nbsp;&nbsp;&nbsp; <span class="text-success"><%= info %></span>
                         </header>
 
                         <fieldset>
@@ -76,7 +76,7 @@
 
                                 <div class="col col-6">
                                     <label class="input"> <i class="icon-append fa fa-user"></i>
-                                        <input type="text" name="user"
+                                        <input type="text" name="name"
                                                value="<%if(user.name === null || user.name === undefined){%><%}else{ %><%= user.name%><%}%>">
                                     </label>
                                 </div>
@@ -195,15 +195,18 @@
                             </div>
 
                             <br/>
+
+                            <input type="text" name="_id" class="hidden"
+                                   value="<%if(user._id === null || user._id === undefined){%><%}else{ %><%= user._id%><%}%>">
                         </fieldset>
 
 
                         <footer>
 
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" id="submitProfile">
                                     提交
                                 </button>
-                                <button type="button" class="btn btn-default">
+                                <button type="button" class="btn btn-default" id="cancel">
                                     取消
                                 </button>
 
@@ -426,450 +429,118 @@ you can add as many as you like
         //标题修正
         $("#gridTitle").text("个人信息");
 
-        //在表格内添加管理按钮
-        $(".widget-body-toolbar").append($("#ControlButton").html());
-        $("#ControlButton").remove();
-
-        //全选(全不选)用户
-        $("input[name='selectAll']").change(function(e){
-            if($(this).prop("checked")){
-                $("input[name='selectOne']").each(function(){
-                    $(this).prop("checked", true);
-                });
-            }else{
-                $("input[name='selectOne']").each(function(){
-                    $(this).prop("checked", false);
-                });
-            }
-        })
-
-        //删除用户功能
-        $("#delete-proj").click(function(e){
-            //获取所有选中要删除用户id的数组
-            var idsToDelete = [];
-            $("input[name='selectOne']:checked").each(function(){
-                idsToDelete.push($(this).attr("id"));
-            });
-            $.ajax({
-                type:"DELETE",
-                url:"/citygovproj",
-                contentType: 'application/json',
-                data: JSON.stringify(idsToDelete),
-                dataType:"json",
-                success:function(result){
-                    if(result.success === true){
-                        location.reload();
-                    }else{
-                        alert("删除失败");
-                    }
-                }
-            });
+        //取消按钮功能，刷新页面
+        $("#cancel").click(function(){
+            location.reload();
         });
 
-        //向修改信息框中显示已有的信息
-        $(".edit").click(function(){
-            //获取项目id
-            var projToEdit = {};
-            projToEdit.id = $(this).attr("data-projId");
-            $.ajax({
-                type:"POST",
-                url:"/citygovproj/getById",
-                contentType: 'application/json',
-                data: JSON.stringify(projToEdit),
-                dataType:"json",
-                success:function(engproj){
-                    if(engproj !== null){
-                        //basicInfo
-                        $("#tab1-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            if(inputName === "_id"){
-                                $(this).val(engproj._id);
-                            }else{
-                                $(this).val(engproj.basicInfo[inputName]);
+        //修改用户信息，验证
+        $("#submitProfile").click(function(e){
+            e.preventDefault();
+            //初始化user对象，验证输入
+            var formInfo = {},hasError = false;
+            formInfo.user = {};
+            formInfo.user._id = $("#userProfile input[name='_id']").val();
+            formInfo.user.name = $("#userProfile input[name='name']").val();
+            formInfo.user.email = $("#userProfile input[name='email']").val();
+            formInfo.user.phone = $("#userProfile input[name='phone']").val();
+            formInfo.user.depart = $("#userProfile input[name='depart']").val();
+            formInfo.user.city = $("#userProfile input[name='city']").val();
+            formInfo.user.passwordNow = $("#userProfile input[name='passwordNow']").val();
+            formInfo.user.newPassword = $("#userProfile input[name='newPassword']").val();
+            formInfo.user.reNewPassword = $("#userProfile input[name='reNewPassword']").val();
+            //若修改了密码，进行验证
+            if(formInfo.user.passwordNow !== ""){
+                if(formInfo.user.newPassword === ""){
+                    showErrInfo("userProfile","newPassword","新密码不能为空");
+                    hasError = true;
+                }
+                else if(formInfo.user.newPassword !== formInfo.user.reNewPassword){
+                    showErrInfo("userProfile","reNewPassword","两次输入的密码不一致 ");
+                    hasError = true;
+                }
+                else{
+                    //验证密码
+                    if(hasError === true){
+                        return;
+                    }else{
+                        $.ajax({
+                            type:"POST",
+                            url:"/profile/validatePassword",
+                            contentType: 'application/json',
+                            data: JSON.stringify(formInfo),
+                            dataType:"json",
+                            success:function(result){
+                                if(result.success === true){
+                                    //密码验证通过，更新用户信息
+                                    $.ajax({
+                                        type:"POST",
+                                        url:"/profile/update",
+                                        contentType: 'application/json',
+                                        data: JSON.stringify(formInfo),
+                                        dataType:"json",
+                                        success:function(result){
+                                            if(result.success === true){
+                                                location.href = "/profile?q=succeed";
+                                            }else{
+                                                if(result.msg === "用户名已被占用"){
+                                                    hasError = true;
+                                                    showErrInfo("userProfile","name","用户名已被占用");
+                                                }
+                                                if(result.msg === "数据存储出错"){
+                                                    hasError = true;
+                                                    alert("数据存储出错");
+                                                }
+                                            }
+                                        }
+                                    });
+                                }else{
+                                    if(result.msg === "验证不通过"){
+                                        hasError = true;
+                                        showErrInfo("userProfile","passwordNow","当前密码错误");
+                                    }
+                                    if(result.msg === "密码不能为空"){
+                                        hasError = true;
+                                        alert('密码不能为空');
+                                    }
+                                    if(result.msg === "数据库错误"){
+                                        alert("数据库错误");
+                                    }
+                                }
                             }
                         });
-                        $("#tab1-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.basicInfo[selectName]);
-                        });
-                        $("#tab1-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.basicInfo[textareaName]);
-                        });
-                        //materialInfo
-                        $("#tab2-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            $(this).val(engproj.materialInfo[inputName]);
-                        });
-                        $("#tab2-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.materialInfo[selectName]);
-                        });
-                        $("#tab2-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.materialInfo[textareaName]);
-                        });
-                        //constructionInfo
-                        $("#tab3-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            $(this).val(engproj.constructionInfo[inputName]);
-                        });
-                        $("#tab3-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.constructionInfo[selectName]);
-                        });
-                        $("#tab3-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.constructionInfo[textareaName]);
-                        });
-                        //textInfo
-                        $("#tab4-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            $(this).val(engproj.textInfo[inputName]);
-                        });
-                        $("#tab4-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.textInfo[selectName]);
-                        });
-                        $("#tab4-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.textInfo[textareaName]);
-                        });
-                        //contractInfo
-                        $("#tab5-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            $(this).val(engproj.contractInfo[inputName]);
-                        });
-                        $("#tab5-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.contractInfo[selectName]);
-                        });
-                        $("#tab5-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.contractInfo[textareaName]);
-                        });
-                        //incomeInfo
-                        $("#tab6-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            $(this).val(engproj.incomeInfo[inputName]);
-                        });
-                        $("#tab6-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.incomeInfo[selectName]);
-                        });
-                        $("#tab6-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.incomeInfo[textareaName]);
-                        });
-                    }else{
-                        alert("获取项目信息失败");
                     }
                 }
-            })
-        });
-
-        //退出修改框时清空内容,回到第一步
-        $("#editProj .closeBtn").click(function(){
-            $("#editProj input").each(function(){
-                $(this).val("");
-            });
-            $("#editProj .bootstrapWizard li").each(function(){
-                $(this).removeClass();
-            });
-            $("#editProj .bootstrapWizard li:first").addClass("active");
-            $("#editProj .tab-pane").each(function(){
-                $(this).removeClass("active");
-            });
-            $("#editProj .tab-pane:first").addClass("active");
-
-            clearErrInfo("editProj");
-        });
-
-        //退出新增框时清空内容，回到第一步
-        $("#addProj .closeBtn").click(function(){
-            $("#addProj input").each(function(){
-                $(this).val("");
-            });
-            $("#addProj .bootstrapWizard li").each(function(){
-                $(this).removeClass();
-            });
-            $("#addProj .bootstrapWizard li:first").addClass("active");
-            $("#addProj .tab-pane").each(function(){
-                $(this).removeClass("active");
-            });
-            $("#addProj .tab-pane:first").addClass("active");
-
-            clearErrInfo("addProj");
-        });
-
-        //新增用户框发送，验证
-        $("#saveProj").click(function(e){
-            e.preventDefault();
-            //初始化proj对象
-            var formInfo = {};
-            formInfo.proj = {};
-            formInfo.proj.basicInfo = {};
-            formInfo.proj.materialInfo = {};
-            formInfo.proj.constructionInfo = {};
-            formInfo.proj.textInfo = {};
-            formInfo.proj.contractInfo = {};
-            formInfo.proj.incomeInfo = {};
-            //basicInfo
-            $("#tab1  input").each(function(){
-                var inputName = $(this).attr("name");
-                formInfo.proj.basicInfo[inputName] = $(this).val();
-            });
-            $("#tab1  select").each(function(){
-                var selectName = $(this).attr("name");
-                formInfo.proj.basicInfo[selectName] = $(this).val();
-            });
-            $("#tab1  textarea").each(function(){
-                var textareaName = $(this).attr("name");
-                formInfo.proj.basicInfo[textareaName] = $(this).val();
-            });
-            //materialInfo
-            $("#tab2  input").each(function(){
-                var inputName = $(this).attr("name");
-                formInfo.proj.materialInfo[inputName] = $(this).val();
-            });
-            $("#tab2  select").each(function(){
-                var selectName = $(this).attr("name");
-                formInfo.proj.materialInfo[selectName] = $(this).val();
-            });
-            $("#tab2  textarea").each(function(){
-                var textareaName = $(this).attr("name");
-                formInfo.proj.materialInfo[textareaName] = $(this).val();
-            });
-            //constructionInfo
-            $("#tab3  input").each(function(){
-                var inputName = $(this).attr("name");
-                formInfo.proj.constructionInfo[inputName] = $(this).val();
-            });
-            $("#tab3  select").each(function(){
-                var selectName = $(this).attr("name");
-                formInfo.proj.constructionInfo[selectName] = $(this).val();
-            });
-            $("#tab3  textarea").each(function(){
-                var textareaName = $(this).attr("name");
-                formInfo.proj.constructionInfo[textareaName] = $(this).val();
-            });
-            //textInfo
-            $("#tab4  input").each(function(){
-                var inputName = $(this).attr("name");
-                formInfo.proj.textInfo[inputName] = $(this).val();
-            });
-            $("#tab4  select").each(function(){
-                var selectName = $(this).attr("name");
-                formInfo.proj.textInfo[selectName] = $(this).val();
-            });
-            $("#tab4  textarea").each(function(){
-                var textareaName = $(this).attr("name");
-                formInfo.proj.textInfo[textareaName] = $(this).val();
-            });
-            //contractInfo
-            $("#tab5  input").each(function(){
-                var inputName = $(this).attr("name");
-                formInfo.proj.contractInfo[inputName] = $(this).val();
-            });
-            $("#tab5  select").each(function(){
-                var selectName = $(this).attr("name");
-                formInfo.proj.contractInfo[selectName] = $(this).val();
-            });
-            $("#tab5  textarea").each(function(){
-                var textareaName = $(this).attr("name");
-                formInfo.proj.contractInfo[textareaName] = $(this).val();
-            });
-            //incomeInfo
-            $("#tab6  input").each(function(){
-                var inputName = $(this).attr("name");
-                formInfo.proj.incomeInfo[inputName] = $(this).val();
-            });
-            $("#tab6  select").each(function(){
-                var selectName = $(this).attr("name");
-                formInfo.proj.incomeInfo[selectName] = $(this).val();
-            });
-            $("#tab6  textarea").each(function(){
-                var textareaName = $(this).attr("name");
-                formInfo.proj.incomeInfo[textareaName] = $(this).val();
-            });
-            $.ajax({
-                type:"POST",
-                url:"/citygovproj/save",
-                contentType: 'application/json',
-                data: JSON.stringify(formInfo),
-                dataType:"json",
-                success:function(result){
-                    if(result.success === true){
-                        location.reload();
-                    }else{
-                        alert("数据存储出错");
-                    }
-                }
-            });
-        });
-
-        //修改信息框发送，验证
-        $("#saveProjEdited").click(function(e){
-            e.preventDefault();
-            //初始化proj对象
-            var formInfo = {};
-            formInfo.proj = {};
-            formInfo.proj.basicInfo = {};
-            formInfo.proj.materialInfo = {};
-            formInfo.proj.constructionInfo = {};
-            formInfo.proj.textInfo = {};
-            formInfo.proj.contractInfo = {};
-            formInfo.proj.incomeInfo = {};
-            //basicInfo
-            $("#tab1-edit  input").each(function(){
-                var inputName = $(this).attr("name");
-                if(inputName === "_id"){
-                    formInfo.proj._id = $(this).val();
+            }else{
+                //检查表单是否有误，无误则发送请求
+                if(hasError === true){
+                    return;
                 }else{
-                    formInfo.proj.basicInfo[inputName] = $(this).val();
+                    $.ajax({
+                        type:"POST",
+                        url:"/profile/update",
+                        contentType: 'application/json',
+                        data: JSON.stringify(formInfo),
+                        dataType:"json",
+                        success:function(result){
+                            if(result.success === true){
+                                location.href = "/profile?q=succeed";
+                            }else{
+                                if(result.msg === "用户名已被占用"){
+                                    hasError = true;
+                                    showErrInfo("userProfile","name","用户名已被占用");
+                                }
+                                if(result.msg === "数据存储出错"){
+                                    alert("数据存储出错");
+                                }
+                            }
+                        }
+                    });
                 }
-            });
-            $("#tab1-edit select").each(function(){
-                var selectName = $(this).attr("name");
-                formInfo.proj.basicInfo[selectName] = $(this).val();
-            });
-            $("#tab1-edit textarea").each(function(){
-                var textareaName = $(this).attr("name");
-                formInfo.proj.basicInfo[textareaName] = $(this).val();
-            });
-            //materialInfo
-            $("#tab2-edit  input").each(function(){
-                var inputName = $(this).attr("name");
-                formInfo.proj.materialInfo[inputName] = $(this).val();
-            });
-            $("#tab2-edit  select").each(function(){
-                var selectName = $(this).attr("name");
-                formInfo.proj.materialInfo[selectName] = $(this).val();
-            });
-            $("#tab2-edit  textarea").each(function(){
-                var textareaName = $(this).attr("name");
-                formInfo.proj.materialInfo[textareaName] = $(this).val();
-            });
-            //constructionInfo
-            $("#tab3-edit  input").each(function(){
-                var inputName = $(this).attr("name");
-                formInfo.proj.constructionInfo[inputName] = $(this).val();
-            });
-            $("#tab3-edit  select").each(function(){
-                var selectName = $(this).attr("name");
-                formInfo.proj.constructionInfo[selectName] = $(this).val();
-            });
-            $("#tab3-edit  textarea").each(function(){
-                var textareaName = $(this).attr("name");
-                formInfo.proj.constructionInfo[textareaName] = $(this).val();
-            });
-            //textInfo
-            $("#tab4-edit  input").each(function(){
-                var inputName = $(this).attr("name");
-                formInfo.proj.textInfo[inputName] = $(this).val();
-            });
-            $("#tab4-edit  select").each(function(){
-                var selectName = $(this).attr("name");
-                formInfo.proj.textInfo[selectName] = $(this).val();
-            });
-            $("#tab4-edit  textarea").each(function(){
-                var textareaName = $(this).attr("name");
-                formInfo.proj.textInfo[textareaName] = $(this).val();
-            });
-            //contractInfo
-            $("#tab5-edit  input").each(function(){
-                var inputName = $(this).attr("name");
-                formInfo.proj.contractInfo[inputName] = $(this).val();
-            });
-            $("#tab5-edit  select").each(function(){
-                var selectName = $(this).attr("name");
-                formInfo.proj.contractInfo[selectName] = $(this).val();
-            });
-            $("#tab5-edit  textarea").each(function(){
-                var textareaName = $(this).attr("name");
-                formInfo.proj.contractInfo[textareaName] = $(this).val();
-            });
-            //incomeInfo
-            $("#tab6-edit  input").each(function(){
-                var inputName = $(this).attr("name");
-                formInfo.proj.incomeInfo[inputName] = $(this).val();
-            });
-            $("#tab6-edit  select").each(function(){
-                var selectName = $(this).attr("name");
-                formInfo.proj.incomeInfo[selectName] = $(this).val();
-            });
-            $("#tab6-edit  textarea").each(function(){
-                var textareaName = $(this).attr("name");
-                formInfo.proj.incomeInfo[textareaName] = $(this).val();
-            });
-            $.ajax({
-                type:"POST",
-                url:"/citygovproj/edit",
-                contentType: 'application/json',
-                data: JSON.stringify(formInfo),
-                dataType:"json",
-                success:function(result){
-                    if(result.success === true){
-                        location.reload();
-                    }else{
-                        alert("数据存储出错");
-                    }
-                }
-            });
-        });
-
-        //数字验证
-        $("#addProj .digit").each(function(){
-            var patten = new RegExp(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/);
-
-            $(this).focus(function(e){
-                clearErrInfoByInputName("addProj",$(this).attr("name"));
-
-                if($("#saveProj").hasClass("disabled")){
-                    $(this).val("");
-                    $("#saveProj").removeClass("disabled");
-                }
-
-            });
-
-            $(this).blur(function(e){
-                var text = $(this).val();
-                if(patten.test(text) !== true){
-                    showErrInfo("addProj",$(this).attr("name"),"输入内容需要是数字！");
-                    $("#saveProj").addClass("disabled");
-                }
-            });
-        });
-        $("#editProj .digit").each(function(){
-            var patten = new RegExp(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/);
-
-            $(this).focus(function(e){
-                clearErrInfoByInputName("editProj",$(this).attr("name"));
-
-                if($("#saveProjEdited").hasClass("disabled")){
-                    $(this).val("");
-                    $("#saveProjEdited").removeClass("disabled");
-                }
-            });
-            $(this).blur(function(e){
-                var text = $(this).val();
-                if(patten.test(text) !== true){
-                    showErrInfo("editProj",$(this).attr("name"),"输入内容需要是数字！");
-                    $("#saveProjEdited").addClass("disabled");
-                }
-            });
+            }
         });
 
         //清除输入框内表单的错误信息
-        function clearErrInfo(formId){
-            $("#" + formId + " span[class*='err-info']").remove();
-            $("#" + formId + " input").each(function(){
-                $(this)
-                        .parent()
-                        .parent()
-                        .removeClass("has-error");
-            });
-        }
         function clearErrInfoByInputName(formId,inputName){
             $("#" + formId + " input[name='" + inputName + "']").each(function(){
                 $(this)
@@ -890,120 +561,14 @@ you can add as many as you like
                     .append('<span class="help-block err-info"><i class="fa fa-warning"></i>' + errInfo + '</span>');
         }
 
-        //去除checkbox列的排序按钮
-        $("#datatable_col_reorder thead th input").parent().removeClass().unbind("click");
-        $("#datatable_col_reorder thead th").bind("click",function(){
-            $("#datatable_col_reorder thead th input").parent().removeClass();
-        });
-
-        //去除"显示列"中隐藏checkbox列的选项
-        $("button[class='ColVis_Button TableTools_Button ColVis_MasterButton btn btn-default btn-sm']").one("click",function(){
-            setTimeout(function(){
-                $("div[class='ColVis_collection TableTools_collection'] button:first-child").remove();
-            },100);
-        });
-
-        //甲乙供初始化
-        $("a[class='edit']").each(function(e){
-            $(this).click(function(e){
-                setTimeout(function(){
-                    if($("#editProj select[name='trans']").val() === "是"){
-                        $(".transTo").each(function(e){
-                            $(this).removeClass("hidden");
-                        });
-                    }else{
-                        $(".transTo").each(function(e){
-                            $(this).addClass("hidden");
-                            $(this).find("input").each(function(e){
-                                $(this).val("");
-                            });
-                        });
-                    }
-                },500);
+        //输入框获得焦点时清除错误信息
+        $("#userProfile input").each(function(){
+            var inputName = $(this).attr("name");
+            $(this).focus(function(){
+                clearErrInfoByInputName("userProfile",inputName);
             });
         });
 
-        //是否转其他公司
-        $("select[name='trans']").change(function(e){
-            var party = $(this).val();
-            if(party === "是"){
-                $(".transTo").each(function(e){
-                    $(this).removeClass("hidden");
-                });
-            }else{
-                $(".transTo").each(function(e){
-                    $(this).addClass("hidden");
-                    $(this).find("input").each(function(e){
-                        $(this).val("");
-                    });
-                });
-            }
-        });
-
-        //利润计算
-        $(".profit").attr("disabled","disabled");
-
-        $("#addProj .income").blur(function(e){
-            getProfit("addProj");
-        });
-
-        $("#addProj .outcome").blur(function(e){
-            getProfit("addProj");
-        });
-
-        $("#addProj .otherfee").blur(function(e){
-            getProfit("addProj");
-        });
-
-        $("#addProj .profit").blur(function(e){
-            getProfit("addProj");
-        });
-
-        $("#editProj .income").blur(function(e){
-            getProfit("editProj");
-        });
-
-        $("#editProj .outcome").blur(function(e){
-            getProfit("editProj");
-        });
-
-        $("#editProj .otherfee").blur(function(e){
-            getProfit("editProj");
-        });
-
-        $("#editProj .profit").blur(function(e){
-            getProfit("editProj");
-        });
-
-        var getProfit = function(formId){
-            var income =  (function(){
-                if($("#"+ formId + " .income").val() === ""){
-                    return 0;
-                }else{
-                    return $("#"+ formId + " .income").val();
-                }
-            }());
-            var outcome =  (function(){
-                if($("#"+ formId + " .outcome").val() === ""){
-                    return 0;
-                }else{
-                    return $("#"+ formId + " .outcome").val();
-                }
-            }());
-            var otherfee = (function(){
-                if($("#"+ formId + " .otherfee").val() === ""){
-                    return 0;
-                }else{
-                    return $("#"+ formId + " .otherfee").val();
-                }
-            }());
-            var result = parseFloat(income) - parseFloat(outcome) - parseFloat(otherfee);
-            if(isNaN(result) === true){
-                $("#"+ formId + " .profit").val("");
-            }else{
-                $("#"+ formId + " .profit").val(result);
-            }
-        };
 
     })
 

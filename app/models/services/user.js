@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var crypto = require('crypto');
 
 var userService = {};
 
@@ -71,6 +72,23 @@ userService.updateOne = function(user,callback){
             callback(err);
         }else{
             callback(null,nUpdated);
+        }
+    });
+};
+
+//根据id验证密码
+userService.validatePassword = function(id,password,callback){
+    User.findById(id,function(err,user){
+        if(err){
+            callback(err);
+        }else{
+            if(password === user.password){
+                console.log('vilidate pass');
+                callback(null,true);
+            }else{
+                console.log('vilidate not pass');
+                callback(null,false);
+            }
         }
     });
 };
