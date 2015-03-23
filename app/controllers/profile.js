@@ -6,10 +6,6 @@ module.exports = function (app) {
 
     app.get('/profile', checkLogin , function (req, res) {
 
-        console.log('session.user');
-        console.log(console.log(req.session.user));
-        console.log(req.query.q);
-
         if(req.query.q === 'succeed'){
             res.render('profile', {
                 title: '个人信息',
@@ -35,9 +31,6 @@ module.exports = function (app) {
             passwordMd5 = md5.update(userToValidate.passwordNow).digest('hex');
 
         userToValidate.passwordNow = passwordMd5;
-
-        console.log("user in validation:");
-        console.log(util.inspect(userToValidate));
 
         if(userToValidate.passwordNow === "" || userToValidate.newPassword === "" || userToValidate.reNewPassword === "") {
             res.send({success:false,msg:'密码不能为空'});
@@ -77,9 +70,6 @@ module.exports = function (app) {
         delete userToUpdate.passwordNow;
         delete userToUpdate.newPassword;
         delete userToUpdate.reNewPassword;
-
-        console.log("user in update:");
-        console.log(util.inspect(userToUpdate));
 
         //验证用户名是否被占用
         UserService.findUserNameIsUsedByOthers(userToUpdate, function (err, user) {

@@ -83,10 +83,8 @@ userService.validatePassword = function(id,password,callback){
             callback(err);
         }else{
             if(password === user.password){
-                console.log('vilidate pass');
                 callback(null,true);
             }else{
-                console.log('vilidate not pass');
                 callback(null,false);
             }
         }
