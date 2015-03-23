@@ -8,6 +8,7 @@ var flash = require('connect-flash');
 
 //路由
 var authRoutes = require('./app/controllers/auth');
+var profileRoutes = require('./app/controllers/profile');
 var userRoutes = require('./app/controllers/user');
 var engprojRoutes = require('./app/controllers/engproj');
 var netprojRoutes = require('./app/controllers/netproj');
@@ -58,6 +59,7 @@ userRoutes(app);
 engprojRoutes(app);
 netprojRoutes(app);
 citygovprojRoutes(app);
+profileRoutes(app);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
