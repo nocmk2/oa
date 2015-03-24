@@ -124,12 +124,6 @@ module.exports = function (app) {
                         msg:"数据存储出错"
                     });
                 }
-                //若更改的是当前用户，更新session中的用户信息
-                if(userToUpdate._id === req.session.user._id){
-                    var _password = req.session.user.password;
-                    req.session.user = userToUpdate;
-                    req.session.user.password = _password;
-                }
                 return res.send({
                     success:true
                 });
