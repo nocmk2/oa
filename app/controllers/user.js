@@ -1,5 +1,7 @@
 var crypto = require('crypto');
 var UserService = require('../models/services/user');
+var fs = require('fs');
+var path = require('path');
 
 module.exports = function (app) {
 
@@ -79,6 +81,12 @@ module.exports = function (app) {
                 console.log(err);
                 req.flash('error', err);
                 return res.send({result:"delete failed"});
+            }
+            //删除用户头像
+            for(var i = 0 ; i < idsToDelete.length ; i++){
+                if(fs.existsSync(path.join(__dirname,"../../public/images/portrait/",(idsToDelete[i] + '.png')))){
+                    fs.unlinkSync(path.join(__dirname,"../../public/images/portrait/",(idsToDelete[i] + '.png')));
+                }
             }
             return res.send({result:"delete success"});
         });
