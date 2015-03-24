@@ -46,10 +46,8 @@ module.exports = function (app) {
             }
 
             if(result === true){
-                console.log('验证通过');
                 res.send({success:true,msg:'验证通过'});
             }else{
-                console.log('验证不通过');
                 res.send({success:false,msg:'验证不通过'});
             }
         })
@@ -93,11 +91,15 @@ module.exports = function (app) {
                 //更新session
                 if(userToUpdate.password !== ''){
                     var _password = userToUpdate.password;
-                    req.session.user = userToUpdate;
+                    for(var val in userToUpdate){
+                        req.session.user[val] = userToUpdate[val];
+                    }
                     req.session.user.password = _password;
                 }else{
                     var _password = req.session.user.password;
-                    req.session.user = userToUpdate;
+                    for(var val in userToUpdate){
+                        req.session.user[val] = userToUpdate[val];
+                    }
                     req.session.user.password = _password;
                 }
 
@@ -110,10 +112,6 @@ module.exports = function (app) {
     });
 
     app.post('/profile/uploadPortrait',function(req,res){
-
-        console.log("in upload");
-        console.log(util.inspect(req.files));
-
 
         //获取头像的文件名,更改头像的用户的_id
         var filename;

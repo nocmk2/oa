@@ -29,8 +29,6 @@ module.exports = function (app) {
             password = user.password,
             password_re = user['vpassword'];
         if (password_re !== password) {
-            //req.flash('error', '两次输入的密码不一致!');
-            //return res.redirect('/user');
             return res.send({
                 success:false,
                 msg:"两次输入的密码不一致"
@@ -88,6 +86,13 @@ module.exports = function (app) {
                     fs.unlinkSync(path.join(__dirname,"../../public/images/portrait/",(idsToDelete[i] + '.png')));
                 }
             }
+            //如果删除了当前登录用户，则跳转回首页
+            for(var j = 0 ; j < idsToDelete.length ; j++){
+                if(idsToDelete[j] === req.session.user._id){
+                    delete req.session.user;
+                    return res.send({result:"delete itself"});
+                }
+            }
             return res.send({result:"delete success"});
         });
     });
@@ -123,6 +128,12 @@ module.exports = function (app) {
                         success:false,
                         msg:"数据存储出错"
                     });
+                }
+                //若更改的是当前用户，更新session中的用户信息
+                if(userToUpdate._id === req.session.user._id){
+                    for(var val in userToUpdate){
+                        req.session.user[val] = userToUpdate[val];
+                    }
                 }
                 return res.send({
                     success:true
