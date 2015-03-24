@@ -1,6 +1,8 @@
 var crypto = require('crypto');
 var UserService = require('../models/services/user');
 var util = require('util');
+var fs = require('fs');
+var path = require('path');
 
 module.exports = function (app) {
 
@@ -105,6 +107,38 @@ module.exports = function (app) {
 
             });
         });
+    });
+
+    app.post('/profile/uploadPortrait',function(req,res){
+
+        console.log("in upload");
+        console.log(util.inspect(req.files));
+
+
+        //获取头像的文件名,更改头像的用户的_id
+        var filename;
+        var _id;
+
+        for(file in req.files){
+            filename = req.files[file].fieldname + '.png';
+            _id = file;
+        }
+
+        res.type("html");
+        if(fs.existsSync(path.join(__dirname,"../../public/images/portrait/",filename))){
+            UserService.hasPortrait(_id,function(err,nUpdated){
+                if(err){
+                    console.log(err);
+                    return res.send(false);
+                }
+                //更新session
+                req.session.user.hasPortrait = true;
+                return res.send(true);
+            });
+        }else{
+            return res.send(false);
+        }
+
     });
 
 

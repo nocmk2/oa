@@ -10,7 +10,11 @@ var UserSchema = new mongoose.Schema({
     phone:String,
     depart:String,
     city:String,
-    date:String
+    date:String,
+    hasPortrait:{
+        type:Boolean,
+        default:false
+    }
 });
 
 module.exports = UserSchema;
