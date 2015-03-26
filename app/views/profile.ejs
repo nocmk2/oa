@@ -85,6 +85,46 @@
 
                             <br/>
 
+                        </fieldset>
+
+
+                        <fieldset>
+                            <div class="row">
+
+                                <label class="label col col-1">当前头像：</label>
+
+                                <div class="col col-6">
+                                    <%if(user.hasPortrait === false || user.hasPortrait === undefined){%>
+                                    <img class="portrait" style="width: 40px;height: 40px" src="images/portrait/default.png" alt="当前头像"/>
+                                    <%}else{ %>
+                                    <img class="portrait" style="width: 40px;height: 40px" src="images/portrait/<%if(user._id === null || user._id === undefined){%><%}else{ %><%= user._id%><%}%>.png" alt="当前头像"/>
+                                    <%}%>
+                                </div>
+
+                            </div>
+
+                            <br/>
+
+
+                            <div class="row">
+
+                                    <label class="label col col-1">上传头像：</label>
+
+                                    <div class="col col-6">
+                                        <label class="input"> <i class="icon-append fa fa-file-o"></i>
+
+                                            <input type="file" name="<%if(user._id === null || user._id === undefined){%><%}else{ %><%= user._id%><%}%>" id="portraitToUpload">
+                                            <span id="uploadInfo"  style="padding-top:5px;display: inline-block"></span>
+                                        </label>
+                                        <span class="button pull-left" id="uploadPortrait" style="margin-left:0;margin-top: 5px">
+                                                上传头像
+                                        </span>
+
+                                    </div>
+
+                            </div>
+
+                            <br/>
 
                         </fieldset>
 
@@ -343,6 +383,7 @@ you can add as many as you like
 <script src="js/plugin/datatables/media/js/TableTools.min.js"></script>
 <script src="js/plugin/datatables/DT_bootstrap.js"></script>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/ajaxfileupload.js"></script>
 
 <script type="text/javascript">
 
@@ -521,7 +562,6 @@ you can add as many as you like
                         url:"/profile/update",
                         contentType: 'application/json',
                         data: JSON.stringify(formInfo),
-                        dataType:"json",
                         success:function(result){
                             if(result.success === true){
                                 location.href = "/profile?q=succeed";
@@ -534,10 +574,44 @@ you can add as many as you like
                                     alert("数据存储出错");
                                 }
                             }
+                        },
+                        error: function () {
+                            alert("数据存储出错");
                         }
                     });
                 }
             }
+        });
+
+        //上传头像
+        $("#uploadPortrait").click(function (e) {
+            e.preventDefault();
+            $("#uploadInfo").removeClass();
+            $("#uploadInfo").text("上传中...");
+            $.ajaxFileUpload(
+                    {
+                        url: '/profile/uploadPortrait',
+                        secureuri: false,
+                        fileElementId: 'portraitToUpload',
+                        dataType:'json',
+                        success: function (result) {
+                            if(result === true){
+                                $("#uploadInfo").addClass("text-success");
+                                $("#uploadInfo").text("上传完毕");
+                                //刷新当前头像
+                                var _id = $("#userProfile input[name='_id']").val();
+                                $(".portrait").each(function () {
+                                    $(this).attr("src",("images/portrait/" + _id +".png?t=" + new Date().getTime()));
+                                });
+                            }else{
+                                $("#uploadInfo").addClass("text-warning");
+                                $("#uploadInfo").text("上传失败，请确保图片格式为png,jpg或jpeg");
+                            }
+                        },
+                        error: function () {
+                            alert("数据存储出错");
+                        }
+                    })
         });
 
         //清除输入框内表单的错误信息

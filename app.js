@@ -37,6 +37,10 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
+
+//文件上传配置
+require('./config/multerConfig')(app);
+
 app.use(express.session({
     secret: settings.cookieSecret,
     key: settings.db,//cookie name

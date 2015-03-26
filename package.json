@@ -12,6 +12,7 @@
     "express": "3.18.3",
     "mongodb": "*",
     "mongoose": "^3.8.24",
+    "multer": "^0.1.8",
     "node-xlsx": "^0.5.1"
   }
 }
