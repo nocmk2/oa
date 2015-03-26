@@ -87,23 +87,8 @@ module.exports = function (app) {
                 console.log(err);
                 netprojs = [];
             }
-            var data = [];
-            for(var i = 0 ; i < netprojs.length ; i++){
-                data[i] = [];
-                for(var key in netprojs[i]){
-                    if(key === "basicInfo"|| key === "incomeInfo"){
-                        for(var innerKey in netprojs[i][key]){
-                            if(typeof(netprojs[i][key][innerKey]) === "string"){
-                                data[i] .push(netprojs[i][key][innerKey]);
-                            }
-                        }
-                    }
-                }
-                data[i].reverse();
-            }
 
-            data.unshift(["序号","工单号","甲方项目负责人","乙方项目负责人","项目属性","项目类别","实施原因","项目名称","工程地址","所属区域","施工队","施工队负责人","委托时间","立项情况","开工时间","完工时间","竣工图纸收到日期（附件）","甲方验收情况","送审日期（附件）","备注"
-                ,"预算","结算","开票金额（附件）","实际收款","施工队结款","施工队工作量表格","其他费用","利润","备注"]);
+	        var data = NetprojService.getDataForExcel(netprojs);
 
             var buffer = xlsx.build([{name: "网络部项目", data: data}]);
 
