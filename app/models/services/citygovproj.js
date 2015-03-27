@@ -1,4 +1,5 @@
 var Citygovproj = require('../models/citygovproj');
+var citygovprojConfig = require('../../../config/projs/citygovproj');
 
 var citygovprojService = {};
 
@@ -51,6 +52,28 @@ citygovprojService.deleteById = function(ids,callback){
             callback(null,nRemoved);
         }
     });
+};
+
+//生产符合node-xlsx要求的格式化数据
+citygovprojService.getDataForExcel = function(citygovprojs){
+	var data = [];
+	for(var i = 0 ; i < citygovprojs.length ; i++){
+		data[i] = [];
+		for(var key in citygovprojs[i]){
+			if(key === "basicInfo" || key === "materialInfo" || key === "constructionInfo" || key === "textInfo" || key === "contractInfo" || key === "incomeInfo"){
+				for(var innerKey in citygovprojs[i][key]){
+					if(typeof(citygovprojs[i][key][innerKey]) === "string"){
+						data[i] .push(citygovprojs[i][key][innerKey]);
+					}
+				}
+			}
+		}
+		data[i].reverse();
+	}
+
+	data.unshift(citygovprojConfig.list);
+
+	return data;
 };
 
 module.exports = citygovprojService;

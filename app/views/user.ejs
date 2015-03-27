@@ -767,7 +767,11 @@ you can add as many as you like
                 success:function(msg){
                     if(msg.result === "delete success"){
                         location.reload();
-                    }else{
+                    }
+                    else if(msg.result === "delete itself"){
+                        location.href = "/";
+                    }
+                    else{
                         alert("删除失败");
                     }
                 }
