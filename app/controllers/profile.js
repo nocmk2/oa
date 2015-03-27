@@ -1,6 +1,8 @@
 var crypto = require('crypto');
 var UserService = require('../models/services/user');
 var util = require('util');
+var fs = require('fs');
+var path = require('path');
 
 module.exports = function (app) {
 
@@ -44,10 +46,8 @@ module.exports = function (app) {
             }
 
             if(result === true){
-                console.log('验证通过');
                 res.send({success:true,msg:'验证通过'});
             }else{
-                console.log('验证不通过');
                 res.send({success:false,msg:'验证不通过'});
             }
         })
@@ -91,11 +91,15 @@ module.exports = function (app) {
                 //更新session
                 if(userToUpdate.password !== ''){
                     var _password = userToUpdate.password;
-                    req.session.user = userToUpdate;
+                    for(var val in userToUpdate){
+                        req.session.user[val] = userToUpdate[val];
+                    }
                     req.session.user.password = _password;
                 }else{
                     var _password = req.session.user.password;
-                    req.session.user = userToUpdate;
+                    for(var val in userToUpdate){
+                        req.session.user[val] = userToUpdate[val];
+                    }
                     req.session.user.password = _password;
                 }
 
@@ -105,6 +109,34 @@ module.exports = function (app) {
 
             });
         });
+    });
+
+    app.post('/profile/uploadPortrait',function(req,res){
+
+        //获取头像的文件名,更改头像的用户的_id
+        var filename;
+        var _id;
+
+        for(file in req.files){
+            filename = req.files[file].fieldname + '.png';
+            _id = file;
+        }
+
+        res.type("html");
+        if(fs.existsSync(path.join(__dirname,"../../public/images/portrait/",filename))){
+            UserService.hasPortrait(_id,function(err,nUpdated){
+                if(err){
+                    console.log(err);
+                    return res.send(false);
+                }
+                //更新session
+                req.session.user.hasPortrait = true;
+                return res.send(true);
+            });
+        }else{
+            return res.send(false);
+        }
+
     });
 
 

@@ -91,5 +91,16 @@ userService.validatePassword = function(id,password,callback){
     });
 };
 
+//将用户更新为拥有头像
+userService.hasPortrait = function(id,callback){
+    User.findByIdAndUpdate(id,{hasPortrait:true},function(err,nUpdated){
+        if(err){
+            callback(err);
+        }else{
+            callback(null,nUpdated);
+        }
+    });
+};
+
 module.exports = userService;
 
