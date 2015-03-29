@@ -1871,6 +1871,7 @@ you can add as many as you like
                 var textareaName = $(this).attr("name");
                 formInfo.proj.incomeInfo[textareaName] = $(this).val();
             });
+	        $("#saveProj").addClass("disabled").text("保存中...");
             $.ajax({
                 type:"POST",
                 url:"/netproj/save",
@@ -1882,6 +1883,7 @@ you can add as many as you like
                         location.reload();
                     }else{
                         alert("数据存储出错");
+	                    $("#saveProj").removeClass("disabled").text("提交 ");
                     }
                 }
             });
@@ -1925,7 +1927,7 @@ you can add as many as you like
                 var textareaName = $(this).attr("name");
                 formInfo.proj.incomeInfo[textareaName] = $(this).val();
             });
-            console.log(formInfo.proj);
+	        $("#saveProjEdited").addClass("disabled").text("提交中...");
             $.ajax({
                 type:"POST",
                 url:"/netproj/edit",
@@ -1937,6 +1939,7 @@ you can add as many as you like
                         location.reload();
                     }else{
                         alert("数据存储出错");
+	                    $("#saveProjEdited").removeClass("disabled").text("提交");
                     }
                 }
             });
