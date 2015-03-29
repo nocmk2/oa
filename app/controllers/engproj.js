@@ -1,4 +1,5 @@
 var EngprojService = require('../models/services/engproj');
+var CounterService = require('../models/services/counter');
 var util = require('util');
 var xlsx = require('node-xlsx');
 var fs = require('fs');
@@ -39,6 +40,11 @@ module.exports = function (app) {
     //保存项目
     app.post('/engineeringproj/save',checkLogin,function(req,res){
         var proj = req.body.proj;
+        console.log("---------------------------------------------------------------");
+        
+        CounterService.getSeqID("seqid");
+
+
         EngprojService.save(proj,function (err, proj) {
             if (err) {
                 return res.send({
