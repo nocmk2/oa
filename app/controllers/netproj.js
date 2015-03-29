@@ -1,4 +1,6 @@
 var NetprojService = require('../models/services/netproj');
+var CounterService = require('../models/services/counter');
+var moment = require('moment');
 var util = require('util');
 var xlsx = require('node-xlsx');
 var fs = require('fs');
@@ -38,18 +40,94 @@ module.exports = function (app) {
     //保存项目
     app.post('/netproj/save',checkLogin,function(req,res){
         var proj = req.body.proj;
-        console.log(util.inspect(proj));
-        NetprojService.save(proj,function (err, proj) {
-            if (err) {
-                return res.send({
-                    success:false,
-                    msg:"数据存储出错"
-                });
-            }
-            return res.send({
-                success:true
-            });
-        });
+
+	    var today = moment().format('YYYYMMDD');
+
+	    //检查counter中日期
+	    CounterService.isToday(today, function (err,result) {
+		    if(err){
+			    return res.send({
+				    success:false,
+				    msg:"数据存储出错"
+			    });
+		    }
+		    if(result === true){
+			    //是当日
+			    CounterService.getSeqID(today, function (err,seqId) {
+				    if(err){
+					    return res.send({
+						    success:false,
+						    msg:"数据存储出错"
+					    });
+				    }
+				    //seqId补零
+				    if(parseInt(seqId) < 10){
+					    seqId = "00" + seqId;
+				    }else if(parseInt(seqId)  < 100){
+					    seqId = "0" + seqId
+				    }
+
+				    proj.basicInfo.serialno = "WL" + today + seqId;
+
+
+				    //保存
+				    NetprojService.save(proj,function (err, proj) {
+					    if (err) {
+						    return res.send({
+							    success:false,
+							    msg:"数据存储出错"
+						    });
+					    }
+					    return res.send({
+						    success:true
+					    });
+				    });
+
+			    });
+		    }else{
+			    //非当日
+			    CounterService.init(today,function(err){
+				    if(err){
+					    return res.send({
+						    success:false,
+						    msg:"数据存储出错"
+					    });
+				    }
+				    CounterService.getSeqID(today, function (err,seqId) {
+					    if(err){
+						    return res.send({
+							    success:false,
+							    msg:"数据存储出错"
+						    });
+					    }
+					    //seqId补零
+					    if(parseInt(seqId) < 10){
+						    seqId = "00" + seqId;
+					    }else if(parseInt(seqId)  < 100){
+						    seqId = "0" + seqId
+					    }
+
+					    proj.basicInfo.serialno = "WL" + today + seqId;
+
+
+					    //保存
+					    NetprojService.save(proj,function (err, proj) {
+						    if (err) {
+							    return res.send({
+								    success:false,
+								    msg:"数据存储出错"
+							    });
+						    }
+						    return res.send({
+							    success:true
+						    });
+					    });
+
+				    });
+			    })
+		    }
+	    });
+
     });
 
     //获取项目信息

@@ -1,24 +1,9 @@
 var mongoose = require('mongoose');
-/*
- function getNextSequence(name) {
-           var ret = db.counters.findAndModify(
-                  {
-                    query: { _id: name },
-                    update: { $inc: { seq: 1 } },
-                    new: true,            upsert: true          }
-           );
-
-             return ret.seq;}
-*/
-function returnvalue(v){
-    return v +2;
- }
 
 var EngprojSchema = new mongoose.Schema({
     //基本信息
-        
     basicInfo:{
-        serialno :{type :String , default : returnvalue(1)},//getNextSequence("userid")},//序号
+        serialno :String,//序号
         transid : String,//传输编号
         controlid :String, //受控编号
         projname :String,//工程名称

@@ -286,7 +286,7 @@
 
                                                                 <fieldset>
 
-                                                                    <div class="form-group">
+                                                                    <div class="form-group hidden">
                                                                         <label class="control-label col-md-2" style="padding-top: 7px;">序号：</label>
                                                                         <div class="col-md-10">
                                                                             <div class="row">
@@ -1535,7 +1535,7 @@
 
                                                             <fieldset>
 
-                                                                <div class="form-group">
+                                                                <div class="form-group hidden">
                                                                     <label class="control-label col-md-2" style="padding-top: 7px;">序号：</label>
                                                                     <div class="col-md-10">
                                                                         <div class="row">
@@ -3087,10 +3087,7 @@ you can add as many as you like
             //basicInfo
             $("#tab1  input").each(function(){
                 var inputName = $(this).attr("name");
-                //去掉serialno，提交schema的default值
-                if(inputName==="serialno"){alert('skip serialno');} else{
-                    formInfo.proj.basicInfo[inputName] = $(this).val();
-                }
+	            formInfo.proj.basicInfo[inputName] = $(this).val();
             });
             $("#tab1  select").each(function(){
                 var selectName = $(this).attr("name");
