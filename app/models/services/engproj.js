@@ -1,4 +1,5 @@
 var Engproj = require('../models/engproj');
+var engprojConfig = require('../../../config/projs/engproj');
 
 var engprojService = {};
 
@@ -55,6 +56,28 @@ engprojService.deleteById = function(ids,callback){
             callback(null,nRemoved);
         }
     });
+};
+
+//生产符合node-xlsx要求的格式化数据
+engprojService.getDataForExcel = function(engprojs){
+	var data = [];
+	for(var i = 0 ; i < engprojs.length ; i++){
+		data[i] = [];
+		for(var key in engprojs[i]){
+			if(key === "basicInfo" || key === "materialInfo" || key === "constructionInfo" || key === "textInfo" || key === "contractInfo" || key === "incomeInfo"){
+				for(var innerKey in engprojs[i][key]){
+					if(typeof(engprojs[i][key][innerKey]) === "string"){
+						data[i] .push(engprojs[i][key][innerKey]);
+					}
+				}
+			}
+		}
+		data[i].reverse();
+	}
+
+	data.unshift(engprojConfig.list);
+
+	return data;
 };
 
 module.exports = engprojService;

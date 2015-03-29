@@ -194,7 +194,11 @@
 				<span> <!-- User image size is adjusted inside CSS, it should stay as it --> 
 					
 					<a href="javascript:void(0);" id="show-shortcut">
-                        <img src="img/avatars/sunny.png" alt="me" class="online"/>
+                        <%if(user.hasPortrait === false || user.hasPortrait === undefined){%>
+                        <img src="images/portrait/default.png" alt="me" class="online portrait"/>
+                        <%}else{ %>
+                        <img src="images/portrait/<%if(user._id === null || user._id === undefined){%><%}else{ %><%= user._id%><%}%>.png" alt="me" class="online portrait"/>
+                        <%}%>
 						<span>
                             <% if (user) { %>
                             您好, <%= user.name %>

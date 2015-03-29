@@ -1,4 +1,5 @@
 var Netproj = require('../models/netproj');
+var netprojConfig = require('../../../config/projs/netproj');
 
 var netprojService = {};
 
@@ -51,6 +52,28 @@ netprojService.deleteById = function(ids,callback){
             callback(null,nRemoved);
         }
     });
+};
+
+//生产符合node-xlsx要求的格式化数据
+netprojService.getDataForExcel = function(netprojs){
+	var data = [];
+	for(var i = 0 ; i < netprojs.length ; i++){
+		data[i] = [];
+		for(var key in netprojs[i]){
+			if(key === "basicInfo"|| key === "incomeInfo"){
+				for(var innerKey in netprojs[i][key]){
+					if(typeof(netprojs[i][key][innerKey]) === "string"){
+						data[i] .push(netprojs[i][key][innerKey]);
+					}
+				}
+			}
+		}
+		data[i].reverse();
+	}
+
+	data.unshift(netprojConfig.list);
+
+	return data;
 };
 
 module.exports = netprojService;

@@ -1,5 +1,7 @@
 var crypto = require('crypto');
 var UserService = require('../models/services/user');
+var fs = require('fs');
+var path = require('path');
 
 module.exports = function (app) {
 
@@ -27,8 +29,6 @@ module.exports = function (app) {
             password = user.password,
             password_re = user['vpassword'];
         if (password_re !== password) {
-            //req.flash('error', '两次输入的密码不一致!');
-            //return res.redirect('/user');
             return res.send({
                 success:false,
                 msg:"两次输入的密码不一致"
@@ -80,6 +80,19 @@ module.exports = function (app) {
                 req.flash('error', err);
                 return res.send({result:"delete failed"});
             }
+            //删除用户头像
+            for(var i = 0 ; i < idsToDelete.length ; i++){
+                if(fs.existsSync(path.join(__dirname,"../../public/images/portrait/",(idsToDelete[i] + '.png')))){
+                    fs.unlinkSync(path.join(__dirname,"../../public/images/portrait/",(idsToDelete[i] + '.png')));
+                }
+            }
+            //如果删除了当前登录用户，则跳转回首页
+            for(var j = 0 ; j < idsToDelete.length ; j++){
+                if(idsToDelete[j] === req.session.user._id){
+                    delete req.session.user;
+                    return res.send({result:"delete itself"});
+                }
+            }
             return res.send({result:"delete success"});
         });
     });
@@ -118,9 +131,9 @@ module.exports = function (app) {
                 }
                 //若更改的是当前用户，更新session中的用户信息
                 if(userToUpdate._id === req.session.user._id){
-                    var _password = req.session.user.password;
-                    req.session.user = userToUpdate;
-                    req.session.user.password = _password;
+                    for(var val in userToUpdate){
+                        req.session.user[val] = userToUpdate[val];
+                    }
                 }
                 return res.send({
                     success:true
