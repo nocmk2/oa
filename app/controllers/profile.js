@@ -55,7 +55,7 @@ module.exports = function (app) {
     });
 
     //修改用户信息
-    app.post('/profile/update',function(req,res){
+    app.post('/profile/update',checkLogin,function(req,res){
         var userToUpdate = req.body.user;
 
         //检查是否修改密码
@@ -111,7 +111,7 @@ module.exports = function (app) {
         });
     });
 
-    app.post('/profile/uploadPortrait',function(req,res){
+    app.post('/profile/uploadPortrait',checkLogin ,function(req,res){
 
         //获取头像的文件名,更改头像的用户的_id
         var filename;

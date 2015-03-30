@@ -1,24 +1,9 @@
 var mongoose = require('mongoose');
-/*
- function getNextSequence(name) {
-           var ret = db.counters.findAndModify(
-                  {
-                    query: { _id: name },
-                    update: { $inc: { seq: 1 } },
-                    new: true,            upsert: true          }
-           );
-
-             return ret.seq;}
-*/
-function returnvalue(v){
-    return v +2;
- }
 
 var EngprojSchema = new mongoose.Schema({
     //基本信息
-        
     basicInfo:{
-        serialno :{type :String , default : returnvalue(1)},//getNextSequence("userid")},//序号
+        serialno :String,//序号
         transid : String,//传输编号
         controlid :String, //受控编号
         projname :String,//工程名称
@@ -98,7 +83,20 @@ var EngprojSchema = new mongoose.Schema({
         otherfee : String,//其他费用
         profit :String,//利润
         incomecomments : String//备注
-    }
+    },
+	//附件文件信息
+	fileInfo : {
+		withfeeFileName : {type:String,default:"无"},//配合费附件名
+		linefeeFileName : {type:String,default:"无"},//选线费附件名
+		testfeefeeFileName : {type:String,default:"无"},//跟测费附件名
+		compmatcommittimeFileName : {type:String,default:"无"},//竣工资料施工队上交时间附件名
+		comptextcommittimeFileName : {type:String,default:"无"},//竣工文本提交日期附件名
+		contractFileName : {type:String,default:"无"},//合同文本附件名
+		prepayindateFileName : {type:String,default:"无"},//预付款开票日期附件名
+		propayindateFileName : {type:String,default:"无"},//进度款开票日期附件名
+		finalpayindateFileName : {type:String,default:"无"},//尾款开票日期附件名
+		isinspectFileName : {type:String,default:"无"}//是否已送审附件名
+	}
 });
 
 module.exports = EngprojSchema;

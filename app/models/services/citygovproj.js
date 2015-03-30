@@ -76,4 +76,26 @@ citygovprojService.getDataForExcel = function(citygovprojs){
 	return data;
 };
 
+
+//上传了附件，更新数据库中的附件名
+citygovprojService.updateUploadInfo = function (id,nameInFileInfo,filename,callback) {
+
+	Citygovproj.findById(id, function (err,proj) {
+		if(err){
+			callback(err);
+		}else{
+			proj.fileInfo[nameInFileInfo] = filename;
+			Citygovproj.findByIdAndUpdate(id,proj,function(err,nUpdated){
+				if(err){
+					console.log(err);
+					callback(err);
+				}else{
+					callback(null,nUpdated);
+				}
+			});
+		}
+	});
+
+};
+
 module.exports = citygovprojService;
