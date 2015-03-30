@@ -5,6 +5,8 @@ var util = require('util');
 var xlsx = require('node-xlsx');
 var fs = require('fs');
 var path = require('path');
+var fse = require('fs-extra');
+
 
 module.exports = function (app) {
 
@@ -33,6 +35,10 @@ module.exports = function (app) {
                 req.flash('error', err);
                 return res.send({success:false});
             }
+	        //遍历删除对应项目附件
+	        for(var i = 0 ; i < idsToDelete.length ; i++){
+		        fse.removeSync(path.join(__dirname,("../../public/attachment/netproj/" + idsToDelete[i])));
+	        }
             return res.send({success:true});
         });
     });
@@ -179,6 +185,55 @@ module.exports = function (app) {
 
         });
     });
+
+	//附件上传
+	app.post('/netproj/upload',checkLogin,function(req,res){
+
+		//获取文件信息
+		var fileInfo = req.body;
+
+		var id = fileInfo.id;
+		var file = fileInfo.fileName;
+		var filename = "";
+
+		for(_file in req.files){
+			filename = req.files[_file].originalname;
+		}
+
+		NetprojService.updateUploadInfo(id,file,filename,function(err,nUpdated){
+			res.type("html");
+			if(err){
+				console.log(err);
+				return res.send({success:false});
+			}else{
+				return res.send({success:true,
+					fileNameUploaded:filename});
+			}
+
+		});
+
+	});
+
+	//附件下载
+	app.get('/netproj/downloadAttachment',checkLogin,function(req,res){
+
+		//获取文件信息
+		console.log(req.query);
+
+		var id = req.query.id;
+		var file = req.query.file;
+		var pathOfFileToDownload = path.join(__dirname,("../../public/attachment/netproj/" + id + "/" + file + "/"));
+
+
+		if(fs.existsSync(pathOfFileToDownload)){
+			var filesInDir = fs.readdirSync(pathOfFileToDownload);
+
+			var fileToBeDownloaded =  path.join(pathOfFileToDownload,filesInDir[0]);
+
+			res.download(fileToBeDownloaded);
+		}
+
+	});
 
     function checkLogin(req, res, next) {
         if (!req.session.user) {

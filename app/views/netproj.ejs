@@ -625,6 +625,7 @@
                                                                                         <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textreceivetime">
                                                                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                                                     </div>
+	                                                                                <span class="text-muted">附件，请在新增后上传</span>
 
                                                                                 </div>
                                                                             </div>
@@ -655,6 +656,7 @@
                                                                                         <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="inspecttime">
                                                                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                                                     </div>
+	                                                                                <span class="text-muted">附件，请在新增后上传</span>
 
                                                                                 </div>
                                                                             </div>
@@ -718,6 +720,7 @@
                                                                                 <div >
                                                                                     <input class="form-control digit" placeholder="开票金额（附件）" type="text" name="voiceamount">
                                                                                 </div>
+	                                                                            <span class="text-muted">附件，请在新增后上传</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1283,6 +1286,13 @@
                                                                                     <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textreceivetime">
                                                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                                                 </div>
+	                                                                            <br/>
+	                                                                            <div class="fileDiv">
+		                                                                            <input class="form-control"  type="file" name="textreceivetimeFile" id="textreceivetimeFile">
+		                                                                            <span style="padding-top: 3px">当前文件： <span name="textreceivetimeFileName" class="fileName"></span></span>
+		                                                                            <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
+		                                                                            <span class="uploadInfo"></span>
+	                                                                            </div>
 
                                                                             </div>
                                                                         </div>
@@ -1313,6 +1323,13 @@
                                                                                     <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="inspecttime">
                                                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                                                 </div>
+	                                                                            <br/>
+	                                                                            <div class="fileDiv">
+		                                                                            <input class="form-control"  type="file" name="inspecttimeFile" id="inspecttimeFile">
+		                                                                            <span style="padding-top: 3px">当前文件： <span name="inspecttimeFileName" class="fileName"></span></span>
+		                                                                            <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
+		                                                                            <span class="uploadInfo"></span>
+	                                                                            </div>
 
                                                                             </div>
                                                                         </div>
@@ -1375,6 +1392,13 @@
                                                                         <div class="col-sm-12">
                                                                             <div >
                                                                                 <input class="form-control digit" placeholder="开票金额（附件）" type="text" name="voiceamount">
+	                                                                            <br/>
+	                                                                            <div class="fileDiv">
+		                                                                            <input class="form-control"  type="file" name="voiceamountFile" id="voiceamountFile">
+		                                                                            <span style="padding-top: 3px">当前文件： <span name="voiceamountFileName" class="fileName"></span></span>
+		                                                                            <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
+		                                                                            <span class="uploadInfo"></span>
+	                                                                            </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1797,6 +1821,11 @@ you can add as many as you like
                             var textareaName = $(this).attr("name");
                             $(this).val(engproj.incomeInfo[textareaName]);
                         });
+	                    //附件
+	                    $(".fileDiv .fileName").each(function () {
+		                    var filename = $(this).attr("name");
+		                    $(this).text(engproj.fileInfo[filename]);
+	                    });
                     }else{
                         alert("获取项目信息失败");
                     }
@@ -2095,6 +2124,76 @@ you can add as many as you like
                 $("#"+ formId + " .profit").val(result);
             }
         };
+
+	    //附件上传
+	    $(".fileDiv .upload").click(function (e) {
+		    e.preventDefault();
+
+		    var fileDiv = $(this).parent();
+		    var uploadInfo = fileDiv.find(".uploadInfo");
+
+		    uploadInfo.removeClass("text-warning").text(" ");
+
+		    var fileElementId = fileDiv.find("input").attr("id");
+
+		    var fileInfo = {};
+		    fileInfo.id = $("#tab1-edit  input[name='_id']").val();
+		    fileInfo.file = fileDiv.find("input").attr("name");
+		    fileInfo.fileName = fileDiv.find(".fileName").attr("name");
+
+		    if(fileDiv.find("input").val() === ""){
+			    uploadInfo.addClass("text-warning").text("上传的文件不能为空");
+			    return;
+		    }
+
+		    uploadInfo.text("上传中...");
+
+		    $.ajaxFileUpload(
+				    {
+					    url: '/netproj/upload',
+					    secureuri: false,
+					    fileElementId: fileElementId,
+					    data:fileInfo,
+					    dataType:'json',
+					    success: function (result) {
+						    console.log(result);
+						    if(result.success === true){
+							    //更新当前附件名
+							    fileDiv.find(".fileName").text(result.fileNameUploaded);
+							    //更新提示字段
+							    uploadInfo.text(" ");
+						    }else{
+							    uploadInfo.addClass("text-warning").text("上传失败，请重试！")
+						    }
+					    },
+					    error: function () {
+						    alert("数据存储出错");
+					    }
+				    })
+	    });
+
+	    //附件下载
+	    $(".fileDiv .download").click(function (e) {
+		    //获取所需下载的文件信息
+		    var fileDiv = $(this).parent();
+		    var uploadInfo = fileDiv.find(".uploadInfo");
+
+		    uploadInfo.removeClass("text-warning").text(" ");
+
+		    var fileInfo = {};
+		    fileInfo.id = $("#tab1-edit  input[name='_id']").val();
+		    fileInfo.file = fileDiv.find("input").attr("name");
+		    fileInfo.fileName = fileDiv.find(".fileName").attr("name");
+
+		    if(fileDiv.find(".fileName").text() === "无"){
+			    uploadInfo.addClass("text-warning").text("文件不存在，请先上传！")
+			    return;
+		    }
+
+		    $(this).attr("href",("/netproj/downloadAttachment?id=" + $("#tab1-edit  input[name='_id']").val() + "&file=" + fileDiv.find("input").attr("name")));
+
+		    $(this).trigger("click");
+	    });
 
     })
 

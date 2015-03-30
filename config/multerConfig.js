@@ -34,7 +34,27 @@ module.exports = function(app){
 			        fs.mkdirSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId + '/' + file + '/')));
 		        }else{
 			        //若路径存在则清空内容
-					var filesInDir = fs.readdirSync(path.join(__dirname,("../public/attachment/"+ proj + "/"  + projId + '/' + file )));
+			        var filesInDir = fs.readdirSync(path.join(__dirname,("../public/attachment/"+ proj + "/"  + projId + '/' + file )));
+			        for(var i = 0 ; i < filesInDir.length ; i++){
+				        fs.unlinkSync(path.join(__dirname,("../public/attachment/"+ proj + "/"  + projId + '/' + file + "/" + filesInDir[i])));
+			        }
+		        }
+		        return dest + ('/attachment/'+ proj + "/"  + projId + '/' + file)
+	        }
+	        //上传附件，网络部部项目
+	        if(req.originalUrl === '/netproj/upload'){
+		        var proj = "netproj";
+		        var projId = req.body.id;
+		        var file = req.body.file;
+		        //若路径不存在则新建
+		        if(!fs.existsSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId + '/' + file )))){
+			        if(!fs.existsSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId )))){
+				        fs.mkdirSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId )));
+			        }
+			        fs.mkdirSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId + '/' + file + '/')));
+		        }else{
+			        //若路径存在则清空内容
+			        var filesInDir = fs.readdirSync(path.join(__dirname,("../public/attachment/"+ proj + "/"  + projId + '/' + file )));
 			        for(var i = 0 ; i < filesInDir.length ; i++){
 				        fs.unlinkSync(path.join(__dirname,("../public/attachment/"+ proj + "/"  + projId + '/' + file + "/" + filesInDir[i])));
 			        }
