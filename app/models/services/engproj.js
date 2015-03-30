@@ -1,5 +1,6 @@
 var Engproj = require('../models/engproj');
 var engprojConfig = require('../../../config/projs/engproj');
+var util = require('util');
 
 var engprojService = {};
 
@@ -19,8 +20,6 @@ engprojService.save = function(engproj,callback){
             callback(null,engprojSaved);
         }
     }
-
-    //engproj.update({_id:_id},{$set:{ "basicInfo":{serialno:'MDragon'}},function(err){});
 
     );
 };
@@ -78,6 +77,22 @@ engprojService.getDataForExcel = function(engprojs){
 	data.unshift(engprojConfig.list);
 
 	return data;
+};
+
+//上传了附件，更新数据库中的附件名
+engprojService.updateUploadInfo = function (id,nameInFileInfo,filename,callback) {
+	//准备更新字段对象
+	var fileInfoNeeded = {};
+	fileInfoNeeded.fileInfo = {};
+	fileInfoNeeded.fileInfo[nameInFileInfo] = filename;
+	//进行更新
+	Engproj.findByIdAndUpdate(id,{$set : fileInfoNeeded },function(err,nUpdated){
+		if(err){
+			callback(err);
+		}else{
+			callback(null,nUpdated);
+		}
+	});
 };
 
 module.exports = engprojService;
