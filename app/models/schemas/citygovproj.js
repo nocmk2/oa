@@ -89,7 +89,17 @@ var CitygovprojSchema = new mongoose.Schema({
         outcome : String,//施工队结款
         otherfee : String,//其他费用
         profit :String,//利润
-    }
+    },
+	//附件文件信息
+	fileInfo : {
+		finalpayvoicetimeFileName : {type:String,default:"无"},//我公司合同尾款开票日期附件名
+		propayvoicetimeFileName : {type:String,default:"无"},//我公司合同进度款开票日期附件名
+		prepayvoicetimeFileName : {type:String,default:"无"},//我公司合同预付款开票日期附件名
+		contracttextFileName : {type:String,default:"无"},//合同文本附件名
+		secondpartyfinaltimeFileName : {type:String,default:"无"},//乙方尾款开票日期附件名
+		secondpartyprocetimeFileName : {type:String,default:"无"},//乙方进度款开票日期附件名
+		secondpartyproceprepaytimeFileName : {type:String,default:"无"}//乙方预付款开票日期附件名
+	}
 });
 
 module.exports = CitygovprojSchema;

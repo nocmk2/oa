@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
 var CounterSchema = new mongoose.Schema({ 
-    _id:String,
-    seq:String
+    today:String,
+    seq:Number
 });
 
 module.exports = CounterSchema;

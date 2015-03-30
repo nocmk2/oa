@@ -35,7 +35,13 @@ var NetprojSchema = new mongoose.Schema({
         otherfee : String,//其他费用
         profit : String,//利润
         incomecomments : String//备注
-    }
+    },
+	//附件文件信息
+	fileInfo : {
+		voiceamountFileName : {type:String,default:"无"},//开票金额附件名
+		inspecttimeFileName : {type:String,default:"无"},//送审日期附件名
+		textreceivetimeFileName : {type:String,default:"无"}//竣工图纸收到日期附件名
+	}
 });
 
 module.exports = NetprojSchema;

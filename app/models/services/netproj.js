@@ -1,5 +1,6 @@
 var Netproj = require('../models/netproj');
 var netprojConfig = require('../../../config/projs/netproj');
+var util = require('util');
 
 var netprojService = {};
 
@@ -74,6 +75,27 @@ netprojService.getDataForExcel = function(netprojs){
 	data.unshift(netprojConfig.list);
 
 	return data;
+};
+
+//上传了附件，更新数据库中的附件名
+netprojService.updateUploadInfo = function (id,nameInFileInfo,filename,callback) {
+
+	Netproj.findById(id, function (err,proj) {
+		if(err){
+			callback(err);
+		}else{
+			proj.fileInfo[nameInFileInfo] = filename;
+			Netproj.findByIdAndUpdate(id,proj,function(err,nUpdated){
+				if(err){
+					console.log(err);
+					callback(err);
+				}else{
+					callback(null,nUpdated);
+				}
+			});
+		}
+	});
+
 };
 
 module.exports = netprojService;
