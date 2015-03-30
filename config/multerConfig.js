@@ -61,6 +61,26 @@ module.exports = function(app){
 		        }
 		        return dest + ('/attachment/'+ proj + "/"  + projId + '/' + file)
 	        }
+	        //上传附件，市政项目
+	        if(req.originalUrl === '/citygovproj/upload'){
+		        var proj = "citygovproj";
+		        var projId = req.body.id;
+		        var file = req.body.file;
+		        //若路径不存在则新建
+		        if(!fs.existsSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId + '/' + file )))){
+			        if(!fs.existsSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId )))){
+				        fs.mkdirSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId )));
+			        }
+			        fs.mkdirSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId + '/' + file + '/')));
+		        }else{
+			        //若路径存在则清空内容
+			        var filesInDir = fs.readdirSync(path.join(__dirname,("../public/attachment/"+ proj + "/"  + projId + '/' + file )));
+			        for(var i = 0 ; i < filesInDir.length ; i++){
+				        fs.unlinkSync(path.join(__dirname,("../public/attachment/"+ proj + "/"  + projId + '/' + file + "/" + filesInDir[i])));
+			        }
+		        }
+		        return dest + ('/attachment/'+ proj + "/"  + projId + '/' + file)
+	        }
 	        //其他
 	        return dest;
 

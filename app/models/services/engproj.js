@@ -86,9 +86,7 @@ engprojService.updateUploadInfo = function (id,nameInFileInfo,filename,callback)
 		if(err){
 			callback(err);
 		}else{
-			console.log("find!");
 			proj.fileInfo[nameInFileInfo] = filename;
-			console.log(util.inspect(proj));
 			Engproj.findByIdAndUpdate(id,proj,function(err,nUpdated){
 				if(err){
 					console.log(err);
