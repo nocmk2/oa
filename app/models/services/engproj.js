@@ -81,18 +81,25 @@ engprojService.getDataForExcel = function(engprojs){
 
 //上传了附件，更新数据库中的附件名
 engprojService.updateUploadInfo = function (id,nameInFileInfo,filename,callback) {
-	//准备更新字段对象
-	var fileInfoNeeded = {};
-	fileInfoNeeded.fileInfo = {};
-	fileInfoNeeded.fileInfo[nameInFileInfo] = filename;
-	//进行更新
-	Engproj.findByIdAndUpdate(id,{$set : fileInfoNeeded },function(err,nUpdated){
+
+	Engproj.findById(id, function (err,proj) {
 		if(err){
 			callback(err);
 		}else{
-			callback(null,nUpdated);
+			console.log("find!");
+			proj.fileInfo[nameInFileInfo] = filename;
+			console.log(util.inspect(proj));
+			Engproj.findByIdAndUpdate(id,proj,function(err,nUpdated){
+				if(err){
+					console.log(err);
+					callback(err);
+				}else{
+					callback(null,nUpdated);
+				}
+			});
 		}
 	});
+
 };
 
 module.exports = engprojService;

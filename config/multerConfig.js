@@ -28,7 +28,9 @@ module.exports = function(app){
 		        var file = req.body.file;
 		        //若路径不存在则新建
 		        if(!fs.existsSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId + '/' + file )))){
-			        fs.mkdirSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId )));
+			        if(!fs.existsSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId )))){
+				        fs.mkdirSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId )));
+			        }
 			        fs.mkdirSync(path.join(__dirname,("../public/attachment/" + proj + "/" + projId + '/' + file + '/')));
 		        }else{
 			        //若路径存在则清空内容

@@ -5,6 +5,7 @@ var util = require('util');
 var xlsx = require('node-xlsx');
 var fs = require('fs');
 var path = require('path');
+var fse = require('fs-extra');
 
 module.exports = function (app) {
 
@@ -34,11 +35,9 @@ module.exports = function (app) {
                 req.flash('error', err);
                 return res.send({success:false});
             }
-	        //删除对应项目附件
+	        //遍历删除对应项目附件
 	        for(var i = 0 ; i < idsToDelete.length ; i++){
-		        if(fs.existsSync(path.join(__dirname,("../../public/attachment/engproj/" + idsToDelete[i])))){
-			        fs.rmdirSync(path.join(__dirname,("../../public/attachment/engproj/" + idsToDelete[i])));
-		        }
+		        fse.removeSync(path.join(__dirname,("../../public/attachment/engproj/" + idsToDelete[i])));
 	        }
             return res.send({success:true});
         });
