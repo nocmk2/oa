@@ -180,7 +180,7 @@ module.exports = function (app) {
 
             fs.writeFile(path.join(__dirname,"../../public/excel/",_tmpFileName),buffer,function(err){
                 if(err) console.log(err);
-                res.download(path.join(__dirname,"../../public/excel/",_tmpFileName),"市政项目", function (err) {
+                res.download(path.join(__dirname,"../../public/excel/",_tmpFileName),'市政项目.xlsx', function (err) {
                     if(err) console.log(err);
 	                fse.remove(path.join(__dirname,"../../public/excel/",_tmpFileName), function (err) {
 		                if(err) console.log(err)
