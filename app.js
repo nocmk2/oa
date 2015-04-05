@@ -3,8 +3,10 @@ var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(express);
-var dbConfig = require('./config/dbConfig');
 var flash = require('connect-flash');
+
+//配置
+var dbConfig = require('./config/dbConfig');
 
 //路由
 var authRoutes = require('./app/controllers/auth');
