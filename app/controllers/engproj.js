@@ -6,6 +6,7 @@ var xlsx = require('node-xlsx');
 var fs = require('fs');
 var path = require('path');
 var fse = require('fs-extra');
+var _ = require('lodash');
 
 module.exports = function (app) {
 
@@ -166,6 +167,7 @@ module.exports = function (app) {
 
     //导出Excel
     app.get('/engineeringproj/getExcel', checkLogin , function (req, res) {
+	    var _tmpFileName = req.session.user.name + _.now() + _.random(0,9999);
         //取出所有engprojs
         EngprojService.getAll(function (err, engprojs) {
             if (err) {
@@ -174,12 +176,15 @@ module.exports = function (app) {
             }
 	        var data = EngprojService.getDataForExcel(engprojs);
 
-            var buffer = xlsx.build([{name: "工程公司项目", data: data}]);
+            var buffer = xlsx.build([{name: _tmpFileName, data: data}]);
 
-            fs.writeFile(path.join(__dirname,"../../public/excel/工程公司项目.xlsx"),buffer,function(err){
+            fs.writeFile(path.join(__dirname,"../../public/excel/",_tmpFileName),buffer,function(err){
                 if(err) console.log(err);
-                res.download(path.join(__dirname,"../../public/excel/工程公司项目.xlsx"), function (err) {
+                res.download(path.join(__dirname,"../../public/excel/",_tmpFileName),'工程公司项目.xlsx', function (err) {
                     if(err) console.log(err);
+	                fse.remove(path.join(__dirname,"../../public/excel/",_tmpFileName), function (err) {
+		                if(err) console.log(err)
+	                });
                 });
             });
 
