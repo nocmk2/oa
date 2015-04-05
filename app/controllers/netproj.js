@@ -6,7 +6,7 @@ var xlsx = require('node-xlsx');
 var fs = require('fs');
 var path = require('path');
 var fse = require('fs-extra');
-
+var _ = require('lodash');
 
 module.exports = function (app) {
 
@@ -166,6 +166,7 @@ module.exports = function (app) {
 
     //导出Excel
     app.get('/netproj/getExcel', checkLogin , function (req, res) {
+	    var _tmpFileName = req.session.user.name + _.now() + _.random(0,9999);
         NetprojService.getAll(function (err, netprojs) {
             if (err) {
                 console.log(err);
@@ -174,12 +175,15 @@ module.exports = function (app) {
 
 	        var data = NetprojService.getDataForExcel(netprojs);
 
-            var buffer = xlsx.build([{name: "网络部项目", data: data}]);
+            var buffer = xlsx.build([{name: _tmpFileName, data: data}]);
 
-            fs.writeFile(path.join(__dirname,"../../public/excel/网络部项目.xlsx"),buffer,function(err){
+            fs.writeFile(path.join(__dirname,"../../public/excel/",_tmpFileName),buffer,function(err){
                 if(err) console.log(err);
-                res.download(path.join(__dirname,"../../public/excel/网络部项目.xlsx"), function (err) {
+                res.download(path.join(__dirname,"../../public/excel/",_tmpFileName),"网络部项目.xlsx", function (err) {
                     if(err) console.log(err);
+	                fse.remove(path.join(__dirname,"../../public/excel/",_tmpFileName), function (err) {
+		                if(err) console.log(err)
+	                });
                 });
             });
 

@@ -3,8 +3,10 @@ var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(express);
-var settings = require('./settings');
 var flash = require('connect-flash');
+
+//配置
+var dbConfig = require('./config/dbConfig');
 
 //路由
 var authRoutes = require('./app/controllers/auth');
@@ -17,7 +19,7 @@ var citygovprojRoutes = require('./app/controllers/citygovproj');
 var app = express();
 
 //链接mongodb
-mongoose.connect(('mongodb://' + settings.host + ':27017/' + settings.db),{
+mongoose.connect(('mongodb://' + dbConfig.host + ':27017/' + dbConfig.db),{
     user:"blogAdmin",
     pass:"blogAdmin",
     auth:{
@@ -42,11 +44,11 @@ app.use(express.cookieParser());
 require('./config/multerConfig')(app);
 
 app.use(express.session({
-    secret: settings.cookieSecret,
-    key: settings.db,//cookie name
+    secret: dbConfig.cookieSecret,
+    key: dbConfig.db,//cookie name
     cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
     store: new MongoStore({
-        db: settings.db
+        db: dbConfig.db
     })
 }));
 app.use(app.router);

@@ -11,6 +11,7 @@
     "ejs": "*",
     "express": "3.18.3",
     "fs-extra": "^0.17.0",
+    "lodash": "^3.6.0",
     "moment": "^2.9.0",
     "mongodb": "*",
     "mongoose": "^3.8.24",
