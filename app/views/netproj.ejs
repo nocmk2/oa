@@ -239,7 +239,7 @@
                                         <div class="widget-body">
 
                                             <div class="row">
-                                                <form id="wizard-1" novalidate="novalidate">
+                                                <form id="wizard-1" novalidate="novalidate" class="smart-form">
                                                     <div id="bootstrap-wizard-1" class="col-sm-12">
                                                         <div class="form-bootstrapWizard">
 
@@ -262,419 +262,277 @@
                                                             <div class="tab-pane active" id="tab1">
                                                                 <br>
 
-                                                                <h3><strong> 1 </strong> - 基本信息</h3>
+                                                                <!-- <h3><strong> 1 </strong> - 基本信息</h3> -->
 
                                                                 <fieldset>
 
-                                                                    <div class="form-group hidden">
-                                                                        <label class="control-label col-md-2" style="padding-top: 7px;">序号：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
+                                                                     <section>
+                                                                         <div class="input-group">
+                                                                             <input class="form-control" placeholder="序号" type="text" name="serialno">                                                                     
+                                                                             <span class="input-group-addon" >序号</span>
+                                                                         </div>
+                                                                     </section>
 
-                                                                                    <div >
-                                                                                        <input class="form-control" placeholder="序号" type="text" name="serialno">
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="工单号" type="text" name="billno">                                                                    
+                                                                            <span class="input-group-addon" >工单号</span>
                                                                         </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                    </section>
 
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2"  style="padding-top: 7px;">工单号：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-
-                                                                                    <div >
-                                                                                        <input class="form-control" placeholder="工单号" type="text" name="billno">
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="甲方项目负责人" type="text" name="firstpartyofficer">                                                                    
+                                                                            <span class="input-group-addon" >甲方项目负责人</span>
                                                                         </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                    </section>
 
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2">甲方项目负责人：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-
-                                                                                    <div >
-                                                                                        <input class="form-control" placeholder="甲方项目负责人" type="text" name="firstpartyofficer">
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="乙方项目负责人" type="text" name="secondpartyofficer">                                                                    
+                                                                            <span class="input-group-addon" >乙方项目负责人</span>
                                                                         </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                    </section>
 
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2" >乙方项目负责人：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-
-                                                                                    <div >
-                                                                                        <input class="form-control" placeholder="乙方项目负责人" type="text" name="secondpartyofficer">
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <label class="select">
+                                                                                <select class="input-sm" name="properties">
+                                                                                    <option value="管道">管道</option>
+                                                                                    <option value="光缆">光缆</option>
+                                                                                    <option value="设备">设备</option>
+                                                                                    <option value="客户端">客户端</option>
+                                                                                </select> <i></i>
+                                                                            </label>
+                                                                            <span class="input-group-addon" >项目属性</span>
                                                                         </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                    </section>
 
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2"  style="padding-top: 7px;">项目属性：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div >
-                                                                                        <label class="select">
-                                                                                            <select class="input-sm" name="properties">
-                                                                                                <option value="管道">管道</option>
-                                                                                                <option value="光缆">光缆</option>
-                                                                                                <option value="设备">设备</option>
-                                                                                                <option value="客户端">客户端</option>
-                                                                                            </select> <i></i> </label>
-                                                                                    </div>
 
-                                                                                </div>
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <label class="select">
+                                                                                <select class="input-sm" name="projtype">
+                                                                                    <option value="抢修">抢修</option>
+                                                                                    <option value="大修">大修</option>
+                                                                                    <option value="小修">小修</option>
+                                                                                </select> <i></i>
+                                                                            </label>
+                                                                            <span class="input-group-addon" >项目类别</span>
                                                                         </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                    </section>
 
-
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2"  style="padding-top: 7px;">项目类别：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div >
-                                                                                        <label class="select">
-                                                                                            <select class="input-sm" name="projtype">
-                                                                                                <option value="抢修">抢修</option>
-                                                                                                <option value="大修">大修</option>
-                                                                                                <option value="小修">小修</option>
-                                                                                            </select> <i></i> </label>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="实施原因" type="text" name="reason">                                                                    
+                                                                            <span class="input-group-addon" >实施原因</span>
                                                                         </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                    </section>
 
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2" style="padding-top: 7px;" >实施原因：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div >
-                                                                                        <input class="form-control" placeholder="实施原因" type="text" name="reason">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="项目名称" type="text" name="name">                                                                    
+                                                                            <span class="input-group-addon" >项目名称</span>
                                                                         </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                    </section>
 
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2" style="padding-top: 7px;" >项目名称：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div >
-                                                                                        <input class="form-control" placeholder="项目名称" type="text" name="name">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="工程地址" type="text" name="address">                                                                    
+                                                                            <span class="input-group-addon" >工程地址</span>
                                                                         </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                    </section>
 
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2" style="padding-top: 7px;" >工程地址：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div >
-                                                                                        <input class="form-control" placeholder="工程地址" type="text" name="address">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <label class="select">
+                                                                                <select class="input-sm" name="area">
+                                                                                    <option value="黄浦">黄浦</option>
+                                                                                    <option value="卢湾">卢湾</option>
+                                                                                    <option value="徐汇">徐汇</option>
+                                                                                    <option value="长宁">长宁</option>
+                                                                                    <option value="静安">静安</option>
+                                                                                    <option value="普陀">普陀</option>
+                                                                                    <option value="闸北">闸北</option>
+                                                                                    <option value="虹口">虹口</option>
+                                                                                    <option value="杨浦">杨浦</option>
+                                                                                    <option value="宝山">宝山</option>
+                                                                                    <option value="嘉定">嘉定</option>
+                                                                                    <option value="浦东新区">浦东新区</option>
+                                                                                    <option value="松江">松江</option>
+                                                                                    <option value="金山">金山</option>
+                                                                                    <option value="青浦">青浦</option>
+                                                                                    <option value="南汇">南汇</option>
+                                                                                    <option value="奉贤">奉贤</option>
+                                                                                    <option value="崇明">崇明</option>
+                                                                                </select> <i></i>
+                                                                            </label>
+                                                                            <span class="input-group-addon" >所属区域</span>
                                                                         </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                    </section>
 
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2"  style="padding-top: 7px;">所属区域：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div >
-                                                                                        <label class="select">
-                                                                                            <select class="input-sm" name="area">
-                                                                                                <option value="黄浦">黄浦</option>
-                                                                                                <option value="卢湾">卢湾</option>
-                                                                                                <option value="徐汇">徐汇</option>
-                                                                                                <option value="长宁">长宁</option>
-                                                                                                <option value="静安">静安</option>
-                                                                                                <option value="普陀">普陀</option>
-                                                                                                <option value="闸北">闸北</option>
-                                                                                                <option value="虹口">虹口</option>
-                                                                                                <option value="杨浦">杨浦</option>
-                                                                                                <option value="宝山">宝山</option>
-                                                                                                <option value="嘉定">嘉定</option>
-                                                                                                <option value="浦东新区">浦东新区</option>
-                                                                                                <option value="松江">松江</option>
-                                                                                                <option value="金山">金山</option>
-                                                                                                <option value="青浦">青浦</option>
-                                                                                                <option value="南汇">南汇</option>
-                                                                                                <option value="奉贤">奉贤</option>
-                                                                                                <option value="崇明">崇明</option>
-                                                                                            </select> <i></i> </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                     <section>
+                                                                         <div class="input-group">
+                                                                             <label class="select">
+                                                                                 <select class="input-sm" name="constrctteam">
+                                                                                     <option value="中邮通">中邮通</option>
+                                                                                     <option value="中移">中移</option>
+                                                                                     <option value="邮电">邮电</option>
+                                                                                     <option value="广越">广越</option>
+                                                                                     <option value="东冠">东冠</option>
+                                                                                     <option value="和勤">和勤</option>
+                                                                                     <option value="电信">电信</option>
+                                                                                     <option value="久豪">久豪</option>
+                                                                                     <option value="贝电">贝电</option>
+                                                                                     <option value="海润">海润</option>
+                                                                                     <option value="中通二局">中通二局</option>
+                                                                                     <option value="翔发">翔发</option>
+                                                                                     <option value="辉程">辉程</option>
+                                                                                     <option value="龙盛">龙盛</option>
+                                                                                     <option value="明嬴">明嬴</option>
+                                                                                     <option value="盛脉">盛脉</option>
+                                                                                     <option value="通福">通福</option>
+                                                                                     <option value="万程">万程</option>
+                                                                                     <option value="信辰">信辰</option>
+                                                                                     <option value="远鹰">远鹰</option>
+                                                                                     <option value="阅龙">阅龙</option>
+                                                                                     <option value="置诚">置诚</option>
+                                                                                     <option value="兆康">兆康</option>
+                                                                                     <option value="兴霸">兴霸</option>
+                                                                                     <option value="和联">和联</option>
+                                                                                     <option value="鸿维">鸿维</option>
+                                                                                     <option value="嘉正">嘉正</option>
+                                                                                     <option value="炜晟">炜晟</option>
+                                                                                     <option value="新周">新周</option>
+                                                                                     <option value="信潮">信潮</option>
+                                                                                     <option value="众托">众托</option>
+                                                                                     <option value="共联">共联</option>
+                                                                                     <option value="中福">中福</option>
+                                                                                     <option value="长安">长安</option>
+                                                                                     <option value="都顺">都顺</option>
+                                                                                     <option value="联音">联音</option>
+                                                                                     <option value="商美">商美</option>
+                                                                                     <option value="英得">英得</option>
+                                                                                     <option value="亚通">亚通</option>
+                                                                                     <option value="邮顺">邮顺</option>
+                                                                                     <option value="渝华">渝华</option>
+                                                                                     <option value="忠吕">忠吕</option>
+                                                                                     <option value="中铁">中铁</option>
+                                                                                     <option value="天达">天达</option>
+                                                                                     <option value="虹鹰">虹鹰</option>
+                                                                                     <option value="兴和">兴和</option>
+                                                                                     <option value="云沪">云沪</option>
+                                                                                     <option value="雨花">雨花</option>
+                                                                                     <option value="晟平">晟平</option>
+                                                                                     <option value="秦禧">秦禧</option>
+                                                                                     <option value="立天">立天</option>
+                                                                                     <option value="中通一局">中通一局</option>
+                                                                                     <option value="博索">博索</option>
+                                                                                     <option value="富悦">富悦</option>
+                                                                                     <option value="廉创">廉创</option>
+                                                                                     <option value="润风">润风</option>
+                                                                                     <option value="海剑">海剑</option>
+                                                                                     <option value="宏晋">宏晋</option>
+                                                                                     <option value="米赛">米赛</option>
+                                                                                     <option value="伟琳">伟琳</option>
+                                                                                     <option value="骥通">骥通</option>
+                                                                                     <option value="北京工程局">北京工程局</option>
+                                                                                     <option value="景合">景合</option>
+                                                                                     <option value="海缆">海缆</option>
+                                                                                     <option value="煜菱">煜菱</option>
+                                                                                     <option value="鸿达">鸿达</option>
+                                                                                 </select> <i></i>
+                                                                             </label>
+                                                                             <span class="input-group-addon" >施工队</span>
+                                                                         </div>
+                                                                     </section>
+
+                                                                     <section>
+                                                                         <div class="input-group">
+                                                                             <input class="form-control" placeholder="施工队负责人" type="text" name="constrctofficer">                                                                     
+                                                                             <span class="input-group-addon" >施工队负责人</span>
+                                                                         </div>
+                                                                     </section>
+
+
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="consigntime">                                                                    
+                                                                            <span class="input-group-addon"> <i class="fa fa-calendar"></i>
+                                                                            </span>
+                                                                            <span class="input-group-addon" >委托时间</span>
                                                                         </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                    </section>
 
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2"  style="padding-top: 7px;">施工队：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div >
-                                                                                        <label class="select">
-                                                                                            <select class="input-sm" name="constrctteam">
-                                                                                                <option value="中邮通">中邮通</option>
-                                                                                                <option value="中移">中移</option>
-                                                                                                <option value="邮电">邮电</option>
-                                                                                                <option value="广越">广越</option>
-                                                                                                <option value="东冠">东冠</option>
-                                                                                                <option value="和勤">和勤</option>
-                                                                                                <option value="电信">电信</option>
-                                                                                                <option value="久豪">久豪</option>
-                                                                                                <option value="贝电">贝电</option>
-                                                                                                <option value="海润">海润</option>
-                                                                                                <option value="中通二局">中通二局</option>
-                                                                                                <option value="翔发">翔发</option>
-                                                                                                <option value="辉程">辉程</option>
-                                                                                                <option value="龙盛">龙盛</option>
-                                                                                                <option value="明嬴">明嬴</option>
-                                                                                                <option value="盛脉">盛脉</option>
-                                                                                                <option value="通福">通福</option>
-                                                                                                <option value="万程">万程</option>
-                                                                                                <option value="信辰">信辰</option>
-                                                                                                <option value="远鹰">远鹰</option>
-                                                                                                <option value="阅龙">阅龙</option>
-                                                                                                <option value="置诚">置诚</option>
-                                                                                                <option value="兆康">兆康</option>
-                                                                                                <option value="兴霸">兴霸</option>
-                                                                                                <option value="和联">和联</option>
-                                                                                                <option value="鸿维">鸿维</option>
-                                                                                                <option value="嘉正">嘉正</option>
-                                                                                                <option value="炜晟">炜晟</option>
-                                                                                                <option value="新周">新周</option>
-                                                                                                <option value="信潮">信潮</option>
-                                                                                                <option value="众托">众托</option>
-                                                                                                <option value="共联">共联</option>
-                                                                                                <option value="中福">中福</option>
-                                                                                                <option value="长安">长安</option>
-                                                                                                <option value="都顺">都顺</option>
-                                                                                                <option value="联音">联音</option>
-                                                                                                <option value="商美">商美</option>
-                                                                                                <option value="英得">英得</option>
-                                                                                                <option value="亚通">亚通</option>
-                                                                                                <option value="邮顺">邮顺</option>
-                                                                                                <option value="渝华">渝华</option>
-                                                                                                <option value="忠吕">忠吕</option>
-                                                                                                <option value="中铁">中铁</option>
-                                                                                                <option value="天达">天达</option>
-                                                                                                <option value="虹鹰">虹鹰</option>
-                                                                                                <option value="兴和">兴和</option>
-                                                                                                <option value="云沪">云沪</option>
-                                                                                                <option value="雨花">雨花</option>
-                                                                                                <option value="晟平">晟平</option>
-                                                                                                <option value="秦禧">秦禧</option>
-                                                                                                <option value="立天">立天</option>
-                                                                                                <option value="中通一局">中通一局</option>
-                                                                                                <option value="博索">博索</option>
-                                                                                                <option value="富悦">富悦</option>
-                                                                                                <option value="廉创">廉创</option>
-                                                                                                <option value="润风">润风</option>
-                                                                                                <option value="海剑">海剑</option>
-                                                                                                <option value="宏晋">宏晋</option>
-                                                                                                <option value="米赛">米赛</option>
-                                                                                                <option value="伟琳">伟琳</option>
-                                                                                                <option value="骥通">骥通</option>
-                                                                                                <option value="北京工程局">北京工程局</option>
-                                                                                                <option value="景合">景合</option>
-                                                                                                <option value="海缆">海缆</option>
-                                                                                                <option value="煜菱">煜菱</option>
-                                                                                                <option value="鸿达">鸿达</option>
-                                                                                            </select> <i></i> </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <label class="select">
+                                                                                <select class="input-sm" name="situation">
+                                                                                    <option value="未开工">未开工</option>
+                                                                                    <option value="在建">在建</option>
+                                                                                    <option value="完工">完工</option>
+                                                                                    <option value="受阻">受阻</option>
+                                                                                    <option value="无法实施">无法实施</option>
+                                                                                    <option value="传输已达">传输已达</option>
+                                                                                    <option value="地址错误">地址错误</option>
+                                                                                </select> <i></i>
+                                                                            </label>
+                                                                            <span class="input-group-addon" >立项情况</span>
                                                                         </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                    </section>
 
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2">施工队负责人：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div >
-                                                                                        <input class="form-control" placeholder="施工队负责人" type="text" name="constrctofficer">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                   <section>
+                                                                       <div class="input-group">
+                                                                           <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="constructbegintime">                                                                   
+                                                                           <span class="input-group-addon"> <i class="fa fa-calendar"></i>
+                                                                           </span>
+                                                                           <span class="input-group-addon" >开工时间</span>
+                                                                       </div>
+                                                                   </section>
+
+                                                                      <section>
+                                                                          <div class="input-group">
+                                                                              <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finishtime">                                                                      
+                                                                              <span class="input-group-addon"> <i class="fa fa-calendar"></i>
+                                                                              </span>
+                                                                              <span class="input-group-addon" >完工时间</span>
+                                                                          </div>
+                                                                      </section>
+
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textreceivetime">                                                                    
+                                                                            <span class="input-group-addon"> <i class="fa fa-calendar"></i>
+                                                                            </span>
+                                                                            <span class="input-group-addon" >竣工图纸收到日期（附件）</span>
                                                                         </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                        <span class="text-muted">附件，请在新增后上传</span>
+                                                                    </section>
 
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2" style="padding-top: 7px;" >委托时间：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div class="input-group">
-                                                                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="consigntime">
-                                                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                                    </div>
+                                                                   <section>
+                                                                       <div class="input-group">
+                                                                           <input class="form-control" placeholder="甲方验收情况" type="text" name="firstpartyacptstatus">                                                                   
+                                                                           <span class="input-group-addon" >甲方验收情况</span>
+                                                                       </div>
+                                                                   </section>
 
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                   <section>
+                                                                       <div class="input-group">
+                                                                           <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="inspecttime">                                                                   
+                                                                           <span class="input-group-addon"> <i class="fa fa-calendar"></i>
+                                                                           </span>
+                                                                           <span class="input-group-addon" >送审日期（附件）</span>
+                                                                       </div>
+                                                                       <span class="text-muted">附件，请在新增后上传</span>
+                                                                   </section>
 
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2"  style="padding-top: 7px;">立项情况：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div >
-                                                                                        <label class="select">
-                                                                                            <select class="input-sm" name="situation">
-                                                                                                <option value="未开工">未开工</option>
-                                                                                                <option value="在建">在建</option>
-                                                                                                <option value="完工">完工</option>
-                                                                                                <option value="受阻">受阻</option>
-                                                                                                <option value="无法实施">无法实施</option>
-                                                                                                <option value="传输已达">传输已达</option>
-                                                                                                <option value="地址错误">地址错误</option>
-                                                                                            </select> <i></i> </label>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2" style="padding-top: 7px;" >开工时间：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div class="input-group">
-                                                                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="constructbegintime">
-                                                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2" style="padding-top: 7px;" >完工时间：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div class="input-group">
-                                                                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finishtime">
-                                                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2" >竣工图纸收到日期（附件）：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div class="input-group">
-                                                                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textreceivetime">
-                                                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                                    </div>
-	                                                                                <span class="text-muted">附件，请在新增后上传</span>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2">甲方验收情况：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div >
-                                                                                        <input class="form-control" placeholder="甲方验收情况" type="text" name="firstpartyacptstatus">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2" >送审日期（附件）：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                    <div class="input-group">
-                                                                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="inspecttime">
-                                                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                                    </div>
-	                                                                                <span class="text-muted">附件，请在新增后上传</span>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-2" style="padding-top: 7px;" >备注：</label>
-                                                                        <div class="col-md-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12">
-                                                                                        <textarea  rows="5" name="basiccomments" placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <p>&nbsp;</p>
-                                                                    </div>
+                                                                     <section>
+                                                                         <div class="input-group">
+                                                                             <textarea  rows="5" name="basiccomments" placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                                                             <span class="input-group-addon" >备注</span>
+                                                                         </div>
+                                                                     </section>
 
                                                                 </fieldset>
 
@@ -682,148 +540,82 @@
                                                             <div class="tab-pane" id="tab2">
                                                                 <br>
 
-                                                                <h3><strong> 2</strong> - 收入信息</h3>
+                                                                <!-- <h3><strong> 2</strong> - 收入信息</h3> -->
+                                                                <fieldset>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;">预算：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control digit" placeholder="预算" type="text" name="budget">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit" placeholder="预算" type="text" name="budget">                                                                
+                                                                        <span class="input-group-addon" >预算</span>
                                                                     </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;">结算：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control digit" placeholder="结算" type="text" name="clearing">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                               <section>
+                                                                   <div class="input-group">
+                                                                       <input class="form-control digit" placeholder="结算" type="text" name="clearing">                                                               
+                                                                       <span class="input-group-addon" >结算</span>
+                                                                   </div>
+                                                               </section>
+
+                                                                 <section>
+                                                                     <div class="input-group">
+                                                                         <input class="form-control digit" placeholder="开票金额（附件）" type="text" name="voiceamount">                                                                 
+                                                                         <span class="input-group-addon" >开票金额（附件）</span>
+                                                                     </div>
+                                                                 </section>
+
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit income" placeholder="实际收款" type="text" name="income">                                                                
+                                                                        <span class="input-group-addon" >实际收款</span>
                                                                     </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">开票金额（附件）：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control digit" placeholder="开票金额（附件）" type="text" name="voiceamount">
-                                                                                </div>
-	                                                                            <span class="text-muted">附件，请在新增后上传</span>
-                                                                            </div>
-                                                                        </div>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit outcome" placeholder="施工队结款" type="text" name="outcome">                                                                
+                                                                        <span class="input-group-addon" >施工队结款</span>
                                                                     </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;">实际收款：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control digit income" placeholder="实际收款" type="text" name="income">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control" placeholder="施工队工作量表格" type="text" name="worktable">                                                                
+                                                                        <span class="input-group-addon" >施工队工作量表格</span>
                                                                     </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;">施工队结款：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control digit outcome" placeholder="施工队结款" type="text" name="outcome">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit otherfee" placeholder="其他费用" type="text" name="otherfee">                                                                
+                                                                        <span class="input-group-addon" >其他费用</span>
                                                                     </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">施工队工作量表格：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control" placeholder="施工队工作量表格" type="text" name="worktable">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                               <section>
+                                                                   <div class="input-group">
+                                                                       <input class="form-control digit profit" placeholder="利润" type="text" name="profit">                                                               
+                                                                       <span class="input-group-addon" >利润</span>
+                                                                   </div>
+                                                               </section>
+
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <textarea  rows="5" name="incomecomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                                                        <span class="input-group-addon" >备注</span>
                                                                     </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;">其他费用：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control digit otherfee" placeholder="其他费用" type="text" name="otherfee">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;">利润：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control digit profit" placeholder="利润" type="text" name="profit">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
-
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;" >备注：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <textarea  rows="5" name="incomecomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
-
+                                                                </section>
 
                                                             </div>
-                                                            <div class="form-actions">
-                                                                <div class="row">
-                                                                    <footer>
-                                                                        <button type="submit" class="btn btn-primary" id="saveProj">
-                                                                            提交
-                                                                        </button>
-                                                                        <button type="button" class="btn btn-default closeBtn" data-dismiss="modal">
-                                                                            取消
-                                                                        </button>
-                                                                    </footer>
-                                                                </div>
-                                                            </div>
+
+                                                             <footer>
+                                                                <button type="submit" class="btn btn-primary" id="saveProj">
+                                                                    提交
+                                                                </button>
+                                                                <button type="button" class="btn btn-default closeBtn" data-dismiss="modal">
+                                                                    取消
+                                                                </button>
+                                                            </footer>
 
                                                         </div>
                                                     </div>
@@ -899,7 +691,7 @@
                                     <div class="widget-body">
 
                                         <div class="row">
-                                            <form id="wizard-1-edit" novalidate="novalidate">
+                                            <form id="wizard-1-edit" novalidate="novalidate" class="smart-form">
                                                 <div id="bootstrap-wizard-1-edit" class="col-sm-12">
                                                     <div class="form-bootstrapWizard">
 
@@ -922,588 +714,397 @@
                                                         <div class="tab-pane active" id="tab1-edit">
                                                             <br>
 
-                                                            <h3><strong> 1 </strong> - 基本信息</h3>
+                                                            <!-- <h3><strong> 1 </strong> - 基本信息</h3> -->
 
                                                             <fieldset>
 
-                                                                <div class="form-group hidden">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;">序号：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
+                                                               <section>
+                                                                         <div class="input-group">
+                                                                             <input class="form-control" placeholder="序号" type="text" name="serialno">                                                                     
+                                                                             <span class="input-group-addon" >序号</span>
+                                                                         </div>
+                                                                     </section>
 
-                                                                                <div >
-                                                                                    <input type="text" name="_id" class="hidden" data-id="">
-                                                                                    <input class="form-control" placeholder="序号" type="text" name="serialno">
-                                                                                </div>
-
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="工单号" type="text" name="billno">                                                                    
+                                                                            <span class="input-group-addon" >工单号</span>
                                                                         </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                    </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2"  style="padding-top: 7px;">工单号：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-
-                                                                                <div >
-                                                                                    <input class="form-control" placeholder="工单号" type="text" name="billno">
-                                                                                </div>
-
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="甲方项目负责人" type="text" name="firstpartyofficer">                                                                    
+                                                                            <span class="input-group-addon" >甲方项目负责人</span>
                                                                         </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                    </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">甲方项目负责人：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-
-                                                                                <div >
-                                                                                    <input class="form-control" placeholder="甲方项目负责人" type="text" name="firstpartyofficer">
-                                                                                </div>
-
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="乙方项目负责人" type="text" name="secondpartyofficer">                                                                    
+                                                                            <span class="input-group-addon" >乙方项目负责人</span>
                                                                         </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                    </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" >乙方项目负责人：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-
-                                                                                <div >
-                                                                                    <input class="form-control" placeholder="乙方项目负责人" type="text" name="secondpartyofficer">
-                                                                                </div>
-
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <label class="select">
+                                                                                <select class="input-sm" name="properties">
+                                                                                    <option value="管道">管道</option>
+                                                                                    <option value="光缆">光缆</option>
+                                                                                    <option value="设备">设备</option>
+                                                                                    <option value="客户端">客户端</option>
+                                                                                </select> <i></i>
+                                                                            </label>
+                                                                            <span class="input-group-addon" >项目属性</span>
                                                                         </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                    </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2"  style="padding-top: 7px;">项目属性：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <label class="select">
-                                                                                        <select class="input-sm" name="properties">
-                                                                                            <option value="管道">管道</option>
-                                                                                            <option value="光缆">光缆</option>
-                                                                                            <option value="设备">设备</option>
-                                                                                            <option value="客户端">客户端</option>
-                                                                                        </select> <i></i> </label>
-                                                                                </div>
 
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <label class="select">
+                                                                                <select class="input-sm" name="projtype">
+                                                                                    <option value="抢修">抢修</option>
+                                                                                    <option value="大修">大修</option>
+                                                                                    <option value="小修">小修</option>
+                                                                                </select> <i></i>
+                                                                            </label>
+                                                                            <span class="input-group-addon" >项目类别</span>
                                                                         </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                    </section>
 
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2"  style="padding-top: 7px;">项目类别：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <label class="select">
-                                                                                        <select class="input-sm" name="projtype">
-                                                                                            <option value="抢修">抢修</option>
-                                                                                            <option value="大修">大修</option>
-                                                                                            <option value="小修">小修</option>
-                                                                                        </select> <i></i> </label>
-                                                                                </div>
-
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="实施原因" type="text" name="reason">                                                                    
+                                                                            <span class="input-group-addon" >实施原因</span>
                                                                         </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                    </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;" >实施原因：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control" placeholder="实施原因" type="text" name="reason">
-                                                                                </div>
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="项目名称" type="text" name="name">                                                                    
+                                                                            <span class="input-group-addon" >项目名称</span>
                                                                         </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                    </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;" >项目名称：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control" placeholder="项目名称" type="text" name="name">
-                                                                                </div>
-                                                                            </div>
+
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="工程地址" type="text" name="address">                                                                    
+                                                                            <span class="input-group-addon" >工程地址</span>
                                                                         </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                    </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;" >工程地址：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control" placeholder="工程地址" type="text" name="address">
-                                                                                </div>
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <label class="select">
+                                                                                <select class="input-sm" name="area">
+                                                                                    <option value="黄浦">黄浦</option>
+                                                                                    <option value="卢湾">卢湾</option>
+                                                                                    <option value="徐汇">徐汇</option>
+                                                                                    <option value="长宁">长宁</option>
+                                                                                    <option value="静安">静安</option>
+                                                                                    <option value="普陀">普陀</option>
+                                                                                    <option value="闸北">闸北</option>
+                                                                                    <option value="虹口">虹口</option>
+                                                                                    <option value="杨浦">杨浦</option>
+                                                                                    <option value="宝山">宝山</option>
+                                                                                    <option value="嘉定">嘉定</option>
+                                                                                    <option value="浦东新区">浦东新区</option>
+                                                                                    <option value="松江">松江</option>
+                                                                                    <option value="金山">金山</option>
+                                                                                    <option value="青浦">青浦</option>
+                                                                                    <option value="南汇">南汇</option>
+                                                                                    <option value="奉贤">奉贤</option>
+                                                                                    <option value="崇明">崇明</option>
+                                                                                </select> <i></i>
+                                                                            </label>
+                                                                            <span class="input-group-addon" >所属区域</span>
                                                                         </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                    </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2"  style="padding-top: 7px;">所属区域：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <label class="select">
-                                                                                        <select class="input-sm" name="area">
-                                                                                            <option value="黄浦">黄浦</option>
-                                                                                            <option value="卢湾">卢湾</option>
-                                                                                            <option value="徐汇">徐汇</option>
-                                                                                            <option value="长宁">长宁</option>
-                                                                                            <option value="静安">静安</option>
-                                                                                            <option value="普陀">普陀</option>
-                                                                                            <option value="闸北">闸北</option>
-                                                                                            <option value="虹口">虹口</option>
-                                                                                            <option value="杨浦">杨浦</option>
-                                                                                            <option value="宝山">宝山</option>
-                                                                                            <option value="嘉定">嘉定</option>
-                                                                                            <option value="浦东新区">浦东新区</option>
-                                                                                            <option value="松江">松江</option>
-                                                                                            <option value="金山">金山</option>
-                                                                                            <option value="青浦">青浦</option>
-                                                                                            <option value="南汇">南汇</option>
-                                                                                            <option value="奉贤">奉贤</option>
-                                                                                            <option value="崇明">崇明</option>
-                                                                                        </select> <i></i> </label>
-                                                                                </div>
-                                                                            </div>
+                                                                     <section>
+                                                                         <div class="input-group">
+                                                                             <label class="select">
+                                                                                 <select class="input-sm" name="constrctteam">
+                                                                                     <option value="中邮通">中邮通</option>
+                                                                                     <option value="中移">中移</option>
+                                                                                     <option value="邮电">邮电</option>
+                                                                                     <option value="广越">广越</option>
+                                                                                     <option value="东冠">东冠</option>
+                                                                                     <option value="和勤">和勤</option>
+                                                                                     <option value="电信">电信</option>
+                                                                                     <option value="久豪">久豪</option>
+                                                                                     <option value="贝电">贝电</option>
+                                                                                     <option value="海润">海润</option>
+                                                                                     <option value="中通二局">中通二局</option>
+                                                                                     <option value="翔发">翔发</option>
+                                                                                     <option value="辉程">辉程</option>
+                                                                                     <option value="龙盛">龙盛</option>
+                                                                                     <option value="明嬴">明嬴</option>
+                                                                                     <option value="盛脉">盛脉</option>
+                                                                                     <option value="通福">通福</option>
+                                                                                     <option value="万程">万程</option>
+                                                                                     <option value="信辰">信辰</option>
+                                                                                     <option value="远鹰">远鹰</option>
+                                                                                     <option value="阅龙">阅龙</option>
+                                                                                     <option value="置诚">置诚</option>
+                                                                                     <option value="兆康">兆康</option>
+                                                                                     <option value="兴霸">兴霸</option>
+                                                                                     <option value="和联">和联</option>
+                                                                                     <option value="鸿维">鸿维</option>
+                                                                                     <option value="嘉正">嘉正</option>
+                                                                                     <option value="炜晟">炜晟</option>
+                                                                                     <option value="新周">新周</option>
+                                                                                     <option value="信潮">信潮</option>
+                                                                                     <option value="众托">众托</option>
+                                                                                     <option value="共联">共联</option>
+                                                                                     <option value="中福">中福</option>
+                                                                                     <option value="长安">长安</option>
+                                                                                     <option value="都顺">都顺</option>
+                                                                                     <option value="联音">联音</option>
+                                                                                     <option value="商美">商美</option>
+                                                                                     <option value="英得">英得</option>
+                                                                                     <option value="亚通">亚通</option>
+                                                                                     <option value="邮顺">邮顺</option>
+                                                                                     <option value="渝华">渝华</option>
+                                                                                     <option value="忠吕">忠吕</option>
+                                                                                     <option value="中铁">中铁</option>
+                                                                                     <option value="天达">天达</option>
+                                                                                     <option value="虹鹰">虹鹰</option>
+                                                                                     <option value="兴和">兴和</option>
+                                                                                     <option value="云沪">云沪</option>
+                                                                                     <option value="雨花">雨花</option>
+                                                                                     <option value="晟平">晟平</option>
+                                                                                     <option value="秦禧">秦禧</option>
+                                                                                     <option value="立天">立天</option>
+                                                                                     <option value="中通一局">中通一局</option>
+                                                                                     <option value="博索">博索</option>
+                                                                                     <option value="富悦">富悦</option>
+                                                                                     <option value="廉创">廉创</option>
+                                                                                     <option value="润风">润风</option>
+                                                                                     <option value="海剑">海剑</option>
+                                                                                     <option value="宏晋">宏晋</option>
+                                                                                     <option value="米赛">米赛</option>
+                                                                                     <option value="伟琳">伟琳</option>
+                                                                                     <option value="骥通">骥通</option>
+                                                                                     <option value="北京工程局">北京工程局</option>
+                                                                                     <option value="景合">景合</option>
+                                                                                     <option value="海缆">海缆</option>
+                                                                                     <option value="煜菱">煜菱</option>
+                                                                                     <option value="鸿达">鸿达</option>
+                                                                                 </select> <i></i>
+                                                                             </label>
+                                                                             <span class="input-group-addon" >施工队</span>
+                                                                         </div>
+                                                                     </section>
+
+                                                                     <section>
+                                                                         <div class="input-group">
+                                                                             <input class="form-control" placeholder="施工队负责人" type="text" name="constrctofficer">                                                                     
+                                                                             <span class="input-group-addon" >施工队负责人</span>
+                                                                         </div>
+                                                                     </section>
+
+
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="consigntime">                                                                    
+                                                                            <span class="input-group-addon"> <i class="fa fa-calendar"></i>
+                                                                            </span>
+                                                                            <span class="input-group-addon" >委托时间</span>
                                                                         </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                    </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2"  style="padding-top: 7px;">施工队：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <label class="select">
-                                                                                        <select class="input-sm" name="constrctteam">
-                                                                                            <option value="中邮通">中邮通</option>
-                                                                                            <option value="中移">中移</option>
-                                                                                            <option value="邮电">邮电</option>
-                                                                                            <option value="广越">广越</option>
-                                                                                            <option value="东冠">东冠</option>
-                                                                                            <option value="和勤">和勤</option>
-                                                                                            <option value="电信">电信</option>
-                                                                                            <option value="久豪">久豪</option>
-                                                                                            <option value="贝电">贝电</option>
-                                                                                            <option value="海润">海润</option>
-                                                                                            <option value="中通二局">中通二局</option>
-                                                                                            <option value="翔发">翔发</option>
-                                                                                            <option value="辉程">辉程</option>
-                                                                                            <option value="龙盛">龙盛</option>
-                                                                                            <option value="明嬴">明嬴</option>
-                                                                                            <option value="盛脉">盛脉</option>
-                                                                                            <option value="通福">通福</option>
-                                                                                            <option value="万程">万程</option>
-                                                                                            <option value="信辰">信辰</option>
-                                                                                            <option value="远鹰">远鹰</option>
-                                                                                            <option value="阅龙">阅龙</option>
-                                                                                            <option value="置诚">置诚</option>
-                                                                                            <option value="兆康">兆康</option>
-                                                                                            <option value="兴霸">兴霸</option>
-                                                                                            <option value="和联">和联</option>
-                                                                                            <option value="鸿维">鸿维</option>
-                                                                                            <option value="嘉正">嘉正</option>
-                                                                                            <option value="炜晟">炜晟</option>
-                                                                                            <option value="新周">新周</option>
-                                                                                            <option value="信潮">信潮</option>
-                                                                                            <option value="众托">众托</option>
-                                                                                            <option value="共联">共联</option>
-                                                                                            <option value="中福">中福</option>
-                                                                                            <option value="长安">长安</option>
-                                                                                            <option value="都顺">都顺</option>
-                                                                                            <option value="联音">联音</option>
-                                                                                            <option value="商美">商美</option>
-                                                                                            <option value="英得">英得</option>
-                                                                                            <option value="亚通">亚通</option>
-                                                                                            <option value="邮顺">邮顺</option>
-                                                                                            <option value="渝华">渝华</option>
-                                                                                            <option value="忠吕">忠吕</option>
-                                                                                            <option value="中铁">中铁</option>
-                                                                                            <option value="天达">天达</option>
-                                                                                            <option value="虹鹰">虹鹰</option>
-                                                                                            <option value="兴和">兴和</option>
-                                                                                            <option value="云沪">云沪</option>
-                                                                                            <option value="雨花">雨花</option>
-                                                                                            <option value="晟平">晟平</option>
-                                                                                            <option value="秦禧">秦禧</option>
-                                                                                            <option value="立天">立天</option>
-                                                                                            <option value="中通一局">中通一局</option>
-                                                                                            <option value="博索">博索</option>
-                                                                                            <option value="富悦">富悦</option>
-                                                                                            <option value="廉创">廉创</option>
-                                                                                            <option value="润风">润风</option>
-                                                                                            <option value="海剑">海剑</option>
-                                                                                            <option value="宏晋">宏晋</option>
-                                                                                            <option value="米赛">米赛</option>
-                                                                                            <option value="伟琳">伟琳</option>
-                                                                                            <option value="骥通">骥通</option>
-                                                                                            <option value="北京工程局">北京工程局</option>
-                                                                                            <option value="景合">景合</option>
-                                                                                            <option value="海缆">海缆</option>
-                                                                                            <option value="煜菱">煜菱</option>
-                                                                                            <option value="鸿达">鸿达</option>
-                                                                                        </select> <i></i> </label>
-                                                                                </div>
-                                                                            </div>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <label class="select">
+                                                                                <select class="input-sm" name="situation">
+                                                                                    <option value="未开工">未开工</option>
+                                                                                    <option value="在建">在建</option>
+                                                                                    <option value="完工">完工</option>
+                                                                                    <option value="受阻">受阻</option>
+                                                                                    <option value="无法实施">无法实施</option>
+                                                                                    <option value="传输已达">传输已达</option>
+                                                                                    <option value="地址错误">地址错误</option>
+                                                                                </select> <i></i>
+                                                                            </label>
+                                                                            <span class="input-group-addon" >立项情况</span>
                                                                         </div>
+                                                                    </section>
+
+                                                                   <section>
+                                                                       <div class="input-group">
+                                                                           <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="constructbegintime">                                                                   
+                                                                           <span class="input-group-addon"> <i class="fa fa-calendar"></i>
+                                                                           </span>
+                                                                           <span class="input-group-addon" >开工时间</span>
+                                                                       </div>
+                                                                   </section>
+
+                                                                      <section>
+                                                                          <div class="input-group">
+                                                                              <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finishtime">                                                                      
+                                                                              <span class="input-group-addon"> <i class="fa fa-calendar"></i>
+                                                                              </span>
+                                                                              <span class="input-group-addon" >完工时间</span>
+                                                                          </div>
+                                                                      </section>
+
+                                                               <section>
+                                                                   <div class="input-group">
+                                                                       <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textreceivetime">                                                               
+                                                                       <span class="input-group-addon"> <i class="fa fa-calendar"></i>
+                                                                       </span>
+                                                                       <span class="input-group-addon" >竣工图纸收到日期（附件）</span>
+                                                                   </div>
+
+                                                                   <div class="fileDiv input input-file">
+                                                                       <span class="button">
+                                                                           <input type="file" id="textreceivetimeFile" name="textreceivetimeFile" onchange="">选择文件</span>
+                                                                       <span style="padding-top: 3px">
+                                                                           当前文件
+                                                                           <span name="textreceivetimeFileName" class="fileName"></span>
+                                                                       </span>
+                                                                       <a class="btn btn-link upload">上传</a>
+                                                                       <a class="btn btn-link download">下载</a>
+                                                                       <span class="uploadInfo"></span>
+                                                                   </div>
+
+                                                               </section>
+
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control" placeholder="甲方验收情况" type="text" name="firstpartyacptstatus">                                                                
+                                                                        <span class="input-group-addon" >甲方验收情况</span>
                                                                     </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">施工队负责人：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control" placeholder="施工队负责人" type="text" name="constrctofficer">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                               <section>
+                                                                   <div class="input-group">
+                                                                       <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="inspecttime">                                                               
+                                                                       <span class="input-group-addon"> <i class="fa fa-calendar"></i>
+                                                                       </span>
+                                                                       <span class="input-group-addon" >送审日期（附件）</span>
+                                                                   </div>
+
+                                                                   <div class="fileDiv input input-file">
+                                                                       <span class="button">
+                                                                           <input type="file" id="inspecttimeFile" name="inspecttimeFile" onchange="">选择文件</span>
+                                                                       <span style="padding-top: 3px">
+                                                                           当前文件
+                                                                           <span name="inspecttimeFileName" class="fileName"></span>
+                                                                       </span>
+                                                                       <a class="btn btn-link upload">上传</a>
+                                                                       <a class="btn btn-link download">下载</a>
+                                                                       <span class="uploadInfo"></span>
+                                                                   </div>
+
+                                                               </section>
+
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <textarea  rows="5" name="basiccomments" placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                                                        <span class="input-group-addon" >备注</span>
                                                                     </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
+                                                                </section>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;" >委托时间：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div class="input-group">
-                                                                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="consigntime">
-                                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2"  style="padding-top: 7px;">立项情况：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <label class="select">
-                                                                                        <select class="input-sm" name="situation">
-                                                                                            <option value="未开工">未开工</option>
-                                                                                            <option value="在建">在建</option>
-                                                                                            <option value="完工">完工</option>
-                                                                                            <option value="受阻">受阻</option>
-                                                                                            <option value="无法实施">无法实施</option>
-                                                                                            <option value="传输已达">传输已达</option>
-                                                                                            <option value="地址错误">地址错误</option>
-                                                                                        </select> <i></i> </label>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;" >开工时间：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div class="input-group">
-                                                                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="constructbegintime">
-                                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;" >完工时间：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div class="input-group">
-                                                                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finishtime">
-                                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" >竣工图纸收到日期（附件）：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div class="input-group">
-                                                                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textreceivetime">
-                                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                                </div>
-	                                                                            <br/>
-	                                                                            <div class="fileDiv">
-		                                                                            <input class="form-control"  type="file" name="textreceivetimeFile" id="textreceivetimeFile">
-		                                                                            <span style="padding-top: 3px">当前文件： <span name="textreceivetimeFileName" class="fileName"></span></span>
-		                                                                            <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
-		                                                                            <span class="uploadInfo"></span>
-	                                                                            </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">甲方验收情况：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div >
-                                                                                    <input class="form-control" placeholder="甲方验收情况" type="text" name="firstpartyacptstatus">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" >送审日期（附件）：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <div class="input-group">
-                                                                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="inspecttime">
-                                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                                </div>
-	                                                                            <br/>
-	                                                                            <div class="fileDiv">
-		                                                                            <input class="form-control"  type="file" name="inspecttimeFile" id="inspecttimeFile">
-		                                                                            <span style="padding-top: 3px">当前文件： <span name="inspecttimeFileName" class="fileName"></span></span>
-		                                                                            <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
-		                                                                            <span class="uploadInfo"></span>
-	                                                                            </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2" style="padding-top: 7px;" >备注：</label>
-                                                                    <div class="col-md-10">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                                <textarea  rows="5" name="basiccomments" placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>&nbsp;</p>
-                                                                </div>
 
                                                             </fieldset>
 
                                                         </div>
                                                         <div class="tab-pane" id="tab2-edit">
                                                             <br>
+                                                            <fieldset>
+                                                          <!--   <h3><strong> 2</strong> - 收入信息</h3> -->
 
-                                                            <h3><strong> 2</strong> - 收入信息</h3>
-
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" style="padding-top: 7px;">预算：</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
-                                                                                <input class="form-control digit" placeholder="预算" type="text" name="budget">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                            <section>
+                                                                <div class="input-group">
+                                                                    <input class="form-control digit" placeholder="预算" type="text" name="budget">                                                            
+                                                                    <span class="input-group-addon" >预算</span>
                                                                 </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" style="padding-top: 7px;">结算：</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
-                                                                                <input class="form-control digit" placeholder="结算" type="text" name="clearing">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                            <section>
+                                                                <div class="input-group">
+                                                                    <input class="form-control digit" placeholder="结算" type="text" name="clearing">                                                            
+                                                                    <span class="input-group-addon" >结算</span>
                                                                 </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">开票金额（附件）：</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
-                                                                                <input class="form-control digit" placeholder="开票金额（附件）" type="text" name="voiceamount">
-	                                                                            <br/>
-	                                                                            <div class="fileDiv">
-		                                                                            <input class="form-control"  type="file" name="voiceamountFile" id="voiceamountFile">
-		                                                                            <span style="padding-top: 3px">当前文件： <span name="voiceamountFileName" class="fileName"></span></span>
-		                                                                            <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
-		                                                                            <span class="uploadInfo"></span>
-	                                                                            </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+
+                                                             <section>
+                                                                 <div class="input-group">
+                                                                     <input class="form-control digit" placeholder="开票金额（附件）" type="text" name="voiceamount">                                                             
+                                                                     <span class="input-group-addon" >开票金额（附件）</span>
+                                                                 </div>
+
+                                                                 <div class="fileDiv input input-file">
+                                                                     <span class="button">
+                                                                         <input type="file" id="voiceamountFile" name="voiceamountFile" onchange="">选择文件</span>
+                                                                     <span style="padding-top: 3px">
+                                                                         当前文件
+                                                                         <span name="voiceamountFileName" class="fileName"></span>
+                                                                     </span>
+                                                                     <a class="btn btn-link upload">上传</a>
+                                                                     <a class="btn btn-link download">下载</a>
+                                                                     <span class="uploadInfo"></span>
+                                                                 </div>
+
+                                                             </section>
+
+
+                                                            <section>
+                                                                <div class="input-group">
+                                                                    <input class="form-control digit income" placeholder="实际收款" type="text" name="income">                                                            
+                                                                    <span class="input-group-addon" >实际收款</span>
                                                                 </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" style="padding-top: 7px;">实际收款：</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
-                                                                                <input class="form-control digit income" placeholder="实际收款" type="text" name="income">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                            <section>
+                                                                <div class="input-group">
+                                                                    <input class="form-control digit outcome" placeholder="施工队结款" type="text" name="outcome">                                                            
+                                                                    <span class="input-group-addon" >施工队结款</span>
                                                                 </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" style="padding-top: 7px;">施工队结款：</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
-                                                                                <input class="form-control digit outcome" placeholder="施工队结款" type="text" name="outcome">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                           <section>
+                                                               <div class="input-group">
+                                                                   <input class="form-control" placeholder="施工队工作量表格" type="text" name="worktable">                                                           
+                                                                   <span class="input-group-addon" >施工队工作量表格</span>
+                                                               </div>
+                                                           </section>
+
+                                                            <section>
+                                                                <div class="input-group">
+                                                                    <input class="form-control digit otherfee" placeholder="其他费用" type="text" name="otherfee">                                                            
+                                                                    <span class="input-group-addon" >其他费用</span>
                                                                 </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">施工队工作量表格：</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
-                                                                                <input class="form-control" placeholder="施工队工作量表格" type="text" name="worktable">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                            <section>
+                                                                <div class="input-group">
+                                                                    <input class="form-control digit profit" placeholder="自动计算" type="text" name="profit">                                                            
+                                                                    <span class="input-group-addon" >利润</span>
                                                                 </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" style="padding-top: 7px;">其他费用：</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
-                                                                                <input class="form-control digit otherfee" placeholder="其他费用" type="text" name="otherfee">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+
+                                                            <section>
+                                                                <div class="input-group">
+                                                                    <textarea  rows="5" name="incomecomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                                                    <span class="input-group-addon" >备注</span>
                                                                 </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" style="padding-top: 7px;">利润：</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
-                                                                                <input class="form-control digit profit" placeholder="自动计算" type="text" name="profit">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
-
-
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" style="padding-top: 7px;" >备注：</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <textarea  rows="5" name="incomecomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
-
-
+                                                        </fieldset>
                                                         </div>
-
-                                                        <div class="form-actions">
-                                                            <div class="row">
-                                                                <footer>
-                                                                    <button type="submit" id="saveProjEdited" class="btn btn-primary">
-                                                                        提交
-                                                                    </button>
-                                                                    <button type="button" class="btn btn-default closeBtn" data-dismiss="modal">
-                                                                        取消
-                                                                    </button>
-                                                                </footer>
-                                                            </div>
-                                                        </div>
+                                                 <footer>
+                                                     <button type="submit" class="btn btn-primary" id="saveProjEdited">提交</button>
+                                                     <button type="button" class="btn btn-default closeBtn" data-dismiss="modal">取消</button>
+                                                 </footer>
+                                                        
 
                                                     </div>
                                                 </div>
