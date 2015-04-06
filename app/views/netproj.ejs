@@ -2125,6 +2125,16 @@ you can add as many as you like
             }
         };
 
+         //已选择文件提示
+        $(".fileDiv span").on('change','input',(function (e) {
+                e.preventDefault();
+                var fileDiv = $(this).parent().parent();
+                var uploadInfo = fileDiv.find(".uploadInfo");
+                uploadInfo.removeClass("text-warning").text(" ");
+                uploadInfo.addClass("text-warning").text("已选择"+$(this).val()+"请点击上传");
+                //alert($(this).val());
+        }));
+        
 	    //附件上传
 	    $(".fileDiv .upload").click(function (e) {
 		    e.preventDefault();

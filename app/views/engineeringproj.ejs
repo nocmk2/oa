@@ -29,6 +29,7 @@
             </div>
 
         </div>
+        
         <!-- widget grid -->
         <section id="widget-grid">
 
@@ -44,7 +45,7 @@
                         </header>
 
                         <!-- 按钮区 BEGIN -->
-                        <div id="ControlButton" class="hidden">
+                        <div id="ControlButton" class="widget-body hidden">
                             <div style="position: absolute;left: 200px;top:4px">
                                 <button id="new-proj" data-toggle="modal" class="btn btn-default" href="#addProj"
                                     style="position:relative">新增工程公司项目
@@ -1526,8 +1527,8 @@
                                                                                 <span class="input-group-addon">配合费（附件）</span>
                                                                                 </div>
                                                                                                                               
-                                                                                    <div class="input input-file">
-                                                                                        <span class="button"><input type="file" id="withfeeFile" name="withfeeFile" onchange="this.parentNode.nextSibling.value = this.value">选择文件</span><input type="text" placeholder="Include some files" readonly="">
+                                                                                    <div class="fileDiv input input-file">
+                                                                                        <span class="button"><input type="file" id="withfeeFile" name="withfeeFile" onchange="this.parentNode.nextSibling.value = this.value">选择文件</span><span style="padding-top: 3px">当前文件 <span name="withfeeFileName" class="fileName"></span></span>
                                                                                         <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
                                                                                         <span class="uploadInfo"></span>
                                                                                     </div>
@@ -1541,59 +1542,38 @@
 	                                                                            </div> -->
                                                                            
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">选线费（附件）</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
-                                                                                <input class="form-control digit" placeholder="选线费（附件）" type="text" name="linefee">
-	                                                                            <br/>
-	                                                                            <div class="fileDiv">
-		                                                                            <input class="form-control"  type="file" name="linefeeFile" id="linefeeFile">
-		                                                                            <span style="padding-top: 3px">当前文件 <span name="linefeeFileName" class="fileName"></span></span>
-		                                                                            <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
-		                                                                            <span class="uploadInfo"></span>
-	                                                                            </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                  <section>
+                                                                    <div class="input-group">
+                                                                                     <input class="form-control digit" placeholder="配合费（附件）" type="text" name="linefee">
+                                                                                    <span class="input-group-addon">选线费（附件）</span>
+                                                                                </div>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">跟测费（附件）</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
+                                                                                <div class="fileDiv input input-file">
+                                                                                        <span class="button"><input type="file" id="linefeeFile" name="linefeeFile" onchange="this.parentNode.nextSibling.value = this.value">选择文件</span><span style="padding-top: 3px">当前文件 <span name="linefeeFileName" class="fileName"></span></span>
+                                                                                        <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
+                                                                                        <span class="uploadInfo"></span>
+                                                                                    </div>
+                                                                   </section>
+
+                                                             <section>
+                                                                    <div class="input-group">
                                                                                 <input class="form-control digit" placeholder="跟测费（附件）" type="text" name="testfee">
-	                                                                            <br/>
-	                                                                            <div class="fileDiv">
-		                                                                            <input class="form-control"  type="file" name="testfeefeeFile" id="testfeefeeFile">
-		                                                                            <span style="padding-top: 3px">当前文件 <span name="testfeefeeFileName" class="fileName"></span></span>
-		                                                                            <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
-		                                                                            <span class="uploadInfo"></span>
-	                                                                            </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                                <span class="input-group-addon">跟测费（附件）</span>
+	                                                                           </div>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" >备注</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
+                                                                                 <div class="fileDiv input input-file">
+                                                                                        <span class="button"><input type="file" id="testfeefeeFile" name="testfeefeeFile" onchange="this.parentNode.nextSibling.value = this.value">选择文件</span><span style="padding-top: 3px">当前文件 <span name="testfeefeeFileName" class="fileName"></span></span>
+                                                                                        <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
+                                                                                        <span class="uploadInfo"></span>
+                                                                                    </div>
+                                                                </section>
+
+                                                            <section>
+                                                                    <div class="input-group">
                                                                             <textarea  rows="5" name="comments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                            <span class="input-group-addon">备注</span>
+                                                                       </div>
+                                                            </section>
 
                                                             </fieldset>
                                                         </div>
@@ -1602,376 +1582,237 @@
 
                                                             <!-- <h3><strong> 4</strong> - 资料信息</h3> -->
                                                             <fieldset>
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">竣工文本收到日期</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="input-group">
+
+
+                                                           <section>
+                                                                    <div class="input-group">
                                                                                 <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="comptextrectime">
                                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                                <span class="input-group-addon">竣工文本收到日期</span>
+                                                                          </div>
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">竣工资料施工队上交时间</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
+                                                            <section>
+	                                                                        <div class="input-group">
+		                                                                       <input class="form-control digit" placeholder="竣工资料施工队上交时间" type="text" name="compmatcommittime">
+                                                                                <span class="input-group-addon">竣工资料施工队上交时间</span>
+	                                                                       </div>
+
+                                                                            <div class="fileDiv input input-file">
+                                                                                        <span class="button"><input type="file" id="compmatcommittimeFile" name="compmatcommittimeFile" onchange="">选择文件</span><span style="padding-top: 3px">当前文件 <span name="compmatcommittimeFileName" class="fileName"></span></span>
+                                                                                        <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
+                                                                                        <span class="uploadInfo"></span>
+                                                                                    </div>
+                                                            </section>
+
+
+
+                                                            <section>
                                                                             <div class="input-group">
-                                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="compmatcommittime">
-                                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                            </div>
-	                                                                        <br/>
-	                                                                        <div class="fileDiv">
-		                                                                        <input class="form-control"  type="file" name="compmatcommittimeFile" id="compmatcommittimeFile">
-		                                                                        <span style="padding-top: 3px">当前文件 <span name="compmatcommittimeFileName" class="fileName"></span></span>
-		                                                                        <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
-		                                                                        <span class="uploadInfo"></span>
-	                                                                        </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                               <input class="form-control digit" placeholder="竣工文本提交日期" type="text" name="comptextcommittime">
+                                                                                <span class="input-group-addon">竣工文本提交日期</span>
+                                                                           </div>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">竣工文本提交日期</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
+                                                                            <div class="fileDiv input input-file">
+                                                                                        <span class="button"><input type="file" id="comptextcommittimeFile" name="comptextcommittimeFile" onchange="">选择文件</span><span style="padding-top: 3px">当前文件 <span name="comptextcommittimeFileName" class="fileName"></span></span>
+                                                                                        <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
+                                                                                        <span class="uploadInfo"></span>
+                                                                                    </div>
+                                                            </section>
+
+                                                            
+                                                           <section>
                                                                             <div class="input-group">
-                                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="comptextcommittime">
-                                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                            </div>
-	                                                                        <br/>
-	                                                                        <div class="fileDiv">
-		                                                                        <input class="form-control"  type="file" name="comptextcommittimeFile" id="comptextcommittimeFile">
-		                                                                        <span style="padding-top: 3px">当前文件 <span name="comptextcommittimeFileName" class="fileName"></span></span>
-		                                                                        <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
-		                                                                        <span class="uploadInfo"></span>
-	                                                                        </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" >甲方对竣工资料的反馈情况</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
                                                                                 <label class="select">
                                                                                     <select class="input-sm" name="compmatres">
                                                                                         <option value="已反馈">已反馈</option>
                                                                                         <option value="未反馈">未反馈</option>
                                                                                     </select> <i></i> </label>
+                                                                                     <span class="input-group-addon">甲方对竣工资料的反馈情况</span>
                                                                             </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" >施工队工作量（表格）</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
+                                                            <section>
+                                                                            <div class="input-group">
                                                                                 <label class="select">
                                                                                     <select class="input-sm" name="worktable">
                                                                                         <option value="光缆">光缆</option>
                                                                                         <option value="管道">管道</option>
                                                                                     </select> <i></i> </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                                    <span class="input-group-addon">施工队工作量（表格）</span>
+                                                                              </div>
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" >备注</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
+                                                             <section>
+                                                                        <div class="input-group">
                                                                             <textarea  rows="5" name="textcomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
-                                                             </fieldset>>
+                                                                            <span class="input-group-addon">备注</span>
+                                                                         </div>
+                                                            </section>
+
+
+                                                             </fieldset>
                                                         </div>
+
                                                         <div class="tab-pane" id="tab5-edit">
                                                             <br>
-<!-- <h3><strong> 5</strong> - 合同信息</h3> -->
+                                                                    <!-- <h3><strong> 5</strong> - 合同信息</h3> -->
                                                                 <fieldset>
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" >合同签订情况</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
+
+                                                            <section>
+                                                                            <div class="input-group">
                                                                                 <label class="select">
                                                                                     <select class="input-sm" name="contractstatus">
                                                                                         <option value="已签订">已签订</option>
                                                                                         <option value="未签订">未签订</option>
                                                                                     </select> <i></i> </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                                    <span class="input-group-addon">合同签订情况</span>
+                                                                             </div>
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">合同签订日期</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
+                                                           <section>
                                                                             <div class="input-group">
                                                                                 <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="contracttime">
                                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                                <span class="input-group-addon">合同签订日期</span>
+                                                                             </div>
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">合同文本（附件）</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
-                                                                                <input class="form-control" placeholder="合同文本（附件）" type="text" name="contract">
-	                                                                            <br/>
-	                                                                            <div class="fileDiv">
-		                                                                            <input class="form-control"  type="file" name="contractFile" id="contractFile">
-		                                                                            <span style="padding-top: 3px">当前文件 <span name="contractFileName" class="fileName"></span></span>
-		                                                                            <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
-		                                                                            <span class="uploadInfo"></span>
-	                                                                            </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                            <section>
+                                                                    <div class="input-group">
+                                                                                <input class="form-control digit" placeholder="合同文本（附件）" type="text" name="contract">
+                                                                                <span class="input-group-addon">合同文本（附件）</span>
+                                                                               </div>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">合同总金额</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
+                                                                                 <div class="fileDiv input input-file">
+                                                                                        <span class="button"><input type="file" id="contractFile" name="contractFile" onchange="">选择文件</span><span style="padding-top: 3px">当前文件 <span name="contractFileName" class="fileName"></span></span>
+                                                                                        <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
+                                                                                        <span class="uploadInfo"></span>
+                                                                                    </div>
+                                                                </section>
+                                                            
+
+                                                                <section>
+                                                                    <div class="input-group">
                                                                                 <input class="form-control digit"  placeholder="合同总金额" type="text" name="contractamount">
+                                                                                <span class="input-group-addon">合同总金额</span>
                                                                             </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2"  style="padding-top: 7px;" >预付款</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
+                                                                <section>
+                                                                    <div class="input-group">
                                                                                 <input class="form-control digit" placeholder="预付款" type="text" name="prepay">
+                                                                                 <span class="input-group-addon">预付款</span>
                                                                             </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">预付款开票日期（附件）</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="input-group">
+                                                             <section>
+                                                                    <div class="input-group">
                                                                                 <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="prepayindate">
                                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                                 <span class="input-group-addon">预付款开票日期（附件）</span>
                                                                             </div>
-	                                                                        <br/>
-	                                                                        <div class="fileDiv">
-		                                                                        <input class="form-control"  type="file" name="prepayindateFile" id="prepayindateFile">
-		                                                                        <span style="padding-top: 3px">当前文件 <span name="prepayindateFileName" class="fileName"></span></span>
-		                                                                        <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
-		                                                                        <span class="uploadInfo"></span>
-	                                                                        </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+	                                                                       
+                                                                             <div class="fileDiv input input-file">
+                                                                                    <span class="button"><input type="file" id="prepayindateFile" name="prepayindateFile" onchange="">选择文件</span><span style="padding-top: 3px">当前文件 <span name="prepayindateFileName" class="fileName"></span></span>
+                                                                                    <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
+                                                                                    <span class="uploadInfo"></span>
+                                                                                 </div>
+                                                                </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">预付款收款日期</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="input-group">
+                                                            <section>
+                                                                    <div class="input-group">
                                                                                 <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="prepayoutdate">
                                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                                <span class="input-group-addon">预付款收款日期</span>
+                                                                             </div>
+                                                                </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">进度款开票日期（附件）</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="input-group">
+                                                           <section>
+                                                                    <div class="input-group">
                                                                                 <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="propayindate">
                                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                                 <span class="input-group-addon">进度款开票日期（附件）</span>
                                                                             </div>
-	                                                                        <br/>
-	                                                                        <div class="fileDiv">
-		                                                                        <input class="form-control"  type="file" name="propayindateFile" id="propayindateFile">
-		                                                                        <span style="padding-top: 3px">当前文件 <span name="propayindateFileName" class="fileName"></span></span>
-		                                                                        <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
-		                                                                        <span class="uploadInfo"></span>
-	                                                                        </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">进度款收款日期</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="input-group">
+                                                                             <div class="fileDiv input input-file">
+                                                                                    <span class="button"><input type="file" id="propayindateFile" name="propayindateFile" onchange="">选择文件</span><span style="padding-top: 3px">当前文件 <span name="propayindateFileName" class="fileName"></span></span>
+                                                                                    <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
+                                                                                    <span class="uploadInfo"></span>
+                                                                                 </div>
+                                                                </section>
+
+                                                             <section>
+                                                                    <div class="input-group">
                                                                                 <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="propayoutdate">
                                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                                <span class="input-group-addon">进度款收款日期</span>
+                                                                             </div>
+                                                                </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">尾款开票日期（附件）</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="input-group">
+                                                           <section>
+                                                                    <div class="input-group">
                                                                                 <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finalpayindate">
                                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                                <span class="input-group-addon">尾款开票日期（附件）</span>
                                                                             </div>
-	                                                                        <br/>
-	                                                                        <div class="fileDiv">
-		                                                                        <input class="form-control"  type="file" name="finalpayindateFile" id="finalpayindateFile">
-		                                                                        <span style="padding-top: 3px">当前文件 <span name="finalpayindateFileName" class="fileName"></span></span>
-		                                                                        <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
-		                                                                        <span class="uploadInfo"></span>
-	                                                                        </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+	                                                                       
+                                                                            <div class="fileDiv input input-file">
+                                                                                <span class="button"><input type="file" id="finalpayindateFile" name="finalpayindateFile" onchange="">选择文件</span><span style="padding-top: 3px">当前文件 <span name="finalpayindateFileName" class="fileName"></span></span>
+                                                                                <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
+                                                                                <span class="uploadInfo"></span>
+                                                                            </div>  
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2">尾款收款日期</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="input-group">
+                                                           <section>
+                                                                    <div class="input-group">
                                                                                 <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finalpayoutdate">
                                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                            </div>
-                                                                        </div>
+                                                                                <span class="input-group-addon">尾款收款日期</span>
                                                                     </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" >是否已送审（附件）</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
+
+                                                            <section>
+                                                                    <div class="input-group">
                                                                                 <label class="select">
                                                                                     <select class="input-sm" name="isinspect">
                                                                                         <option value="是">是</option>
                                                                                         <option value="否">否</option>
                                                                                     </select> <i></i> </label>
-	                                                                            <br/>
-	                                                                            <div class="fileDiv">
-		                                                                            <input class="form-control"  type="file" name="isinspectFile" id="isinspectFile">
-		                                                                            <span style="padding-top: 3px">当前文件 <span name="isinspectFileName" class="fileName"></span></span>
-		                                                                            <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
-		                                                                            <span class="uploadInfo"></span>
+                                                                                     <span class="input-group-addon">是否已送审（附件）</span>
 	                                                                            </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2"  style="padding-top: 7px;" >送审日期</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="input-group">
+                                                                                      <div class="fileDiv input input-file">
+                                                                                        <span class="button"><input type="file" id="isinspectFile" name="isinspectFile" onchange="">选择文件</span><span style="padding-top: 3px">当前文件 <span name="isinspectFileName" class="fileName"></span></span>
+                                                                                        <a class="btn btn-link upload">上传</a> <a class="btn btn-link download">下载</a>
+                                                                                        <span class="uploadInfo"></span>
+                                                                                    </div>  
+                                                            </section>
+
+                                                             <section>
+                                                                    <div class="input-group">
                                                                                 <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="inspecttime">
                                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                                 <span class="input-group-addon">送审日期</span>
+                                                                             </div>  
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2"  style="padding-top: 7px;" >审定金额</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
+
+                                                            <section>
+                                                                    <div class="input-group">
                                                                                 <input class="form-control digit" placeholder="审定金额" type="text" name="inspectamount">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                                <span class="input-group-addon">审定金额</span>
+                                                                           </div>  
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" >备注</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
+                                                            <section>
+                                                                    <div class="input-group">
                                                                             <textarea  rows="5" name="contractcomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                            <span class="input-group-addon">备注</span>
+                                                                       </div>  
+                                                            </section>
+
                                                             </fieldset>
                                                         </div>
                                                         <div class="tab-pane" id="tab6-edit">
@@ -1979,75 +1820,40 @@
                                                                 <fieldset>
                                                            <!--  <h3><strong> 6</strong> - 收入信息</h3> -->
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2"  style="padding-top: 7px;" >实际收款</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
+                                                            <section>
+                                                                    <div class="input-group">
                                                                                 <input class="form-control digit income" placeholder="实际收款" type="text" name="income">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                                <span class="input-group-addon">实际收款</span>
+                                                                           </div>  
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2"  style="padding-top: 7px;" >施工队结款</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
+                                                            <section>
+                                                                    <div class="input-group">
                                                                                 <input class="form-control digit outcome" placeholder="施工队结款" type="text" name="outcome">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                                 <span class="input-group-addon">施工队结款</span>
+                                                                            </div>  
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2"  style="padding-top: 7px;" >其他费用</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
+                                                           <section>
+                                                                    <div class="input-group">
                                                                                 <input class="form-control digit otherfee" placeholder="其他费用" type="text" name="otherfee">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                                 <span class="input-group-addon">其他费用</span>
+                                                                             </div>  
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2"  style="padding-top: 7px;" >利润</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div >
+                                                             <section>
+                                                                    <div class="input-group">
                                                                                 <input class="form-control digit profit" placeholder="自动计算" type="text" name="profit">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
+                                                                                 <span class="input-group-addon">利润</span>
+                                                                             </div>  
+                                                            </section>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label col-md-2" >备注</label>
-                                                                <div class="col-md-10">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
+                                                            <section>
+                                                                    <div class="input-group">
                                                                             <textarea  rows="5" name="incomecomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>&nbsp;</p>
-                                                            </div>
-
-                                                        </div>
+                                                                            <span class="input-group-addon">备注</span>
+                                                                        </div>  
+                                                            </section>
 
                                                         <footer>
                                                                 <button type="submit" class="btn btn-primary" id="saveProjEdited">
@@ -2910,6 +2716,17 @@ you can add as many as you like
                 $("#"+ formId + " .profit").val(result);
             }
         };
+
+
+         //已选择文件提示
+        $(".fileDiv span").on('change','input',(function (e) {
+                e.preventDefault();
+                var fileDiv = $(this).parent().parent();
+                var uploadInfo = fileDiv.find(".uploadInfo");
+                uploadInfo.removeClass("text-warning").text(" ");
+                uploadInfo.addClass("text-warning").text("已选择"+$(this).val()+"请点击上传");
+                //alert($(this).val());
+        }));
 
 	     //附件上传
 	    $(".fileDiv .upload").click(function (e) {
