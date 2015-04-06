@@ -114,6 +114,7 @@
                                         <label class="input"> <i class="icon-append fa fa-file-o"></i>
 
                                             <input type="file" name="<%if(user._id === null || user._id === undefined){%><%}else{ %><%= user._id%><%}%>" id="portraitToUpload">
+                                            <span>文件大小需小于20KB</span>
                                             <span id="uploadInfo"  style="padding-top:5px;display: inline-block"></span>
                                         </label>
                                         <span class="button pull-left" id="uploadPortrait" style="margin-left:0;margin-top: 5px">
@@ -595,6 +596,7 @@ you can add as many as you like
                         fileElementId: 'portraitToUpload',
                         dataType:'json',
                         success: function (result) {
+                            console.log(result);
                             if(result === true){
                                 $("#uploadInfo").addClass("text-success");
                                 $("#uploadInfo").text("上传完毕");
@@ -605,7 +607,7 @@ you can add as many as you like
                                 });
                             }else{
                                 $("#uploadInfo").addClass("text-warning");
-                                $("#uploadInfo").text("上传失败，请确保图片格式为png,jpg或jpeg");
+                                $("#uploadInfo").text("上传失败，请确保图片大小小于20KB,且格式为png,jpg或jpeg");
                             }
                         },
                         error: function () {
