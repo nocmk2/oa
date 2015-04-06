@@ -42,44 +42,25 @@
 
 
 <div id="main" role="main">
-    <form method="post" id="login-form" class="smart-form client-form lockscreen animated flipInY">
-                       
+    <form  method="post" id="login-form" class="lockscreen animated flipInY">
+    <div class="logo"></div>
+        <div>
+                
+                    <input class="form-control" type="text"  name="name" placeholder="用户名">
+                    <input class="form-control" type="password" name="password" placeholder="密码">
+                <button class="btn btn-primary" type="submit">
+                            登陆
+                </button>
+                
+                <div id="errmsg" style="display: none" class="fa fa-user txt-color-red"></div>
 
-                        <fieldset>
-
-                            <section>
-                             
-                                <label class="input"> <i class="icon-append fa fa-user"></i>
-                                    <input type="text" name="name">
-                                    <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i>
-                                        请输入用户名</b></label>
-
-
-                            </section>
-
-                            <section>
-                             
-                                <label class="input"> <i class="icon-append fa fa-lock"></i>
-                                    <input type="password" name="password">
-                                    <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> 请输入密码</b>
-                                </label>
-
-                            </section>
-
-                            <div id="errmsg" style="display: none" class="fa fa-user txt-color-red"></div>
-
-                           <!--  <% if (error) { %>
-                            <div><i class="fa fa-user txt-color-red"></i><%= error %></div>
-                            <% } %> -->
-
-                        </fieldset>
-                        <footer>
-                            <button type="submit" class="btn btn-primary">
-                                登 陆
-                            </button>
-                        </footer>
-                    </form>
-    
+                <!--  <% if (error) { %>
+                <div> <i class="fa fa-user txt-color-red"></i>
+                    <%= error %></div>
+                <% } %>-->
+        </div>
+        <p class="font-xs margin-top-5">Copyright MkSoft 2015-2020.</p>
+    </form>
 
 </div>
 
