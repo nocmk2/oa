@@ -97,7 +97,6 @@ module.exports = function(app){
 
 	            //若大小超过20KB，删除文件，并返回
 	            if(file.size > (20 * 1024)){
-		            console.log(util.inspect(file));
 		            //标示格式检查不通过
 		            req.body.fileValidationOk = false;
 		            if(fs.existsSync(path.join(__dirname,"../public/images/portrait/",file.name))){
