@@ -117,12 +117,20 @@ module.exports = function (app) {
         var filename;
         var _id;
 
+        //获取文件信息
         for(file in req.files){
             filename = req.files[file].fieldname + '.png';
             _id = file;
         }
 
         res.type("html");
+
+        //格式,大小检查不通过
+        if(req.body.fileValidationOk !== true){
+            return res.send(false);
+        }
+
+        //更改数据库中用户头像字段，并返回更改成功
         if(fs.existsSync(path.join(__dirname,"../../public/images/portrait/",filename))){
             UserService.hasPortrait(_id,function(err,nUpdated){
                 if(err){

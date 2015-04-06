@@ -15,6 +15,7 @@ module.exports = function(app){
 
 	        return filename;
         },
+
         changeDest: function(dest, req, res) {
 
 	        //上传头像
@@ -85,19 +86,39 @@ module.exports = function(app){
 	        return dest;
 
         },
+
         onFileUploadData: function (file, data, req, res) {
 
 	        //上传头像
             if(req.originalUrl === '/profile/uploadPortrait'){
-                var ext = path.extname(file.originalname);
-                ext = ext.toLowerCase();
+	            //获取文件扩展名
+	            var ext = path.extname(file.originalname);
+	            ext = ext.toLowerCase();
 
+	            //若大小超过20KB，删除文件，并返回
+	            if(file.size > (20 * 1024)){
+		            //标示格式检查不通过
+		            req.body.fileValidationOk = false;
+		            if(fs.existsSync(path.join(__dirname,"../public/images/portrait/",file.name))){
+			            fs.unlinkSync(path.join(__dirname,"../public/images/portrait/",file.name));
+		            }
+
+	            }
                 //检查文件格式,若格式不正确，则删除文件，取消上传。若为正确格式的文件，同一转换成png格式。
-                if(ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png'){
+                else if(ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png'){
+	                //标示格式检查不通过
+	                req.body.fileValidationOk = false;
+
                     if(fs.existsSync(path.join(__dirname,"../public/images/portrait/",file.name))){
                         fs.unlinkSync(path.join(__dirname,"../public/images/portrait/",file.name));
                     }
-                }else{
+
+                }
+	            //检查通过
+	            else{
+	                //标示格式检查通过
+	                req.body.fileValidationOk = true;
+
                     var oldPath = path.join(__dirname,"../public/images/portrait/",file.name);
 
                     //等待文件全部上传
