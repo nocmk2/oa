@@ -68,27 +68,27 @@
                             <span class="widget-icon"> <i
                                         class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
 
-                            <h2>1111</h2>
+                            <h2>主页</h2>
 
                             <ul class="nav nav-tabs pull-right in" id="myTab">
-                                <li>
+                               <!--  <li>
                                     <a data-toggle="tab" href="#s1"><i class="fa fa-clock-o"></i> <span
-                                                class="hidden-mobile hidden-tablet">Live Stats</span></a>
-                                </li>
+                                                class="hidden-mobile hidden-tablet">利润统计</span></a>
+                                </li> -->
 
-                                <li>
+                               <!--  <li>
                                     <a data-toggle="tab" href="#s2"><i class="fa fa-facebook"></i> <span
-                                                class="hidden-mobile hidden-tablet">Social Network</span></a>
+                                                class="hidden-mobile hidden-tablet">工作量统计</span></a>
                                 </li>
-
-                                <li>
+ -->
+                                <li >
                                     <a data-toggle="tab" href="#s3"><i class="fa fa-dollar"></i> <span
-                                                class="hidden-mobile hidden-tablet">Revenue</span></a>
-                                </li>
+                                                class="hidden-mobile hidden-tablet">利润统计</span></a>
+                                </li> 
 
-                                <li class="active"> 
+                                  <li class="active"> 
                                     <a data-toggle="tab" href="#s4"><i class="fa fa-bar-chart-o"></i> <span
-                                                class="hidden-mobile hidden-tablet">统计图表</span></a>
+                                                class="hidden-mobile hidden-tablet">项目统计</span></a>
                                 </li>
                             </ul>
 
@@ -362,20 +362,9 @@
 
                                         <div class="widget-body-toolbar bg-color-white smart-form" id="rev-toggles">
 
-                                            <div class="inline-group">
+                                           
 
-                                                <label for="gra-0" class="checkbox">
-                                                    <input type="checkbox" name="gra-0" id="gra-0" checked="checked">
-                                                    <i></i> Target </label>
-                                                <label for="gra-1" class="checkbox">
-                                                    <input type="checkbox" name="gra-1" id="gra-1" checked="checked">
-                                                    <i></i> Actual </label>
-                                                <label for="gra-2" class="checkbox">
-                                                    <input type="checkbox" name="gra-2" id="gra-2" checked="checked">
-                                                    <i></i> Signups </label>
-                                            </div>
-
-                                            <div class="btn-group hidden-phone pull-right">
+                                            <!-- <div class="btn-group hidden-phone pull-right">
                                                 <a class="btn dropdown-toggle btn-xs btn-default"
                                                    data-toggle="dropdown"><i class="fa fa-cog"></i> More <span
                                                             class="caret"> </span> </a>
@@ -389,7 +378,7 @@
                                                                     class="fa fa-question-sign"></i> Help</a>
                                                     </li>
                                                 </ul>
-                                            </div>
+                                            </div> -->
 
                                         </div>
 
@@ -413,798 +402,7 @@
 
             <!-- end row -->
 
-            <!-- row -->
-
-            <div class="row">
-
-                <article class="col-sm-12 col-md-12 col-lg-6">
-
-                    <!-- new widget -->
-                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false"
-                         data-widget-fullscreenbutton="false">
-
-                        <!-- widget options:
-                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-                        data-widget-colorbutton="false"
-                        data-widget-editbutton="false"
-                        data-widget-togglebutton="false"
-                        data-widget-deletebutton="false"
-                        data-widget-fullscreenbutton="false"
-                        data-widget-custombutton="false"
-                        data-widget-collapsed="true"
-                        data-widget-sortable="false"
-
-                        -->
-
-                        <header>
-                            <span class="widget-icon"> <i class="fa fa-comments txt-color-white"></i> </span>
-
-                            <h2> SmartChat </h2>
-
-                            <div class="widget-toolbar">
-                                <!-- add: non-hidden - to disable auto hide -->
-
-                                <div class="btn-group">
-                                    <button class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
-                                        Status <i class="fa fa-caret-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right js-status-update">
-                                        <li>
-                                            <a href="javascript:void(0);"><i class="fa fa-circle txt-color-green"></i>
-                                                Online</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);"><i class="fa fa-circle txt-color-red"></i>
-                                                Busy</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);"><i class="fa fa-circle txt-color-orange"></i>
-                                                Away</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="javascript:void(0);"><i class="fa fa-power-off"></i> Log Off</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </header>
-
-                        <!-- widget div-->
-                        <div>
-                            <!-- widget edit box -->
-                            <div class="jarviswidget-editbox">
-                                <div>
-                                    <label>Title:</label>
-                                    <input type="text"/>
-                                </div>
-                            </div>
-                            <!-- end widget edit box -->
-
-                            <div class="widget-body widget-hide-overflow no-padding">
-                                <!-- content goes here -->
-
-                                <!-- CHAT CONTAINER -->
-                                <div id="chat-container">
-                                    <span class="chat-list-open-close"><i class="fa fa-user"></i><b>!</b></span>
-
-                                    <div class="chat-list-body custom-scroll">
-                                        <ul id="chat-users">
-                                            <li>
-                                                <a href="javascript:void(0);"><img src="img/avatars/5.png" alt="">Robin
-                                                    Berry <span class="badge badge-inverse">23</span><span
-                                                            class="state"><i
-                                                                class="fa fa-circle txt-color-green pull-right"></i></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Mark
-                                                    Zeukartech <span class="state"><i class="last-online pull-right">2hrs</i></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Belmain
-                                                    Dolson <span class="state"><i class="last-online pull-right">45m</i></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Galvitch
-                                                    Drewbery <span class="state"><i
-                                                                class="fa fa-circle txt-color-green pull-right"></i></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Sadi
-                                                    Orlaf <span class="state"><i
-                                                                class="fa fa-circle txt-color-green pull-right"></i></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Markus
-                                                    <span class="state"><i class="last-online pull-right">2m</i></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0);"><img src="img/avatars/sunny.png" alt="">Sunny
-                                                    <span class="state"><i class="last-online pull-right">2m</i></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Denmark
-                                                    <span class="state"><i class="last-online pull-right">2m</i></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="chat-list-footer">
-
-                                        <div class="control-group">
-
-                                            <form class="smart-form">
-
-                                                <section>
-                                                    <label class="input">
-                                                        <input type="text" id="filter-chat-list" placeholder="Filter">
-                                                    </label>
-                                                </section>
-
-                                            </form>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <!-- CHAT BODY -->
-                                <div id="chat-body" class="chat-body custom-scroll">
-                                    <ul>
-                                        <li class="message">
-                                            <img src="img/avatars/5.png" class="online" alt="">
-
-                                            <div class="message-text">
-                                                <time>
-                                                    2014-01-13
-                                                </time>
-                                                <a href="javascript:void(0);" class="username">Sadi Orlaf</a> Hey did
-                                                you meet the new board of director? He's a bit of an arse if you ask
-                                                me...anyway here is the report you requested. I am off to launch with
-                                                Lisa and Andrew, you wanna join?
-                                                <p class="chat-file row">
-                                                    <b class="pull-left col-sm-6">
-                                                        <!--<i class="fa fa-spinner fa-spin"></i>--> <i
-                                                                class="fa fa-file"></i>
-                                                        report-2013-demographic-report-annual-earnings.xls </b>
-                                                    <span class="col-sm-6 pull-right"> <a href="javascript:void(0);"
-                                                                                          class="btn btn-xs btn-default">cancel</a> <a
-                                                                href="javascript:void(0);"
-                                                                class="btn btn-xs btn-success">save</a> </span>
-                                                </p>
-
-                                                <p class="chat-file row">
-                                                    <b class="pull-left col-sm-6"> <i
-                                                                class="fa fa-ok txt-color-green"></i>
-                                                        tobacco-report-2012.doc </b>
-                                                    <span class="col-sm-6 pull-right"> <a href="javascript:void(0);"
-                                                                                          class="btn btn-xs btn-primary">open</a> </span>
-                                                </p></div>
-                                        </li>
-                                        <li class="message">
-                                            <img src="img/avatars/sunny.png" class="online" alt="">
-
-                                            <div class="message-text">
-                                                <time>
-                                                    2014-01-13
-                                                </time>
-                                                <a href="javascript:void(0);" class="username">John Doe</a> Haha! Yeah I
-                                                know what you mean. Thanks for the file Sadi! <i
-                                                        class="fa fa-smile-o txt-color-orange"></i>
-                                            </div>
-                                        </li>
-                                    </ul>
-
-                                </div>
-
-                                <!-- CHAT FOOTER -->
-                                <div class="chat-footer">
-
-                                    <!-- CHAT TEXTAREA -->
-                                    <div class="textarea-div">
-
-                                        <div class="typearea">
-                                            <textarea placeholder="Write a reply..." id="textarea-expand"
-                                                      class="custom-scroll"></textarea>
-                                        </div>
-
-                                    </div>
-
-                                    <!-- CHAT REPLY/SEND -->
-											<span class="textarea-controls">
-												<button class="btn btn-sm btn-primary pull-right">
-                                                    Reply
-                                                </button> <span class="pull-right smart-form"
-                                                                style="margin-top: 3px; margin-right: 10px;"> <label
-                                                            class="checkbox pull-right">
-                                                        <input type="checkbox" name="subscription" id="subscription">
-                                                        <i></i>Press <strong> ENTER </strong> to send
-                                                    </label> </span> <a href="javascript:void(0);" class="pull-left"><i
-                                                            class="fa fa-camera fa-fw fa-lg"></i></a> </span>
-
-                                </div>
-
-                                <!-- end content -->
-                            </div>
-
-                        </div>
-                        <!-- end widget div -->
-                    </div>
-                    <!-- end widget -->
-
-                    <!-- new widget -->
-                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3" data-widget-colorbutton="false">
-
-                        <!-- widget options:
-                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-                        data-widget-colorbutton="false"
-                        data-widget-editbutton="false"
-                        data-widget-togglebutton="false"
-                        data-widget-deletebutton="false"
-                        data-widget-fullscreenbutton="false"
-                        data-widget-custombutton="false"
-                        data-widget-collapsed="true"
-                        data-widget-sortable="false"
-
-                        -->
-                        <header>
-                            <span class="widget-icon"> <i class="fa fa-calendar"></i> </span>
-
-                            <h2> My Events </h2>
-
-                            <div class="widget-toolbar">
-                                <!-- add: non-hidden - to disable auto hide -->
-                                <div class="btn-group">
-                                    <button class="btn dropdown-toggle btn-xs btn-default" data-toggle="dropdown">
-                                        Showing <i class="fa fa-caret-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu js-status-update pull-right">
-                                        <li>
-                                            <a href="javascript:void(0);" id="mt">Month</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);" id="ag">Agenda</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);" id="td">Today</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </header>
-
-                        <!-- widget div-->
-                        <div>
-                            <!-- widget edit box -->
-                            <div class="jarviswidget-editbox">
-
-                                <input class="form-control" type="text">
-
-                            </div>
-                            <!-- end widget edit box -->
-
-                            <div class="widget-body no-padding">
-                                <!-- content goes here -->
-                                <div class="widget-body-toolbar">
-
-                                    <div id="calendar-buttons">
-
-                                        <div class="btn-group">
-                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i
-                                                        class="fa fa-chevron-left"></i></a>
-                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i
-                                                        class="fa fa-chevron-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="calendar"></div>
-
-                                <!-- end content -->
-                            </div>
-
-                        </div>
-                        <!-- end widget div -->
-                    </div>
-                    <!-- end widget -->
-
-                </article>
-
-                <article class="col-sm-12 col-md-12 col-lg-6">
-
-                    <!-- new widget -->
-                    <div class="jarviswidget" id="wid-id-2" data-widget-colorbutton="false"
-                         data-widget-editbutton="false">
-
-                        <!-- widget options:
-                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-                        data-widget-colorbutton="false"
-                        data-widget-editbutton="false"
-                        data-widget-togglebutton="false"
-                        data-widget-deletebutton="false"
-                        data-widget-fullscreenbutton="false"
-                        data-widget-custombutton="false"
-                        data-widget-collapsed="true"
-                        data-widget-sortable="false"
-
-                        -->
-
-                        <header>
-                            <span class="widget-icon"> <i class="fa fa-map-marker"></i> </span>
-
-                            <h2>Birds Eye</h2>
-
-                            <div class="widget-toolbar hidden-mobile">
-                                <span class="onoffswitch-title"><i class="fa fa-location-arrow"></i> Realtime</span>
-										<span class="onoffswitch">
-											<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-                                                   checked="checked" id="myonoffswitch">
-											<label class="onoffswitch-label" for="myonoffswitch"> <span
-                                                        class="onoffswitch-inner" data-swchon-text="YES"
-                                                        data-swchoff-text="NO"></span> <span
-                                                        class="onoffswitch-switch"></span> </label> </span>
-                            </div>
-                        </header>
-
-                        <!-- widget div-->
-                        <div>
-                            <!-- widget edit box -->
-                            <div class="jarviswidget-editbox">
-                                <div>
-                                    <label>Title:</label>
-                                    <input type="text"/>
-                                </div>
-                            </div>
-                            <!-- end widget edit box -->
-
-                            <div class="widget-body no-padding">
-                                <!-- content goes here -->
-
-                                <div id="vector-map" class="vector-map"></div>
-                                <div id="heat-fill">
-                                    <span class="fill-a">0</span>
-
-                                    <span class="fill-b">5,000</span>
-                                </div>
-
-                                <table class="table table-striped table-hover table-condensed">
-                                    <thead>
-                                    <tr>
-                                        <th>Country</th>
-                                        <th>Visits</th>
-                                        <th class="text-align-center">User Activity</th>
-                                        <th class="text-align-center">Online</th>
-                                        <th class="text-align-center">Demographic</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><a href="javascript:void(0);">USA</a></td>
-                                        <td>4,977</td>
-                                        <td class="text-align-center">
-                                            <div class="sparkline txt-color-blue text-align-center"
-                                                 data-sparkline-height="22px" data-sparkline-width="90px"
-                                                 data-sparkline-barwidth="2">
-                                                2700, 3631, 2471, 1300, 1877, 2500, 2577, 2700, 3631, 2471, 2000, 2100,
-                                                3000
-                                            </div>
-                                        </td>
-                                        <td class="text-align-center">143</td>
-                                        <td class="text-align-center">
-                                            <div class="sparkline display-inline" data-sparkline-type='pie'
-                                                 data-sparkline-piecolor='["#E979BB", "#57889C"]'
-                                                 data-sparkline-offset="90" data-sparkline-piesize="23px">
-                                                17,83
-                                            </div>
-                                            <div class="btn-group display-inline pull-right text-align-left hidden-tablet">
-                                                <button class="btn btn-xs btn-default dropdown-toggle"
-                                                        data-toggle="dropdown">
-                                                    <i class="fa fa-cog fa-lg"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-xs pull-right">
-                                                    <li>
-                                                        <a href="javascript:void(0);"><i
-                                                                    class="fa fa-file fa-lg fa-fw txt-color-greenLight"></i>
-                                                            <u>P</u>DF</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"><i
-                                                                    class="fa fa-times fa-lg fa-fw txt-color-red"></i>
-                                                            <u>D</u>elete</a>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                    <li class="text-align-center">
-                                                        <a href="javascript:void(0);">Cancel</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="javascript:void(0);">Australia</a></td>
-                                        <td>4,873</td>
-                                        <td class="text-align-center">
-                                            <div class="sparkline txt-color-blue text-align-center"
-                                                 data-sparkline-height="22px" data-sparkline-width="90px"
-                                                 data-sparkline-barwidth="2">
-                                                1000, 1100, 3030, 1300, -1877, -2500, -2577, -2700, 3631, 2471, 4700,
-                                                1631, 2471
-                                            </div>
-                                        </td>
-                                        <td class="text-align-center">247</td>
-                                        <td class="text-align-center">
-                                            <div class="sparkline display-inline" data-sparkline-type='pie'
-                                                 data-sparkline-piecolor='["#E979BB", "#57889C"]'
-                                                 data-sparkline-offset="90" data-sparkline-piesize="23px">
-                                                22,88
-                                            </div>
-                                            <div class="btn-group display-inline pull-right text-align-left hidden-tablet">
-                                                <button class="btn btn-xs btn-default dropdown-toggle"
-                                                        data-toggle="dropdown">
-                                                    <i class="fa fa-cog fa-lg"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-xs pull-right">
-                                                    <li>
-                                                        <a href="javascript:void(0);"><i
-                                                                    class="fa fa-file fa-lg fa-fw txt-color-greenLight"></i>
-                                                            <u>P</u>DF</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"><i
-                                                                    class="fa fa-times fa-lg fa-fw txt-color-red"></i>
-                                                            <u>D</u>elete</a>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                    <li class="text-align-center">
-                                                        <a href="javascript:void(0);">Cancel</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="javascript:void(0);">India</a></td>
-                                        <td>3,671</td>
-                                        <td class="text-align-center">
-                                            <div class="sparkline txt-color-blue text-align-center"
-                                                 data-sparkline-height="22px" data-sparkline-width="90px"
-                                                 data-sparkline-barwidth="2">
-                                                3631, 1471, 2400, 3631, 471, 1300, 1177, 2500, 2577, 3000, 4100, 3000,
-                                                7700
-                                            </div>
-                                        </td>
-                                        <td class="text-align-center">373</td>
-                                        <td class="text-align-center">
-                                            <div class="sparkline display-inline" data-sparkline-type='pie'
-                                                 data-sparkline-piecolor='["#E979BB", "#57889C"]'
-                                                 data-sparkline-offset="90" data-sparkline-piesize="23px">
-                                                10,90
-                                            </div>
-                                            <div class="btn-group display-inline pull-right text-align-left hidden-tablet">
-                                                <button class="btn btn-xs btn-default dropdown-toggle"
-                                                        data-toggle="dropdown">
-                                                    <i class="fa fa-cog fa-lg"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-xs pull-right">
-                                                    <li>
-                                                        <a href="javascript:void(0);"><i
-                                                                    class="fa fa-file fa-lg fa-fw txt-color-greenLight"></i>
-                                                            <u>P</u>DF</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"><i
-                                                                    class="fa fa-times fa-lg fa-fw txt-color-red"></i>
-                                                            <u>D</u>elete</a>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                    <li class="text-align-center">
-                                                        <a href="javascript:void(0);">Cancel</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="javascript:void(0);">Brazil</a></td>
-                                        <td>2,476</td>
-                                        <td class="text-align-center">
-                                            <div class="sparkline txt-color-blue text-align-center"
-                                                 data-sparkline-height="22px" data-sparkline-width="90px"
-                                                 data-sparkline-barwidth="2">
-                                                2700, 1877, 2500, 2577, 2000, 3631, 2471, -2700, -3631, 2471, 1300,
-                                                2100, 3000,
-                                            </div>
-                                        </td>
-                                        <td class="text-align-center">741</td>
-                                        <td class="text-align-center">
-                                            <div class="sparkline display-inline" data-sparkline-type='pie'
-                                                 data-sparkline-piecolor='["#E979BB", "#57889C"]'
-                                                 data-sparkline-offset="90" data-sparkline-piesize="23px">
-                                                34,66
-                                            </div>
-                                            <div class="btn-group display-inline pull-right text-align-left hidden-tablet">
-                                                <button class="btn btn-xs btn-default dropdown-toggle"
-                                                        data-toggle="dropdown">
-                                                    <i class="fa fa-cog fa-lg"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-xs pull-right">
-                                                    <li>
-                                                        <a href="javascript:void(0);"><i
-                                                                    class="fa fa-file fa-lg fa-fw txt-color-greenLight"></i>
-                                                            <u>P</u>DF</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"><i
-                                                                    class="fa fa-times fa-lg fa-fw txt-color-red"></i>
-                                                            <u>D</u>elete</a>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                    <li class="text-align-center">
-                                                        <a href="javascript:void(0);">Cancel</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="javascript:void(0);">Turkey</a></td>
-                                        <td>1,476</td>
-                                        <td class="text-align-center">
-                                            <div class="sparkline txt-color-blue text-align-center"
-                                                 data-sparkline-height="22px" data-sparkline-width="90px"
-                                                 data-sparkline-barwidth="2">
-                                                1300, 1877, 2500, 2577, 2000, 2100, 3000, -2471, -2700, -3631, -2471,
-                                                2700, 3631
-                                            </div>
-                                        </td>
-                                        <td class="text-align-center">123</td>
-                                        <td class="text-align-center">
-                                            <div class="sparkline display-inline" data-sparkline-type='pie'
-                                                 data-sparkline-piecolor='["#E979BB", "#57889C"]'
-                                                 data-sparkline-offset="90" data-sparkline-piesize="23px">
-                                                75,25
-                                            </div>
-                                            <div class="btn-group display-inline pull-right text-align-left hidden-tablet">
-                                                <button class="btn btn-xs btn-default dropdown-toggle"
-                                                        data-toggle="dropdown">
-                                                    <i class="fa fa-cog fa-lg"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-xs pull-right">
-                                                    <li>
-                                                        <a href="javascript:void(0);"><i
-                                                                    class="fa fa-file fa-lg fa-fw txt-color-greenLight"></i>
-                                                            <u>P</u>DF</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"><i
-                                                                    class="fa fa-times fa-lg fa-fw txt-color-red"></i>
-                                                            <u>D</u>elete</a>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                    <li class="text-align-center">
-                                                        <a href="javascript:void(0);">Cancel</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="javascript:void(0);">Canada</a></td>
-                                        <td>146</td>
-                                        <td class="text-align-center">
-                                            <div class="sparkline txt-color-orange text-align-center"
-                                                 data-sparkline-height="22px" data-sparkline-width="90px"
-                                                 data-sparkline-barwidth="2">
-                                                5, 34, 10, 1, 4, 6, -9, -1, 0, 0, 5, 6, 7
-                                            </div>
-                                        </td>
-                                        <td class="text-align-center">23</td>
-                                        <td class="text-align-center">
-                                            <div class="sparkline display-inline" data-sparkline-type='pie'
-                                                 data-sparkline-piecolor='["#E979BB", "#57889C"]'
-                                                 data-sparkline-offset="90" data-sparkline-piesize="23px">
-                                                50,50
-                                            </div>
-                                            <div class="btn-group display-inline pull-right text-align-left hidden-tablet">
-                                                <button class="btn btn-xs btn-default dropdown-toggle"
-                                                        data-toggle="dropdown">
-                                                    <i class="fa fa-cog fa-lg"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-xs pull-right">
-                                                    <li>
-                                                        <a href="javascript:void(0);"><i
-                                                                    class="fa fa-file fa-lg fa-fw txt-color-greenLight"></i>
-                                                            <u>P</u>DF</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"><i
-                                                                    class="fa fa-times fa-lg fa-fw txt-color-red"></i>
-                                                            <u>D</u>elete</a>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                    <li class="text-align-center">
-                                                        <a href="javascript:void(0);">Cancel</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <td colspan=5>
-                                            <ul class="pagination pagination-xs no-margin">
-                                                <li class="prev disabled">
-                                                    <a href="javascript:void(0);">Previous</a>
-                                                </li>
-                                                <li class="active">
-                                                    <a href="javascript:void(0);">1</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0);">2</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0);">3</a>
-                                                </li>
-                                                <li class="next">
-                                                    <a href="javascript:void(0);">Next</a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-
-                                <!-- end content -->
-
-                            </div>
-
-                        </div>
-                        <!-- end widget div -->
-                    </div>
-                    <!-- end widget -->
-
-                    <!-- new widget -->
-                    <div class="jarviswidget jarviswidget-color-blue" id="wid-id-4" data-widget-editbutton="false"
-                         data-widget-colorbutton="false">
-
-                        <!-- widget options:
-                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-                        data-widget-colorbutton="false"
-                        data-widget-editbutton="false"
-                        data-widget-togglebutton="false"
-                        data-widget-deletebutton="false"
-                        data-widget-fullscreenbutton="false"
-                        data-widget-custombutton="false"
-                        data-widget-collapsed="true"
-                        data-widget-sortable="false"
-
-                        -->
-
-                        <header>
-                            <span class="widget-icon"> <i class="fa fa-check txt-color-white"></i> </span>
-
-                            <h2> ToDo's </h2>
-                            <!-- <div class="widget-toolbar">
-                            add: non-hidden - to disable auto hide
-
-                            </div>-->
-                        </header>
-
-                        <!-- widget div-->
-                        <div>
-                            <!-- widget edit box -->
-                            <div class="jarviswidget-editbox">
-                                <div>
-                                    <label>Title:</label>
-                                    <input type="text"/>
-                                </div>
-                            </div>
-                            <!-- end widget edit box -->
-
-                            <div class="widget-body no-padding smart-form">
-                                <!-- content goes here -->
-                                <h5 class="todo-group-title"><i class="fa fa-warning"></i> Critical Tasks (
-                                    <small class="num-of-tasks">1</small>
-                                    )
-                                </h5>
-                                <ul id="sortable1" class="todo">
-                                    <li>
-												<span class="handle"> <label class="checkbox">
-                                                        <input type="checkbox" name="checkbox-inline">
-                                                        <i></i> </label> </span>
-
-                                        <p>
-                                            <strong>Ticket #17643</strong> - Hotfix for WebApp interface issue [<a
-                                                    href="javascript:void(0);" class="font-xs">More Details</a>] <span
-                                                    class="text-muted">Sea deep blessed bearing under darkness from God air living isn't. </span>
-                                            <span class="date">Jan 1, 2014</span>
-                                        </p>
-                                    </li>
-                                </ul>
-                                <h5 class="todo-group-title"><i class="fa fa-exclamation"></i> Important Tasks (
-                                    <small class="num-of-tasks">3</small>
-                                    )
-                                </h5>
-                                <ul id="sortable2" class="todo">
-                                    <li>
-												<span class="handle"> <label class="checkbox">
-                                                        <input type="checkbox" name="checkbox-inline">
-                                                        <i></i> </label> </span>
-
-                                        <p>
-                                            <strong>Ticket #1347</strong> - Inbox email is being sent twice
-                                            <small>(bug fix)</small>
-                                            [<a href="javascript:void(0);" class="font-xs">More Details</a>] <span
-                                                    class="date">Nov 22, 2013</span>
-                                        </p>
-                                    </li>
-                                    <li>
-												<span class="handle"> <label class="checkbox">
-                                                        <input type="checkbox" name="checkbox-inline">
-                                                        <i></i> </label> </span>
-
-                                        <p>
-                                            <strong>Ticket #1314</strong> - Call customer support re: Issue <a
-                                                    href="javascript:void(0);" class="font-xs">#6134</a>
-                                            <small>(code review)</small>
-                                            <span class="date">Nov 22, 2013</span>
-                                        </p>
-                                    </li>
-                                    <li>
-												<span class="handle"> <label class="checkbox">
-                                                        <input type="checkbox" name="checkbox-inline">
-                                                        <i></i> </label> </span>
-
-                                        <p>
-                                            <strong>Ticket #17643</strong> - Hotfix for WebApp interface issue [<a
-                                                    href="javascript:void(0);" class="font-xs">More Details</a>] <span
-                                                    class="text-muted">Sea deep blessed bearing under darkness from God air living isn't. </span>
-                                            <span class="date">Jan 1, 2014</span>
-                                        </p>
-                                    </li>
-                                </ul>
-
-                                <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Tasks (
-                                    <small class="num-of-tasks">1</small>
-                                    )
-                                </h5>
-                                <ul id="sortable3" class="todo">
-                                    <li class="complete">
-												<span class="handle" style="display:none"> <label
-                                                            class="checkbox state-disabled">
-                                                        <input type="checkbox" name="checkbox-inline" checked="checked"
-                                                               disabled="disabled">
-                                                        <i></i> </label> </span>
-
-                                        <p>
-                                            <strong>Ticket #17643</strong> - Hotfix for WebApp interface issue [<a
-                                                    href="javascript:void(0);" class="font-xs">More Details</a>] <span
-                                                    class="text-muted">Sea deep blessed bearing under darkness from God air living isn't. </span>
-                                            <span class="date">Jan 1, 2014</span>
-                                        </p>
-                                    </li>
-                                </ul>
-
-                                <!-- end content -->
-                            </div>
-
-                        </div>
-                        <!-- end widget div -->
-                    </div>
-                    <!-- end widget -->
-
-                </article>
-
-            </div>
-
-            <!-- end row -->
+           
 
         </section>
         <!-- end widget grid -->
@@ -1214,41 +412,7 @@
 
 </div>
 <!-- END MAIN PANEL -->
-<!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
-Note: These tiles are completely responsive,
-you can add as many as you like
--->
-<div id="shortcut">
-    <ul>
-        <li>
-            <a href="#inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i
-                            class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span>
-            </a>
-        </li>
-        <li>
-            <a href="#calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i
-                            class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
-        </li>
-        <li>
-            <a href="#gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i
-                            class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>
-        </li>
-        <li>
-            <a href="#invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i
-                            class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span>
-            </a>
-        </li>
-        <li>
-            <a href="#gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i
-                            class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>
-        </li>
-        <li>
-            <a href="/profile.html" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span
-                        class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
-        </li>
-    </ul>
-</div>
-<!-- END SHORTCUT AREA -->
+
 
 <!--================================================== -->
 
@@ -1524,9 +688,7 @@ you can add as many as you like
         '#66CC66','#FF6666','#FFED6F','#ff7f50','#87cefa',
     ],
     title : {
-        text : '中东地区的敌友关系',
-        subtext: '数据来自财新网',
-        sublink: 'http://international.caixin.com/2013-09-06/100579154.html',
+        //text : '项目关系图',
         x:'right',
         y:'bottom'
     },
@@ -1551,51 +713,51 @@ you can add as many as you like
     },
     legend : {
         data : [
-            '美国',
-            '叙利亚反对派',
-            '阿萨德',
-            '伊朗',
-            '塞西',
-            '哈马斯',
-            '以色列',
-            '穆斯林兄弟会',
-            '基地组织',
-            '俄罗斯',
-            '黎巴嫩什叶派',
-            '土耳其',
-            '卡塔尔',
-            '沙特',
-            '黎巴嫩逊尼派',
+            '项目1',
+            '项目2',
+            '项目3',
+            '项目4',
+            '项目5',
+            '项目6',
+            '项目7',
+            '项目8',
+            '项目9',
+            '项目10',
+            '项目11',
+            '项目12',
+            '项目13',
+            '项目14',
+            '项目15',
             '',
-            '支持',
-            '反对',
-            '未表态'
+            '关联',
+            '同地区',
+            '未关联'
         ],
         orient : 'vertical',
         x : 'left'
     },
     series : [
         {
-            "name": "支持",
+            "name": "关联",
             "type": "chord",
             "showScaleText": false,
             "clockWise": false,
             "data": [
-                {"name": "美国"},
-                {"name": "叙利亚反对派"},
-                {"name": "阿萨德"},
-                {"name": "伊朗"},
-                {"name": "塞西"},
-                {"name": "哈马斯"},
-                {"name": "以色列"},
-                {"name": "穆斯林兄弟会"},
-                {"name": "基地组织"},
-                {"name": "俄罗斯"},
-                {"name": "黎巴嫩什叶派"},
-                {"name": "土耳其"},
-                {"name": "卡塔尔"},
-                {"name": "沙特"},
-                {"name": "黎巴嫩逊尼派"}
+                {"name": "项目1"},
+                {"name": "项目2"},
+                {"name": "项目3"},
+                {"name": "项目4"},
+                {"name": "项目5"},
+                {"name": "项目6"},
+                {"name": "项目7"},
+                {"name": "项目8"},
+                {"name": "项目9"},
+                {"name": "项目10"},
+                {"name": "项目11"},
+                {"name": "项目12"},
+                {"name": "项目13"},
+                {"name": "项目14"},
+                {"name": "项目15"}
             ],
             "matrix": [
                 [0,100,0,0,0,0,100,0,0,0,0,0,0,0,0],
@@ -1616,25 +778,25 @@ you can add as many as you like
             ]
         },
         {
-            "name": "反对",
+            "name": "同地区",
             "type": "chord",
-            "insertToSerie": "支持",
+            "insertToSerie": "关联",
             "data": [
-                {"name": "美国"},
-                {"name": "叙利亚反对派"},
-                {"name": "阿萨德"},
-                {"name": "伊朗"},
-                {"name": "塞西"},
-                {"name": "哈马斯"},
-                {"name": "以色列"},
-                {"name": "穆斯林兄弟会"},
-                {"name": "基地组织"},
-                {"name": "俄罗斯"},
-                {"name": "黎巴嫩什叶派"},
-                {"name": "土耳其"},
-                {"name": "卡塔尔"},
-                {"name": "沙特"},
-                {"name": "黎巴嫩逊尼派"}
+                {"name": "项目1"},
+                {"name": "项目2"},
+                {"name": "项目3"},
+                {"name": "项目4"},
+                {"name": "项目5"},
+                {"name": "项目6"},
+                {"name": "项目7"},
+                {"name": "项目8"},
+                {"name": "项目9"},
+                {"name": "项目10"},
+                {"name": "项目11"},
+                {"name": "项目12"},
+                {"name": "项目13"},
+                {"name": "项目14"},
+                {"name": "项目15"}
             ],
             "matrix": [
                 [0,0,100,100,0,100,0,0,100,0,0,0,0,0,0],
@@ -1655,25 +817,25 @@ you can add as many as you like
             ]
         },
         {
-            "name": "未表态",
+            "name": "未关联",
             "type": "chord",
-            "insertToSerie": "支持",
+            "insertToSerie": "关联",
             "data": [
-                {"name": "美国"},
-                {"name": "叙利亚反对派"},
-                {"name": "阿萨德"},
-                {"name": "伊朗"},
-                {"name": "塞西"},
-                {"name": "哈马斯"},
-                {"name": "以色列"},
-                {"name": "穆斯林兄弟会"},
-                {"name": "基地组织"},
-                {"name": "俄罗斯"},
-                {"name": "黎巴嫩什叶派"},
-                {"name": "土耳其"},
-                {"name": "卡塔尔"},
-                {"name": "沙特"},
-                {"name": "黎巴嫩逊尼派"}
+                {"name": "项目1"},
+                {"name": "项目2"},
+                {"name": "项目3"},
+                {"name": "项目4"},
+                {"name": "项目5"},
+                {"name": "项目6"},
+                {"name": "项目7"},
+                {"name": "项目8"},
+                {"name": "项目9"},
+                {"name": "项目10"},
+                {"name": "项目11"},
+                {"name": "项目12"},
+                {"name": "项目13"},
+                {"name": "项目14"},
+                {"name": "项目15"}
             ],
             "matrix": [
                 [0,0,0,0,100,0,0,100,0,0,0,0,0,0,0],
