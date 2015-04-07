@@ -98,4 +98,68 @@ netprojService.updateUploadInfo = function (id,nameInFileInfo,filename,callback)
 
 };
 
+//获取图表展示需要的收入相关信息
+netprojService.getAllIncomeInfo = function (callback) {
+
+	Netproj.find({},'incomeInfo.income incomeInfo.outcome incomeInfo.otherfee incomeInfo.profit basicInfo.projtype', function (err,projs) {
+		if(err){
+			callback(err);
+		}else{
+			//初始化
+			var incomeInfo = {
+				rushRepair : {
+					income:0,
+					outcome:0,
+					otherfee:0,
+					profit:0
+				},
+				overhaul : {
+					income:0,
+					outcome:0,
+					otherfee:0,
+					profit:0
+				},
+				minorRepair : {
+					income:0,
+					outcome:0,
+					otherfee:0,
+					profit:0
+				}
+			};
+
+			for (var i = 0 ; i < projs.length ; i++){
+				if(projs[i].basicInfo.projtype === "抢修"){
+					formatIncomeInfo(projs[i],incomeInfo.rushRepair);
+				}else if(projs[i].basicInfo.projtype === "大修"){
+					formatIncomeInfo(projs[i],incomeInfo.overhaul);
+				}
+				else{
+					formatIncomeInfo(projs[i],incomeInfo.minorRepair);
+				}
+			}
+
+			function formatIncomeInfo(proj,incomeInfo){
+				var _income = parseInt(proj.incomeInfo.income);
+				var _outcome = parseInt(proj.incomeInfo.outcome);
+				var _otherfee = parseInt(proj.incomeInfo.otherfee);
+				var _profit = parseInt(proj.incomeInfo.profit);
+				if(!isNaN(_income)){
+					incomeInfo.income += _income;
+				}
+				if(!isNaN(_outcome)){
+					incomeInfo.outcome -= _outcome;
+				}
+				if(!isNaN(_otherfee)){
+					incomeInfo.otherfee -= _otherfee;
+				}
+				if(!isNaN(_profit)){
+					incomeInfo.profit += _profit;
+				}
+			}
+
+			callback(null,incomeInfo)
+		}
+	});
+};
+
 module.exports = netprojService;
