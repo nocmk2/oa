@@ -20,15 +20,15 @@
 
             var deliverQty = QueryString.GetValue('q');
 
-            setTimeout(function(){
-                $("#datatable_col_reorder_filter input").val(deliverQty);
-
-                //模拟按键
-                var e = $.Event("keyup");
-                e.which = 40
-                $('#datatable_col_reorder_filter input').trigger(e);
-            },100);
-
+            if(deliverQty !== undefined){
+                setTimeout(function(){
+                    $("#datatable_col_reorder_filter input").val(decodeURIComponent(deliverQty));
+                    //模拟按键
+                    var e = $.Event("keyup");
+                    e.which = 40
+                    $('#datatable_col_reorder_filter input').trigger(e);
+                },100);
+            }
         </script>
     </body>
 </html>
