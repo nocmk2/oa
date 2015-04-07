@@ -26,14 +26,14 @@ var NetprojSchema = new mongoose.Schema({
     },
     //收入信息
     incomeInfo : {
-        budget : String,//预算
-        clearing : String,//结算
-        voiceamount : String,//开票金额（附件）
-        income :String,//实际收款
-        outcome : String,//施工队结款
+        budget : {type:String,default:"0"},//预算
+        clearing : {type:String,default:"0"},//结算
+        voiceamount : {type:String,default:"0"},//开票金额（附件）
+        income :{type:String,default:"0"},//实际收款
+        outcome : {type:String,default:"0"},//施工队结款
         worktable : String,//施工队工作量表格
-        otherfee : String,//其他费用
-        profit : String,//利润
+        otherfee : {type:String,default:"0"},//其他费用
+        profit : {type:String,default:"0"},//利润
         incomecomments : String//备注
     },
 	//附件文件信息
