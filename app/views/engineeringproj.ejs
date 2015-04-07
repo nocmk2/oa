@@ -2094,6 +2094,11 @@
 
         //删除用户功能
         $("#delete-proj").click(function(e){
+            //确认信息框
+            var comfirm = confirm("确定要删除吗？");
+            if(comfirm === false){
+                return;
+            }
             //获取所有选中要删除用户id的数组
             var idsToDelete = [];
             $("input[name='selectOne']:checked").each(function(){
