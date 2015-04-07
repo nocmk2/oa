@@ -44,7 +44,41 @@
 </head>
 <body class="">
 <!-- possible classes: minified, fixed-ribbon, fixed-header, fixed-width-->
-
+<!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
+Note: These tiles are completely responsive,
+you can add as many as you like
+-->
+<div id="shortcut">
+    <ul>
+        <!-- <li>
+            <a href="#inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i
+                            class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span>
+            </a>
+        </li>
+        <li>
+            <a href="#calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i
+                            class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
+        </li>
+        <li> -->
+            <a href="/engineeringproj" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i
+                            class="fa fa-wrench fa-4x"></i> <span>工程公司项目管理</span> </span> </a>
+        </li>
+        <li>
+            <a href="/netproj" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i
+                            class="fa fa-signal fa-4x"></i> <span>网络部项目管理 <span class="label pull-right bg-color-darken"></span></span> </span>
+            </a>
+        </li>
+        <li>
+            <a href="/citygovproj" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i
+                            class="fa fa-home fa-4x"></i> <span>市政项目管理 </span> </span> </a>
+        </li>
+        <li>
+            <a href="/profile" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span
+                        class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>个人信息 </span> </span> </a>
+        </li>
+    </ul>
+</div>
+<!-- END SHORTCUT AREA -->
 <!-- HEADER -->
 <header id="header">
     <div id="logo-group">
@@ -56,13 +90,13 @@
 
         <!-- Note: The activity badge color changes when clicked and resets the number to 0
         Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-        <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
+        <!-- <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span> -->
 
         <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
-        <div class="ajax-dropdown">
+        <!-- <div class="ajax-dropdown"> -->
 
             <!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
-            <div class="btn-group btn-group-justified" data-toggle="buttons">
+            <!-- <div class="btn-group btn-group-justified" data-toggle="buttons">
                 <label class="btn btn-default">
                     <input type="radio" name="activity" id="ajax/notify/mail.html">
                     消息 (14) </label>
@@ -72,10 +106,10 @@
                 <label class="btn btn-default">
                     <input type="radio" name="activity" id="ajax/notify/tasks.html">
                     任务 (4) </label>
-            </div>
+            </div> -->
 
             <!-- notification content -->
-            <div class="ajax-notifications custom-scroll">
+            <!-- <div class="ajax-notifications custom-scroll">
 
                 <div class="alert alert-transparent">
                     <h4>Click a button to show messages here</h4>
@@ -85,30 +119,30 @@
 
                 <i class="fa fa-lock fa-4x fa-border"></i>
 
-            </div>
+            </div> -->
             <!-- end notification content -->
 
             <!-- footer: refresh area -->
-					<span> Last updated on: 12/12/2013 9:43AM
+					<!-- <span> Last updated on: 12/12/2013 9:43AM
 						<button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..."
                                 class="btn btn-xs btn-default pull-right">
                             <i class="fa fa-refresh"></i>
-                        </button> </span>
+                        </button> </span> -->
             <!-- end footer -->
 
-        </div>
+       <!--  </div> -->
         <!-- END AJAX-DROPDOWN -->
     </div>
 
     <!-- projects dropdown -->
-    <div id="project-context">
+   <!--  <div id="project-context">
 
         <span class="label">项目:</span>
         <span id="project-selector" class="popover-trigger-element dropdown-toggle" data-toggle="dropdown">最近的项目： <i
-                    class="fa fa-angle-down"></i></span>
+                    class="fa fa-angle-down"></i></span> -->
 
         <!-- Suggestion: populate this list with fetch and push technique -->
-        <ul class="dropdown-menu">
+      <!--   <ul class="dropdown-menu">
             <li>
                 <a href="javascript:void(0);">贝联特种金属制品(上海)有限公司</a>
             </li>
@@ -122,7 +156,7 @@
             <li>
                 <a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
             </li>
-        </ul>
+        </ul> -->
         <!-- end dropdown-menu-->
 
     </div>
@@ -232,7 +266,7 @@
             <li>
                 <a href="/profile"><i class="fa fa-lg fa-fw fa-book"></i> <span class="menu-item-parent">个人信息</span></a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="inbox.html"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">任务管理</span><span
                             class="badge pull-right inbox-badge">14</span></a>
             </li>
@@ -278,7 +312,7 @@
                         <a href="ckeditor.html">CK Editor</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
         
             <li>
                 <a href="/user"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">用户管理</span></a>            
