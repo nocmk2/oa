@@ -1,14 +1,41 @@
+var util = require('util');
 var crypto = require('crypto');
+var eventProxy = require('eventproxy');
 var UserService = require('../models/services/user');
+var EngprojService = require('../models/services/engproj');
+var NetprojService = require('../models/services/netproj');
+var CitygovprojService = require('../models/services/citygovproj');
+
+
 
 module.exports = function (app) {
 
     app.get('/', checkLogin , function (req, res) {
 
-        res.render('index', {
-            user: req.session.user,
-            success: req.flash('success').toString(),
-            error: req.flash('error').toString()
+        var ep = eventProxy.create("engproj","netproj","citygovproj", function (engproj,netproj,citygovproj) {
+            var incomeInfo = {};
+            incomeInfo.engproj = engproj;
+            incomeInfo.netproj = netproj;
+            incomeInfo.citygovproj = citygovproj;
+
+            res.render('index', {
+                user: req.session.user,
+                success: req.flash('success').toString(),
+                error: req.flash('error').toString(),
+                incomeInfo:JSON.stringify(incomeInfo)
+            });
+        });
+
+        EngprojService.getAllIncomeInfo(function (err, incomeInfo) {
+            ep.emit("engproj",incomeInfo);
+        });
+
+        NetprojService.getAllIncomeInfo(function (err,incomeInfo) {
+            ep.emit("netproj",incomeInfo);
+        });
+
+        CitygovprojService.getAllIncomeInfo(function (err, incomeInfo) {
+            ep.emit("citygovproj",incomeInfo);
         });
 
     });

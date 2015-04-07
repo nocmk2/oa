@@ -1,5 +1,6 @@
 var Citygovproj = require('../models/citygovproj');
 var citygovprojConfig = require('../../../config/projs/citygovproj');
+var util = require('util');
 
 var citygovprojService = {};
 
@@ -96,6 +97,61 @@ citygovprojService.updateUploadInfo = function (id,nameInFileInfo,filename,callb
 		}
 	});
 
+};
+
+//获取图表展示需要的收入相关信息
+citygovprojService.getAllIncomeInfo = function (callback) {
+
+	Citygovproj.find({},'incomeInfo.income incomeInfo.outcome incomeInfo.otherfee incomeInfo.profit basicInfo.projtype', function (err,projs) {
+		if(err){
+			callback(err);
+		}else{
+			//初始化
+			var incomeInfo = {
+				light : {
+					income:0,
+					outcome:0,
+					otherfee:0,
+					profit:0
+				},
+				overlay : {
+					income:0,
+					outcome:0,
+					otherfee:0,
+					profit:0
+				}
+			};
+
+			for (var i = 0 ; i < projs.length ; i++){
+				if(projs[i].basicInfo.projtype === "光交网"){
+					formatIncomeInfo(projs[i],incomeInfo.light);
+				}else{
+					formatIncomeInfo(projs[i],incomeInfo.overlay);
+				}
+			}
+
+			function formatIncomeInfo(proj,incomeInfo){
+				var _income = parseInt(proj.incomeInfo.income);
+				var _outcome = parseInt(proj.incomeInfo.outcome);
+				var _otherfee = parseInt(proj.incomeInfo.otherfee);
+				var _profit = parseInt(proj.incomeInfo.profit);
+				if(!isNaN(_income)){
+					incomeInfo.income += _income;
+				}
+				if(!isNaN(_outcome)){
+					incomeInfo.outcome -= _outcome;
+				}
+				if(!isNaN(_otherfee)){
+					incomeInfo.otherfee -= _otherfee;
+				}
+				if(!isNaN(_profit)){
+					incomeInfo.profit += _profit;
+				}
+			}
+
+			callback(null,incomeInfo)
+		}
+	});
 };
 
 module.exports = citygovprojService;
