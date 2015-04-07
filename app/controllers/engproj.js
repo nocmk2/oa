@@ -17,6 +17,21 @@ module.exports = function (app) {
                 console.log(err);
                 engprojs = [];
             }
+
+	        //展示的基本信息除序列号外的字符串长度最多为7，其余补上'...'
+	        for (var i = 0 ; i < engprojs.length ; i++){
+
+		        for(key in engprojs[i].basicInfo){
+
+			        if(typeof engprojs[i].basicInfo[key] === "string" && key !== "serialno"){
+				        if(engprojs[i].basicInfo[key].length > 10){
+					        engprojs[i].basicInfo[key] = (engprojs[i].basicInfo[key].substring(0,7) + '...');
+				        }
+			        }
+
+		        }
+	        }
+
             res.render('engineeringproj', {
                 title: '工程公司项目管理',
                 user: req.session.user,

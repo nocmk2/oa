@@ -15,6 +15,21 @@ module.exports = function (app) {
             if (err) {
                 citygovprojs = [];
             }
+
+	        //展示的基本信息除序列号外的字符串长度最多为7，其余补上'...'
+	        for (var i = 0 ; i < citygovprojs.length ; i++){
+
+		        for(key in citygovprojs[i].basicInfo){
+
+			        if(typeof citygovprojs[i].basicInfo[key] === "string" && key !== "serialno"){
+				        if(citygovprojs[i].basicInfo[key].length > 10){
+					        citygovprojs[i].basicInfo[key] = (citygovprojs[i].basicInfo[key].substring(0,7) + '...');
+				        }
+			        }
+
+		        }
+	        }
+
             res.render('citygovproj', {
                 title: '网络部项目管理',
                 user: req.session.user,
