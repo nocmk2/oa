@@ -6,8 +6,13 @@ var engprojService = {};
 
 //获取所有项目
 engprojService.getAll = function(callback){
-    var engprojs = Engproj.find({});
-    engprojs.exec(callback);
+    Engproj.find({},null,{sort : {'basicInfo.serialno':-1}}, function (err,engprojs) {
+        if(err){
+            callback(err);
+        }else{
+            callback(null,engprojs)
+        }
+    });
 };
 
 //保存项目
