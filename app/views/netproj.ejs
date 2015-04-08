@@ -563,6 +563,7 @@
                                                                          <input class="form-control digit" placeholder="开票金额（附件）" type="text" name="voiceamount">
                                                                          <span class="input-group-addon" >开票金额（附件）</span>
                                                                      </div>
+                                                                     <span class="text-muted">附件，请在新增后上传</span>
                                                                  </section>
 
                                                                 <section>
@@ -1324,8 +1325,13 @@
             }
         })
 
-        //删除用户功能
+        //删除功能
         $("#delete-proj").click(function(e){
+            //确认信息框
+            var comfirm = confirm("确定要删除吗？");
+            if(comfirm === false){
+                return;
+            }
             //获取所有选中要删除用户id的数组
             var idsToDelete = [];
             $("input[name='selectOne']:checked").each(function(){
@@ -1345,61 +1351,6 @@
                     }
                 }
             });
-        });
-
-        //向修改信息框中显示已有的信息
-        $(".edit").click(function(){
-            //获取项目id
-            var projToEdit = {};
-            projToEdit.id = $(this).attr("data-projId");
-            $.ajax({
-                type:"POST",
-                url:"/netproj/getById",
-                contentType: 'application/json',
-                data: JSON.stringify(projToEdit),
-                dataType:"json",
-                success:function(engproj){
-                    if(engproj !== null){
-                        //basicInfo
-                        $("#tab1-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            if(inputName === "_id"){
-                                $(this).val(engproj._id);
-                            }else{
-                                $(this).val(engproj.basicInfo[inputName]);
-                            }
-                        });
-                        $("#tab1-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.basicInfo[selectName]);
-                        });
-                        $("#tab1-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.basicInfo[textareaName]);
-                        });
-                        //materialInfo
-                        $("#tab2-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            $(this).val(engproj.incomeInfo[inputName]);
-                        });
-                        $("#tab2-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.incomeInfo[selectName]);
-                        });
-                        $("#tab2-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.incomeInfo[textareaName]);
-                        });
-	                    //附件
-	                    $(".fileDiv .fileName").each(function () {
-		                    var filename = $(this).attr("name");
-		                    $(this).text(engproj.fileInfo[filename]);
-	                    });
-                    }else{
-                        alert("获取项目信息失败");
-                    }
-                }
-            })
         });
 
         //退出修改框时清空内容,回到第一步
@@ -1470,7 +1421,7 @@
                 var textareaName = $(this).attr("name");
                 formInfo.proj.incomeInfo[textareaName] = $(this).val();
             });
-	        $("#saveProj").addClass("disabled").text("保存中...");
+            $("#saveProj").addClass("disabled").text("保存中...");
             $.ajax({
                 type:"POST",
                 url:"/netproj/save",
@@ -1482,7 +1433,7 @@
                         location.reload();
                     }else{
                         alert("数据存储出错");
-	                    $("#saveProj").removeClass("disabled").text("提交 ");
+                        $("#saveProj").removeClass("disabled").text("提交 ");
                     }
                 }
             });
@@ -1526,7 +1477,7 @@
                 var textareaName = $(this).attr("name");
                 formInfo.proj.incomeInfo[textareaName] = $(this).val();
             });
-	        $("#saveProjEdited").addClass("disabled").text("提交中...");
+            $("#saveProjEdited").addClass("disabled").text("提交中...");
             $.ajax({
                 type:"POST",
                 url:"/netproj/edit",
@@ -1538,7 +1489,7 @@
                         location.reload();
                     }else{
                         alert("数据存储出错");
-	                    $("#saveProjEdited").removeClass("disabled").text("提交");
+                        $("#saveProjEdited").removeClass("disabled").text("提交");
                     }
                 }
             });
@@ -1694,87 +1645,87 @@
             }
         };
 
-         //已选择文件提示
+        //已选择文件提示
         $(".fileDiv span").on('change','input',(function (e) {
-                e.preventDefault();
-                var fileDiv = $(this).parent().parent();
-                var uploadInfo = fileDiv.find(".uploadInfo");
-                uploadInfo.removeClass("text-warning").text(" ");
-                uploadInfo.addClass("text-warning").text("已选择"+$(this).val()+"请点击上传");
-                //alert($(this).val());
+            e.preventDefault();
+            var fileDiv = $(this).parent().parent();
+            var uploadInfo = fileDiv.find(".uploadInfo");
+            uploadInfo.removeClass("text-warning").text(" ");
+            uploadInfo.addClass("text-warning").text("已选择"+$(this).val()+"请点击上传");
+            //alert($(this).val());
         }));
 
-	    //附件上传
-	    $(".fileDiv .upload").click(function (e) {
-		    e.preventDefault();
+        //附件上传
+        $(".fileDiv .upload").click(function (e) {
+            e.preventDefault();
 
-		    var fileDiv = $(this).parent();
-		    var uploadInfo = fileDiv.find(".uploadInfo");
+            var fileDiv = $(this).parent();
+            var uploadInfo = fileDiv.find(".uploadInfo");
 
-		    uploadInfo.removeClass("text-warning").text(" ");
+            uploadInfo.removeClass("text-warning").text(" ");
 
-		    var fileElementId = fileDiv.find("input").attr("id");
+            var fileElementId = fileDiv.find("input").attr("id");
 
-		    var fileInfo = {};
-		    fileInfo.id = $("#tab1-edit  input[name='_id']").val();
-		    fileInfo.file = fileDiv.find("input").attr("name");
-		    fileInfo.fileName = fileDiv.find(".fileName").attr("name");
+            var fileInfo = {};
+            fileInfo.id = $("#tab1-edit  input[name='_id']").val();
+            fileInfo.file = fileDiv.find("input").attr("name");
+            fileInfo.fileName = fileDiv.find(".fileName").attr("name");
 
-		    if(fileDiv.find("input").val() === ""){
-			    uploadInfo.addClass("text-warning").text("上传的文件不能为空");
-			    return;
-		    }
+            if(fileDiv.find("input").val() === ""){
+                uploadInfo.addClass("text-warning").text("上传的文件不能为空");
+                return;
+            }
 
-		    uploadInfo.text("上传中...");
+            uploadInfo.text("上传中...");
 
-		    $.ajaxFileUpload(
-				    {
-					    url: '/netproj/upload',
-					    secureuri: false,
-					    fileElementId: fileElementId,
-					    data:fileInfo,
-					    dataType:'json',
-					    success: function (result) {
-						    console.log(result);
-						    if(result.success === true){
-							    //更新当前附件名
-							    fileDiv.find(".fileName").text(result.fileNameUploaded);
-							    //更新提示字段
-							    uploadInfo.text(" ");
-						    }else{
-							    uploadInfo.addClass("text-warning").text("上传失败，请重试！")
-						    }
-					    },
-					    error: function () {
-						    alert("数据存储出错");
-					    }
-				    })
-	    });
+            $.ajaxFileUpload(
+                    {
+                        url: '/netproj/upload',
+                        secureuri: false,
+                        fileElementId: fileElementId,
+                        data:fileInfo,
+                        dataType:'json',
+                        success: function (result) {
+                            console.log(result);
+                            if(result.success === true){
+                                //更新当前附件名
+                                fileDiv.find(".fileName").text(result.fileNameUploaded);
+                                //更新提示字段
+                                uploadInfo.text(" ");
+                            }else{
+                                uploadInfo.addClass("text-warning").text("上传失败，请重试！")
+                            }
+                        },
+                        error: function () {
+                            alert("数据存储出错");
+                        }
+                    })
+        });
 
-	    //附件下载
-	    $(".fileDiv .download").click(function (e) {
-		    //获取所需下载的文件信息
-		    var fileDiv = $(this).parent();
-		    var uploadInfo = fileDiv.find(".uploadInfo");
+        //附件下载
+        $(".fileDiv .download").click(function (e) {
+            //获取所需下载的文件信息
+            var fileDiv = $(this).parent();
+            var uploadInfo = fileDiv.find(".uploadInfo");
 
-		    uploadInfo.removeClass("text-warning").text(" ");
+            uploadInfo.removeClass("text-warning").text(" ");
 
-		    var fileInfo = {};
-		    fileInfo.id = $("#tab1-edit  input[name='_id']").val();
-		    fileInfo.file = fileDiv.find("input").attr("name");
-		    fileInfo.fileName = fileDiv.find(".fileName").attr("name");
+            var fileInfo = {};
+            fileInfo.id = $("#tab1-edit  input[name='_id']").val();
+            fileInfo.file = fileDiv.find("input").attr("name");
+            fileInfo.fileName = fileDiv.find(".fileName").attr("name");
 
-		    if(fileDiv.find(".fileName").text() === "无"){
-			    uploadInfo.addClass("text-warning").text("文件不存在，请先上传！")
-			    return;
-		    }
+            if(fileDiv.find(".fileName").text() === "无"){
+                uploadInfo.addClass("text-warning").text("文件不存在，请先上传！")
+                return;
+            }
 
-		    $(this).attr("href",("/netproj/downloadAttachment?id=" + $("#tab1-edit  input[name='_id']").val() + "&file=" + fileDiv.find("input").attr("name")));
+            $(this).attr("href",("/netproj/downloadAttachment?id=" + $("#tab1-edit  input[name='_id']").val() + "&file=" + fileDiv.find("input").attr("name")));
 
-		    $(this).trigger("click");
-	    });
+            $(this).trigger("click");
+        });
 
-         //禁用Enter键表单自动提交
+        //禁用Enter键表单自动提交
         document.onkeydown = function(event) {
             var target, code, tag;
             if (!event) {
@@ -1797,6 +1748,75 @@
                 }
             }
         };
+
+        //向修改信息框中显示已有的信息
+        function initEditFun(){
+            $(".edit").click(function(){
+                //获取项目id
+                var projToEdit = {};
+                projToEdit.id = $(this).attr("data-projId");
+                console.log(projToEdit.id);
+                $.ajax({
+                    type:"POST",
+                    url:"/netproj/getById",
+                    contentType: 'application/json',
+                    data: JSON.stringify(projToEdit),
+                    dataType:"json",
+                    success:function(engproj){
+                        if(engproj !== null){
+                            //basicInfo
+                            $("#tab1-edit  input").each(function(){
+                                var inputName = $(this).attr("name");
+                                if(inputName === "_id"){
+                                    $(this).val(engproj._id);
+                                }else{
+                                    $(this).val(engproj.basicInfo[inputName]);
+                                }
+                            });
+                            $("#tab1-edit  select").each(function(){
+                                var selectName = $(this).attr("name");
+                                $(this).val(engproj.basicInfo[selectName]);
+                            });
+                            $("#tab1-edit  textarea").each(function(){
+                                var textareaName = $(this).attr("name");
+                                $(this).val(engproj.basicInfo[textareaName]);
+                            });
+                            //materialInfo
+                            $("#tab2-edit  input").each(function(){
+                                var inputName = $(this).attr("name");
+                                $(this).val(engproj.incomeInfo[inputName]);
+                            });
+                            $("#tab2-edit  select").each(function(){
+                                var selectName = $(this).attr("name");
+                                $(this).val(engproj.incomeInfo[selectName]);
+                            });
+                            $("#tab2-edit  textarea").each(function(){
+                                var textareaName = $(this).attr("name");
+                                $(this).val(engproj.incomeInfo[textareaName]);
+                            });
+                            //附件
+                            $(".fileDiv .fileName").each(function () {
+                                var filename = $(this).attr("name");
+                                $(this).text(engproj.fileInfo[filename]);
+                            });
+                        }else{
+                            alert("获取项目信息失败");
+                        }
+                    }
+                })
+            });
+
+        }
+
+        //向修改信息框中显示已有的信息功能初始化
+        initEditFun();
+        //切换分页时重新初始化功能
+        $(".pagination a:first").click(function (e) {
+            setTimeout(initEditFun,100);
+        });
+        $(".pagination a:last").click(function (e) {
+            setTimeout(initEditFun,100);
+        });
 
     })
 

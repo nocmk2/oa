@@ -6,8 +6,13 @@ var citygovprojService = {};
 
 //获取所有项目
 citygovprojService.getAll = function(callback){
-    var citygovprojs = Citygovproj.find({});
-    citygovprojs.exec(callback);
+	Citygovproj.find({},null,{sort : {'basicInfo.serialno':-1}}, function (err,engprojs) {
+		if(err){
+			callback(err);
+		}else{
+			callback(null,engprojs)
+		}
+	});
 };
 
 //保存项目
