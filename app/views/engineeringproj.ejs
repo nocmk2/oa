@@ -2120,114 +2120,6 @@
             });
         });
 
-        //向修改信息框中显示已有的信息
-        $(".edit").click(function(){
-            //获取项目id
-            var projToEdit = {};
-            projToEdit.id = $(this).attr("data-projId");
-            $.ajax({
-                type:"POST",
-                url:"/engineeringproj/getById",
-                contentType: 'application/json',
-                data: JSON.stringify(projToEdit),
-                dataType:"json",
-                success:function(engproj){
-                    if(engproj !== null){
-                        //basicInfo
-                        $("#tab1-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            if(inputName === "_id"){
-                                $(this).val(engproj._id);
-                            }else{
-                                $(this).val(engproj.basicInfo[inputName]);
-                            }
-                        });
-                        $("#tab1-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.basicInfo[selectName]);
-                        });
-                        $("#tab1-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.basicInfo[textareaName]);
-                        });
-                        //materialInfo
-                        $("#tab2-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            $(this).val(engproj.materialInfo[inputName]);
-                        });
-                        $("#tab2-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.materialInfo[selectName]);
-                        });
-                        $("#tab2-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.materialInfo[textareaName]);
-                        });
-                        //constructionInfo
-                        $("#tab3-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            $(this).val(engproj.constructionInfo[inputName]);
-                        });
-                        $("#tab3-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.constructionInfo[selectName]);
-                        });
-                        $("#tab3-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.constructionInfo[textareaName]);
-                        });
-
-                        //textInfo
-                        $("#tab4-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            $(this).val(engproj.textInfo[inputName]);
-                        });
-                        $("#tab4-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.textInfo[selectName]);
-                        });
-                        $("#tab4-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.textInfo[textareaName]);
-                        });
-                        //contractInfo
-                        $("#tab5-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            $(this).val(engproj.contractInfo[inputName]);
-                        });
-                        $("#tab5-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.contractInfo[selectName]);
-                        });
-                        $("#tab5-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.contractInfo[textareaName]);
-                        });
-                        //incomeInfo
-                        $("#tab6-edit  input").each(function(){
-                            var inputName = $(this).attr("name");
-                            $(this).val(engproj.incomeInfo[inputName]);
-                        });
-                        $("#tab6-edit  select").each(function(){
-                            var selectName = $(this).attr("name");
-                            $(this).val(engproj.incomeInfo[selectName]);
-                        });
-                        $("#tab6-edit  textarea").each(function(){
-                            var textareaName = $(this).attr("name");
-                            $(this).val(engproj.incomeInfo[textareaName]);
-                        });
-	                    //附件
-	                    $(".fileDiv .fileName").each(function () {
-							var filename = $(this).attr("name");
-		                    $(this).text(engproj.fileInfo[filename]);
-	                    });
-                    }else{
-                        alert("获取项目信息失败");
-                    }
-                }
-            })
-        });
-
         //退出修改框时清空内容,回到第一步
         $("#editProj .closeBtn").click(function(){
             $("#editProj input").each(function(){
@@ -2791,6 +2683,126 @@
                 }
             }
         };
+
+        //向修改信息框中显示已有的信息
+        function initEditFun(){
+            $(".edit").click(function(){
+                //获取项目id
+                var projToEdit = {};
+                projToEdit.id = $(this).attr("data-projId");
+                $.ajax({
+                    type:"POST",
+                    url:"/engineeringproj/getById",
+                    contentType: 'application/json',
+                    data: JSON.stringify(projToEdit),
+                    dataType:"json",
+                    success:function(engproj){
+                        if(engproj !== null){
+                            //basicInfo
+                            $("#tab1-edit  input").each(function(){
+                                var inputName = $(this).attr("name");
+                                if(inputName === "_id"){
+                                    $(this).val(engproj._id);
+                                }else{
+                                    $(this).val(engproj.basicInfo[inputName]);
+                                }
+                            });
+                            $("#tab1-edit  select").each(function(){
+                                var selectName = $(this).attr("name");
+                                $(this).val(engproj.basicInfo[selectName]);
+                            });
+                            $("#tab1-edit  textarea").each(function(){
+                                var textareaName = $(this).attr("name");
+                                $(this).val(engproj.basicInfo[textareaName]);
+                            });
+                            //materialInfo
+                            $("#tab2-edit  input").each(function(){
+                                var inputName = $(this).attr("name");
+                                $(this).val(engproj.materialInfo[inputName]);
+                            });
+                            $("#tab2-edit  select").each(function(){
+                                var selectName = $(this).attr("name");
+                                $(this).val(engproj.materialInfo[selectName]);
+                            });
+                            $("#tab2-edit  textarea").each(function(){
+                                var textareaName = $(this).attr("name");
+                                $(this).val(engproj.materialInfo[textareaName]);
+                            });
+                            //constructionInfo
+                            $("#tab3-edit  input").each(function(){
+                                var inputName = $(this).attr("name");
+                                $(this).val(engproj.constructionInfo[inputName]);
+                            });
+                            $("#tab3-edit  select").each(function(){
+                                var selectName = $(this).attr("name");
+                                $(this).val(engproj.constructionInfo[selectName]);
+                            });
+                            $("#tab3-edit  textarea").each(function(){
+                                var textareaName = $(this).attr("name");
+                                $(this).val(engproj.constructionInfo[textareaName]);
+                            });
+
+                            //textInfo
+                            $("#tab4-edit  input").each(function(){
+                                var inputName = $(this).attr("name");
+                                $(this).val(engproj.textInfo[inputName]);
+                            });
+                            $("#tab4-edit  select").each(function(){
+                                var selectName = $(this).attr("name");
+                                $(this).val(engproj.textInfo[selectName]);
+                            });
+                            $("#tab4-edit  textarea").each(function(){
+                                var textareaName = $(this).attr("name");
+                                $(this).val(engproj.textInfo[textareaName]);
+                            });
+                            //contractInfo
+                            $("#tab5-edit  input").each(function(){
+                                var inputName = $(this).attr("name");
+                                $(this).val(engproj.contractInfo[inputName]);
+                            });
+                            $("#tab5-edit  select").each(function(){
+                                var selectName = $(this).attr("name");
+                                $(this).val(engproj.contractInfo[selectName]);
+                            });
+                            $("#tab5-edit  textarea").each(function(){
+                                var textareaName = $(this).attr("name");
+                                $(this).val(engproj.contractInfo[textareaName]);
+                            });
+                            //incomeInfo
+                            $("#tab6-edit  input").each(function(){
+                                var inputName = $(this).attr("name");
+                                $(this).val(engproj.incomeInfo[inputName]);
+                            });
+                            $("#tab6-edit  select").each(function(){
+                                var selectName = $(this).attr("name");
+                                $(this).val(engproj.incomeInfo[selectName]);
+                            });
+                            $("#tab6-edit  textarea").each(function(){
+                                var textareaName = $(this).attr("name");
+                                $(this).val(engproj.incomeInfo[textareaName]);
+                            });
+                            //附件
+                            $(".fileDiv .fileName").each(function () {
+                                var filename = $(this).attr("name");
+                                $(this).text(engproj.fileInfo[filename]);
+                            });
+                        }else{
+                            alert("获取项目信息失败");
+                        }
+                    }
+                })
+            });
+        }
+
+        //向修改信息框中显示已有的信息功能初始化
+        initEditFun();
+        //切换分页时重新初始化功能
+        $(".pagination a:first").click(function (e) {
+            setTimeout(initEditFun,100);
+        });
+        $(".pagination a:last").click(function (e) {
+            setTimeout(initEditFun,100);
+        });
 
     })
 
