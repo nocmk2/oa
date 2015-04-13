@@ -7,6 +7,7 @@ var fs = require('fs');
 var path = require('path');
 var fse = require('fs-extra');
 var _ = require('lodash');
+var selectOptions = require('../../config/projs/engproj').selectOptions;
 
 module.exports = function (app) {
 
@@ -21,7 +22,7 @@ module.exports = function (app) {
 	        //展示的基本信息除序列号外的字符串长度最多为7，其余补上'...'
 	        for (var i = 0 ; i < engprojs.length ; i++){
 
-		        for(key in engprojs[i].basicInfo){
+		        for(var key in engprojs[i].basicInfo){
 
 			        if(typeof engprojs[i].basicInfo[key] === "string" && key !== "serialno"){
 				        if(engprojs[i].basicInfo[key].length > 10){
@@ -36,6 +37,7 @@ module.exports = function (app) {
                 title: '工程公司项目管理',
                 user: req.session.user,
                 engprojs: engprojs,
+	            selectOptions : selectOptions,
                 success: req.flash('success').toString(),
                 error: req.flash('error').toString()
             });
