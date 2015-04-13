@@ -436,7 +436,7 @@
                                                                                 <option value="黑龙江">黑龙江</option>
                                                                                 <option value="网桥">网桥</option>
                                                                             </select> <i></i> </label>
-                                                                             <span class="input-group-addon" >所属区域</span>
+                                                                             <span class="input-group-addon" >监理单位</span>
                                                                          </div>
                                                                         </section>
 
@@ -2797,12 +2797,15 @@
         //向修改信息框中显示已有的信息功能初始化
         initEditFun();
         //切换分页时重新初始化功能
-        $(".pagination a:first").click(function (e) {
+        $(".pagination a").click(function (e) {
+            setTimeout(initEditFun,100);
+        });
+        /*$(".pagination a:first").click(function (e) {
             setTimeout(initEditFun,100);
         });
         $(".pagination a:last").click(function (e) {
             setTimeout(initEditFun,100);
-        });
+        });*/
 
     })
 

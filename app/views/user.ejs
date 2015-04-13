@@ -718,30 +718,31 @@
         });
 
         //向修改信息框中显示已有的信息
-        $(".edit").click(function(){
-            //获取用户id
-            var userToEdit = {};
-            userToEdit.id = $(this).attr("data-userId");
-            $.ajax({
-                type:"POST",
-                url:"/user/getById",
-                contentType: 'application/json',
-                data: JSON.stringify(userToEdit),
-                dataType:"json",
-                success:function(user){
-                    if(user !== null){
-                        $("#editUserForm input[name='_id']").val(userToEdit.id);
-                        $("#editUserForm input[name='name']").val(user.name);
-//                        $("#editUserForm input[name='password']").val(user.password);
-                        $("#editUserForm input[name='email']").val(user.email);
-                        $("#editUserForm input[name='phone']").val(user.phone);
-                        $("#editUserForm input[name='depart']").val(user.depart);
-                        $("#editUserForm input[name='city']").val(user.city);
+        function initEditFun(){
+            $(".edit").click(function(){
+                //获取用户id
+                var userToEdit = {};
+                userToEdit.id = $(this).attr("data-userId");
+                $.ajax({
+                    type:"POST",
+                    url:"/user/getById",
+                    contentType: 'application/json',
+                    data: JSON.stringify(userToEdit),
+                    dataType:"json",
+                    success:function(user){
+                        if(user !== null){
+                            $("#editUserForm input[name='_id']").val(userToEdit.id);
+                            $("#editUserForm input[name='name']").val(user.name);
+    //                        $("#editUserForm input[name='password']").val(user.password);
+                            $("#editUserForm input[name='email']").val(user.email);
+                            $("#editUserForm input[name='phone']").val(user.phone);
+                            $("#editUserForm input[name='depart']").val(user.depart);
+                            $("#editUserForm input[name='city']").val(user.city);
+                        }
                     }
-                }
-            })
-        });
-
+                })
+            });
+        }
         //退出修改框时清空内容
         $("#editModal .close").click(function(){
             $("#editUserForm input").each(function(){
@@ -871,6 +872,13 @@
                     }
                 });
             }
+        });
+
+        //向修改信息框中显示已有的信息功能初始化
+        initEditFun();
+        //切换分页时重新初始化功能
+        $(".pagination a").click(function (e) {
+            setTimeout(initEditFun,100);
         });
 
         //输入框获得焦点时清除错误信息
