@@ -299,10 +299,9 @@
                                                                         <div class="input-group">
                                                                             <label class="select">
                                                                                 <select class="input-sm" name="properties">
-                                                                                    <option value="管道">管道</option>
-                                                                                    <option value="光缆">光缆</option>
-                                                                                    <option value="设备">设备</option>
-                                                                                    <option value="客户端">客户端</option>
+                                                                                    <% selectOptions.propertiesList.forEach(function (option) { %>
+                                                                                    <option value="<%= option%>"><%= option%></option>
+                                                                                    <% }) %>
                                                                                 </select> <i></i>
                                                                             </label>
                                                                             <span class="input-group-addon" >项目属性</span>
@@ -349,24 +348,9 @@
                                                                         <div class="input-group">
                                                                             <label class="select">
                                                                                 <select class="input-sm" name="area">
-                                                                                    <option value="黄浦">黄浦</option>
-                                                                                    <option value="卢湾">卢湾</option>
-                                                                                    <option value="徐汇">徐汇</option>
-                                                                                    <option value="长宁">长宁</option>
-                                                                                    <option value="静安">静安</option>
-                                                                                    <option value="普陀">普陀</option>
-                                                                                    <option value="闸北">闸北</option>
-                                                                                    <option value="虹口">虹口</option>
-                                                                                    <option value="杨浦">杨浦</option>
-                                                                                    <option value="宝山">宝山</option>
-                                                                                    <option value="嘉定">嘉定</option>
-                                                                                    <option value="浦东新区">浦东新区</option>
-                                                                                    <option value="松江">松江</option>
-                                                                                    <option value="金山">金山</option>
-                                                                                    <option value="青浦">青浦</option>
-                                                                                    <option value="南汇">南汇</option>
-                                                                                    <option value="奉贤">奉贤</option>
-                                                                                    <option value="崇明">崇明</option>
+                                                                                    <% selectOptions.areaList.forEach(function (option) { %>
+                                                                                    <option value="<%= option%>"><%= option%></option>
+                                                                                    <% }) %>
                                                                                 </select> <i></i>
                                                                             </label>
                                                                             <span class="input-group-addon" >所属区域</span>
@@ -377,72 +361,9 @@
                                                                          <div class="input-group">
                                                                              <label class="select">
                                                                                  <select class="input-sm" name="constrctteam">
-                                                                                     <option value="中邮通">中邮通</option>
-                                                                                     <option value="中移">中移</option>
-                                                                                     <option value="邮电">邮电</option>
-                                                                                     <option value="广越">广越</option>
-                                                                                     <option value="东冠">东冠</option>
-                                                                                     <option value="和勤">和勤</option>
-                                                                                     <option value="电信">电信</option>
-                                                                                     <option value="久豪">久豪</option>
-                                                                                     <option value="贝电">贝电</option>
-                                                                                     <option value="海润">海润</option>
-                                                                                     <option value="中通二局">中通二局</option>
-                                                                                     <option value="翔发">翔发</option>
-                                                                                     <option value="辉程">辉程</option>
-                                                                                     <option value="龙盛">龙盛</option>
-                                                                                     <option value="明嬴">明嬴</option>
-                                                                                     <option value="盛脉">盛脉</option>
-                                                                                     <option value="通福">通福</option>
-                                                                                     <option value="万程">万程</option>
-                                                                                     <option value="信辰">信辰</option>
-                                                                                     <option value="远鹰">远鹰</option>
-                                                                                     <option value="阅龙">阅龙</option>
-                                                                                     <option value="置诚">置诚</option>
-                                                                                     <option value="兆康">兆康</option>
-                                                                                     <option value="兴霸">兴霸</option>
-                                                                                     <option value="和联">和联</option>
-                                                                                     <option value="鸿维">鸿维</option>
-                                                                                     <option value="嘉正">嘉正</option>
-                                                                                     <option value="炜晟">炜晟</option>
-                                                                                     <option value="新周">新周</option>
-                                                                                     <option value="信潮">信潮</option>
-                                                                                     <option value="众托">众托</option>
-                                                                                     <option value="共联">共联</option>
-                                                                                     <option value="中福">中福</option>
-                                                                                     <option value="长安">长安</option>
-                                                                                     <option value="都顺">都顺</option>
-                                                                                     <option value="联音">联音</option>
-                                                                                     <option value="商美">商美</option>
-                                                                                     <option value="英得">英得</option>
-                                                                                     <option value="亚通">亚通</option>
-                                                                                     <option value="邮顺">邮顺</option>
-                                                                                     <option value="渝华">渝华</option>
-                                                                                     <option value="忠吕">忠吕</option>
-                                                                                     <option value="中铁">中铁</option>
-                                                                                     <option value="天达">天达</option>
-                                                                                     <option value="虹鹰">虹鹰</option>
-                                                                                     <option value="兴和">兴和</option>
-                                                                                     <option value="云沪">云沪</option>
-                                                                                     <option value="雨花">雨花</option>
-                                                                                     <option value="晟平">晟平</option>
-                                                                                     <option value="秦禧">秦禧</option>
-                                                                                     <option value="立天">立天</option>
-                                                                                     <option value="中通一局">中通一局</option>
-                                                                                     <option value="博索">博索</option>
-                                                                                     <option value="富悦">富悦</option>
-                                                                                     <option value="廉创">廉创</option>
-                                                                                     <option value="润风">润风</option>
-                                                                                     <option value="海剑">海剑</option>
-                                                                                     <option value="宏晋">宏晋</option>
-                                                                                     <option value="米赛">米赛</option>
-                                                                                     <option value="伟琳">伟琳</option>
-                                                                                     <option value="骥通">骥通</option>
-                                                                                     <option value="北京工程局">北京工程局</option>
-                                                                                     <option value="景合">景合</option>
-                                                                                     <option value="海缆">海缆</option>
-                                                                                     <option value="煜菱">煜菱</option>
-                                                                                     <option value="鸿达">鸿达</option>
+                                                                                     <% selectOptions.constrctteamList.forEach(function (option) { %>
+                                                                                     <option value="<%= option%>"><%= option%></option>
+                                                                                     <% }) %>
                                                                                  </select> <i></i>
                                                                              </label>
                                                                              <span class="input-group-addon" >施工队</span>
@@ -470,13 +391,9 @@
                                                                         <div class="input-group">
                                                                             <label class="select">
                                                                                 <select class="input-sm" name="situation">
-                                                                                    <option value="未开工">未开工</option>
-                                                                                    <option value="在建">在建</option>
-                                                                                    <option value="完工">完工</option>
-                                                                                    <option value="受阻">受阻</option>
-                                                                                    <option value="无法实施">无法实施</option>
-                                                                                    <option value="传输已达">传输已达</option>
-                                                                                    <option value="地址错误">地址错误</option>
+                                                                                    <% selectOptions.situationList.forEach(function (option) { %>
+                                                                                    <option value="<%= option%>"><%= option%></option>
+                                                                                    <% }) %>
                                                                                 </select> <i></i>
                                                                             </label>
                                                                             <span class="input-group-addon" >立项情况</span>
@@ -753,10 +670,9 @@
                                                                         <div class="input-group">
                                                                             <label class="select">
                                                                                 <select class="input-sm" name="properties">
-                                                                                    <option value="管道">管道</option>
-                                                                                    <option value="光缆">光缆</option>
-                                                                                    <option value="设备">设备</option>
-                                                                                    <option value="客户端">客户端</option>
+                                                                                    <% selectOptions.propertiesList.forEach(function (option) { %>
+                                                                                    <option value="<%= option%>"><%= option%></option>
+                                                                                    <% }) %>
                                                                                 </select> <i></i>
                                                                             </label>
                                                                             <span class="input-group-addon" >项目属性</span>
@@ -803,24 +719,9 @@
                                                                         <div class="input-group">
                                                                             <label class="select">
                                                                                 <select class="input-sm" name="area">
-                                                                                    <option value="黄浦">黄浦</option>
-                                                                                    <option value="卢湾">卢湾</option>
-                                                                                    <option value="徐汇">徐汇</option>
-                                                                                    <option value="长宁">长宁</option>
-                                                                                    <option value="静安">静安</option>
-                                                                                    <option value="普陀">普陀</option>
-                                                                                    <option value="闸北">闸北</option>
-                                                                                    <option value="虹口">虹口</option>
-                                                                                    <option value="杨浦">杨浦</option>
-                                                                                    <option value="宝山">宝山</option>
-                                                                                    <option value="嘉定">嘉定</option>
-                                                                                    <option value="浦东新区">浦东新区</option>
-                                                                                    <option value="松江">松江</option>
-                                                                                    <option value="金山">金山</option>
-                                                                                    <option value="青浦">青浦</option>
-                                                                                    <option value="南汇">南汇</option>
-                                                                                    <option value="奉贤">奉贤</option>
-                                                                                    <option value="崇明">崇明</option>
+                                                                                    <% selectOptions.areaList.forEach(function (option) { %>
+                                                                                    <option value="<%= option%>"><%= option%></option>
+                                                                                    <% }) %>
                                                                                 </select> <i></i>
                                                                             </label>
                                                                             <span class="input-group-addon" >所属区域</span>
@@ -831,72 +732,9 @@
                                                                          <div class="input-group">
                                                                              <label class="select">
                                                                                  <select class="input-sm" name="constrctteam">
-                                                                                     <option value="中邮通">中邮通</option>
-                                                                                     <option value="中移">中移</option>
-                                                                                     <option value="邮电">邮电</option>
-                                                                                     <option value="广越">广越</option>
-                                                                                     <option value="东冠">东冠</option>
-                                                                                     <option value="和勤">和勤</option>
-                                                                                     <option value="电信">电信</option>
-                                                                                     <option value="久豪">久豪</option>
-                                                                                     <option value="贝电">贝电</option>
-                                                                                     <option value="海润">海润</option>
-                                                                                     <option value="中通二局">中通二局</option>
-                                                                                     <option value="翔发">翔发</option>
-                                                                                     <option value="辉程">辉程</option>
-                                                                                     <option value="龙盛">龙盛</option>
-                                                                                     <option value="明嬴">明嬴</option>
-                                                                                     <option value="盛脉">盛脉</option>
-                                                                                     <option value="通福">通福</option>
-                                                                                     <option value="万程">万程</option>
-                                                                                     <option value="信辰">信辰</option>
-                                                                                     <option value="远鹰">远鹰</option>
-                                                                                     <option value="阅龙">阅龙</option>
-                                                                                     <option value="置诚">置诚</option>
-                                                                                     <option value="兆康">兆康</option>
-                                                                                     <option value="兴霸">兴霸</option>
-                                                                                     <option value="和联">和联</option>
-                                                                                     <option value="鸿维">鸿维</option>
-                                                                                     <option value="嘉正">嘉正</option>
-                                                                                     <option value="炜晟">炜晟</option>
-                                                                                     <option value="新周">新周</option>
-                                                                                     <option value="信潮">信潮</option>
-                                                                                     <option value="众托">众托</option>
-                                                                                     <option value="共联">共联</option>
-                                                                                     <option value="中福">中福</option>
-                                                                                     <option value="长安">长安</option>
-                                                                                     <option value="都顺">都顺</option>
-                                                                                     <option value="联音">联音</option>
-                                                                                     <option value="商美">商美</option>
-                                                                                     <option value="英得">英得</option>
-                                                                                     <option value="亚通">亚通</option>
-                                                                                     <option value="邮顺">邮顺</option>
-                                                                                     <option value="渝华">渝华</option>
-                                                                                     <option value="忠吕">忠吕</option>
-                                                                                     <option value="中铁">中铁</option>
-                                                                                     <option value="天达">天达</option>
-                                                                                     <option value="虹鹰">虹鹰</option>
-                                                                                     <option value="兴和">兴和</option>
-                                                                                     <option value="云沪">云沪</option>
-                                                                                     <option value="雨花">雨花</option>
-                                                                                     <option value="晟平">晟平</option>
-                                                                                     <option value="秦禧">秦禧</option>
-                                                                                     <option value="立天">立天</option>
-                                                                                     <option value="中通一局">中通一局</option>
-                                                                                     <option value="博索">博索</option>
-                                                                                     <option value="富悦">富悦</option>
-                                                                                     <option value="廉创">廉创</option>
-                                                                                     <option value="润风">润风</option>
-                                                                                     <option value="海剑">海剑</option>
-                                                                                     <option value="宏晋">宏晋</option>
-                                                                                     <option value="米赛">米赛</option>
-                                                                                     <option value="伟琳">伟琳</option>
-                                                                                     <option value="骥通">骥通</option>
-                                                                                     <option value="北京工程局">北京工程局</option>
-                                                                                     <option value="景合">景合</option>
-                                                                                     <option value="海缆">海缆</option>
-                                                                                     <option value="煜菱">煜菱</option>
-                                                                                     <option value="鸿达">鸿达</option>
+                                                                                     <% selectOptions.constrctteamList.forEach(function (option) { %>
+                                                                                     <option value="<%= option%>"><%= option%></option>
+                                                                                     <% }) %>
                                                                                  </select> <i></i>
                                                                              </label>
                                                                              <span class="input-group-addon" >施工队</span>
@@ -924,13 +762,9 @@
                                                                         <div class="input-group">
                                                                             <label class="select">
                                                                                 <select class="input-sm" name="situation">
-                                                                                    <option value="未开工">未开工</option>
-                                                                                    <option value="在建">在建</option>
-                                                                                    <option value="完工">完工</option>
-                                                                                    <option value="受阻">受阻</option>
-                                                                                    <option value="无法实施">无法实施</option>
-                                                                                    <option value="传输已达">传输已达</option>
-                                                                                    <option value="地址错误">地址错误</option>
+                                                                                    <% selectOptions.situationList.forEach(function (option) { %>
+                                                                                    <option value="<%= option%>"><%= option%></option>
+                                                                                    <% }) %>
                                                                                 </select> <i></i>
                                                                             </label>
                                                                             <span class="input-group-addon" >立项情况</span>
