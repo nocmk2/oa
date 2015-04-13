@@ -22,7 +22,7 @@ module.exports = function (app) {
 	        //展示的基本信息除序列号外的字符串长度最多为7，其余补上'...'
 	        for (var i = 0 ; i < engprojs.length ; i++){
 
-		        for(key in engprojs[i].basicInfo){
+		        for(var key in engprojs[i].basicInfo){
 
 			        if(typeof engprojs[i].basicInfo[key] === "string" && key !== "serialno"){
 				        if(engprojs[i].basicInfo[key].length > 10){
