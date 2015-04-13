@@ -7,6 +7,7 @@ var fs = require('fs');
 var path = require('path');
 var fse = require('fs-extra');
 var _ = require('lodash');
+var selectOptions = require('../../config/projs/engproj').selectOptions;
 
 module.exports = function (app) {
 
@@ -36,6 +37,7 @@ module.exports = function (app) {
                 title: '工程公司项目管理',
                 user: req.session.user,
                 engprojs: engprojs,
+	            selectOptions : selectOptions,
                 success: req.flash('success').toString(),
                 error: req.flash('error').toString()
             });
