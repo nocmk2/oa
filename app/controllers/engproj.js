@@ -12,6 +12,10 @@ var selectOptions = require('../../config/projs/engproj').selectOptions;
 module.exports = function (app) {
 
     app.get('/engineeringproj', checkLogin , function (req, res) {
+	    //若用户没有权限，返回首页
+	    if(req.session.user.authority.engprojControl.visible !== true ){
+		    return res.redirect('/');
+	    }
         //取出所有engprojs
         EngprojService.getAll(function (err, engprojs) {
             if (err) {
@@ -170,7 +174,29 @@ module.exports = function (app) {
     //编辑项目信息
     app.post('/engineeringproj/edit',checkLogin,function(req,res){
         var proj = req.body.proj;
-        EngprojService.updateOne(proj,function (err, nUpdated) {
+
+	    var _projToUpdate = {};
+	    //根据权限限制修改
+	    if(req.session.user.authority.engprojControl.basicInfo === true ){
+		    _projToUpdate.basicInfo = proj.basicInfo;
+	    }
+	    if(req.session.user.authority.engprojControl.materialInfo === true ){
+		    _projToUpdate.materialInfo = proj.materialInfo;
+	    }
+	    if(req.session.user.authority.engprojControl.constructionInfo === true ){
+		    _projToUpdate.constructionInfo = proj.constructionInfo;
+	    }
+	    if(req.session.user.authority.engprojControl.textInfo === true ){
+		    _projToUpdate.textInfo = proj.textInfo;
+	    }
+	    if(req.session.user.authority.engprojControl.contractInfo === true ){
+		    _projToUpdate.contractInfo = proj.contractInfo;
+	    }
+	    if(req.session.user.authority.engprojControl.incomeInfo === true ){
+		    _projToUpdate.incomeInfo = proj.incomeInfo;
+	    }
+
+        EngprojService.updateOne(proj._id,_projToUpdate,function (err, nUpdated) {
             if (err) {
                 return res.send({
                     success:false

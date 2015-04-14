@@ -60,18 +60,28 @@ you can add as many as you like
                             class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
         </li>
         <li> -->
+        <% if(user.authority.engprojControl.visible === true){ %>
+        <li>
             <a href="/engineeringproj" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i
                             class="fa fa-wrench fa-4x"></i> <span>工程公司项目管理</span> </span> </a>
         </li>
+        <% } %>
+
+        <% if(user.authority.netprojControl.visible === true){ %>
         <li>
             <a href="/netproj" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i
                             class="fa fa-signal fa-4x"></i> <span>网络部项目管理 <span class="label pull-right bg-color-darken"></span></span> </span>
             </a>
         </li>
+        <% } %>
+
+        <% if(user.authority.citygovprojControl.visible === true){ %>
         <li>
             <a href="/citygovproj" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i
                             class="fa fa-home fa-4x"></i> <span>市政项目管理 </span> </span> </a>
         </li>
+        <% } %>
+
         <li>
             <a href="/profile" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span
                         class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>个人信息 </span> </span> </a>
@@ -184,6 +194,12 @@ you can add as many as you like
         <!-- end search mobile button -->
 
         <!-- input: search field -->
+
+        <!-- end input: search field -->
+
+        <!-- multiple lang dropdown : find all flags in the image folder -->
+
+        <% if(user.authority.engprojControl.visible === true || user.authority.netprojControl.visible === true || user.authority.citygovprojControl.visible === true){ %>
         <form action="#search.html" class="header-search pull-right">
             <input type="text" placeholder="输入项目相关信息" id="search-fld">
             <button type="submit" id="searchProjByInfo">
@@ -191,26 +207,39 @@ you can add as many as you like
             </button>
             <a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
         </form>
-        <!-- end input: search field -->
-
-        <!-- multiple lang dropdown : find all flags in the image folder -->
         <ul class="header-dropdown-list hidden-xs">
             <li>
-                <a href="#" class="dropdown-toggle fa fa-search" data-toggle="dropdown" id="projTypeToSearch" data-proj="engineeringproj"> <span> 工程公司项目 </span>
+                        <% if(user.authority.engprojControl.visible === true){ %>
+                        <a href="#" class="dropdown-toggle fa fa-search" data-toggle="dropdown" id="projTypeToSearch" data-proj="engineeringproj"> <span>工程公司项目</span>
+                        <% } else if(user.authority.netprojControl.visible === true){%>
+                        <a href="#" class="dropdown-toggle fa fa-search" data-toggle="dropdown" id="projTypeToSearch" data-proj="netproj"> <span>网络部项目</span>
+                        <% } else {%>
+                        <a href="#" class="dropdown-toggle fa fa-search" data-toggle="dropdown" id="projTypeToSearch" data-proj="citygovproj"> <span>市政项目</span>
+                        <% }%>
+
                     <i class="fa fa-angle-down"></i> </a>
                 <ul class="dropdown-menu pull-right">
+
+                    <% if(user.authority.engprojControl.visible === true){ %>
                     <li>
                         <a class="fa fa-wrench projTypeForSearch" href="javascript:void(0);" data-proj="engineeringproj" >工程公司项目</a>
                     </li>
+                    <% } %>
+                    <% if(user.authority.netprojControl.visible === true){ %>
                     <li>
                         <a class="fa fa-signal projTypeForSearch" href="javascript:void(0);" data-proj="netproj" >网络部项目</a>
                     </li>
+                    <% } %>
+                    <% if(user.authority.citygovprojControl.visible === true){ %>
                     <li >
                         <a class="fa fa-home projTypeForSearch" href="javascript:void(0);"  data-proj="citygovproj">市政项目</a>
                     </li>
+                    <% } %>
+
                 </ul>
             </li>
         </ul>
+        <% } %>
         <!-- end multiple lang -->
 
     </div>
@@ -313,19 +342,33 @@ you can add as many as you like
                     </li>
                 </ul>
             </li> -->
-        
-            <li>
-                <a href="/user"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">用户管理</span></a>            
-            </li>
-            <li>
-                <a href="/engineeringproj"><i class="fa fa-lg fa-fw fa-wrench"></i> <span class="menu-item-parent">工程公司项目管理</span></a>
-            </li>
-            <li>
-                <a href="/netproj"><i class="fa fa-lg fa-fw fa-signal"></i> <span class="menu-item-parent">网络部项目管理</span></a>
-            </li>
-            <li>
-                <a href="/citygovproj"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">市政项目管理</span></a>
-            </li>
+
+            <!--用户管理，只有具有管理员权限的用户才显示-->
+            <% if(user.isAdmin === true){ %>
+                <li>
+                    <a href="/user"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">用户管理</span></a>
+                </li>
+            <% } %>
+
+            <!--各项目管理-->
+            <% if(user.authority.engprojControl.visible === true){ %>
+                <li>
+                    <a href="/engineeringproj"><i class="fa fa-lg fa-fw fa-wrench"></i> <span class="menu-item-parent">工程公司项目管理</span></a>
+                </li>
+            <% } %>
+
+            <% if(user.authority.netprojControl.visible === true){ %>
+                <li>
+                    <a href="/netproj"><i class="fa fa-lg fa-fw fa-signal"></i> <span class="menu-item-parent">网络部项目管理</span></a>
+                </li>
+            <% } %>
+
+            <% if(user.authority.citygovprojControl.visible === true){ %>
+                <li>
+                    <a href="/citygovproj"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">市政项目管理</span></a>
+                </li>
+            <% } %>
+
         </ul>
     </nav>
     <span class="minifyme"> <i class="fa fa-arrow-circle-left hit"></i> </span>

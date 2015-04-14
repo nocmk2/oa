@@ -12,6 +12,10 @@ var selectOptions = require('../../config/projs/netproj').selectOptions;
 module.exports = function (app) {
 
     app.get('/netproj', checkLogin , function (req, res) {
+	    //若用户没有权限，返回首页
+	    if(req.session.user.authority.netprojControl.visible !== true ){
+		    return res.redirect('/');
+	    }
         //取出所有engprojs
         NetprojService.getAll(function (err, netprojs) {
             if (err) {
@@ -169,7 +173,21 @@ module.exports = function (app) {
     //编辑项目信息
     app.post('/netproj/edit',checkLogin,function(req,res){
         var proj = req.body.proj;
-        NetprojService.updateOne(proj,function (err, nUpdated) {
+	    console.dir(proj);
+
+	    var _projToUpdate = {};
+	    //根据权限限制修改
+	    if(req.session.user.authority.netprojControl.basicInfo === true ){
+		    _projToUpdate.basicInfo = proj.basicInfo;
+	    }
+	    if(req.session.user.authority.netprojControl.incomeInfo === true ){
+		    _projToUpdate.incomeInfo = proj.incomeInfo;
+	    }
+
+	    console.log(proj._id);
+	    console.dir(_projToUpdate);
+
+        NetprojService.updateOne(proj._id,_projToUpdate,function (err, nUpdated) {
             if (err) {
                 return res.send({
                     success:false

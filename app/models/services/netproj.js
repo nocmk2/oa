@@ -39,8 +39,8 @@ netprojService.getById = function(id,callback){
 };
 
 //更新项目
-netprojService.updateOne = function(netproj,callback){
-    Netproj.findByIdAndUpdate(netproj._id,netproj,function(err,nUpdated){
+netprojService.updateOne = function(id,netproj,callback){
+    Netproj.findByIdAndUpdate(id,{$set : netproj},function(err,nUpdated){
         if(err){
             callback(err);
         }else{

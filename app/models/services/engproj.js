@@ -41,8 +41,8 @@ engprojService.getById = function(id,callback){
 };
 
 //更新项目
-engprojService.updateOne = function(engproj,callback){
-    Engproj.findByIdAndUpdate(engproj._id,engproj,function(err,nUpdated){
+engprojService.updateOne = function(id,engproj,callback){
+    Engproj.findByIdAndUpdate(id,{$set : engproj},function(err,nUpdated){
         if(err){
             callback(err);
         }else{
