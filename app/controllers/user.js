@@ -23,8 +23,7 @@ module.exports = function (app) {
 
 //app.post('/user', checkNotLogin);
     app.post('/user', function (req, res) {
-        var
-            user = req.body.user;
+        var user = req.body.user;
         name = user.name,
             password = user.password,
             password_re = user['vpassword'];
@@ -48,6 +47,7 @@ module.exports = function (app) {
             phone: user.phone,
             depart: user.depart,
             city: user.city,
+            authority : user.authority,
             date: createAt
         };
         UserService.getByName(newUser.name, function (err, user) {

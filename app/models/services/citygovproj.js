@@ -39,8 +39,8 @@ citygovprojService.getById = function(id,callback){
 };
 
 //更新项目
-citygovprojService.updateOne = function(citygovproj,callback){
-    Citygovproj.findByIdAndUpdate(citygovproj._id,citygovproj,function(err,nUpdated){
+citygovprojService.updateOne = function(id,citygovproj,callback){
+    Citygovproj.findByIdAndUpdate(id,{$set : citygovproj},function(err,nUpdated){
         if(err){
             callback(err);
         }else{

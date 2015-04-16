@@ -12,10 +12,22 @@ var selectOptions = require('../../config/projs/citygovproj').selectOptions;
 module.exports = function (app) {
 
     app.get('/citygovproj', checkLogin , function (req, res) {
+	    //若用户没有权限，返回首页
+	    if(req.session.user.authority.citygovprojControl.visible !== true ){
+		    return res.redirect('/');
+	    }
+
         CitygovprojService.getAll(function (err, citygovprojs) {
             if (err) {
                 citygovprojs = [];
             }
+
+	        //查看用户是否有权限查看不进入统计的项目
+	        if(req.session.user.authority.citygovprojControl.seeNotInStatis !== true ){
+		        _.remove(citygovprojs, function (proj) {
+			        return proj.basicInfo.isstatis === '否';
+		        });
+	        }
 
 	        //展示的基本信息除序列号外的字符串长度最多为7，其余补上'...'
 	        for (var i = 0 ; i < citygovprojs.length ; i++){
@@ -27,7 +39,6 @@ module.exports = function (app) {
 					        citygovprojs[i].basicInfo[key] = (citygovprojs[i].basicInfo[key].substring(0,7) + '...');
 				        }
 			        }
-
 		        }
 	        }
 
@@ -169,7 +180,30 @@ module.exports = function (app) {
     //编辑项目信息
     app.post('/citygovproj/edit',checkLogin,function(req,res){
         var proj = req.body.proj;
-        CitygovprojService.updateOne(proj,function (err, nUpdated) {
+
+	    var _projToUpdate = {};
+	    //根据权限限制修改
+	    if(req.session.user.authority.citygovprojControl.basicInfo === true ){
+		    _projToUpdate.basicInfo = proj.basicInfo;
+	    }
+	    if(req.session.user.authority.citygovprojControl.materialInfo === true ){
+		    _projToUpdate.materialInfo = proj.materialInfo;
+	    }
+	    if(req.session.user.authority.citygovprojControl.constructionInfo === true ){
+		    _projToUpdate.constructionInfo = proj.constructionInfo;
+	    }
+	    if(req.session.user.authority.citygovprojControl.textInfo === true ){
+		    _projToUpdate.textInfo = proj.textInfo;
+	    }
+	    if(req.session.user.authority.citygovprojControl.contractInfo === true ){
+		    _projToUpdate.contractInfo = proj.contractInfo;
+	    }
+	    if(req.session.user.authority.citygovprojControl.incomeInfo === true ){
+		    _projToUpdate.incomeInfo = proj.incomeInfo;
+	    }
+
+
+        CitygovprojService.updateOne(proj._id,_projToUpdate,function (err, nUpdated) {
             if (err) {
                 return res.send({
                     success:false

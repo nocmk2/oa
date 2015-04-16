@@ -6,11 +6,10 @@ var EngprojService = require('../models/services/engproj');
 var NetprojService = require('../models/services/netproj');
 var CitygovprojService = require('../models/services/citygovproj');
 
-
-
 module.exports = function (app) {
 
     app.get('/', checkLogin , function (req, res) {
+        console.dir(req.session.user);
 
         var ep = eventProxy.create("engproj","netproj","citygovproj", function (engproj,netproj,citygovproj) {
             var incomeInfo = {};

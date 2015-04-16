@@ -244,21 +244,28 @@
                                                         <div class="form-bootstrapWizard">
 
                                                             <ul class="bootstrapWizard form-wizard">
-                                                                    <li class="active" data-target="#step1" style="padding-right: 0;padding-left: 0;width: 50%">
-                                                                        <a href="#tab1" data-toggle="tab"> <span
-                                                                                    class="step">1</span> <span class="title">基本信息</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li data-target="#step2"  style="padding-right: 0;padding-left: 0;width: 50%">
-                                                                        <a href="#tab2" data-toggle="tab"> <span
-                                                                                    class="step">2</span> <span class="title">收入信息</span>
-                                                                        </a>
-                                                                    </li>
+                                                                <% if(user.authority.netprojControl.basicInfo === true){ %>
+                                                                <li class="active" data-target="#step1" style="padding-right: 0;padding-left: 0;width: 50%">
+                                                                    <a href="#tab1" data-toggle="tab"> <span
+                                                                                class="step">1</span> <span class="title">基本信息</span>
+                                                                    </a>
+                                                                </li>
+                                                                <% } %>
+
+                                                                <% if(user.authority.netprojControl.incomeInfo === true){ %>
+                                                                <li data-target="#step2"  <% if(user.authority.netprojControl.basicInfo === false){ %> class="active" <% } %>  style="padding-right: 0;padding-left: 0;width: 50%">
+                                                                    <a href="#tab2" data-toggle="tab"> <span
+                                                                                class="step">2</span> <span class="title">收入信息</span>
+                                                                    </a>
+                                                                </li>
+                                                                <% } %>
+
                                                                 </ul>
 
                                                             <div class="clearfix"></div>
                                                         </div>
                                                         <div class="tab-content">
+                                                            <% if(user.authority.netprojControl.basicInfo === true){ %>
                                                             <div class="tab-pane active" id="tab1">
                                                                 <br>
 
@@ -266,13 +273,13 @@
 
                                                                 <fieldset>
 
-                                                                     <section>
-                                                                         <div class="input-group hidden">
+                                                                    <section>
+                                                                        <div class="input-group hidden">
 
-                                                                             <input class="form-control" placeholder="序号" type="text" name="serialno">
-                                                                             <span class="input-group-addon" >序号</span>
-                                                                         </div>
-                                                                     </section>
+                                                                            <input class="form-control" placeholder="序号" type="text" name="serialno">
+                                                                            <span class="input-group-addon" >序号</span>
+                                                                        </div>
+                                                                    </section>
 
                                                                     <section>
                                                                         <div class="input-group">
@@ -357,25 +364,25 @@
                                                                         </div>
                                                                     </section>
 
-                                                                     <section>
-                                                                         <div class="input-group">
-                                                                             <label class="select">
-                                                                                 <select class="input-sm" name="constrctteam">
-                                                                                     <% selectOptions.constrctteamList.forEach(function (option) { %>
-                                                                                     <option value="<%= option%>"><%= option%></option>
-                                                                                     <% }) %>
-                                                                                 </select> <i></i>
-                                                                             </label>
-                                                                             <span class="input-group-addon" >施工队</span>
-                                                                         </div>
-                                                                     </section>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <label class="select">
+                                                                                <select class="input-sm" name="constrctteam">
+                                                                                    <% selectOptions.constrctteamList.forEach(function (option) { %>
+                                                                                    <option value="<%= option%>"><%= option%></option>
+                                                                                    <% }) %>
+                                                                                </select> <i></i>
+                                                                            </label>
+                                                                            <span class="input-group-addon" >施工队</span>
+                                                                        </div>
+                                                                    </section>
 
-                                                                     <section>
-                                                                         <div class="input-group">
-                                                                             <input class="form-control" placeholder="施工队负责人" type="text" name="constrctofficer">
-                                                                             <span class="input-group-addon" >施工队负责人</span>
-                                                                         </div>
-                                                                     </section>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="施工队负责人" type="text" name="constrctofficer">
+                                                                            <span class="input-group-addon" >施工队负责人</span>
+                                                                        </div>
+                                                                    </section>
 
 
                                                                     <section>
@@ -400,23 +407,23 @@
                                                                         </div>
                                                                     </section>
 
-                                                                   <section>
-                                                                       <div class="input-group">
-                                                                           <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="constructbegintime">
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="constructbegintime">
                                                                            <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                                                                            </span>
-                                                                           <span class="input-group-addon" >开工时间</span>
-                                                                       </div>
-                                                                   </section>
+                                                                            <span class="input-group-addon" >开工时间</span>
+                                                                        </div>
+                                                                    </section>
 
-                                                                      <section>
-                                                                          <div class="input-group">
-                                                                              <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finishtime">
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finishtime">
                                                                               <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                                                                               </span>
-                                                                              <span class="input-group-addon" >完工时间</span>
-                                                                          </div>
-                                                                      </section>
+                                                                            <span class="input-group-addon" >完工时间</span>
+                                                                        </div>
+                                                                    </section>
 
                                                                     <section>
                                                                         <div class="input-group">
@@ -428,34 +435,37 @@
                                                                         <span class="text-muted">附件，请在新增后上传</span>
                                                                     </section>
 
-                                                                   <section>
-                                                                       <div class="input-group">
-                                                                           <input class="form-control" placeholder="甲方验收情况" type="text" name="firstpartyacptstatus">
-                                                                           <span class="input-group-addon" >甲方验收情况</span>
-                                                                       </div>
-                                                                   </section>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" placeholder="甲方验收情况" type="text" name="firstpartyacptstatus">
+                                                                            <span class="input-group-addon" >甲方验收情况</span>
+                                                                        </div>
+                                                                    </section>
 
-                                                                   <section>
-                                                                       <div class="input-group">
-                                                                           <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="inspecttime">
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="inspecttime">
                                                                            <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                                                                            </span>
-                                                                           <span class="input-group-addon" >送审日期（附件）</span>
-                                                                       </div>
-                                                                       <span class="text-muted">附件，请在新增后上传</span>
-                                                                   </section>
+                                                                            <span class="input-group-addon" >送审日期（附件）</span>
+                                                                        </div>
+                                                                        <span class="text-muted">附件，请在新增后上传</span>
+                                                                    </section>
 
-                                                                     <section>
-                                                                         <div class="input-group">
-                                                                             <textarea  rows="5" name="basiccomments" placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                                                             <span class="input-group-addon" >备注</span>
-                                                                         </div>
-                                                                     </section>
+                                                                    <section>
+                                                                        <div class="input-group">
+                                                                            <textarea  rows="5" name="basiccomments" placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                                                            <span class="input-group-addon" >备注</span>
+                                                                        </div>
+                                                                    </section>
 
                                                                 </fieldset>
 
                                                             </div>
-                                                            <div class="tab-pane" id="tab2">
+                                                            <% } %>
+
+                                                            <% if(user.authority.netprojControl.incomeInfo === true){ %>
+                                                            <div class="tab-pane <% if(user.authority.netprojControl.basicInfo === false){ %> active <% } %>" id="tab2">
                                                                 <br>
 
                                                                 <!-- <h3><strong> 2</strong> - 收入信息</h3> -->
@@ -468,20 +478,20 @@
                                                                     </div>
                                                                 </section>
 
-                                                               <section>
-                                                                   <div class="input-group">
-                                                                       <input class="form-control digit" placeholder="结算" type="text" name="clearing">
-                                                                       <span class="input-group-addon" >结算</span>
-                                                                   </div>
-                                                               </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit" placeholder="结算" type="text" name="clearing">
+                                                                        <span class="input-group-addon" >结算</span>
+                                                                    </div>
+                                                                </section>
 
-                                                                 <section>
-                                                                     <div class="input-group">
-                                                                         <input class="form-control digit" placeholder="开票金额（附件）" type="text" name="voiceamount">
-                                                                         <span class="input-group-addon" >开票金额（附件）</span>
-                                                                     </div>
-                                                                     <span class="text-muted">附件，请在新增后上传</span>
-                                                                 </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit" placeholder="开票金额（附件）" type="text" name="voiceamount">
+                                                                        <span class="input-group-addon" >开票金额（附件）</span>
+                                                                    </div>
+                                                                    <span class="text-muted">附件，请在新增后上传</span>
+                                                                </section>
 
                                                                 <section>
                                                                     <div class="input-group">
@@ -511,12 +521,12 @@
                                                                     </div>
                                                                 </section>
 
-                                                               <section>
-                                                                   <div class="input-group">
-                                                                       <input class="form-control digit profit" placeholder="利润" type="text" name="profit">
-                                                                       <span class="input-group-addon" >利润</span>
-                                                                   </div>
-                                                               </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit profit" placeholder="利润" type="text" name="profit">
+                                                                        <span class="input-group-addon" >利润</span>
+                                                                    </div>
+                                                                </section>
 
                                                                 <section>
                                                                     <div class="input-group">
@@ -526,6 +536,7 @@
                                                                 </section>
 
                                                             </div>
+                                                            <% } %>
 
                                                              <footer>
                                                                 <button type="submit" class="btn btn-primary" id="saveProj">
@@ -615,21 +626,29 @@
                                                     <div class="form-bootstrapWizard">
 
                                                         <ul class="bootstrapWizard form-wizard">
+                                                            <% if(user.authority.netprojControl.basicInfo === true){ %>
                                                             <li class="active" data-target="#step1" style="padding-right: 0;padding-left: 0;width: 50%">
                                                                 <a href="#tab1-edit" data-toggle="tab"> <span
                                                                             class="step">1</span> <span class="title">基本信息</span>
                                                                 </a>
                                                             </li>
-                                                            <li data-target="#step2"  style="padding-right: 0;padding-left: 0;width: 50%">
+                                                            <% } %>
+
+                                                            <% if(user.authority.netprojControl.incomeInfo === true){ %>
+                                                            <li data-target="#step2" <% if(user.authority.netprojControl.basicInfo === false){ %> class="active" <% } %> style="padding-right: 0;padding-left: 0;width: 50%">
                                                                 <a href="#tab2-edit" data-toggle="tab"> <span
                                                                             class="step">2</span> <span class="title">收入信息</span>
                                                                 </a>
                                                             </li>
+                                                            <% } %>
+
+
                                                         </ul>
 
                                                         <div class="clearfix"></div>
                                                     </div>
                                                     <div class="tab-content">
+                                                        <% if(user.authority.netprojControl.basicInfo === true){ %>
                                                         <div class="tab-pane active" id="tab1-edit">
                                                             <br>
 
@@ -637,179 +656,179 @@
 
                                                             <fieldset>
 
-                                                               <section>
-                                                                         <div class="input-group hidden">
-                                                                             <input type="text" name="_id" class="hidden" data-id="">
-                                                                             <input class="form-control" placeholder="序号" type="text" name="serialno">
-                                                                             <span class="input-group-addon" >序号</span>
-                                                                         </div>
-                                                                     </section>
+                                                                <section>
+                                                                    <div class="input-group hidden">
+                                                                        <input type="text" name="_id" class="hidden" data-id="">
+                                                                        <input class="form-control" placeholder="序号" type="text" name="serialno">
+                                                                        <span class="input-group-addon" >序号</span>
+                                                                    </div>
+                                                                </section>
 
-                                                                    <section>
-                                                                        <div class="input-group">
-                                                                            <input class="form-control" placeholder="工单号" type="text" name="billno">
-                                                                            <span class="input-group-addon" >工单号</span>
-                                                                        </div>
-                                                                    </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control" placeholder="工单号" type="text" name="billno">
+                                                                        <span class="input-group-addon" >工单号</span>
+                                                                    </div>
+                                                                </section>
 
-                                                                    <section>
-                                                                        <div class="input-group">
-                                                                            <input class="form-control" placeholder="甲方项目负责人" type="text" name="firstpartyofficer">
-                                                                            <span class="input-group-addon" >甲方项目负责人</span>
-                                                                        </div>
-                                                                    </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control" placeholder="甲方项目负责人" type="text" name="firstpartyofficer">
+                                                                        <span class="input-group-addon" >甲方项目负责人</span>
+                                                                    </div>
+                                                                </section>
 
-                                                                    <section>
-                                                                        <div class="input-group">
-                                                                            <input class="form-control" placeholder="乙方项目负责人" type="text" name="secondpartyofficer">
-                                                                            <span class="input-group-addon" >乙方项目负责人</span>
-                                                                        </div>
-                                                                    </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control" placeholder="乙方项目负责人" type="text" name="secondpartyofficer">
+                                                                        <span class="input-group-addon" >乙方项目负责人</span>
+                                                                    </div>
+                                                                </section>
 
-                                                                    <section>
-                                                                        <div class="input-group">
-                                                                            <label class="select">
-                                                                                <select class="input-sm" name="properties">
-                                                                                    <% selectOptions.propertiesList.forEach(function (option) { %>
-                                                                                    <option value="<%= option%>"><%= option%></option>
-                                                                                    <% }) %>
-                                                                                </select> <i></i>
-                                                                            </label>
-                                                                            <span class="input-group-addon" >项目属性</span>
-                                                                        </div>
-                                                                    </section>
-
-
-                                                                    <section>
-                                                                        <div class="input-group">
-                                                                            <label class="select">
-                                                                                <select class="input-sm" name="projtype">
-                                                                                    <option value="抢修">抢修</option>
-                                                                                    <option value="大修">大修</option>
-                                                                                    <option value="小修">小修</option>
-                                                                                </select> <i></i>
-                                                                            </label>
-                                                                            <span class="input-group-addon" >项目类别</span>
-                                                                        </div>
-                                                                    </section>
-
-                                                                    <section>
-                                                                        <div class="input-group">
-                                                                            <input class="form-control" placeholder="实施原因" type="text" name="reason">
-                                                                            <span class="input-group-addon" >实施原因</span>
-                                                                        </div>
-                                                                    </section>
-
-                                                                    <section>
-                                                                        <div class="input-group">
-                                                                            <input class="form-control" placeholder="项目名称" type="text" name="name">
-                                                                            <span class="input-group-addon" >项目名称</span>
-                                                                        </div>
-                                                                    </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <label class="select">
+                                                                            <select class="input-sm" name="properties">
+                                                                                <% selectOptions.propertiesList.forEach(function (option) { %>
+                                                                                <option value="<%= option%>"><%= option%></option>
+                                                                                <% }) %>
+                                                                            </select> <i></i>
+                                                                        </label>
+                                                                        <span class="input-group-addon" >项目属性</span>
+                                                                    </div>
+                                                                </section>
 
 
-                                                                    <section>
-                                                                        <div class="input-group">
-                                                                            <input class="form-control" placeholder="工程地址" type="text" name="address">
-                                                                            <span class="input-group-addon" >工程地址</span>
-                                                                        </div>
-                                                                    </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <label class="select">
+                                                                            <select class="input-sm" name="projtype">
+                                                                                <option value="抢修">抢修</option>
+                                                                                <option value="大修">大修</option>
+                                                                                <option value="小修">小修</option>
+                                                                            </select> <i></i>
+                                                                        </label>
+                                                                        <span class="input-group-addon" >项目类别</span>
+                                                                    </div>
+                                                                </section>
 
-                                                                    <section>
-                                                                        <div class="input-group">
-                                                                            <label class="select">
-                                                                                <select class="input-sm" name="area">
-                                                                                    <% selectOptions.areaList.forEach(function (option) { %>
-                                                                                    <option value="<%= option%>"><%= option%></option>
-                                                                                    <% }) %>
-                                                                                </select> <i></i>
-                                                                            </label>
-                                                                            <span class="input-group-addon" >所属区域</span>
-                                                                        </div>
-                                                                    </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control" placeholder="实施原因" type="text" name="reason">
+                                                                        <span class="input-group-addon" >实施原因</span>
+                                                                    </div>
+                                                                </section>
 
-                                                                     <section>
-                                                                         <div class="input-group">
-                                                                             <label class="select">
-                                                                                 <select class="input-sm" name="constrctteam">
-                                                                                     <% selectOptions.constrctteamList.forEach(function (option) { %>
-                                                                                     <option value="<%= option%>"><%= option%></option>
-                                                                                     <% }) %>
-                                                                                 </select> <i></i>
-                                                                             </label>
-                                                                             <span class="input-group-addon" >施工队</span>
-                                                                         </div>
-                                                                     </section>
-
-                                                                     <section>
-                                                                         <div class="input-group">
-                                                                             <input class="form-control" placeholder="施工队负责人" type="text" name="constrctofficer">
-                                                                             <span class="input-group-addon" >施工队负责人</span>
-                                                                         </div>
-                                                                     </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control" placeholder="项目名称" type="text" name="name">
+                                                                        <span class="input-group-addon" >项目名称</span>
+                                                                    </div>
+                                                                </section>
 
 
-                                                                    <section>
-                                                                        <div class="input-group">
-                                                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="consigntime">
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control" placeholder="工程地址" type="text" name="address">
+                                                                        <span class="input-group-addon" >工程地址</span>
+                                                                    </div>
+                                                                </section>
+
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <label class="select">
+                                                                            <select class="input-sm" name="area">
+                                                                                <% selectOptions.areaList.forEach(function (option) { %>
+                                                                                <option value="<%= option%>"><%= option%></option>
+                                                                                <% }) %>
+                                                                            </select> <i></i>
+                                                                        </label>
+                                                                        <span class="input-group-addon" >所属区域</span>
+                                                                    </div>
+                                                                </section>
+
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <label class="select">
+                                                                            <select class="input-sm" name="constrctteam">
+                                                                                <% selectOptions.constrctteamList.forEach(function (option) { %>
+                                                                                <option value="<%= option%>"><%= option%></option>
+                                                                                <% }) %>
+                                                                            </select> <i></i>
+                                                                        </label>
+                                                                        <span class="input-group-addon" >施工队</span>
+                                                                    </div>
+                                                                </section>
+
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control" placeholder="施工队负责人" type="text" name="constrctofficer">
+                                                                        <span class="input-group-addon" >施工队负责人</span>
+                                                                    </div>
+                                                                </section>
+
+
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="consigntime">
                                                                             <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                                                                             </span>
-                                                                            <span class="input-group-addon" >委托时间</span>
-                                                                        </div>
-                                                                    </section>
+                                                                        <span class="input-group-addon" >委托时间</span>
+                                                                    </div>
+                                                                </section>
 
-                                                                    <section>
-                                                                        <div class="input-group">
-                                                                            <label class="select">
-                                                                                <select class="input-sm" name="situation">
-                                                                                    <% selectOptions.situationList.forEach(function (option) { %>
-                                                                                    <option value="<%= option%>"><%= option%></option>
-                                                                                    <% }) %>
-                                                                                </select> <i></i>
-                                                                            </label>
-                                                                            <span class="input-group-addon" >立项情况</span>
-                                                                        </div>
-                                                                    </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <label class="select">
+                                                                            <select class="input-sm" name="situation">
+                                                                                <% selectOptions.situationList.forEach(function (option) { %>
+                                                                                <option value="<%= option%>"><%= option%></option>
+                                                                                <% }) %>
+                                                                            </select> <i></i>
+                                                                        </label>
+                                                                        <span class="input-group-addon" >立项情况</span>
+                                                                    </div>
+                                                                </section>
 
-                                                                   <section>
-                                                                       <div class="input-group">
-                                                                           <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="constructbegintime">
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="constructbegintime">
                                                                            <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                                                                            </span>
-                                                                           <span class="input-group-addon" >开工时间</span>
-                                                                       </div>
-                                                                   </section>
+                                                                        <span class="input-group-addon" >开工时间</span>
+                                                                    </div>
+                                                                </section>
 
-                                                                      <section>
-                                                                          <div class="input-group">
-                                                                              <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finishtime">
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finishtime">
                                                                               <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                                                                               </span>
-                                                                              <span class="input-group-addon" >完工时间</span>
-                                                                          </div>
-                                                                      </section>
+                                                                        <span class="input-group-addon" >完工时间</span>
+                                                                    </div>
+                                                                </section>
 
-                                                               <section>
-                                                                   <div class="input-group">
-                                                                       <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textreceivetime">
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textreceivetime">
                                                                        <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                                                                        </span>
-                                                                       <span class="input-group-addon" >竣工图纸收到日期（附件）</span>
-                                                                   </div>
+                                                                        <span class="input-group-addon" >竣工图纸收到日期（附件）</span>
+                                                                    </div>
 
-                                                                   <div class="fileDiv input input-file">
+                                                                    <div class="fileDiv input input-file">
                                                                        <span class="button">
                                                                            <input type="file" id="textreceivetimeFile" name="textreceivetimeFile" onchange="">选择文件</span>
                                                                        <span style="padding-top: 3px">
                                                                            当前文件
                                                                            <span name="textreceivetimeFileName" class="fileName"></span>
                                                                        </span>
-                                                                       <a class="btn btn-link upload">上传</a>
-                                                                       <a class="btn btn-link download">下载</a>
-                                                                       <span class="uploadInfo"></span>
-                                                                   </div>
+                                                                        <a class="btn btn-link upload">上传</a>
+                                                                        <a class="btn btn-link download">下载</a>
+                                                                        <span class="uploadInfo"></span>
+                                                                    </div>
 
-                                                               </section>
+                                                                </section>
 
                                                                 <section>
                                                                     <div class="input-group">
@@ -818,27 +837,27 @@
                                                                     </div>
                                                                 </section>
 
-                                                               <section>
-                                                                   <div class="input-group">
-                                                                       <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="inspecttime">
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="inspecttime">
                                                                        <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                                                                        </span>
-                                                                       <span class="input-group-addon" >送审日期（附件）</span>
-                                                                   </div>
+                                                                        <span class="input-group-addon" >送审日期（附件）</span>
+                                                                    </div>
 
-                                                                   <div class="fileDiv input input-file">
+                                                                    <div class="fileDiv input input-file">
                                                                        <span class="button">
                                                                            <input type="file" id="inspecttimeFile" name="inspecttimeFile" onchange="">选择文件</span>
                                                                        <span style="padding-top: 3px">
                                                                            当前文件
                                                                            <span name="inspecttimeFileName" class="fileName"></span>
                                                                        </span>
-                                                                       <a class="btn btn-link upload">上传</a>
-                                                                       <a class="btn btn-link download">下载</a>
-                                                                       <span class="uploadInfo"></span>
-                                                                   </div>
+                                                                        <a class="btn btn-link upload">上传</a>
+                                                                        <a class="btn btn-link download">下载</a>
+                                                                        <span class="uploadInfo"></span>
+                                                                    </div>
 
-                                                               </section>
+                                                                </section>
 
                                                                 <section>
                                                                     <div class="input-group">
@@ -851,92 +870,97 @@
                                                             </fieldset>
 
                                                         </div>
-                                                        <div class="tab-pane" id="tab2-edit">
+                                                        <% } %>
+
+                                                        <% if(user.authority.netprojControl.incomeInfo === true){ %>
+                                                        <div class="tab-pane <% if(user.authority.netprojControl.basicInfo === false){ %> active <% } %>" id="tab2-edit">
                                                             <br>
                                                             <fieldset>
-                                                          <!--   <h3><strong> 2</strong> - 收入信息</h3> -->
+                                                                <!--   <h3><strong> 2</strong> - 收入信息</h3> -->
 
-                                                            <section>
-                                                                <div class="input-group">
-                                                                    <input class="form-control digit" placeholder="预算" type="text" name="budget">
-                                                                    <span class="input-group-addon" >预算</span>
-                                                                </div>
-                                                            </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit" placeholder="预算" type="text" name="budget">
+                                                                        <span class="input-group-addon" >预算</span>
+                                                                    </div>
+                                                                </section>
 
-                                                            <section>
-                                                                <div class="input-group">
-                                                                    <input class="form-control digit" placeholder="结算" type="text" name="clearing">
-                                                                    <span class="input-group-addon" >结算</span>
-                                                                </div>
-                                                            </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit" placeholder="结算" type="text" name="clearing">
+                                                                        <span class="input-group-addon" >结算</span>
+                                                                    </div>
+                                                                </section>
 
 
-                                                             <section>
-                                                                 <div class="input-group">
-                                                                     <input class="form-control digit" placeholder="开票金额（附件）" type="text" name="voiceamount">
-                                                                     <span class="input-group-addon" >开票金额（附件）</span>
-                                                                 </div>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit" placeholder="开票金额（附件）" type="text" name="voiceamount">
+                                                                        <span class="input-group-addon" >开票金额（附件）</span>
+                                                                    </div>
 
-                                                                 <div class="fileDiv input input-file">
+                                                                    <div class="fileDiv input input-file">
                                                                      <span class="button">
                                                                          <input type="file" id="voiceamountFile" name="voiceamountFile" onchange="">选择文件</span>
                                                                      <span style="padding-top: 3px">
                                                                          当前文件
                                                                          <span name="voiceamountFileName" class="fileName"></span>
                                                                      </span>
-                                                                     <a class="btn btn-link upload">上传</a>
-                                                                     <a class="btn btn-link download">下载</a>
-                                                                     <span class="uploadInfo"></span>
-                                                                 </div>
+                                                                        <a class="btn btn-link upload">上传</a>
+                                                                        <a class="btn btn-link download">下载</a>
+                                                                        <span class="uploadInfo"></span>
+                                                                    </div>
 
-                                                             </section>
-
-
-                                                            <section>
-                                                                <div class="input-group">
-                                                                    <input class="form-control digit income" placeholder="实际收款" type="text" name="income">
-                                                                    <span class="input-group-addon" >实际收款</span>
-                                                                </div>
-                                                            </section>
-
-                                                            <section>
-                                                                <div class="input-group">
-                                                                    <input class="form-control digit outcome" placeholder="施工队结款" type="text" name="outcome">
-                                                                    <span class="input-group-addon" >施工队结款</span>
-                                                                </div>
-                                                            </section>
-
-                                                           <section>
-                                                               <div class="input-group">
-                                                                   <input class="form-control" placeholder="施工队工作量表格" type="text" name="worktable">
-                                                                   <span class="input-group-addon" >施工队工作量表格</span>
-                                                               </div>
-                                                           </section>
-
-                                                            <section>
-                                                                <div class="input-group">
-                                                                    <input class="form-control digit otherfee" placeholder="其他费用" type="text" name="otherfee">
-                                                                    <span class="input-group-addon" >其他费用</span>
-                                                                </div>
-                                                            </section>
-
-                                                            <section>
-                                                                <div class="input-group">
-                                                                    <input class="form-control digit profit" placeholder="自动计算" type="text" name="profit">
-                                                                    <span class="input-group-addon" >利润</span>
-                                                                </div>
-                                                            </section>
+                                                                </section>
 
 
-                                                            <section>
-                                                                <div class="input-group">
-                                                                    <textarea  rows="5" name="incomecomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                                                    <span class="input-group-addon" >备注</span>
-                                                                </div>
-                                                            </section>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit income" placeholder="实际收款" type="text" name="income">
+                                                                        <span class="input-group-addon" >实际收款</span>
+                                                                    </div>
+                                                                </section>
 
-                                                        </fieldset>
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit outcome" placeholder="施工队结款" type="text" name="outcome">
+                                                                        <span class="input-group-addon" >施工队结款</span>
+                                                                    </div>
+                                                                </section>
+
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control" placeholder="施工队工作量表格" type="text" name="worktable">
+                                                                        <span class="input-group-addon" >施工队工作量表格</span>
+                                                                    </div>
+                                                                </section>
+
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit otherfee" placeholder="其他费用" type="text" name="otherfee">
+                                                                        <span class="input-group-addon" >其他费用</span>
+                                                                    </div>
+                                                                </section>
+
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control digit profit" placeholder="自动计算" type="text" name="profit">
+                                                                        <span class="input-group-addon" >利润</span>
+                                                                    </div>
+                                                                </section>
+
+
+                                                                <section>
+                                                                    <div class="input-group">
+                                                                        <textarea  rows="5" name="incomecomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                                                        <span class="input-group-addon" >备注</span>
+                                                                    </div>
+                                                                </section>
+
+                                                            </fieldset>
                                                         </div>
+                                                        <% } %>
+
                                                  <footer>
                                                      <button type="submit" class="btn btn-primary" id="saveProjEdited">提交</button>
                                                      <button type="button" class="btn btn-default closeBtn" data-dismiss="modal">取消</button>
@@ -945,6 +969,7 @@
 
                                                     </div>
                                                 </div>
+                                                <input type="text" name="_id" class="hidden" data-id="">
                                             </form>
                                         </div>
 
@@ -1281,6 +1306,7 @@
             formInfo.proj = {};
             formInfo.proj.basicInfo = {};
             formInfo.proj.incomeInfo = {};
+            formInfo.proj._id = $("#editProj input[name='_id']").val();
             //basicInfo
             $("#tab1-edit  input").each(function(){
                 var inputName = $(this).attr("name");
@@ -1501,7 +1527,7 @@
             var fileElementId = fileDiv.find("input").attr("id");
 
             var fileInfo = {};
-            fileInfo.id = $("#tab1-edit  input[name='_id']").val();
+            fileInfo.id = $("#editProj input[name='_id']").val();
             fileInfo.file = fileDiv.find("input").attr("name");
             fileInfo.fileName = fileDiv.find(".fileName").attr("name");
 
@@ -1545,7 +1571,7 @@
             uploadInfo.removeClass("text-warning").text(" ");
 
             var fileInfo = {};
-            fileInfo.id = $("#tab1-edit  input[name='_id']").val();
+            fileInfo.id = $("#editProj input[name='_id']").val();
             fileInfo.file = fileDiv.find("input").attr("name");
             fileInfo.fileName = fileDiv.find(".fileName").attr("name");
 
@@ -1589,7 +1615,6 @@
                 //获取项目id
                 var projToEdit = {};
                 projToEdit.id = $(this).attr("data-projId");
-                console.log(projToEdit.id);
                 $.ajax({
                     type:"POST",
                     url:"/netproj/getById",
@@ -1598,6 +1623,7 @@
                     dataType:"json",
                     success:function(engproj){
                         if(engproj !== null){
+                            $("#editProj input[name='_id']").val(engproj._id);
                             //basicInfo
                             $("#tab1-edit  input").each(function(){
                                 var inputName = $(this).attr("name");

@@ -234,53 +234,72 @@
                                             <div class="form-bootstrapWizard">
 
                                                 <ul class="bootstrapWizard form-wizard">
+                                                    <% if(user.authority.citygovprojControl.basicInfo === true){ %>
                                                     <li class="active" data-target="#step1" style="padding-right: 0;padding-left: 0;width: 16.67%">
                                                         <a href="#tab1" data-toggle="tab">
                                                             <span
-                                                                                    class="step">1</span>
+                                                                    class="step">1</span>
                                                             <span class="title">基本信息</span>
                                                         </a>
                                                     </li>
-                                                    <li data-target="#step2"  style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                    <% } %>
+
+                                                    <% if(user.authority.citygovprojControl.materialInfo === true){ %>
+                                                    <li data-target="#step2" <% if(user.authority.citygovprojControl.basicInfo === false){ %> class="active" <% } %> style="padding-right: 0;padding-left: 0;width: 16.67%">
                                                         <a href="#tab2" data-toggle="tab">
                                                             <span
-                                                                                    class="step">2</span>
+                                                                    class="step">2</span>
                                                             <span class="title">材料信息</span>
                                                         </a>
                                                     </li>
-                                                    <li data-target="#step3"  style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                    <% } %>
+
+                                                    <% if(user.authority.citygovprojControl.constructionInfo === true){ %>
+                                                    <li data-target="#step3" <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false){ %> class="active" <% } %> style="padding-right: 0;padding-left: 0;width: 16.67%">
                                                         <a href="#tab3" data-toggle="tab">
                                                             <span
-                                                                                class="step">3</span>
+                                                                    class="step">3</span>
                                                             <span class="title">施工情况信息</span>
                                                         </a>
                                                     </li>
-                                                    <li data-target="#step4" style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                    <% } %>
+
+                                                    <% if(user.authority.citygovprojControl.textInfo === true){ %>
+                                                    <li data-target="#step4" <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false && user.authority.citygovprojControl.constructionInfo === false){ %> class="active" <% } %> style="padding-right: 0;padding-left: 0;width: 16.67%">
                                                         <a href="#tab4" data-toggle="tab">
                                                             <span
-                                                                                class="step">4</span>
+                                                                    class="step">4</span>
                                                             <span class="title">资料信息</span>
                                                         </a>
                                                     </li>
-                                                    <li data-target="#step5" style="padding-right: 0;padding-left: 0;width: 16.67%">
+                                                    <% } %>
+
+                                                    <% if(user.authority.citygovprojControl.contractInfo === true){ %>
+                                                    <li data-target="#step5" <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false && user.authority.citygovprojControl.constructionInfo === false && user.authority.citygovprojControl.textInfo === false){ %> class="active" <% } %> style="padding-right: 0;padding-left: 0;width: 16.67%">
                                                         <a href="#tab5" data-toggle="tab">
                                                             <span
-                                                                                class="step">5</span>
+                                                                    class="step">5</span>
                                                             <span class="title">合同信息</span>
                                                         </a>
                                                     </li>
-                                                    <li data-target="#step6" style="padding-right: 0;padding-left: 0;width: 16.6%">
+                                                    <% } %>
+
+                                                    <% if(user.authority.citygovprojControl.incomeInfo === true){ %>
+                                                    <li data-target="#step6" <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false && user.authority.citygovprojControl.constructionInfo === false && user.authority.citygovprojControl.textInfo === false && user.authority.citygovprojControl.contractInfo === false){ %> class="active" <% } %> style="padding-right: 0;padding-left: 0;width: 16.6%">
                                                         <a href="#tab6" data-toggle="tab">
                                                             <span
-                                                                                class="step">6</span>
+                                                                    class="step">6</span>
                                                             <span class="title">收入信息</span>
                                                         </a>
                                                     </li>
+                                                    <% } %>
+
                                                 </ul>
 
                                                 <div class="clearfix"></div>
                                             </div>
                                             <div class="tab-content">
+                                                <% if(user.authority.citygovprojControl.basicInfo === true){ %>
                                                 <div class="tab-pane active" id="tab1">
                                                     <br>
 
@@ -288,720 +307,736 @@
                                                     - 基本信息
                                                 </h3>
                                                 -->
-                                                <fieldset>
+                                                    <fieldset>
 
-                                                    <section>
-                                                        <div class="input-group hidden">
-                                                            <input class="form-control" placeholder="序号" type="text" name="serialno">
-                                                            <span class="input-group-addon" >序号</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group hidden">
+                                                                <input class="form-control" placeholder="序号" type="text" name="serialno">
+                                                                <span class="input-group-addon" >序号</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <label class="select">
-                                                                <select class="input-sm" name="isstatis">
-                                                                    <option value="是">是</option>
-                                                                    <option value="否">否</option>
-                                                                </select>
-                                                                <i></i>
-                                                            </label>
-                                                            <span class="input-group-addon" >是否统计</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <label class="select">
+                                                                    <select class="input-sm" name="isstatis">
+                                                                        <option value="是">是</option>
+                                                                        <option value="否">否</option>
+                                                                    </select>
+                                                                    <i></i>
+                                                                </label>
+                                                                <span class="input-group-addon" >是否统计</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <input class="form-control" placeholder="受控编号" type="text" name="controlid">
-                                                            <span class="input-group-addon" >受控编号</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control" placeholder="受控编号" type="text" name="controlid">
+                                                                <span class="input-group-addon" >受控编号</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <input class="form-control" placeholder="工程名称" type="text" name="projname">
-                                                            <span class="input-group-addon" >工程名称</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control" placeholder="工程名称" type="text" name="projname">
+                                                                <span class="input-group-addon" >工程名称</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <input class="form-control" placeholder="甲方项目负责人" type="text" name="firstpartyofficer">
-                                                            <span class="input-group-addon" >甲方项目负责人</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control" placeholder="甲方项目负责人" type="text" name="firstpartyofficer">
+                                                                <span class="input-group-addon" >甲方项目负责人</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <label class="select">
-                                                                <select class="input-sm" name="projtype">
-                                                                    <option value="覆盖网">覆盖网</option>
-                                                                    <option value="光交网">光交网</option>
-                                                                </select>
-                                                                <i></i>
-                                                            </label>
-                                                            <span class="input-group-addon" >项目类别</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <label class="select">
+                                                                    <select class="input-sm" name="projtype">
+                                                                        <option value="覆盖网">覆盖网</option>
+                                                                        <option value="光交网">光交网</option>
+                                                                    </select>
+                                                                    <i></i>
+                                                                </label>
+                                                                <span class="input-group-addon" >项目类别</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <label class="select">
-                                                                <select class="input-sm" name="properties">
-                                                                    <% selectOptions.propertiesList.forEach(function (option) { %>
-                                                                    <option value="<%= option%>"><%= option%></option>
-                                                                    <% }) %>
-                                                                </select>
-                                                                <i></i>
-                                                            </label>
-                                                            <span class="input-group-addon" >工程属性</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <label class="select">
+                                                                    <select class="input-sm" name="properties">
+                                                                        <% selectOptions.propertiesList.forEach(function (option) { %>
+                                                                        <option value="<%= option%>"><%= option%></option>
+                                                                        <% }) %>
+                                                                    </select>
+                                                                    <i></i>
+                                                                </label>
+                                                                <span class="input-group-addon" >工程属性</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <input class="form-control" placeholder="项目名称" type="text" name="subname">
-                                                            <span class="input-group-addon" >项目名称</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control" placeholder="项目名称" type="text" name="subname">
+                                                                <span class="input-group-addon" >项目名称</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <input class="form-control" placeholder="项目内容" type="text" name="content">
-                                                            <span class="input-group-addon" >项目内容</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control" placeholder="项目内容" type="text" name="content">
+                                                                <span class="input-group-addon" >项目内容</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <input class="form-control" placeholder="工程地址" type="text" name="address">
-                                                            <span class="input-group-addon" >工程地址</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control" placeholder="工程地址" type="text" name="address">
+                                                                <span class="input-group-addon" >工程地址</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <label class="select">
-                                                                <select class="input-sm" name="firstparty">
-                                                                    <% selectOptions.firstpartyList.forEach(function (option) { %>
-                                                                    <option value="<%= option%>"><%= option%></option>
-                                                                    <% }) %>
-                                                                </select>
-                                                                <i></i>
-                                                            </label>
-                                                            <span class="input-group-addon" >甲方单位</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <label class="select">
+                                                                    <select class="input-sm" name="firstparty">
+                                                                        <% selectOptions.firstpartyList.forEach(function (option) { %>
+                                                                        <option value="<%= option%>"><%= option%></option>
+                                                                        <% }) %>
+                                                                    </select>
+                                                                    <i></i>
+                                                                </label>
+                                                                <span class="input-group-addon" >甲方单位</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <label class="select">
-                                                                <select class="input-sm" name="area">
-                                                                    <% selectOptions.areaList.forEach(function (option) { %>
-                                                                    <option value="<%= option%>"><%= option%></option>
-                                                                    <% }) %>
-                                                                </select>
-                                                                <i></i>
-                                                            </label>
-                                                            <span class="input-group-addon" >所属区域</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <label class="select">
+                                                                    <select class="input-sm" name="area">
+                                                                        <% selectOptions.areaList.forEach(function (option) { %>
+                                                                        <option value="<%= option%>"><%= option%></option>
+                                                                        <% }) %>
+                                                                    </select>
+                                                                    <i></i>
+                                                                </label>
+                                                                <span class="input-group-addon" >所属区域</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <label class="select">
-                                                                <select class="input-sm" name="designorg">
-                                                                    <% selectOptions.designorgList.forEach(function (option) { %>
-                                                                    <option value="<%= option%>"><%= option%></option>
-                                                                    <% }) %>
-                                                                </select>
-                                                                <i></i>
-                                                            </label>
-                                                            <span class="input-group-addon" >设计单位</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <label class="select">
+                                                                    <select class="input-sm" name="designorg">
+                                                                        <% selectOptions.designorgList.forEach(function (option) { %>
+                                                                        <option value="<%= option%>"><%= option%></option>
+                                                                        <% }) %>
+                                                                    </select>
+                                                                    <i></i>
+                                                                </label>
+                                                                <span class="input-group-addon" >设计单位</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <input class="form-control" placeholder="设计负责人" type="text" name="designofficer">
-                                                            <span class="input-group-addon" >设计负责人</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control" placeholder="设计负责人" type="text" name="designofficer">
+                                                                <span class="input-group-addon" >设计负责人</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <label class="select">
-                                                                <select class="input-sm" name="supvorg">
-                                                                    <% selectOptions.supvorgList.forEach(function (option) { %>
-                                                                    <option value="<%= option%>"><%= option%></option>
-                                                                    <% }) %>
-                                                                </select>
-                                                                <i></i>
-                                                            </label>
-                                                            <span class="input-group-addon" >监理单位</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <label class="select">
+                                                                    <select class="input-sm" name="supvorg">
+                                                                        <% selectOptions.supvorgList.forEach(function (option) { %>
+                                                                        <option value="<%= option%>"><%= option%></option>
+                                                                        <% }) %>
+                                                                    </select>
+                                                                    <i></i>
+                                                                </label>
+                                                                <span class="input-group-addon" >监理单位</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <input class="form-control" placeholder="监理负责人" type="text" name="supvofficer">
-                                                            <span class="input-group-addon" >监理负责人</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control" placeholder="监理负责人" type="text" name="supvofficer">
+                                                                <span class="input-group-addon" >监理负责人</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <label class="select">
-                                                                <select class="input-sm" name="constructteam">
-                                                                    <% selectOptions.constructteamList.forEach(function (option) { %>
-                                                                    <option value="<%= option%>"><%= option%></option>
-                                                                    <% }) %>
-                                                                </select>
-                                                                <i></i>
-                                                            </label>
-                                                            <span class="input-group-addon" >施工队</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <label class="select">
+                                                                    <select class="input-sm" name="constructteam">
+                                                                        <% selectOptions.constructteamList.forEach(function (option) { %>
+                                                                        <option value="<%= option%>"><%= option%></option>
+                                                                        <% }) %>
+                                                                    </select>
+                                                                    <i></i>
+                                                                </label>
+                                                                <span class="input-group-addon" >施工队</span>
+                                                            </div>
+                                                        </section>
 
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <textarea  rows="5" name="basiccomments" placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                                            <span class="input-group-addon" >备注</span>
-                                                        </div>
-                                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <textarea  rows="5" name="basiccomments" placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                                                <span class="input-group-addon" >备注</span>
+                                                            </div>
+                                                        </section>
 
-                                                </fieldset>
+                                                    </fieldset>
 
-                                            </div>
-                                            <div class="tab-pane" id="tab2">
-                                                <br>
-
-                                                <!--  <h3> <strong>2</strong>
-                                                - 材料信息
-                                            </h3>
-                                            -->
-                                            <fieldset>
-                                                <section>
-                                                    <div class="input-group">
-                                                        <input class="form-control digit" placeholder="主材料使用" type="text" name="materialoffer">
-                                                        <span class="input-group-addon" >主材料使用</span>
-                                                    </div>
-                                                </section>
-
-                                                <section>
-                                                    <div class="input-group">
-                                                        <input class="form-control digit" placeholder="主材料金额" type="text" name="materialamont">
-                                                        <span class="input-group-addon" >主材料金额</span>
-                                                    </div>
-                                                </section>
-                                            </fieldset>
-                                        </div>
-                                        <div class="tab-pane" id="tab3">
-                                            <br>
-                                            <fieldset>
-                                                <!-- <h3>
-                                                <strong>3</strong>
-                                                - 施工情况信息
-                                            </h3>
-                                            -->
-                                            <section>
-                                                <div class="input-group">
-                                                    <textarea  rows="5" name="changeoverreport"  placeholder="割接报告申请"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                                    <span class="input-group-addon" >割接报告申请</span>
                                                 </div>
-                                            </section>
+                                                <% } %>
 
-                                            <section>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="changeoverreportapplytime">
+                                                <% if(user.authority.citygovprojControl.materialInfo === true){ %>
+                                                <div class="tab-pane <% if(user.authority.citygovprojControl.basicInfo === false){ %> active <% } %>" id="tab2">
+                                                    <br>
+
+                                                    <!--  <h3> <strong>2</strong>
+													- 材料信息
+												</h3>
+												-->
+                                                    <fieldset>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit" placeholder="主材料使用" type="text" name="materialoffer">
+                                                                <span class="input-group-addon" >主材料使用</span>
+                                                            </div>
+                                                        </section>
+
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit" placeholder="主材料金额" type="text" name="materialamont">
+                                                                <span class="input-group-addon" >主材料金额</span>
+                                                            </div>
+                                                        </section>
+                                                    </fieldset>
+                                                </div>
+                                                <% } %>
+
+                                                <% if(user.authority.citygovprojControl.constructionInfo === true){ %>
+                                                <div class="tab-pane <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false){ %> active <% } %>" id="tab3">
+                                                    <br>
+                                                    <fieldset>
+                                                        <!-- <h3>
+														<strong>3</strong>
+														- 施工情况信息
+													</h3>
+													-->
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <textarea  rows="5" name="changeoverreport"  placeholder="割接报告申请"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                                                <span class="input-group-addon" >割接报告申请</span>
+                                                            </div>
+                                                        </section>
+
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="changeoverreportapplytime">
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </span>
-                                                    <span class="input-group-addon" >割接报告申请日期</span>
-                                                </div>
-                                            </section>
+                                                                <span class="input-group-addon" >割接报告申请日期</span>
+                                                            </div>
+                                                        </section>
 
-                                            <section>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="changeovertime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="changeovertime">
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </span>
-                                                    <span class="input-group-addon" >割接日期</span>
-                                                </div>
-                                            </section>
+                                                                <span class="input-group-addon" >割接日期</span>
+                                                            </div>
+                                                        </section>
 
-                                            <section>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="begintime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="begintime">
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </span>
-                                                    <span class="input-group-addon" >开工时间</span>
-                                                </div>
-                                            </section>
+                                                                <span class="input-group-addon" >开工时间</span>
+                                                            </div>
+                                                        </section>
 
-                                            <section>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="endtime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="endtime">
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </span>
-                                                    <span class="input-group-addon" >完工时间</span>
+                                                                <span class="input-group-addon" >完工时间</span>
+                                                            </div>
+                                                        </section>
+
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <textarea  rows="5" name="constructioncomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                                                <span class="input-group-addon" >备注</span>
+                                                            </div>
+                                                        </section>
+                                                    </fieldset>
+
                                                 </div>
-                                            </section>
+                                                <% } %>
 
-                                            <section>
-                                                <div class="input-group">
-                                                    <textarea  rows="5" name="constructioncomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                                    <span class="input-group-addon" >备注</span>
-                                                </div>
-                                            </section>
-                                        </fieldset>
+                                                <% if(user.authority.citygovprojControl.textInfo === true){ %>
+                                                <div class="tab-pane <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false && user.authority.citygovprojControl.constructionInfo === false){ %> active <% } %>" id="tab4">
+                                                    <br>
 
-                                    </div>
-                                    <div class="tab-pane" id="tab4">
-                                        <br>
+                                                    <!--  <h3>
+													<strong>4</strong>
+													- 资料信息
+												</h3>
+												-->
+                                                    <fieldset>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control" placeholder="竣工文本（甲方下发）收到情况" type="text" name="text">
+                                                                <span class="input-group-addon" >竣工文本（甲方下发）收到情况</span>
+                                                            </div>
+                                                        </section>
 
-                                        <!--  <h3>
-                                        <strong>4</strong>
-                                        - 资料信息
-                                    </h3>
-                                    -->
-                                    <fieldset>
-                                        <section>
-                                            <div class="input-group">
-                                                <input class="form-control" placeholder="竣工文本（甲方下发）收到情况" type="text" name="text">
-                                                <span class="input-group-addon" >竣工文本（甲方下发）收到情况</span>
-                                            </div>
-                                        </section>
-
-                                        <section>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textreceivetime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textreceivetime">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </span>
-                                                <span class="input-group-addon" >竣工文本收到日期</span>
-                                            </div>
-                                        </section>
+                                                                <span class="input-group-addon" >竣工文本收到日期</span>
+                                                            </div>
+                                                        </section>
 
-                                        <section>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textsubmittime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textsubmittime">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </span>
-                                                <span class="input-group-addon" >竣工文本提交日期</span>
-                                            </div>
-                                        </section>
+                                                                <span class="input-group-addon" >竣工文本提交日期</span>
+                                                            </div>
+                                                        </section>
 
-                                        <section>
-                                            <div class="input-group">
-                                                <label class="select">
-                                                    <select class="input-sm" name="compmatres">
-                                                        <% selectOptions.compmatresList.forEach(function (option) { %>
-                                                        <option value="<%= option%>"><%= option%></option>
-                                                        <% }) %>
-                                                    </select>
-                                                    <i></i>
-                                                </label>
-                                                <span class="input-group-addon" >甲方对竣工资料的反馈情况</span>
-                                            </div>
-                                        </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <label class="select">
+                                                                    <select class="input-sm" name="compmatres">
+                                                                        <% selectOptions.compmatresList.forEach(function (option) { %>
+                                                                        <option value="<%= option%>"><%= option%></option>
+                                                                        <% }) %>
+                                                                    </select>
+                                                                    <i></i>
+                                                                </label>
+                                                                <span class="input-group-addon" >甲方对竣工资料的反馈情况</span>
+                                                            </div>
+                                                        </section>
 
-                                        <section>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="compsubmittime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="compsubmittime">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </span>
-                                                <span class="input-group-addon" >竣工资料提交时间</span>
-                                            </div>
-                                        </section>
+                                                                <span class="input-group-addon" >竣工资料提交时间</span>
+                                                            </div>
+                                                        </section>
 
-                                        <section>
-                                            <div class="input-group">
-                                                <label class="select">
-                                                    <select class="input-sm" name="isreceived">
-                                                        <% selectOptions.isreceivedList.forEach(function (option) { %>
-                                                        <option value="<%= option%>"><%= option%></option>
-                                                        <% }) %>
-                                                    </select>
-                                                    <i></i>
-                                                </label>
-                                                <span class="input-group-addon" >竣工资料是否收到</span>
-                                            </div>
-                                        </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <label class="select">
+                                                                    <select class="input-sm" name="isreceived">
+                                                                        <% selectOptions.isreceivedList.forEach(function (option) { %>
+                                                                        <option value="<%= option%>"><%= option%></option>
+                                                                        <% }) %>
+                                                                    </select>
+                                                                    <i></i>
+                                                                </label>
+                                                                <span class="input-group-addon" >竣工资料是否收到</span>
+                                                            </div>
+                                                        </section>
 
-                                        <section>
-                                            <div class="input-group">
-                                                <label class="select">
-                                                    <select class="input-sm" name="worktable">
-                                                        <option value="光缆">光缆</option>
-                                                        <option value="管道">管道</option>
-                                                    </select>
-                                                    <i></i>
-                                                </label>
-                                                <span class="input-group-addon" >施工队工作量（表格）</span>
-                                            </div>
-                                        </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <label class="select">
+                                                                    <select class="input-sm" name="worktable">
+                                                                        <option value="光缆">光缆</option>
+                                                                        <option value="管道">管道</option>
+                                                                    </select>
+                                                                    <i></i>
+                                                                </label>
+                                                                <span class="input-group-addon" >施工队工作量（表格）</span>
+                                                            </div>
+                                                        </section>
 
-                                    </fieldset>
-                                </div>
-                                <div class="tab-pane" id="tab5">
-                                    <br>
-                                    <!--<h3>
-                                    <strong>5</strong>
-                                    - 合同信息
-                                </h3>
-                                -->
-                                <fieldset>
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="甲方合同金额" type="text" name="firstpartycontractyamount">
-                                            <span class="input-group-addon" >甲方合同金额</span>
-                                        </div>
-                                    </section>
+                                                    </fieldset>
+                                                </div>
+                                                <% } %>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <label class="select">
-                                                <select class="input-sm" name="firstpartyisreceived">
-                                                    <% selectOptions.firstpartyisreceivedList.forEach(function (option) { %>
-                                                    <option value="<%= option%>"><%= option%></option>
-                                                    <% }) %>
-                                                </select>
-                                                <i></i>
-                                            </label>
-                                            <span class="input-group-addon" >甲方是否已收款</span>
-                                        </div>
-                                    </section>
+                                                <% if(user.authority.citygovprojControl.contractInfo === true){ %>
+                                                <div class="tab-pane <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false && user.authority.citygovprojControl.constructionInfo === false && user.authority.citygovprojControl.textInfo === false){ %> active<% } %>" id="tab5">
+                                                    <br>
+                                                    <!--<h3>
+													<strong>5</strong>
+													- 合同信息
+												</h3>
+												-->
+                                                    <fieldset>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="甲方合同金额" type="text" name="firstpartycontractyamount">
+                                                                <span class="input-group-addon" >甲方合同金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <label class="select">
-                                                <select class="input-sm isTrans" name="trans">
-                                                    <% selectOptions.transList.forEach(function (option) { %>
-                                                    <option value="<%= option%>"><%= option%></option>
-                                                    <% }) %>
-                                                </select>
-                                                <i></i>
-                                            </label>
-                                            <span class="input-group-addon" >是否转其他公司</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <label class="select">
+                                                                    <select class="input-sm" name="firstpartyisreceived">
+                                                                        <% selectOptions.firstpartyisreceivedList.forEach(function (option) { %>
+                                                                        <option value="<%= option%>"><%= option%></option>
+                                                                        <% }) %>
+                                                                    </select>
+                                                                    <i></i>
+                                                                </label>
+                                                                <span class="input-group-addon" >甲方是否已收款</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartycontracttime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <label class="select">
+                                                                    <select class="input-sm isTrans" name="trans">
+                                                                        <% selectOptions.transList.forEach(function (option) { %>
+                                                                        <option value="<%= option%>"><%= option%></option>
+                                                                        <% }) %>
+                                                                    </select>
+                                                                    <i></i>
+                                                                </label>
+                                                                <span class="input-group-addon" >是否转其他公司</span>
+                                                            </div>
+                                                        </section>
+
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartycontracttime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >乙方合同签订日期</span>
-                                        </div>
-                                    </section>
+                                                                <span class="input-group-addon" >乙方合同签订日期</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="乙方合同金额" type="text" name="secondpartycontractamount">
-                                            <span class="input-group-addon" >乙方合同金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="乙方合同金额" type="text" name="secondpartycontractamount">
+                                                                <span class="input-group-addon" >乙方合同金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyaudittime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyaudittime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >乙方送审日期</span>
-                                        </div>
-                                    </section>
+                                                                <span class="input-group-addon" >乙方送审日期</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="乙方审定金额" type="text" name="secondpartyauditamount">
-                                            <span class="input-group-addon" >乙方审定金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="乙方审定金额" type="text" name="secondpartyauditamount">
+                                                                <span class="input-group-addon" >乙方审定金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyproceprepaytime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyproceprepaytime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >乙方预付款开票日期（附件）</span>
-                                        </div>
-                                        <span class="text-muted">附件，请在新增后上传</span>
-                                    </section>
+                                                                <span class="input-group-addon" >乙方预付款开票日期（附件）</span>
+                                                            </div>
+                                                            <span class="text-muted">附件，请在新增后上传</span>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="乙方预付款开票金额" type="text" name="secondpartyproceprepayamount">
-                                            <span class="input-group-addon" >乙方预付款开票金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="乙方预付款开票金额" type="text" name="secondpartyproceprepayamount">
+                                                                <span class="input-group-addon" >乙方预付款开票金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyprocetime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyprocetime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >乙方进度款开票日期（附件）</span>
-                                        </div>
-                                        <span class="text-muted">附件，请在新增后上传</span>
-                                    </section>
+                                                                <span class="input-group-addon" >乙方进度款开票日期（附件）</span>
+                                                            </div>
+                                                            <span class="text-muted">附件，请在新增后上传</span>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="乙方进度款开票金额" type="text" name="secondpartyproceamount">
-                                            <span class="input-group-addon" >乙方进度款开票金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="乙方进度款开票金额" type="text" name="secondpartyproceamount">
+                                                                <span class="input-group-addon" >乙方进度款开票金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyfinaltime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyfinaltime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >乙方尾款开票日期（附件）</span>
-                                        </div>
-                                        <span class="text-muted">附件，请在新增后上传</span>
-                                    </section>
+                                                                <span class="input-group-addon" >乙方尾款开票日期（附件）</span>
+                                                            </div>
+                                                            <span class="text-muted">附件，请在新增后上传</span>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="乙方尾款开票金额" type="text" name="secondpartyfinalamount">
-                                            <span class="input-group-addon" >乙方尾款开票金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="乙方尾款开票金额" type="text" name="secondpartyfinalamount">
+                                                                <span class="input-group-addon" >乙方尾款开票金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyprepaytime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyprepaytime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >乙方预付款到款日期</span>
-                                        </div>
-                                    </section>
+                                                                <span class="input-group-addon" >乙方预付款到款日期</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="乙方预付款到款金额" type="text" name="secondpartyprepayamount">
-                                            <span class="input-group-addon" >乙方预付款到款金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="乙方预付款到款金额" type="text" name="secondpartyprepayamount">
+                                                                <span class="input-group-addon" >乙方预付款到款金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartypropaytime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartypropaytime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >乙方进度款到款日期</span>
-                                        </div>
-                                    </section>
+                                                                <span class="input-group-addon" >乙方进度款到款日期</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="乙方进度款到款金额" type="text" name="secondpartypropayamount">
-                                            <span class="input-group-addon" >乙方进度款到款金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="乙方进度款到款金额" type="text" name="secondpartypropayamount">
+                                                                <span class="input-group-addon" >乙方进度款到款金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyfinalpaytime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyfinalpaytime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >乙方尾款到款日期</span>
-                                        </div>
-                                    </section>
+                                                                <span class="input-group-addon" >乙方尾款到款日期</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="乙方尾款到款金额" type="text" name="secondpartyfinalpayaount">
-                                            <span class="input-group-addon" >乙方尾款到款金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="乙方尾款到款金额" type="text" name="secondpartyfinalpayaount">
+                                                                <span class="input-group-addon" >乙方尾款到款金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="contracttime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="contracttime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >我公司合同签订日期</span>
-                                        </div>
-                                    </section>
+                                                                <span class="input-group-addon" >我公司合同签订日期</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control"  placeholder="合同文本（附件）" type="text" name="contracttext">
-                                            <span class="input-group-addon" >合同文本（附件）</span>
-                                        </div>
-                                        <span class="text-muted">附件，请在新增后上传</span>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control"  placeholder="合同文本（附件）" type="text" name="contracttext">
+                                                                <span class="input-group-addon" >合同文本（附件）</span>
+                                                            </div>
+                                                            <span class="text-muted">附件，请在新增后上传</span>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="我公司合同款金额" type="text" name="contractamount">
-                                            <span class="input-group-addon" >我公司合同款金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="我公司合同款金额" type="text" name="contractamount">
+                                                                <span class="input-group-addon" >我公司合同款金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="prepayvoicetime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="prepayvoicetime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >我公司合同预付款开票日期</span>
-                                        </div>
-                                        <span class="text-muted">附件，请在新增后上传</span>
-                                    </section>
+                                                                <span class="input-group-addon" >我公司合同预付款开票日期</span>
+                                                            </div>
+                                                            <span class="text-muted">附件，请在新增后上传</span>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="我公司合同预付款开票金额" type="text" name="prepayvoiceamount">
-                                            <span class="input-group-addon" >我公司合同预付款开票金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="我公司合同预付款开票金额" type="text" name="prepayvoiceamount">
+                                                                <span class="input-group-addon" >我公司合同预付款开票金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="propayvoicetime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="propayvoicetime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >我公司合同进度款开票日期</span>
-                                        </div>
-                                        <span class="text-muted">附件，请在新增后上传</span>
-                                    </section>
+                                                                <span class="input-group-addon" >我公司合同进度款开票日期</span>
+                                                            </div>
+                                                            <span class="text-muted">附件，请在新增后上传</span>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="我公司合同进度款开票金额" type="text" name="propayvoiceamount">
-                                            <span class="input-group-addon" >我公司合同进度款开票金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="我公司合同进度款开票金额" type="text" name="propayvoiceamount">
+                                                                <span class="input-group-addon" >我公司合同进度款开票金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finalpayvoicetime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finalpayvoicetime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >我公司合同尾款开票日期</span>
-                                        </div>
-                                        <span class="text-muted">附件，请在新增后上传</span>
-                                    </section>
+                                                                <span class="input-group-addon" >我公司合同尾款开票日期</span>
+                                                            </div>
+                                                            <span class="text-muted">附件，请在新增后上传</span>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="我公司合同尾款开票金额" type="text" name="finalpayvoiceamount">
-                                            <span class="input-group-addon" >我公司合同尾款开票金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="我公司合同尾款开票金额" type="text" name="finalpayvoiceamount">
+                                                                <span class="input-group-addon" >我公司合同尾款开票金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="prepayouttime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="prepayouttime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >我公司合同预付款到款日期</span>
-                                        </div>
-                                    </section>
+                                                                <span class="input-group-addon" >我公司合同预付款到款日期</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="我公司合同预付款到款金额" type="text" name="prepayoutamount">
-                                            <span class="input-group-addon" >我公司合同预付款到款金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="我公司合同预付款到款金额" type="text" name="prepayoutamount">
+                                                                <span class="input-group-addon" >我公司合同预付款到款金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="propayouttime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="propayouttime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >我公司合同进度款到款日期</span>
-                                        </div>
-                                    </section>
+                                                                <span class="input-group-addon" >我公司合同进度款到款日期</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="我公司合同进度款到款金额" type="text" name="propayoutamount">
-                                            <span class="input-group-addon" >我公司合同进度款到款金额</span>
-                                        </div>
-                                    </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="我公司合同进度款到款金额" type="text" name="propayoutamount">
+                                                                <span class="input-group-addon" >我公司合同进度款到款金额</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="audittime">
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="audittime">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                            <span class="input-group-addon" >我公司送审日期</span>
-                                        </div>
-                                    </section>
+                                                                <span class="input-group-addon" >我公司送审日期</span>
+                                                            </div>
+                                                        </section>
 
-                                    <section>
-                                        <div class="input-group">
-                                            <input class="form-control digit"  placeholder="我公司审定金额" type="text" name="auditamount">
-                                            <span class="input-group-addon" >我公司审定金额</span>
-                                        </div>
-                                    </section>
-                                </fieldset>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit"  placeholder="我公司审定金额" type="text" name="auditamount">
+                                                                <span class="input-group-addon" >我公司审定金额</span>
+                                                            </div>
+                                                        </section>
+                                                    </fieldset>
 
-                            </div>
-                            <div class="tab-pane" id="tab6">
-                                <br>
-                                <fieldset>
-                                    <!-- <h3>
-                                    <strong>6</strong>
-                                    - 收入信息
-                                </h3>
-                                -->
-                                <section>
-                                    <div class="input-group">
-                                        <input class="form-control digit income" placeholder="实际收款" type="text" name="income">
-                                        <span class="input-group-addon" >实际收款</span>
-                                    </div>
-                                </section>
+                                                </div>
+                                                <% } %>
 
-                                <section>
-                                    <div class="input-group">
-                                        <input class="form-control digit outcome" placeholder="施工队结款" type="text" name="outcome">
-                                        <span class="input-group-addon" >施工队结款</span>
-                                    </div>
-                                </section>
+                                                <% if(user.authority.citygovprojControl.incomeInfo === true){ %>
+                                                <div class="tab-pane <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false && user.authority.citygovprojControl.constructionInfo === false && user.authority.citygovprojControl.textInfo === false && user.authority.citygovprojControl.contractInfo === false){ %> active <% } %>" id="tab6">
+                                                    <br>
+                                                    <fieldset>
+                                                        <!-- <h3>
+														<strong>6</strong>
+														- 收入信息
+													</h3>
+													-->
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit income" placeholder="实际收款" type="text" name="income">
+                                                                <span class="input-group-addon" >实际收款</span>
+                                                            </div>
+                                                        </section>
 
-                                <section>
-                                    <div class="input-group">
-                                        <input class="form-control digit otherfee" placeholder="其他费用" type="text" name="otherfee">
-                                        <span class="input-group-addon" >其他费用</span>
-                                    </div>
-                                </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit outcome" placeholder="施工队结款" type="text" name="outcome">
+                                                                <span class="input-group-addon" >施工队结款</span>
+                                                            </div>
+                                                        </section>
 
-                                <section>
-                                    <div class="input-group">
-                                        <input class="form-control digit profit" placeholder="利润" type="text" name="profit">
-                                        <span class="input-group-addon" >利润</span>
-                                    </div>
-                                </section>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit otherfee" placeholder="其他费用" type="text" name="otherfee">
+                                                                <span class="input-group-addon" >其他费用</span>
+                                                            </div>
+                                                        </section>
 
-                            </fieldset>
+                                                        <section>
+                                                            <div class="input-group">
+                                                                <input class="form-control digit profit" placeholder="利润" type="text" name="profit">
+                                                                <span class="input-group-addon" >利润</span>
+                                                            </div>
+                                                        </section>
 
-                        </div>
+                                                    </fieldset>
+
+                                                </div>
+                                                <% } %>
                         <footer>
                             <button type="submit" class="btn btn-primary" id="saveProj">提交</button>
                             <button type="button" class="btn btn-default closeBtn" data-dismiss="modal">取消</button>
@@ -1086,53 +1121,73 @@ data-widget-colorbutton="false"
                     <div class="form-bootstrapWizard">
 
                         <ul class="bootstrapWizard form-wizard">
+
+                            <% if(user.authority.citygovprojControl.basicInfo === true){ %>
                             <li class="active" data-target="#step1-edit" style="padding-right: 0;padding-left: 0;width: 16.67%">
                                 <a href="#tab1-edit" data-toggle="tab">
                                     <span
-                                                                            class="step">1</span>
+                                            class="step">1</span>
                                     <span class="title">基本信息</span>
                                 </a>
                             </li>
-                            <li data-target="#step2-edit"  style="padding-right: 0;padding-left: 0;width: 16.67%">
+                            <% } %>
+
+                            <% if(user.authority.citygovprojControl.materialInfo === true){ %>
+                            <li data-target="#step2-edit"  <% if(user.authority.citygovprojControl.basicInfo === false){ %> class="active" <% } %>  style="padding-right: 0;padding-left: 0;width: 16.67%">
                                 <a href="#tab2-edit" data-toggle="tab">
                                     <span
-                                                                            class="step">2</span>
+                                            class="step">2</span>
                                     <span class="title">材料信息</span>
                                 </a>
                             </li>
-                            <li data-target="#step3-edit"  style="padding-right: 0;padding-left: 0;width: 16.67%">
+                            <% } %>
+
+                            <% if(user.authority.citygovprojControl.constructionInfo === true){ %>
+                            <li data-target="#step3-edit"  <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false){ %> class="active" <% } %> style="padding-right: 0;padding-left: 0;width: 16.67%">
                                 <a href="#tab3-edit" data-toggle="tab">
                                     <span
-                                                                            class="step">3</span>
+                                            class="step">3</span>
                                     <span class="title">施工情况信息</span>
                                 </a>
                             </li>
-                            <li data-target="#step4-edit" style="padding-right: 0;padding-left: 0;width: 16.67%">
+                            <% } %>
+
+                            <% if(user.authority.citygovprojControl.textInfo === true){ %>
+                            <li data-target="#step4-edit" <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false && user.authority.citygovprojControl.constructionInfo === false){ %> class="active" <% } %> style="padding-right: 0;padding-left: 0;width: 16.67%">
                                 <a href="#tab4-edit" data-toggle="tab">
                                     <span
-                                                                            class="step">4</span>
+                                            class="step">4</span>
                                     <span class="title">资料信息</span>
                                 </a>
                             </li>
-                            <li data-target="#step5-edit" style="padding-right: 0;padding-left: 0;width: 16.67%">
+                            <% } %>
+
+                            <% if(user.authority.citygovprojControl.contractInfo === true){ %>
+                            <li data-target="#step5-edit" <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false && user.authority.citygovprojControl.constructionInfo === false && user.authority.citygovprojControl.textInfo === false){ %> class="active" <% } %> style="padding-right: 0;padding-left: 0;width: 16.67%">
                                 <a href="#tab5-edit" data-toggle="tab">
                                     <span
-                                                                            class="step">5</span>
+                                            class="step">5</span>
                                     <span class="title">合同信息</span>
                                 </a>
                             </li>
-                            <li data-target="#step6-edit" style="padding-right: 0;padding-left: 0;width: 16.6%">
+                            <% } %>
+
+                            <% if(user.authority.citygovprojControl.incomeInfo === true){ %>
+                            <li data-target="#step6-edit" <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false && user.authority.citygovprojControl.constructionInfo === false && user.authority.citygovprojControl.textInfo === false && user.authority.citygovprojControl.contractInfo === false){ %> class="active" <% } %>  style="padding-right: 0;padding-left: 0;width: 16.6%">
                                 <a href="#tab6-edit" data-toggle="tab">
                                     <span
-                                                                            class="step">6</span>
+                                            class="step">6</span>
                                     <span class="title">收入信息</span>
                                 </a>
                             </li>
+                            <% } %>
+
                         </ul>
 
                         <div class="clearfix"></div>
                     </div>
                     <div class="tab-content">
+                        <% if(user.authority.citygovprojControl.basicInfo === true){ %>
                         <div class="tab-pane active" id="tab1-edit">
                             <br>
 
@@ -1141,801 +1196,819 @@ data-widget-colorbutton="false"
                             - 基本信息
                         </h3>
                         -->
-                        <fieldset>
+                            <fieldset>
 
-                            <section>
-                                <div class="input-group hidden">
-                                    <input type="text" name="_id" class="hidden" data-id="">
-                                    <input class="form-control" placeholder="序号" type="text" name="serialno">
-                                    <span class="input-group-addon">序号</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group hidden">
+                                        <input type="text" name="_id" class="hidden" data-id="">
+                                        <input class="form-control" placeholder="序号" type="text" name="serialno">
+                                        <span class="input-group-addon">序号</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <label class="select">
-                                        <select class="input-sm" name="isstatis">
-                                            <option value="是">是</option>
-                                            <option value="否">否</option>
-                                        </select>
-                                        <i></i>
-                                    </label>
-                                    <span class="input-group-addon" >是否统计</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <label class="select">
+                                            <select class="input-sm" name="isstatis">
+                                                <option value="是">是</option>
+                                                <option value="否">否</option>
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                        <span class="input-group-addon" >是否统计</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <input class="form-control" placeholder="受控编号" type="text" name="controlid">
-                                    <span class="input-group-addon" >受控编号</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="受控编号" type="text" name="controlid">
+                                        <span class="input-group-addon" >受控编号</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <input class="form-control" placeholder="工程名称" type="text" name="projname">
-                                    <span class="input-group-addon" >工程名称</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="工程名称" type="text" name="projname">
+                                        <span class="input-group-addon" >工程名称</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <input class="form-control" placeholder="甲方项目负责人" type="text" name="firstpartyofficer">
-                                    <span class="input-group-addon" >甲方项目负责人</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="甲方项目负责人" type="text" name="firstpartyofficer">
+                                        <span class="input-group-addon" >甲方项目负责人</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <label class="select">
-                                        <select class="input-sm" name="projtype">
-                                            <option value="覆盖网">覆盖网</option>
-                                            <option value="光交网">光交网</option>
-                                        </select>
-                                        <i></i>
-                                    </label>
-                                    <span class="input-group-addon" >项目类别</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <label class="select">
+                                            <select class="input-sm" name="projtype">
+                                                <option value="覆盖网">覆盖网</option>
+                                                <option value="光交网">光交网</option>
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                        <span class="input-group-addon" >项目类别</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <label class="select">
-                                        <select class="input-sm" name="properties">
-                                            <% selectOptions.propertiesList.forEach(function (option) { %>
-                                            <option value="<%= option%>"><%= option%></option>
-                                            <% }) %>
-                                        </select>
-                                        <i></i>
-                                    </label>
-                                    <span class="input-group-addon" >工程属性</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <label class="select">
+                                            <select class="input-sm" name="properties">
+                                                <% selectOptions.propertiesList.forEach(function (option) { %>
+                                                <option value="<%= option%>"><%= option%></option>
+                                                <% }) %>
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                        <span class="input-group-addon" >工程属性</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <input class="form-control" placeholder="项目名称" type="text" name="subname">
-                                    <span class="input-group-addon" >项目名称</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="项目名称" type="text" name="subname">
+                                        <span class="input-group-addon" >项目名称</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <input class="form-control" placeholder="项目内容" type="text" name="content">
-                                    <span class="input-group-addon" >项目内容</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="项目内容" type="text" name="content">
+                                        <span class="input-group-addon" >项目内容</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <input class="form-control" placeholder="工程地址" type="text" name="address">
-                                    <span class="input-group-addon" >工程地址</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="工程地址" type="text" name="address">
+                                        <span class="input-group-addon" >工程地址</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <label class="select">
-                                        <select class="input-sm" name="firstparty">
-                                            <% selectOptions.firstpartyList.forEach(function (option) { %>
-                                            <option value="<%= option%>"><%= option%></option>
-                                            <% }) %>
-                                        </select>
-                                        <i></i>
-                                    </label>
-                                    <span class="input-group-addon" >甲方单位</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <label class="select">
+                                            <select class="input-sm" name="firstparty">
+                                                <% selectOptions.firstpartyList.forEach(function (option) { %>
+                                                <option value="<%= option%>"><%= option%></option>
+                                                <% }) %>
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                        <span class="input-group-addon" >甲方单位</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <label class="select">
-                                        <select class="input-sm" name="area">
-                                            <% selectOptions.areaList.forEach(function (option) { %>
-                                            <option value="<%= option%>"><%= option%></option>
-                                            <% }) %>
-                                        </select>
-                                        <i></i>
-                                    </label>
-                                    <span class="input-group-addon" >所属区域</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <label class="select">
+                                            <select class="input-sm" name="area">
+                                                <% selectOptions.areaList.forEach(function (option) { %>
+                                                <option value="<%= option%>"><%= option%></option>
+                                                <% }) %>
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                        <span class="input-group-addon" >所属区域</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <label class="select">
-                                        <select class="input-sm" name="designorg">
-                                            <% selectOptions.designorgList.forEach(function (option) { %>
-                                            <option value="<%= option%>"><%= option%></option>
-                                            <% }) %>
-                                        </select>
-                                        <i></i>
-                                    </label>
-                                    <span class="input-group-addon" >设计单位</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <label class="select">
+                                            <select class="input-sm" name="designorg">
+                                                <% selectOptions.designorgList.forEach(function (option) { %>
+                                                <option value="<%= option%>"><%= option%></option>
+                                                <% }) %>
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                        <span class="input-group-addon" >设计单位</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <input class="form-control" placeholder="设计负责人" type="text" name="designofficer">
-                                    <span class="input-group-addon" >设计负责人</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="设计负责人" type="text" name="designofficer">
+                                        <span class="input-group-addon" >设计负责人</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <label class="select">
-                                        <select class="input-sm" name="supvorg">
-                                            <% selectOptions.supvorgList.forEach(function (option) { %>
-                                            <option value="<%= option%>"><%= option%></option>
-                                            <% }) %>
-                                        </select>
-                                        <i></i>
-                                    </label>
-                                    <span class="input-group-addon" >监理单位</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <label class="select">
+                                            <select class="input-sm" name="supvorg">
+                                                <% selectOptions.supvorgList.forEach(function (option) { %>
+                                                <option value="<%= option%>"><%= option%></option>
+                                                <% }) %>
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                        <span class="input-group-addon" >监理单位</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <input class="form-control" placeholder="监理负责人" type="text" name="supvofficer">
-                                    <span class="input-group-addon" >监理负责人</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="监理负责人" type="text" name="supvofficer">
+                                        <span class="input-group-addon" >监理负责人</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <label class="select">
-                                        <select class="input-sm" name="constructteam">
-                                            <% selectOptions.constructteamList.forEach(function (option) { %>
-                                            <option value="<%= option%>"><%= option%></option>
-                                            <% }) %>
-                                        </select>
-                                        <i></i>
-                                    </label>
-                                    <span class="input-group-addon" >施工队</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <label class="select">
+                                            <select class="input-sm" name="constructteam">
+                                                <% selectOptions.constructteamList.forEach(function (option) { %>
+                                                <option value="<%= option%>"><%= option%></option>
+                                                <% }) %>
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                        <span class="input-group-addon" >施工队</span>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class="input-group">
-                                    <textarea  rows="5" name="basiccomments" placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                                    <span class="input-group-addon" >备注</span>
-                                </div>
-                            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <textarea  rows="5" name="basiccomments" placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                        <span class="input-group-addon" >备注</span>
+                                    </div>
+                                </section>
 
-                        </fieldset>
+                            </fieldset>
 
-                    </div>
-                    <div class="tab-pane" id="tab2-edit">
-                        <br>
-
-                        <!--  <h3>
-                        <strong>2</strong>
-                        - 材料信息
-                    </h3>
-                    -->
-                    <fieldset>
-                        <section>
-                            <div class="input-group">
-                                <input class="form-control digit" placeholder="主材料使用" type="text" name="materialoffer">
-                                <span class="input-group-addon" >主材料使用</span>
-                            </div>
-                        </section>
-
-                        <section>
-                            <div class="input-group">
-                                <input class="form-control digit" placeholder="主材料金额" type="text" name="materialamont">
-                                <span class="input-group-addon" >主材料金额</span>
-                            </div>
-                        </section>
-                    </fieldset>
-                </div>
-                <div class="tab-pane" id="tab3-edit">
-                    <br>
-                    <fieldset>
-                        <!-- <h3>
-                        <strong>3</strong>
-                        - 施工情况信息
-                    </h3>
-                    -->
-                    <section>
-                        <div class="input-group">
-                            <textarea  rows="5" name="changeoverreport"  placeholder="割接报告申请"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                            <span class="input-group-addon" >割接报告申请</span>
                         </div>
-                    </section>
+                        <% } %>
 
-                    <section>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="changeoverreportapplytime">
+                        <% if(user.authority.citygovprojControl.materialInfo === true){ %>
+                        <div class="tab-pane <% if(user.authority.citygovprojControl.basicInfo === false){ %> active <% } %>" id="tab2-edit">
+                            <br>
+
+                            <!--  <h3>
+							<strong>2</strong>
+							- 材料信息
+						</h3>
+						-->
+                            <fieldset>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit" placeholder="主材料使用" type="text" name="materialoffer">
+                                        <span class="input-group-addon" >主材料使用</span>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit" placeholder="主材料金额" type="text" name="materialamont">
+                                        <span class="input-group-addon" >主材料金额</span>
+                                    </div>
+                                </section>
+                            </fieldset>
+                        </div>
+                        <% } %>
+
+                        <% if(user.authority.citygovprojControl.constructionInfo === true){ %>
+                        <div class="tab-pane <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false){ %> active <% } %>" id="tab3-edit">
+                            <br>
+                            <fieldset>
+                                <!-- <h3>
+								<strong>3</strong>
+								- 施工情况信息
+							</h3>
+							-->
+                                <section>
+                                    <div class="input-group">
+                                        <textarea  rows="5" name="changeoverreport"  placeholder="割接报告申请"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                        <span class="input-group-addon" >割接报告申请</span>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="changeoverreportapplytime">
                             <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
-                            <span class="input-group-addon" >割接报告申请日期</span>
-                        </div>
-                    </section>
+                                        <span class="input-group-addon" >割接报告申请日期</span>
+                                    </div>
+                                </section>
 
-                    <section>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="changeovertime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="changeovertime">
                             <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
-                            <span class="input-group-addon" >割接日期</span>
-                        </div>
-                    </section>
+                                        <span class="input-group-addon" >割接日期</span>
+                                    </div>
+                                </section>
 
-                    <section>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="begintime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="begintime">
                             <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
-                            <span class="input-group-addon" >开工时间</span>
-                        </div>
-                    </section>
+                                        <span class="input-group-addon" >开工时间</span>
+                                    </div>
+                                </section>
 
-                    <section>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="endtime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="endtime">
                             <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
-                            <span class="input-group-addon" >完工时间</span>
+                                        <span class="input-group-addon" >完工时间</span>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="input-group">
+                                        <textarea  rows="5" name="constructioncomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
+                                        <span class="input-group-addon" >备注</span>
+                                    </div>
+                                </section>
+                            </fieldset>
+
                         </div>
-                    </section>
+                        <% } %>
 
-                    <section>
-                        <div class="input-group">
-                            <textarea  rows="5" name="constructioncomments"  placeholder="备注"  class="form-control" class="custom-scroll " style="resize: none;"></textarea>
-                            <span class="input-group-addon" >备注</span>
-                        </div>
-                    </section>
-                </fieldset>
+                        <% if(user.authority.citygovprojControl.textInfo === true){ %>
+                        <div class="tab-pane <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false && user.authority.citygovprojControl.constructionInfo === false){ %> active <% } %>" id="tab4-edit">
+                            <br>
 
-            </div>
-            <div class="tab-pane" id="tab4-edit">
-                <br>
+                            <!--  <h3>
+							<strong>4</strong>
+							- 资料信息
+						</h3>
+						-->
+                            <fieldset>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="竣工文本（甲方下发）收到情况" type="text" name="text">
+                                        <span class="input-group-addon" >竣工文本（甲方下发）收到情况</span>
+                                    </div>
+                                </section>
 
-                <!--  <h3>
-                <strong>4</strong>
-                - 资料信息
-            </h3>
-            -->
-            <fieldset>
-                <section>
-                    <div class="input-group">
-                        <input class="form-control" placeholder="竣工文本（甲方下发）收到情况" type="text" name="text">
-                        <span class="input-group-addon" >竣工文本（甲方下发）收到情况</span>
-                    </div>
-                </section>
-
-                <section>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textreceivetime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textreceivetime">
                         <span class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </span>
-                        <span class="input-group-addon" >竣工文本收到日期</span>
-                    </div>
-                </section>
+                                        <span class="input-group-addon" >竣工文本收到日期</span>
+                                    </div>
+                                </section>
 
-                <section>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textsubmittime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="textsubmittime">
                         <span class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </span>
-                        <span class="input-group-addon" >竣工文本提交日期</span>
-                    </div>
-                </section>
+                                        <span class="input-group-addon" >竣工文本提交日期</span>
+                                    </div>
+                                </section>
 
-                <section>
-                    <div class="input-group">
-                        <label class="select">
-                            <select class="input-sm" name="compmatres">
-                                <% selectOptions.compmatresList.forEach(function (option) { %>
-                                <option value="<%= option%>"><%= option%></option>
-                                <% }) %>
-                            </select>
-                            <i></i>
-                        </label>
-                        <span class="input-group-addon" >甲方对竣工资料的反馈情况</span>
-                    </div>
-                </section>
+                                <section>
+                                    <div class="input-group">
+                                        <label class="select">
+                                            <select class="input-sm" name="compmatres">
+                                                <% selectOptions.compmatresList.forEach(function (option) { %>
+                                                <option value="<%= option%>"><%= option%></option>
+                                                <% }) %>
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                        <span class="input-group-addon" >甲方对竣工资料的反馈情况</span>
+                                    </div>
+                                </section>
 
-                <section>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="compsubmittime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="compsubmittime">
                         <span class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </span>
-                        <span class="input-group-addon" >竣工资料提交时间</span>
-                    </div>
-                </section>
+                                        <span class="input-group-addon" >竣工资料提交时间</span>
+                                    </div>
+                                </section>
 
-                <section>
-                    <div class="input-group">
-                        <label class="select">
-                            <select class="input-sm" name="isreceived">
-                                <% selectOptions.isreceivedList.forEach(function (option) { %>
-                                <option value="<%= option%>"><%= option%></option>
-                                <% }) %>
-                            </select>
-                            <i></i>
-                        </label>
-                        <span class="input-group-addon" >竣工资料是否收到</span>
-                    </div>
-                </section>
+                                <section>
+                                    <div class="input-group">
+                                        <label class="select">
+                                            <select class="input-sm" name="isreceived">
+                                                <% selectOptions.isreceivedList.forEach(function (option) { %>
+                                                <option value="<%= option%>"><%= option%></option>
+                                                <% }) %>
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                        <span class="input-group-addon" >竣工资料是否收到</span>
+                                    </div>
+                                </section>
 
-                <section>
-                    <div class="input-group">
-                        <label class="select">
-                            <select class="input-sm" name="worktable">
-                                <option value="光缆">光缆</option>
-                                <option value="管道">管道</option>
-                            </select>
-                            <i></i>
-                        </label>
-                        <span class="input-group-addon" >施工队工作量（表格）</span>
-                    </div>
-                </section>
+                                <section>
+                                    <div class="input-group">
+                                        <label class="select">
+                                            <select class="input-sm" name="worktable">
+                                                <option value="光缆">光缆</option>
+                                                <option value="管道">管道</option>
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                        <span class="input-group-addon" >施工队工作量（表格）</span>
+                                    </div>
+                                </section>
 
-            </fieldset>
-        </div>
-        <div class="tab-pane" id="tab5-edit">
-            <br>
+                            </fieldset>
+                        </div>
+                        <% } %>
 
-            <br>
-            <!--<h3>
-            <strong>5</strong>
-            - 合同信息
-        </h3>
-        -->
-        <fieldset>
-            <section>
-                <div class="input-group">
-                    <input class="form-control digit"  placeholder="甲方合同金额" type="text" name="firstpartycontractyamount">
-                    <span class="input-group-addon" >甲方合同金额</span>
-                </div>
-            </section>
+                        <% if(user.authority.citygovprojControl.contractInfo === true){ %>
+                        <div class="tab-pane <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false && user.authority.citygovprojControl.constructionInfo === false && user.authority.citygovprojControl.textInfo === false){ %> active<% } %>" id="tab5-edit">
+                            <br>
 
-            <section>
-                <div class="input-group">
-                    <label class="select">
-                        <select class="input-sm" name="firstpartyisreceived">
-                            <% selectOptions.firstpartyisreceivedList.forEach(function (option) { %>
-                            <option value="<%= option%>"><%= option%></option>
-                            <% }) %>
-                        </select>
-                        <i></i>
-                    </label>
-                    <span class="input-group-addon" >甲方是否已收款</span>
-                </div>
-            </section>
+                            <br>
+                            <!--<h3>
+							<strong>5</strong>
+							- 合同信息
+						</h3>
+						-->
+                            <fieldset>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="甲方合同金额" type="text" name="firstpartycontractyamount">
+                                        <span class="input-group-addon" >甲方合同金额</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <label class="select">
-                        <select class="input-sm isTrans" name="trans">
-                            <% selectOptions.transList.forEach(function (option) { %>
-                            <option value="<%= option%>"><%= option%></option>
-                            <% }) %>
-                        </select>
-                        <i></i>
-                    </label>
-                    <span class="input-group-addon" >是否转其他公司</span>
-                </div>
-            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <label class="select">
+                                            <select class="input-sm" name="firstpartyisreceived">
+                                                <% selectOptions.firstpartyisreceivedList.forEach(function (option) { %>
+                                                <option value="<%= option%>"><%= option%></option>
+                                                <% }) %>
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                        <span class="input-group-addon" >甲方是否已收款</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartycontracttime">
+                                <section>
+                                    <div class="input-group">
+                                        <label class="select">
+                                            <select class="input-sm isTrans" name="trans">
+                                                <% selectOptions.transList.forEach(function (option) { %>
+                                                <option value="<%= option%>"><%= option%></option>
+                                                <% }) %>
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                        <span class="input-group-addon" >是否转其他公司</span>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartycontracttime">
                     <span class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </span>
-                    <span class="input-group-addon" >乙方合同签订日期</span>
-                </div>
-            </section>
+                                        <span class="input-group-addon" >乙方合同签订日期</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input class="form-control digit"  placeholder="乙方合同金额" type="text" name="secondpartycontractamount">
-                    <span class="input-group-addon" >乙方合同金额</span>
-                </div>
-            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="乙方合同金额" type="text" name="secondpartycontractamount">
+                                        <span class="input-group-addon" >乙方合同金额</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyaudittime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyaudittime">
                     <span class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </span>
-                    <span class="input-group-addon" >乙方送审日期</span>
-                </div>
-            </section>
+                                        <span class="input-group-addon" >乙方送审日期</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input class="form-control digit"  placeholder="乙方审定金额" type="text" name="secondpartyauditamount">
-                    <span class="input-group-addon" >乙方审定金额</span>
-                </div>
-            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="乙方审定金额" type="text" name="secondpartyauditamount">
+                                        <span class="input-group-addon" >乙方审定金额</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyproceprepaytime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyproceprepaytime">
                     <span class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </span>
-                    <span class="input-group-addon" >乙方预付款开票日期（附件）</span>
-                </div>
+                                        <span class="input-group-addon" >乙方预付款开票日期（附件）</span>
+                                    </div>
 
-                <div class="fileDiv input input-file">
+                                    <div class="fileDiv input input-file">
                     <span class="button">
                         <input type="file" id="secondpartyproceprepaytimeFile" name="secondpartyproceprepaytimeFile" onchange="">选择文件</span>
                     <span style="padding-top: 3px">
                         当前文件
                         <span name="secondpartyproceprepaytimeFile" class="fileName"></span>
                     </span>
-                    <a class="btn btn-link upload">上传</a>
-                    <a class="btn btn-link download">下载</a>
-                    <span class="uploadInfo"></span>
-                </div>
-            </section>
+                                        <a class="btn btn-link upload">上传</a>
+                                        <a class="btn btn-link download">下载</a>
+                                        <span class="uploadInfo"></span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input class="form-control digit"  placeholder="乙方预付款开票金额" type="text" name="secondpartyproceprepayamount">
-                    <span class="input-group-addon" >乙方预付款开票金额</span>
-                </div>
-            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="乙方预付款开票金额" type="text" name="secondpartyproceprepayamount">
+                                        <span class="input-group-addon" >乙方预付款开票金额</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyprocetime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyprocetime">
                     <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                     </span>
-                    <span class="input-group-addon" >乙方进度款开票日期（附件）</span>
-                </div>
+                                        <span class="input-group-addon" >乙方进度款开票日期（附件）</span>
+                                    </div>
 
-                <div class="fileDiv input input-file">
+                                    <div class="fileDiv input input-file">
                     <span class="button">
                         <input type="file" id="secondpartyprocetimeFile" name="secondpartyprocetimeFile" onchange="">选择文件</span>
                     <span style="padding-top: 3px">
                         当前文件
                         <span name="secondpartyprocetimeFile" class="fileName"></span>
                     </span>
-                    <a class="btn btn-link upload">上传</a>
-                    <a class="btn btn-link download">下载</a>
-                    <span class="uploadInfo"></span>
-                </div>
+                                        <a class="btn btn-link upload">上传</a>
+                                        <a class="btn btn-link download">下载</a>
+                                        <span class="uploadInfo"></span>
+                                    </div>
 
-            </section>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input class="form-control digit"  placeholder="乙方进度款开票金额" type="text" name="secondpartyproceamount">
-                    <span class="input-group-addon" >乙方进度款开票金额</span>
-                </div>
-            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="乙方进度款开票金额" type="text" name="secondpartyproceamount">
+                                        <span class="input-group-addon" >乙方进度款开票金额</span>
+                                    </div>
+                                </section>
 
-           <section>
+                                <section>
 
-               <div class="input-group">
-                   <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyfinaltime">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyfinaltime">
                    <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                    </span>
-                   <span class="input-group-addon" >乙方尾款开票日期（附件）</span>
-               </div>
+                                        <span class="input-group-addon" >乙方尾款开票日期（附件）</span>
+                                    </div>
 
-               <div class="fileDiv input input-file">
+                                    <div class="fileDiv input input-file">
                    <span class="button">
                        <input type="file" id="secondpartyfinaltimeFile" name="secondpartyfinaltimeFile" onchange="">选择文件</span>
                    <span style="padding-top: 3px">
                        当前文件
                        <span name="secondpartyfinaltimeFile" class="fileName"></span>
                    </span>
-                   <a class="btn btn-link upload">上传</a>
-                   <a class="btn btn-link download">下载</a>
-                   <span class="uploadInfo"></span>
-               </div>
+                                        <a class="btn btn-link upload">上传</a>
+                                        <a class="btn btn-link download">下载</a>
+                                        <span class="uploadInfo"></span>
+                                    </div>
 
-           </section>
+                                </section>
 
 
-            <section>
+                                <section>
 
-                <div class="input-group">
-                    <input class="form-control digit"  placeholder="乙方尾款开票金额" type="text" name="secondpartyfinalamount">
-                    <span class="input-group-addon" >乙方尾款开票日期（附件）</span>
-                </div>
-            </section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="乙方尾款开票金额" type="text" name="secondpartyfinalamount">
+                                        <span class="input-group-addon" >乙方尾款开票日期（附件）</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyprepaytime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyprepaytime">
                     <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                     </span>
-                    <span class="input-group-addon" >乙方预付款到款日期</span>
-                </div>
-            </section>
+                                        <span class="input-group-addon" >乙方预付款到款日期</span>
+                                    </div>
+                                </section>
 
-           <section>
-               <div class="input-group">
-                   <input class="form-control digit"  placeholder="乙方预付款到款金额" type="text" name="secondpartyprepayamount">
-                   <span class="input-group-addon" >乙方预付款到款金额</span>
-               </div>
-           </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="乙方预付款到款金额" type="text" name="secondpartyprepayamount">
+                                        <span class="input-group-addon" >乙方预付款到款金额</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartypropaytime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartypropaytime">
                     <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                     </span>
-                    <span class="input-group-addon" >乙方进度款到款日期</span>
-                </div>
-            </section>
+                                        <span class="input-group-addon" >乙方进度款到款日期</span>
+                                    </div>
+                                </section>
 
-           <section>
-               <div class="input-group">
-                   <input class="form-control digit"  placeholder="乙方进度款到款金额" type="text" name="secondpartypropayamount">
-                   <span class="input-group-addon" >乙方进度款到款金额</span>
-               </div>
-           </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="乙方进度款到款金额" type="text" name="secondpartypropayamount">
+                                        <span class="input-group-addon" >乙方进度款到款金额</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyfinalpaytime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="secondpartyfinalpaytime">
                     <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                     </span>
-                    <span class="input-group-addon" >乙方尾款到款日期</span>
-                </div>
-            </section>
+                                        <span class="input-group-addon" >乙方尾款到款日期</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input class="form-control digit"  placeholder="乙方尾款到款金额" type="text" name="secondpartyfinalpayaount">
-                    <span class="input-group-addon" >乙方尾款到款金额</span>
-                </div>
-            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="乙方尾款到款金额" type="text" name="secondpartyfinalpayaount">
+                                        <span class="input-group-addon" >乙方尾款到款金额</span>
+                                    </div>
+                                </section>
 
 
-            <section>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="contracttime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="contracttime">
                     <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                     </span>
-                    <span class="input-group-addon" >我公司合同签订日期</span>
-                </div>
-            </section>
+                                        <span class="input-group-addon" >我公司合同签订日期</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input class="form-control"  placeholder="合同文本（附件）" type="text" name="contracttext">
-                    <span class="input-group-addon" >合同文本（附件）</span>
-                </div>
-                <div class="fileDiv input input-file">
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control"  placeholder="合同文本（附件）" type="text" name="contracttext">
+                                        <span class="input-group-addon" >合同文本（附件）</span>
+                                    </div>
+                                    <div class="fileDiv input input-file">
                     <span class="button">
                         <input type="file" id="contracttextFile" name="contracttextFile" onchange="">选择文件</span>
                     <span style="padding-top: 3px">
                         当前文件
                         <span name="contracttextFileName" class="fileName"></span>
                     </span>
-                    <a class="btn btn-link upload">上传</a>
-                    <a class="btn btn-link download">下载</a>
-                    <span class="uploadInfo"></span>
-                </div>
-            </section>
+                                        <a class="btn btn-link upload">上传</a>
+                                        <a class="btn btn-link download">下载</a>
+                                        <span class="uploadInfo"></span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input class="form-control digit"  placeholder="我公司合同款金额" type="text" name="contractamount">
-                    <span class="input-group-addon" >合同文本（附件）</span>
-                </div>
-            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="我公司合同款金额" type="text" name="contractamount">
+                                        <span class="input-group-addon" >合同文本（附件）</span>
+                                    </div>
+                                </section>
 
-           <section>
-               <div class="input-group">
-                   <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="prepayvoicetime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="prepayvoicetime">
                    <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                    </span>
-                   <span class="input-group-addon" >我公司合同预付款开票日期</span>
-               </div>
+                                        <span class="input-group-addon" >我公司合同预付款开票日期</span>
+                                    </div>
 
-               <div class="fileDiv input input-file">
+                                    <div class="fileDiv input input-file">
                    <span class="button">
                        <input type="file" id="prepayvoicetimeFile" name="prepayvoicetimeFile" onchange="">选择文件</span>
                    <span style="padding-top: 3px">
                        当前文件
                        <span name="prepayvoicetimeFileName" class="fileName"></span>
                    </span>
-                   <a class="btn btn-link upload">上传</a>
-                   <a class="btn btn-link download">下载</a>
-                   <span class="uploadInfo"></span>
-               </div>
+                                        <a class="btn btn-link upload">上传</a>
+                                        <a class="btn btn-link download">下载</a>
+                                        <span class="uploadInfo"></span>
+                                    </div>
 
-           </section>
+                                </section>
 
-           <section>
-               <div class="input-group">
-                   <input class="form-control digit"  placeholder="我公司合同预付款开票金额" type="text" name="prepayvoiceamount">
-                   <span class="input-group-addon" >我公司合同预付款开票金额</span>
-               </div>
-           </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="我公司合同预付款开票金额" type="text" name="prepayvoiceamount">
+                                        <span class="input-group-addon" >我公司合同预付款开票金额</span>
+                                    </div>
+                                </section>
 
-           <section>
-               <div class="input-group">
-                   <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="propayvoicetime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="propayvoicetime">
                    <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                    </span>
-                   <span class="input-group-addon" >我公司合同进度款开票日期</span>
-               </div>
+                                        <span class="input-group-addon" >我公司合同进度款开票日期</span>
+                                    </div>
 
-               <div class="fileDiv input input-file">
+                                    <div class="fileDiv input input-file">
                    <span class="button">
                        <input type="file" id="propayvoicetimeFile" name="propayvoicetimeFile" onchange="">选择文件</span>
                    <span style="padding-top: 3px">
                        当前文件
                        <span name="propayvoicetimeFileName" class="fileName"></span>
                    </span>
-                   <a class="btn btn-link upload">上传</a>
-                   <a class="btn btn-link download">下载</a>
-                   <span class="uploadInfo"></span>
-               </div>
-           </section>
+                                        <a class="btn btn-link upload">上传</a>
+                                        <a class="btn btn-link download">下载</a>
+                                        <span class="uploadInfo"></span>
+                                    </div>
+                                </section>
 
 
 
-            <section>
-                <div class="input-group">
-                    <input class="form-control digit"  placeholder="我公司合同进度款开票金额" type="text" name="propayvoiceamount">
-                    <span class="input-group-addon" >我公司合同进度款开票金额</span>
-                </div>
-            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="我公司合同进度款开票金额" type="text" name="propayvoiceamount">
+                                        <span class="input-group-addon" >我公司合同进度款开票金额</span>
+                                    </div>
+                                </section>
 
-           <section>
-               <div class="input-group">
-                   <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finalpayvoicetime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="finalpayvoicetime">
                    <span class="input-group-addon"> <i class="fa fa-calendar"></i>
                    </span>
-                   <span class="input-group-addon" >我公司合同尾款开票日期</span>
-               </div>
+                                        <span class="input-group-addon" >我公司合同尾款开票日期</span>
+                                    </div>
 
-               <div class="fileDiv input input-file">
+                                    <div class="fileDiv input input-file">
                    <span class="button">
                        <input type="file" id="finalpayvoicetimeFile" name="finalpayvoicetimeFile" onchange="">选择文件</span>
                    <span style="padding-top: 3px">
                        当前文件
                        <span name="finalpayvoicetimeFileName" class="fileName"></span>
                    </span>
-                   <a class="btn btn-link upload">上传</a>
-                   <a class="btn btn-link download">下载</a>
-                   <span class="uploadInfo"></span>
-               </div>
+                                        <a class="btn btn-link upload">上传</a>
+                                        <a class="btn btn-link download">下载</a>
+                                        <span class="uploadInfo"></span>
+                                    </div>
 
-           </section>
+                                </section>
 
 
-            <section>
-                <div class="input-group">
-                    <input class="form-control digit"  placeholder="我公司合同尾款开票金额" type="text" name="finalpayvoiceamount">
-                    <span class="input-group-addon" >我公司合同尾款开票金额</span>
-                </div>
-            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="我公司合同尾款开票金额" type="text" name="finalpayvoiceamount">
+                                        <span class="input-group-addon" >我公司合同尾款开票金额</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="prepayouttime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="prepayouttime">
                     <span class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </span>
-                    <span class="input-group-addon" >我公司合同预付款到款日期</span>
-                </div>
-            </section>
+                                        <span class="input-group-addon" >我公司合同预付款到款日期</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input class="form-control digit"  placeholder="我公司合同预付款到款金额" type="text" name="prepayoutamount">
-                    <span class="input-group-addon" >我公司合同预付款到款金额</span>
-                </div>
-            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="我公司合同预付款到款金额" type="text" name="prepayoutamount">
+                                        <span class="input-group-addon" >我公司合同预付款到款金额</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="propayouttime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="propayouttime">
                     <span class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </span>
-                    <span class="input-group-addon" >我公司合同进度款到款日期</span>
-                </div>
-            </section>
+                                        <span class="input-group-addon" >我公司合同进度款到款日期</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input class="form-control digit"  placeholder="我公司合同进度款到款金额" type="text" name="propayoutamount">
-                    <span class="input-group-addon" >我公司合同进度款到款金额</span>
-                </div>
-            </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="我公司合同进度款到款金额" type="text" name="propayoutamount">
+                                        <span class="input-group-addon" >我公司合同进度款到款金额</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="audittime">
+                                <section>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99" data-mask-placeholder="-" name="audittime">
                     <span class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </span>
-                    <span class="input-group-addon" >我公司送审日期</span>
-                </div>
-            </section>
+                                        <span class="input-group-addon" >我公司送审日期</span>
+                                    </div>
+                                </section>
 
-            <section>
-                <div class="input-group">
-                    <input class="form-control digit"  placeholder="我公司审定金额" type="text" name="auditamount">
-                    <span class="input-group-addon" >我公司审定金额</span>
-                </div>
-            </section>
-        </fieldset>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit"  placeholder="我公司审定金额" type="text" name="auditamount">
+                                        <span class="input-group-addon" >我公司审定金额</span>
+                                    </div>
+                                </section>
+                            </fieldset>
 
-    </div>
-    <div class="tab-pane" id="tab6-edit">
-        <br>
-        <fieldset>
-       <!--  <h3>
-            <strong>6</strong>
-            - 收入信息
-        </h3> -->
+                        </div>
+                        <% } %>
 
-        <section>
-                <div class="input-group">
-                    <input class="form-control digit income" placeholder="实际收款" type="text" name="income">
-                    <span class="input-group-addon" >实际收款</span>
-                </div>
-        </section>
+                        <% if(user.authority.citygovprojControl.incomeInfo === true){ %>
+                        <div class="tab-pane <% if(user.authority.citygovprojControl.basicInfo === false && user.authority.citygovprojControl.materialInfo === false && user.authority.citygovprojControl.constructionInfo === false && user.authority.citygovprojControl.textInfo === false && user.authority.citygovprojControl.contractInfo === false){ %> active <% } %>" id="tab6-edit">
+                            <br>
+                            <fieldset>
+                                <!--  <h3>
+									 <strong>6</strong>
+									 - 收入信息
+								 </h3> -->
 
-        <section>
-                <div class="input-group">
-                            <input class="form-control digit outcome" placeholder="施工队结款" type="text" name="outcome">
-                            <span class="input-group-addon" >施工队结款</span>
-                    </div>
-        </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit income" placeholder="实际收款" type="text" name="income">
+                                        <span class="input-group-addon" >实际收款</span>
+                                    </div>
+                                </section>
 
-        <section>
-                <div class="input-group">
-                            <input class="form-control digit otherfee" placeholder="其他费用" type="text" name="otherfee">
-                            <span class="input-group-addon" >其他费用</span>
-                    </div>
-        </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit outcome" placeholder="施工队结款" type="text" name="outcome">
+                                        <span class="input-group-addon" >施工队结款</span>
+                                    </div>
+                                </section>
 
-        <section>
-                <div class="input-group">
-                            <input class="form-control digit profit" placeholder="利润" type="text" name="profit">
-                             <span class="input-group-addon" >利润</span>
-                    </div>
-        </section>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit otherfee" placeholder="其他费用" type="text" name="otherfee">
+                                        <span class="input-group-addon" >其他费用</span>
+                                    </div>
+                                </section>
 
-    </fieldset>
-</div>
+                                <section>
+                                    <div class="input-group">
+                                        <input class="form-control digit profit" placeholder="利润" type="text" name="profit">
+                                        <span class="input-group-addon" >利润</span>
+                                    </div>
+                                </section>
+
+                            </fieldset>
+                        </div>
+
+                        <% } %>
+
 
 <footer>
     <button type="submit" class="btn btn-primary" id="saveProjEdited">提交</button>
@@ -1944,6 +2017,7 @@ data-widget-colorbutton="false"
 
 </div>
 </div>
+                <input type="text" name="_id" class="hidden" data-id="">
 </form>
 </div>
 
@@ -2374,6 +2448,7 @@ you can add as many as you like
             formInfo.proj.textInfo = {};
             formInfo.proj.contractInfo = {};
             formInfo.proj.incomeInfo = {};
+            formInfo.proj._id = $("#editProj input[name='_id']").val();
             //basicInfo
             $("#tab1-edit  input").each(function(){
                 var inputName = $(this).attr("name");
@@ -2684,7 +2759,7 @@ you can add as many as you like
 		    var fileElementId = fileDiv.find("input").attr("id");
 
 		    var fileInfo = {};
-		    fileInfo.id = $("#tab1-edit  input[name='_id']").val();
+            fileInfo.id = $("#editProj input[name='_id']").val();
 		    fileInfo.file = fileDiv.find("input").attr("name");
 		    fileInfo.fileName = fileDiv.find(".fileName").attr("name");
 
@@ -2728,7 +2803,7 @@ you can add as many as you like
 		    uploadInfo.removeClass("text-warning").text(" ");
 
 		    var fileInfo = {};
-		    fileInfo.id = $("#tab1-edit  input[name='_id']").val();
+            fileInfo.id = $("#editProj input[name='_id']").val();
 		    fileInfo.file = fileDiv.find("input").attr("name");
 		    fileInfo.fileName = fileDiv.find(".fileName").attr("name");
 
@@ -2780,6 +2855,7 @@ you can add as many as you like
                     dataType:"json",
                     success:function(engproj){
                         if(engproj !== null){
+                            $("#editProj input[name='_id']").val(engproj._id);
                             //basicInfo
                             $("#tab1-edit  input").each(function(){
                                 var inputName = $(this).attr("name");
