@@ -17,6 +17,10 @@ var UserSchema = new mongoose.Schema({
     isAdmin : {type:Boolean, default:false},
     //权限
     authority : {
+        //主页
+        mainControl : {
+            visible :  {type:Boolean, default:true},
+        },
         //工程公司项目
         engprojControl : {
             visible :  {type:Boolean, default:false},

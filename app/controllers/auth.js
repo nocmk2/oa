@@ -7,8 +7,23 @@ var NetprojService = require('../models/services/netproj');
 var CitygovprojService = require('../models/services/citygovproj');
 
 module.exports = function (app) {
-
+    //默认访问个人信息页，主页可以取消访问权限
     app.get('/', checkLogin , function (req, res) {
+         res.render('profile', {
+                user: req.session.user,
+                info:'',
+                success: req.flash('success').toString(),
+                error: req.flash('error').toString()
+            });
+    });
+
+
+    app.get('/index', checkLogin , function (req, res) {
+        //若用户没有权限，返回
+        if(req.session.user.authority.mainControl.visible !== true ){
+            return res.redirect('/');
+        }
+
         console.dir(req.session.user);
 
         var ep = eventProxy.create("engproj","netproj","citygovproj", function (engproj,netproj,citygovproj) {

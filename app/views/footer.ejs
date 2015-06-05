@@ -1,5 +1,10 @@
     <script type="text/javascript" src="js/queryString.js"></script>
          <script type="text/javascript">
+            //2015-6-2修改左侧menu点击后不高亮bug
+             var Upath = window.location.pathname; //获取url的path
+             if(Upath=='/'){Upath='/profile'} //默认打开profile个人信息，因为主页可以设置权限不可查看
+             $("a[href='"+Upath+"']").parent().attr('class','active'); //左侧menu的激活状态
+
             //搜索框选择类型
             $(".projTypeForSearch").each(function(e){
                 $(this).click(function(){

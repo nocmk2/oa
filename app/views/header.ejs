@@ -289,11 +289,14 @@ you can add as many as you like
         -->
 
         <ul>
-            <li class="active">
-                <a href="/" title="主页"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">主页</span></a>
-            </li>
+            <% if(user.authority.mainControl.visible === true){ %>
             <li>
-                <a href="/profile"><i class="fa fa-lg fa-fw fa-book"></i> <span class="menu-item-parent">个人信息</span></a>
+                <a href="/index" class="menu_item"><i class="fa fa-lg fa-fw fa-line-chart"></i> <span class="menu-item-parent">项目统计</span></a>
+            </li>
+            <% } %>
+
+            <li><!--class="active"-->
+                <a href="/profile" class="menu_item"><i class="fa fa-lg fa-fw fa-book"></i> <span class="menu-item-parent">个人信息</span></a>
             </li>
             <!-- <li>
                 <a href="inbox.html"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">任务管理</span><span
@@ -346,26 +349,26 @@ you can add as many as you like
             <!--用户管理，只有具有管理员权限的用户才显示-->
             <% if(user.isAdmin === true){ %>
                 <li>
-                    <a href="/user"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">用户管理</span></a>
+                    <a href="/user" class="menu_item"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">用户管理</span></a>
                 </li>
             <% } %>
 
             <!--各项目管理-->
             <% if(user.authority.engprojControl.visible === true){ %>
                 <li>
-                    <a href="/engineeringproj"><i class="fa fa-lg fa-fw fa-wrench"></i> <span class="menu-item-parent">工程公司项目管理</span></a>
+                    <a href="/engineeringproj" class="menu_item"><i class="fa fa-lg fa-fw fa-wrench"></i> <span class="menu-item-parent">工程公司项目管理</span></a>
                 </li>
             <% } %>
 
             <% if(user.authority.netprojControl.visible === true){ %>
                 <li>
-                    <a href="/netproj"><i class="fa fa-lg fa-fw fa-signal"></i> <span class="menu-item-parent">网络部项目管理</span></a>
+                    <a href="/netproj" class="menu_item"><i class="fa fa-lg fa-fw fa-signal"></i> <span class="menu-item-parent">网络部项目管理</span></a>
                 </li>
             <% } %>
 
             <% if(user.authority.citygovprojControl.visible === true){ %>
                 <li>
-                    <a href="/citygovproj"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">市政项目管理</span></a>
+                    <a href="/citygovproj" class="menu_item"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">市政项目管理</span></a>
                 </li>
             <% } %>
 

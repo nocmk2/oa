@@ -254,8 +254,7 @@ module.exports = function (app) {
 				console.log(err);
 				return res.send({success:false});
 			}else{
-				return res.send({success:true,
-								fileNameUploaded:filename});
+				return res.send({success:true,fileNameUploaded:filename});
 			}
 
 		});

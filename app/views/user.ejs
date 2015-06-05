@@ -12,7 +12,6 @@
 
 		<!-- breadcrumb -->
 		<ol class="breadcrumb">
-			<li>主页</li>
 			<li>用户管理</li>
 		</ol>
 		<!-- end breadcrumb -->
@@ -138,7 +137,7 @@
 									<tbody>
 									<% users.forEach(function (user, index) { %>
 									<tr>
-										<td><input type="checkbox" name="selectOne" id="<%= user._id %>"/></td>
+										<td><% if(user.name!='admin'){%><input type="checkbox" name="selectOne" id="<%= user._id %>"/><% }%></td>
 										<td><%= index %></td>
 										<td>
 											<% if(user.name === null || user.name === undefined){ %>
@@ -310,6 +309,18 @@
 											<label class="input"> <i class="icon-append fa fa-map-marker"></i>
 												<input type="city" name="city">
 											</label>
+										</div>
+									</div>
+								</section>
+
+								<section>
+									<div class="row">
+										<label class="label col col-2">主页</label>
+
+										<div class="inline-group col col-10" style="margin-left: 10px">
+											<label class="checkbox">
+												<input type="checkbox" name="mainControl.visible">
+												<i></i>主页</label>
 										</div>
 									</div>
 								</section>
@@ -489,6 +500,19 @@
 										</div>
 									</div>
 								</section>
+
+								<section>
+									<div class="row">
+										<label class="label col col-2">主页</label>
+
+										<div class="inline-group col col-10" style="margin-left: 10px">
+											<label class="checkbox">
+												<input type="checkbox" name="mainControl.visible">
+												<i></i>主页</label>
+										</div>
+									</div>
+								</section>
+
 
 								<section>
 									<div class="row">
@@ -816,6 +840,8 @@
 							$("#editUserForm input[name='depart']").val(user.depart);
 							$("#editUserForm input[name='city']").val(user.city);
 							//权限
+							//主页
+							$("#editUserForm input[name='mainControl.visible']").attr('checked',user.authority.mainControl.visible );						
 							//工程公司项目
 							$("#editUserForm input[name='engprojControl.basicInfo']").attr('checked',user.authority.engprojControl.basicInfo );
 							$("#editUserForm input[name='engprojControl.materialInfo']").attr('checked',user.authority.engprojControl.materialInfo );
@@ -902,6 +928,9 @@
 
 			//权限
 			formInfo.user.authority = {};
+			//主页
+			formInfo.user.authority.mainControl = {};
+			formInfo.user.authority.mainControl.visible = $("#newuser-form input[name='mainControl.visible']").is(':checked');;
 
 			//工程公司项目
 			formInfo.user.authority.engprojControl = {};
@@ -1003,6 +1032,9 @@
 
 			//权限
 			formInfo.user.authority = {};
+			//主页
+			formInfo.user.authority.mainControl = {};
+			formInfo.user.authority.mainControl.visible = $("#editUserForm input[name='mainControl.visible']").is(':checked');;
 
 			//工程公司项目
 			formInfo.user.authority.engprojControl = {};
