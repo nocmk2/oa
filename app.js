@@ -20,8 +20,8 @@ var app = express();
 
 //链接mongodb
 mongoose.connect(('mongodb://' + dbConfig.host + ':27017/' + dbConfig.db),{
-    user:"blogAdmin",
-    pass:"blogAdmin",
+    user:"oaAdmin",
+    pass:"oaAdmin",
     auth:{
         user:"dbAdmin",
         pass:"dbAdmin"

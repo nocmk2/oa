@@ -12,7 +12,6 @@
 
         <!-- breadcrumb -->
         <ol class="breadcrumb">
-            <li>主页</li>
             <li>工程公司项目管理</li>
         </ol>
 
@@ -24,7 +23,7 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-                <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> 主页 <span>> 工程公司项目管理</span>
+                <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-wrench"></i> 工程公司项目管理 <span></span>
                 </h1>
             </div>
 
@@ -2594,7 +2593,7 @@
 
         //向修改信息框中显示已有的信息
         function initEditFun(){
-            $(".edit").click(function(){
+            $(document).on('click','.edit',function(){
                 //获取项目id
                 var projToEdit = {};
                 projToEdit.id = $(this).attr("data-projId");
@@ -2706,10 +2705,21 @@
         //向修改信息框中显示已有的信息功能初始化
         initEditFun();
         //切换分页时重新初始化功能
-        $(".pagination a").click(function (e) {
-            setTimeout(initEditFun,100);
+        //修复翻页详情bug，这里不需要，在initEditFun绑定.edit的地方采用委托绑定的方式放置翻页局部刷新导致initEditFun失效
+        /*
+        $('.row').on('click','.pagination a',function(e){
+            e.preventDefault();
+            alert('pageing11111');
+            setTimeout(initEditFun,1000);
         });
-        /*$(".pagination a:first").click(function (e) {
+        
+
+        $(".pagination a").click(function () {
+            alert('pageing');
+            setTimeout(initEditFun,1000);
+        });
+
+        $(".pagination a:first").click(function (e) {
             setTimeout(initEditFun,100);
         });
         $(".pagination a:last").click(function (e) {

@@ -35,7 +35,7 @@
 
 		<div class="row">
 			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> 主页 <span>> 用户管理</span>
+				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-user"></i> 用户管理 <span></span>
 				</h1>
 			</div>
 
@@ -315,12 +315,12 @@
 
 								<section>
 									<div class="row">
-										<label class="label col col-2">主页</label>
+										<label class="label col col-2">项目统计</label>
 
 										<div class="inline-group col col-10" style="margin-left: 10px">
 											<label class="checkbox">
 												<input type="checkbox" name="mainControl.visible">
-												<i></i>主页</label>
+												<i></i>项目统计</label>
 										</div>
 									</div>
 								</section>
@@ -503,12 +503,12 @@
 
 								<section>
 									<div class="row">
-										<label class="label col col-2">主页</label>
+										<label class="label col col-2">项目统计</label>
 
 										<div class="inline-group col col-10" style="margin-left: 10px">
 											<label class="checkbox">
 												<input type="checkbox" name="mainControl.visible">
-												<i></i>主页</label>
+												<i></i>项目统计</label>
 										</div>
 									</div>
 								</section>
@@ -821,7 +821,7 @@
 
 		//向修改信息框中显示已有的信息
 		function initEditFun() {
-			$(".edit").click(function () {
+			$(document).on('click','.edit',function () {
 				//获取用户id
 				var userToEdit = {};
 				userToEdit.id = $(this).attr("data-userId");
@@ -1113,9 +1113,11 @@
 		//向修改信息框中显示已有的信息功能初始化
 		initEditFun();
 		//切换分页时重新初始化功能
+		/*
 		$(".pagination a").click(function (e) {
 			setTimeout(initEditFun, 100);
 		});
+		*/
 
 		//输入框获得焦点时清除错误信息
 		$("#newuser-form input").each(function () {
