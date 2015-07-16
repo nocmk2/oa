@@ -352,10 +352,11 @@
                                                                         <div class="input-group">
                                                                             <label class="select">
                                                                                 <select class="input-sm" name="projtype">
-                                                                                    <option value="覆盖网">覆盖网</option>
-                                                                                    <option value="光交网">光交网</option>
+                                                                                    <% selectOptions.projtypeList.forEach(function (option) { %>
+                                                                                    <option value="<%= option%>"><%= option%></option>
+                                                                                    <% }) %>
                                                                                 </select> <i></i> </label>
-                                                                            <span class="input-group-addon" >项目类别</span>
+                                                                            <span class="input-group-addon">项目类别</span>
                                                                         </div>
                                                                     </section>
 
@@ -368,7 +369,7 @@
                                                                                     <% }) %>
                                                                                 </select> <i></i> </label>
                                                                             <span class="input-group-addon" >工程属性</span>
-                                                                        </div>
+                                                                           </div>
                                                                     </section>
 
                                                                     <section>
@@ -452,7 +453,7 @@
                                                                         <div class="input-group">
                                                                             <label class="select">
                                                                                 <select class="input-sm" name="constructteam">
-                                                                                    <% selectOptions.supvorgList.forEach(function (option) { %>
+                                                                                    <% selectOptions.constructteamList.forEach(function (option) { %>
                                                                                     <option value="<%= option%>"><%= option%></option>
                                                                                     <% }) %>
                                                                                 </select> <i></i> </label>
@@ -499,8 +500,9 @@
                                                                         <div class="input-group">
                                                                             <label class="select">
                                                                                 <select class="input-sm" name="materialoffer">
-                                                                                    <option value="甲供">甲供</option>
-                                                                                    <option value="乙供">乙供</option>
+                                                                                    <% selectOptions.materialofferList.forEach(function (option) { %>
+                                                                                    <option value="<%= option%>"><%= option%></option>
+                                                                                    <% }) %>
                                                                                 </select> <i></i> </label>
                                                                             <span class="input-group-addon" >主材料供应</span>
                                                                         </div>
@@ -533,12 +535,12 @@
                                                                         <div class="input-group">
                                                                             <label class="select">
                                                                                 <select class="input-sm" name="materialtable">
-                                                                                    <option value="管道材料表A">管道材料表A</option>
-                                                                                    <option value="管道材料表B">管道材料表B</option>
-                                                                                    <option value="光缆材料表A">光缆材料表A</option>
-                                                                                    <option value="光缆材料表B">光缆材料表B</option>
+                                                                                     <% selectOptions.materialtableList.forEach(function (option) { %>
+                                                                                    <option value="<%= option%>"><%= option%></option>
+                                                                                    <% }) %>
                                                                                 </select> <i></i> </label>
                                                                             <span class="input-group-addon" >材料表</span>
+
                                                                         </div>
                                                                     </section>
 
@@ -725,8 +727,9 @@
                                                                         <div class="input-group">
                                                                             <label class="select">
                                                                                 <select class="input-sm" name="worktable">
-                                                                                    <option value="光缆">光缆</option>
-                                                                                    <option value="管道">管道</option>
+                                                                                    <% selectOptions.worktableList.forEach(function (option) { %>
+                                                                                    <option value="<%= option%>"><%= option%></option>
+                                                                                    <% }) %>
                                                                                 </select> <i></i> </label>
                                                                             <span class="input-group-addon">施工队工作量（表格）</span>
                                                                         </div>
@@ -753,7 +756,7 @@
                                                                         <div class="input-group">
                                                                             <label class="select">
                                                                                 <select class="input-sm" name="contractstatus">
-                                                                                    <% selectOptions.contractstatusList .forEach(function (option) { %>
+                                                                                    <% selectOptions.contractstatusList.forEach(function (option) { %>
                                                                                     <option value="<%= option%>"><%= option%></option>
                                                                                     <% }) %>
                                                                                 </select> <i></i> </label>
@@ -850,8 +853,9 @@
                                                                         <div class="input-group">
                                                                             <label class="select">
                                                                                 <select class="input-sm" name="isinspect">
-                                                                                    <option value="是">是</option>
-                                                                                    <option value="否">否</option>
+                                                                                    <% selectOptions.isinspectList.forEach(function (option) { %>
+                                                                                    <option value="<%= option%>"><%= option%></option>
+                                                                                    <% }) %>
                                                                                 </select> <i></i> </label>
                                                                             <span class="input-group-addon">是否已送审（附件）</span>
                                                                         </div>
@@ -1275,8 +1279,9 @@
                                                                     <div class="input-group">
                                                                         <label class="select">
                                                                             <select class="input-sm" name="materialoffer">
-                                                                                <option value="甲供">甲供</option>
-                                                                                <option value="乙供">乙供</option>
+                                                                                 <% selectOptions.materialofferList.forEach(function (option) { %>
+                                                                                    <option value="<%= option%>"><%= option%></option>
+                                                                                    <% }) %>
                                                                             </select> <i></i> </label>
                                                                         <span class="input-group-addon">主材料供应</span>
                                                                     </div>
@@ -1560,7 +1565,7 @@
                                                                     <div class="input-group">
                                                                         <label class="select">
                                                                             <select class="input-sm" name="contractstatus">
-                                                                                <% selectOptions.contractstatusList .forEach(function (option) { %>
+                                                                                <% selectOptions.contractstatusList.forEach(function (option) { %>
                                                                                 <option value="<%= option%>"><%= option%></option>
                                                                                 <% }) %>
                                                                             </select> <i></i> </label>
@@ -1895,6 +1900,21 @@
 <script src="js/plugin/datatables/DT_bootstrap.js"></script>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/ajaxfileupload.js"></script>
+
+<script src="js/plugin/maxlength/bootstrap-maxlength.min.js"></script>
+<script src="js/plugin/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+<script src="js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js"></script>
+<script src="js/plugin/noUiSlider/jquery.nouislider.min.js"></script>
+<script src="js/plugin/ion-slider/ion.rangeSlider.min.js"></script>
+<script src="js/plugin/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="js/plugin/knob/jquery.knob.min.js"></script>
+<script src="js/plugin/x-editable/moment.min.js"></script>
+<script src="js/plugin/x-editable/jquery.mockjax.min.js"></script>
+<script src="js/plugin/x-editable/x-editable.min.js"></script>
+<script src="js/plugin/typeahead/typeahead.min.js"></script>
+<script src="js/plugin/typeahead/typeaheadjs.min.js"></script>
+
+
 
 <script type="text/javascript">
 
@@ -2704,6 +2724,97 @@
 
         //向修改信息框中显示已有的信息功能初始化
         initEditFun();
+
+
+        //下拉列表配置
+        function initSelectionConfig(){
+            $('.input-group-addon').on('mouseover mouseout click',function(event){
+                if($(this).prev().attr("class")=="select"){
+                        if(event.type == "mouseover") $(this).css({"background":"#9C1829","color":"white"})
+                        if(event.type == "mouseout") $(this).css({"background":"#eee","color":"#555"}) 
+                        if(event.type == "click") {
+                            var sElementName = $(this).prev().children("select").attr("name");//area List
+                            var slist = "";
+
+                            switch(sElementName){
+                                case "area":       //所属区域
+                                    slist = "<% selectOptions.areaList.forEach(function (option) {%><%=option%>,<%})%>";
+                                    break;
+                                case "properties": //工程属性
+                                    slist = "<% selectOptions.propertiesList.forEach(function (option) {%><%=option%>,<%})%>";
+                                    break;
+                                case "firstparty": //甲方单位
+                                    slist = "<% selectOptions.firstpartyList.forEach(function (option) {%><%=option%>,<%})%>";
+                                    break;
+                                case "designorg":  //设计单位
+                                    slist = "<% selectOptions.designorgList.forEach(function (option) {%><%=option%>,<%})%>";
+                                    break;
+                                case "supvorg":  //监理单位
+                                    slist = "<% selectOptions.supvorgList.forEach(function (option) {%><%=option%>,<%})%>";
+                                    break;
+                                case "constructteam":  //施工队
+                                    slist = "<% selectOptions.constructteamList.forEach(function (option) {%><%=option%>,<%})%>";
+                                    break;
+                                case "constructstatus": //施工情况
+                                    slist = "<% selectOptions.constructstatusList.forEach(function (option) {%><%=option%>,<%})%>";
+                                    break;
+                                case "isadmin": //管照办理情况
+                                    slist = "<% selectOptions.isadminList.forEach(function (option) {%><%=option%>,<%})%>";
+                                    break;
+                                case "compmatres": //甲方对竣工资料的反馈情况
+                                    slist = "<% selectOptions.compmatresList.forEach(function (option) {%><%=option%>,<%})%>";
+                                    break;
+                                case "contractstatus":  //合同签订情况
+                                    slist = "<% selectOptions.contractstatusList.forEach(function (option) {%><%=option%>,<%})%>";
+                                    break;
+                                case "materialoffer":  //主材料供应
+                                    slist = "<% selectOptions.materialofferList.forEach(function (option) {%><%=option%>,<%})%>";
+                                    break;
+                                case "projtype":  //项目类别
+                                    slist = "<% selectOptions.projtypeList.forEach(function (option) {%><%=option%>,<%})%>";
+                                    break;
+                                case "materialtable": //材料表
+                                    slist = "<% selectOptions.materialtableList.forEach(function (option) {%><%=option%>,<%})%>";
+                                    break;
+                                case "worktable": //施工队工作量（表格）
+                                     slist = "<% selectOptions.worktableList.forEach(function (option) {%><%=option%>,<%})%>";
+                                     break;
+                                case "isinspect": //是否已送审（附件）
+                                     slist = "<% selectOptions.isinspectList.forEach(function (option) {%><%=option%>,<%})%>";
+                                     break;
+                                default:
+                                    slist = "";
+                            }
+
+  
+                            if($(this).next().text()==""){
+                                 $(this).after('<a style="display:none" data-placement="right" href="form-x-editable.html#" id="a_'+sElementName+'" class="edit-select-tags" data-type="textarea" data-pk="1" data-original-title="编辑下拉列表的可选值">'+slist+'</a>');
+                                 //改为采用textarea的模式
+                                 $('#a_'+sElementName).editable({
+                                    mode:'popup', //popup inline
+                                    showbuttons: 'bottom'
+                                  });
+                                }
+                            $(this).next().toggle();                                         
+                        }                    
+                    }
+            });
+        };
+        initSelectionConfig();
+
+/*  tags模式 中文输入的时候有问题，暂时不用
+        $('#tags').editable({
+                inputclass: 'input-large',
+                select2: {
+                    tags: ['html', 'javascript', 'css', 'ajax'],
+                    tokenSeparators: [",", " "]
+                }
+            });
+*/
+    //改为采用textarea的模式
+    /*$('.edit-select-tags').editable({
+                showbuttons: 'bottom'
+            });*/
         //切换分页时重新初始化功能
         //修复翻页详情bug，这里不需要，在initEditFun绑定.edit的地方采用委托绑定的方式放置翻页局部刷新导致initEditFun失效
         /*

@@ -48,4 +48,20 @@ enjproj.selectOptions.compmatresList = ['已反馈','未反馈'];
 //合同签订情况
 enjproj.selectOptions.contractstatusList = ['已签订','未签订'];
 
+//主材料供应
+enjproj.selectOptions.materialofferList = ['甲供','乙供'];
+
+//项目类别
+enjproj.selectOptions.projtypeList = ['覆盖网','光交网'];
+
+//材料表
+enjproj.selectOptions.materialtableList = ['管道材料表A','管道材料表B','光缆材料表A','光缆材料表B'];
+
+//施工队工作量（表格）
+enjproj.selectOptions.worktableList = ['光缆','管道'];
+
+//是否已送审（附件）
+enjproj.selectOptions.isinspectList = ['是','否'];
+
+
 module.exports = enjproj;
